@@ -1,0 +1,11 @@
+The conflict resolution algorithm in gun is a unified computational model for functional and procedural programming. By interpolating data changes through a boundary function, we can accurately describe an isomorphic relationship between time series based mutable values and purely deterministic immutable values. This gives us the concurrency safety needed for scalable distributed systems, while still being able to react to our data in a convenient sequential process that is otherwise error prone to race conditions.
+
+Existing methods use either timestamps or vector clocks, but both have critical flaws of exploitation or divergence. Using timestamps leads to any peer that has significant enough drift into the future to always win - which is unintentional and undesirable. Vector clocks break down on simultaneous events, meaning it does not really even address conflict resolution, just partial ordering - which can cause divergences on machine resets or over significant latencies. All other methods require some sort of central authority or consensus, which is not considered truly distributed because they fail on network partitions.
+
+However, since timestamps are time series and vector clocks are deterministic states, gun's aforementioned boundary function can resolve the two. Thus, gun's conflict resolution algorithm can be expressed as the union of the two methods, gaining the benefits of both without their vulnerabilities. This was not how the algorithm was derived though, and it has correlations to many other phenomena in physical nature. We will explore those ideas after we dive into the actual code, which is named after a thought experiment called the Hypothetical Amnesia Machine.
+
+```javascript
+/* see Gun.HAM for now, this article is a WIP and will be updated later with a detailed breakdown later */
+```
+
+The behavior of the boundary function to determine data synchronization is strikingly similar to all sorts of phenomenons in physical nature. Whether that be from the physics of light or potentially to cases of schizophrenia, because the math underlying them all is the same. Each peer, defined as an actor capable of computation, be it a neural network in a brain, a gun server, or the processing of electron orbital states in an atom, can all resolve to the exact same value for some given state, without any extra coordination.
