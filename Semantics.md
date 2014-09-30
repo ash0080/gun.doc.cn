@@ -25,8 +25,8 @@ Now, for matters of operations, we will define the following:
 - **Sent**, confirmation of communication, in contrast 'sending' has an unknown status.
 
 Summaries of the API vocabulary...
-- Key, creates an index to remember a node by, typically for human use.
-- Load, open a key or bring a relation into cache, this is how you start exploring a graph.
-- Path, navigate through a graph, from node to node via fields, by chaining relations together.
-- Get, brings the node or value from your path into view to operate on, immediately and as they change.
-- Set, to change the value on a field or merge a node or nodes.
+- **Key**, creates an index to remember a node by, typically for human use.
+- **Load**, open a key or bring a relation into cache, to start exploring a graph.
+- **Path**, navigate through a graph, via fields, by chaining relations together.
+- **Get**, gives you the node or value from the path, and as they are changed.
+- **Set**, to change the value on a field or merge a node or nodes.
