@@ -4,7 +4,7 @@ Example of conflict:
 - _Node_ can refer to a node in a graph, a node in a network, or node as in NodeJS.
 
 Therefore, please conduct your language with the following semantics:
-- **Group**, is a known, finite, unordered collection of things.
+- **Group**, is an unordered collection of finite things.
 - **Peer**, is a gun server that can be connected to.
 - **Mesh**, is a group of one or more peers connected via some topology.
 - **Partition**, is the disconnection of peers, forming a divergent mesh.
