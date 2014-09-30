@@ -23,7 +23,8 @@ Now, for matters of operations, we will define the following:
 - **Sync**, exchanging states and streams between peers to arrive at a signature.
 - **Save**, to snapshot the state of a node or nodes into storage by a peer.
 - **Soul**, is the practically unique, immutable identifier for a node.
-- **Sent**, confirmation of communication, in contrast 'sending' has an unknown status.
+- **Send**, firing off a message into a mesh, irregularly repeated until sent.
+- **Sent**, proof that a message was received, might contain data that needs no receipt.
 
 Summaries of the API vocabulary...
 - **Key**, creates an index to remember a node by, typically for human use.
