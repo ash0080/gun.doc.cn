@@ -2,6 +2,7 @@ Because of an overlap in words, establishing a precise vocabulary is important.
 
 Example of conflict:
 - _Node_ can refer to a node in a graph, a node in a network, or node as in NodeJS.
+- _Set_ can refer to a set as in a subset, or the act of setting something in place.
 
 Therefore, please conduct your language with the following semantics:
 - **Group**, is an unordered collection of finite things.
