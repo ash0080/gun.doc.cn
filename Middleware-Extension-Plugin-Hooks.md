@@ -1,0 +1,6 @@
+- **load**, is responsible for retrieving a node from non-memory storage. Whether it be from disk, peers, another database, or a cloud service, it all must conform to the following API.
+    - **key**, _text or object_, your load hook will receive a key string (_"my/first/data"_) or a soul meta object (_{'#': 'UfAve0cVP1e51PE20hqpN8y9'}_) as the first parameter.
+    - **function**, is a callback you need to pass the data too.
+        - **err**, _error object_, a regular javascript object that has an `err` field on it.
+        - **node**, _null or node_, if the object does not exist at this layer, return `null`, else return the node.
+- key... [[Docs WIP]]
