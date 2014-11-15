@@ -12,7 +12,8 @@ Therefore, please conduct your language with the following semantics:
 - **Value**, is a binary, number, text, or relation that exists as a singular whole.
 - **Field**, is a symbol used to reference a value at any time.
 - **Node**, a group of no, one, some, or all fields, as they change over time.
-- **Graph**, all nodes over all time over all meshes.
+- **Graph**, a group of nodes. Different from a "graph node" which is a node itself.
+- **Universe**, all nodes over all time over all meshes.
 - **Key**, is an index used to hopefully find a node in a mesh.
 
 Now, for matters of operations, we will define the following:
