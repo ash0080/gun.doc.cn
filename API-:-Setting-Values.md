@@ -7,3 +7,5 @@ gun.set({
   email: "mark@gunDB.io"
 }).key('usernames/marknadal').key('emails/mark@gunDB.io');
 ```
+
+Now, both `usersnames/marknadal` and `emails/mark@gunDB.io` can be used to look up the same object.
