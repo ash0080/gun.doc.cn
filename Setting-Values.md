@@ -54,7 +54,7 @@ gun.load('person/cecil').path('cat').set({
 });
 ```
 
-In the above example, we tell Gun to load the object at `person/cecil` (which we just set up earlier), then step into the object to the `cat` key, which we set to Khoshekh's object.  We can also rely on Gun's chaining once again to set a separate key that Khoshekh can be access at as well.
+In the above example, we tell Gun to load the object at `person/cecil` (which we just set up earlier), then step into the object to the `cat` key, which we set to Khoshekh's object.  We can also rely on Gun's chaining once again to set a separate key that Khoshekh can be accessed at as well.
 
 ```javascript
 gun.load('person/cecil').path('cat').set({
