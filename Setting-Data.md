@@ -33,7 +33,7 @@ gun.set({
 }).key('person/cecil');
 ```
 
-Thanks to the [[chaining|API Design Philosophy: Reactive & Chainable]] that is built into GUN, we can really easily assign multiple keys to the same object, too. For example, if we wanted to access Cecil at both `person/cecil` and `human/1`, we could do that as follows
+Thanks to the [[chaining|Reactive and Chaining API]] that is built into GUN, we can really easily assign multiple keys to the same object, too. For example, if we wanted to access Cecil at both `person/cecil` and `human/1`, we could do that as follows
 
 ```javascript
 gun.set({
