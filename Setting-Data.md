@@ -1,7 +1,7 @@
 Setting Data
 ==============
 
-It's easiest to initially think about gun as a field/value store, where JavaScript objects can be stored and retrieved based on a particular key that identifies it.  This key can be literally any string; they don't have to follow any particular pattern, although that may be useful for your own organization.
+It's easiest to initially think about gun as a field/value store, where JavaScript objects can be stored and retrieved based on a particular key that identifies it. This key can be literally any string; they don't have to follow any particular pattern, although that may be useful for your own organization.
 
 In this example, we'll look at the following objects:
 
@@ -33,7 +33,7 @@ gun.set({
 }).key('person/cecil');
 ```
 
-Thanks to the [[chaining|API Design Philosophy: Reactive & Chainable]] that is built into GUN, we can really easily assign multiple keys to the same object, too.  For example, if we wanted to access Cecil at both `person/cecil` and `human/1`, we could do that as follows
+Thanks to the [[chaining|API Design Philosophy: Reactive & Chainable]] that is built into GUN, we can really easily assign multiple keys to the same object, too. For example, if we wanted to access Cecil at both `person/cecil` and `human/1`, we could do that as follows
 
 ```javascript
 gun.set({
@@ -45,7 +45,7 @@ gun.set({
 
 Now, both `person/cecil` and `human/1` can be used to look up the same object.
 
-Next, we want to establish that Khoshekh belongs to Cecil.  We can do that by using `set` again to set a particular value of Cecil, which we will refer to as `cat`.
+Next, we want to establish that Khoshekh belongs to Cecil. We can do that by using `set` again to set a particular value of Cecil, which we will refer to as `cat`.
 
 ```javascript
 gun.load('person/cecil').path('cat').set({
@@ -54,7 +54,7 @@ gun.load('person/cecil').path('cat').set({
 });
 ```
 
-In the above example, we tell gun to load the object at the `person/cecil` key (which we just set up earlier), then step into the object to the `cat` field, which we set to Khoshekh's object.  We can also rely on gun's chaining once again to set a separate key that Khoshekh can be accessed at as well.
+In the above example, we tell gun to load the object at the `person/cecil` key (which we just set up earlier), then step into the object to the `cat` field, which we set to Khoshekh's object. We can also rely on gun's chaining once again to set a separate key that Khoshekh can be accessed at as well.
 
 ```javascript
 gun.load('person/cecil').path('cat').set({
