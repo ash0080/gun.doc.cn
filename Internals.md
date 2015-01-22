@@ -2,14 +2,16 @@
 - **key**, writes to `this._.keys`, if `this._.node` exists then links them to it.
 
 
-- **load**, reads from `this.__.keys`, and links `this._.keys` and `this._.node`.
-- **get**, reads from `this._.node`.
+- **load**, pulls `this._.node` in from cache or remote, via a key or a soul, and links.
+- **get**, reads from `this._.field` on `this._.node` or the node itself.
 
 
-path is a wrapper around load.
+**path** wraps load recursively, to traverse depth, and writes `this._.field`.
 
-on emulates get, but over changes.
+**on** emulates get, but over time as changes are made.
 
-insert is a wrapper around set.
+**map** wraps around parallel paths.
 
-map is a wrapper around multiple paths.
+**blank** is a conditional which executes if the node from load is empty.
+
+**insert** wraps around set, putting in objects without human friendly fields, may not stay in core.
