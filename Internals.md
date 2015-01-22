@@ -8,7 +8,7 @@
 
 path is a wrapper around load.
 
-on is a wrapper around get.
+on emulates get, but over changes.
 
 insert is a wrapper around set.
 
