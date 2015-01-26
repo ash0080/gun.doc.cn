@@ -36,3 +36,4 @@ function HAM(machineState, incomingState, currentState, incomingValue, currentVa
 	return {err: Gun.log("you have not properly handled recursion through your data or filtered it as JSON")};
 }
 ```
+If you can implement this in your language of choice, then congratulations you now have a GUN driver. Everything else about GUN is pretty much just an API surface that wraps around this, providing convenience functions for the end developer. So first thing first, write this.
