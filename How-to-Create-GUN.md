@@ -36,4 +36,6 @@ function HAM(machineState, incomingState, currentState, incomingValue, currentVa
 	return {err: "you have not properly handled recursion through your data or filtered it as JSON"};
 }
 ```
-If you can implement this in your language of choice, then congratulations you now have a GUN driver. Everything else about GUN is pretty much just an API surface that wraps around this, providing convenience functions for the end developer. So first thing first, write this.
+If you can implement this in your language of choice, then congratulations you now have a GUN driver. Everything else about GUN is pretty much just an API surface that wraps around this, providing convenience functions for the end developer. So first thing first, write this in your language of choice.
+
+To recap, all data in GUN gets boiled down to these 5 parameters such that they can be compared and synced on - given whatever convergence results the HAM tells us. It is an incredibly simple algorithm but it is universally detailed in how to handle data synchronization.
