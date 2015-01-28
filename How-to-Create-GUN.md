@@ -1,5 +1,13 @@
 Any GUN library in any language must first start with the Hypothetical Amnesia Machine, which is is the conflict resolution algorithm:
 
+Parameters:
+
+ * `machineState`: The current time of the local machine.
+ * `incomingState`: The time of the update from the remote machine.
+ * `currentState`: The time of the last update on the local machine.
+ * `incomingValue`: The data coming from the remote machine.
+ * `currentValue`: The data stored in the local machine.
+
 ```javascript
 function HAM(machineState, incomingState, currentState, incomingValue, currentValue){
 	if(machineState < incomingState){
