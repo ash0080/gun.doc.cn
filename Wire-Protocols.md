@@ -17,10 +17,10 @@ Obviously use https or wss if you care about preventing man in the middle attack
 
 By default GUN's wire protocol is stateless, emulating HTTP. However, all realtime push notifications of changes happen over a stateful connection. This is achieved by passing an HTTP style `gun-sid` header with some unique ID. This hybrid model gives us the low bandwidth high throughput when available, but the safety and convenience of full transfers when needed.
 
-## LOAD
+## Load
 
 Assuming you have the base URL of your peer, just append the key as the `pathname`. 
- - **HTTP** GET `peer` [/my/key/here](/my/key/here), _ex. [https://gunjs.herokuapp.com/gun/example/todo/data](https://gunjs.herokuapp.com/gun/example/todo/data)_
+ - **HTTP** GET `peer` [/my/key/here](/my/key/here), _ex. [https://gunjs.herokuapp.com/gun/example/angular/data](https://gunjs.herokuapp.com/gun/example/angular/data)_
 ```json
 {
   "_": {
@@ -34,4 +34,33 @@ Assuming you have the base URL of your peer, just append the key as the `pathnam
   "cool": "beans"
 }
 ```
- - **WS** `peer` SEND `'{"url": {"pathname": "/my/key/here"}, "headers": {"ws-rid": "ASDF1234567890FDSA"}, "body": null }'`
+ - **WS** `peer` SEND `'{"url": {"pathname": "/my/key/here"}, "headers": {"ws-rid": "random"} }'`, _ex._
+```javascript
+// paste this into your browser console
+var ws = new WebSocket('wss://gunjs.herokuapp.com/gun');
+ws.onopen = function(o){ 
+  console.log('open', o);
+  ws.send(JSON.stringify({"url": {"pathname": "/example/angular/data"}}));
+};
+ws.onclose = function(c){ console.log('close', c) };
+ws.onmessage = function(m){ console.log('message', m) };
+ws.onerror = function(e){ console.log('error', e) };
+```
+```json
+{
+  "headers": {"Content-Type": "application/json", "ws-rid": "random"},
+  "body": {
+    "_": {
+      "#": "GKBER0hDUfU1HfyAXc38oTS7",
+      ">": {
+        "awesome": 1422485319074,
+        "cool": 1422166957059
+      }
+    },
+    "awesome": "sauce",
+    "cool": "beans"
+  }
+}
+```
+
+If you do not know the key or want to load a node by its soul, change the value of the pathname to a URI encoded component of '[?#=soul](?#=soul)', _ex. [https://gunjs.herokuapp.com/gun?%23=Daf034R4a3MG1CHlsKhP19tT](https://gunjs.herokuapp.com/gun?%23=Daf034R4a3MG1CHlsKhP19tT)_.
