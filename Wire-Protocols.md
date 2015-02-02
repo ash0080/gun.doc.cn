@@ -63,7 +63,7 @@ ws.onerror = function(e){ console.log('error', e) };
 }
 ```
 
-If you do not know the key or want to load a node by its soul, change the value of the pathname to a URI encoded component of '[?#=soul](?#=soul)', _ex. [https://gunjs.herokuapp.com/gun?%23=Daf034R4a3MG1CHlsKhP19tT](https://gunjs.herokuapp.com/gun?%23=Daf034R4a3MG1CHlsKhP19tT)_.
+If you do not know the key or want to load a node by its soul, change the value of the pathname to a URI encoded component of '[?#=soul](?#=soul)', _ex. [https://gunjs.herokuapp.com/gun?%23=GKBER0hDUfU1HfyAXc38oTS7](https://gunjs.herokuapp.com/gun?%23=GKBER0hDUfU1HfyAXc38oTS7)_.
 
 ## Set
 
