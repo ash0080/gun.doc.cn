@@ -1,0 +1,37 @@
+## Peer
+
+First, we have the base URL a GUN peer is running on. Take these as examples:
+
+- [https://gunjs.herokuapp.com/gun](https://gunjs.herokuapp.com/gun)
+- [http://localhost:8080/gun](http://localhost:8080/gun)
+- [wss://gunjs.herokuapp.com/gun](wss://gunjs.herokuapp.com/gun)
+- [ws://localhost:8080/gun](ws://localhost:8080/gun)
+
+Currently only HTTP, JSONP, and WebSockets are implemented. It is not necessary to host a GUN server on '[/gun](/gun)', it could be on any path you want - including the root domain. The only important thing is that your users load your website and that developers know where to connect GUN peers.
+
+## Security
+
+Obviously use https or wss if you care about preventing man in the middle attacks or snooping. Beyond this, GUN does not know your security requirements and makes no assumption on how they might be structured. If you want to enforce permissions, you should pass HTTP style Authorization Headers to an endpoint you control and check for security before relaying it to GUN. Basically, do not expose GUN directly unless you want your data to be publicly editable.
+
+## Stateless
+
+By default GUN's wire protocol is stateless, emulating HTTP. However, all realtime push notifications of changes happen over a stateful connection. This is achieved by passing an HTTP style `gun-sid` header with some unique ID. This hybrid model gives us the low bandwidth high throughput when available, but the safety and convenience of full transfers when needed.
+
+## LOAD
+
+Assuming you have the base URL of your peer, just append the key as the `pathname`. 
+ - **HTTP** GET `peer` [/my/key/here](/my/key/here), _ex. [https://gunjs.herokuapp.com/gun/example/todo/data](https://gunjs.herokuapp.com/gun/example/todo/data)_
+```json
+{
+  "_": {
+    "#": "GKBER0hDUfU1HfyAXc38oTS7",
+    ">": {
+      "awesome": 1422485319074,
+      "cool": 1422166957059
+    }
+  },
+  "awesome": "sauce",
+  "cool": "beans"
+}
+```
+ - **WS** `peer` SEND `'{"url": {"pathname": "/my/key/here"}, "headers": {"ws-rid": "ASDF1234567890FDSA"}, "body": null }'`
