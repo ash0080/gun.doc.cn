@@ -63,6 +63,8 @@ ws.onerror = function(e){ console.log('error', e) };
 }
 ```
 
+If the peer does not have a node associated with that key, it will reply with a `null` body. This is never an error. Additionally, this does not mean that the data does not exist, just simply that this peer has no recollection of it - it might exist on another peer.
+
 If you do not know the key or want to load a node by its soul, change the value of the pathname to a URI encoded component of '[?#=soul](?#=soul)', _ex. [https://gunjs.herokuapp.com/gun?%23=GKBER0hDUfU1HfyAXc38oTS7](https://gunjs.herokuapp.com/gun?%23=GKBER0hDUfU1HfyAXc38oTS7)_.
 
 ## Set
@@ -71,5 +73,7 @@ If you do not know the key or want to load a node by its soul, change the value 
 
 ## Key
 
-You can tell other peers to remember a key and the soul it references, but there is no guarantee that other peers will accept that request. There are no conflict resolution guarantees on keys either, meaning you could overwrite a key. If you want to mitigate these situations, you need handle [security and permissions](#Security) yourself. Other than that, here is the way you _would_ request peers to remember a key's association with a node:
+You can tell other peers to remember a key and the soul it references, but there is no guarantee that other peers will accept that request. There are no conflict resolution guarantees on keys either, meaning you could overwrite a key. If you want to mitigate these situations, you need handle [security and permissions](#security) yourself. Other than that, here is the way you _would_ request peers to remember a key's association with a node:
  - **HTTP** POST `peer` [/my/key/here](/my/key/here) `{"#": "SOUL"}`, _ex. [https://gunjs.herokuapp.com/gun/example/angular/data](https://gunjs.herokuapp.com/gun/example/angular/data) `{"#": "GKBER0hDUfU1HfyAXc38oTS7"}`_
+
+**...**
