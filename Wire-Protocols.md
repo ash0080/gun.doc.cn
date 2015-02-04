@@ -71,4 +71,5 @@ If you do not know the key or want to load a node by its soul, change the value 
 
 ## Key
 
-...
+You can tell other peers to remember a key and the soul it references, but there is no guarantee that other peers will accept that request. There are no conflict resolution guarantees on keys either, meaning you could overwrite a key. If you want to mitigate these situations, you need handle [security and permissions](#Security) yourself. Other than that, here is the way you _would_ request peers to remember a key's association with a node:
+ - **HTTP** POST `peer` [/my/key/here](/my/key/here) `{"#": "SOUL"}`, _ex. [https://gunjs.herokuapp.com/gun/example/angular/data](https://gunjs.herokuapp.com/gun/example/angular/data) `{"#": "GKBER0hDUfU1HfyAXc38oTS7"}`_
