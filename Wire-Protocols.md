@@ -24,7 +24,7 @@ Assuming you have the base URL of your peer, just append the key as the `pathnam
 ```json
 {
   "_": {
-    "#": "GKBER0hDUfU1HfyAXc38oTS7",
+    "#": "vsTA2AUwkkE56kbLRdekWmN6",
     ">": {
       "awesome": 1422485319074,
       "cool": 1422166957059
@@ -51,7 +51,7 @@ ws.onerror = function(e){ console.log('error', e) };
   "headers": {"Content-Type": "application/json", "ws-rid": "random"},
   "body": {
     "_": {
-      "#": "GKBER0hDUfU1HfyAXc38oTS7",
+      "#": "vsTA2AUwkkE56kbLRdekWmN6",
       ">": {
         "awesome": 1422485319074,
         "cool": 1422166957059
@@ -66,7 +66,7 @@ ws.onerror = function(e){ console.log('error', e) };
 
 If the peer does not have a node associated with that key, it will reply with a `null` body. This is never an error. Additionally, this does not mean that the data does not exist, just simply that this peer has no recollection of it - it might exist on another peer.
 
-If you do not know the key or want to load a node by its soul, change the value of the pathname to a URI encoded component of '[?#=soul](?#=soul)', _ex. [https://gunjs.herokuapp.com/gun?%23=GKBER0hDUfU1HfyAXc38oTS7](https://gunjs.herokuapp.com/gun?%23=GKBER0hDUfU1HfyAXc38oTS7)_.
+If you do not know the key or want to load a node by its soul, change the value of the pathname to a URI encoded component of '[?#=soul](?#=soul)', _ex. [https://gunjs.herokuapp.com/gun?%23=vsTA2AUwkkE56kbLRdekWmN6](https://gunjs.herokuapp.com/gun?%23=vsTA2AUwkkE56kbLRdekWmN6)_.
 
 ## Set
 
@@ -75,14 +75,14 @@ If you do not know the key or want to load a node by its soul, change the value 
 ## Key
 
 You can tell other peers to remember a key and the soul it references, but there is no guarantee that other peers will accept that request. There are no conflict resolution guarantees on keys either, meaning you could overwrite a key. If you want to mitigate these situations, you need handle [security and permissions](#security) yourself. Other than that, here is the way you _would_ request peers to remember a key's association with a node:
- - **HTTP** POST `peer` [/my/key/here](/my/key/here) `{"#": "SOUL"}`, _ex. [https://gunjs.herokuapp.com/gun/example/angular/data](https://gunjs.herokuapp.com/gun/example/angular/data) `{"#": "GKBER0hDUfU1HfyAXc38oTS7"}`_
+ - **HTTP** POST `peer` [/my/key/here](/my/key/here) `{"#": "SOUL"}`, _ex. [https://gunjs.herokuapp.com/gun/example/angular/data](https://gunjs.herokuapp.com/gun/example/angular/data) `{"#": "vsTA2AUwkkE56kbLRdekWmN6"}`_
  - **WS** `peer` SEND `'{"url": {"pathname": "/my/key/here"}, "headers": {"ws-rid": "random"}, "body": {"#": "SOUL"} }'`, _ex._
 ```javascript
 // paste this into your browser console
 var ws = new WebSocket('wss://gunjs.herokuapp.com/gun');
 ws.onopen = function(o){ 
   console.log('open', o);
-  ws.send(JSON.stringify({"url": {"pathname": "/example/test/make/key"}, "body": {"#": "GKBER0hDUfU1HfyAXc38oTS7"} }));
+  ws.send(JSON.stringify({"url": {"pathname": "/example/test/make/key"}, "body": {"#": "vsTA2AUwkkE56kbLRdekWmN6"} }));
 };
 ws.onclose = function(c){ console.log('close', c) };
 ws.onmessage = function(m){ console.log('message', m) };
