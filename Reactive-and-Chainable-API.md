@@ -1,7 +1,6 @@
-## API
 At its core, gun is just a synchronization protocol - but that is boring and useless by itself. So I've implemented a really exciting and easy API for you to use. If you don't like my approach or naming convention, you can simply rename things yourself or better yet fork the project and build a beautifully custom API and everything will still work via the protocol.
 
-#### Approach
+## Approach
 - If you are unfamiliar with **reactive** programming, it is a code structure that emphasizes vertical readability by avoiding nested loops and callbacks. Instead of doing
 ```javascript
 // ugly
@@ -56,4 +55,30 @@ $('#page')
 	.on("click", function(event){
 		console.log("hello world");
 	});
+```
+
+## API
+Because of this approach, you can do do a lot of neat combinations in GUN.
+
+ - You can save a reference to an object and reuse it later from that context:
+```javascript
+var mark = gun.set({name: "Mark Nadal"});
+var name = mark.path('name');
+mark.get(function(user){
+  console.log(user); // {name: "Mark Nadal"}
+});
+name.get(function(val){
+  console.log(val); // "Mark Nadal"
+});
+```
+ - You can path into a field to do something, and then go back:
+```javascript
+mark.set({ spouse: {name: "Amber Nadal"}, cat: {name: "Hobbes"} })
+  .path('spouse')
+    .set({studies: "Psychology"})
+    .back
+  .path('cat.name')
+    .get(function(name){
+      console.log(name); // "Hobbes"
+});
 ```
