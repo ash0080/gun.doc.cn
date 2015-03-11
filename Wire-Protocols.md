@@ -70,7 +70,22 @@ If you do not know the key or want to load a node by its soul, change the value 
 
 ## Set
 
-...
+To set data over the wire, you must send the delta update encapsulated within a graph which allows for batch updates. The soul in the following examples were shortened for sake of clarity, where we are updating a single field of "yay" to the value of "lol" on a single node "pfNh":
+
+ - **HTTP** POST `peer` `{"pfNh":{"_":{"#":"pfNh",">":{"yay":1426023776027}},"yay":"lol"}}`, _ex. [https://gunjs.herokuapp.com/gun](https://gunjs.herokuapp.com)_ `{"pfNh":{"_":{"#":"pfNh",">":{"yay":1426023776027}},"yay":"lol"}}`
+ - **WS**, `peer` SEND `{"headers": {"ws-rid": "random"}, "body": {"SOUL": {"_":{"#":"SOUL",">":{"field": STATE }}, "field": "value"} } }`, _ex._
+```javascript
+// paste this into your browser console
+var ws = new WebSocket('wss://gunjs.herokuapp.com/gun');
+ws.onopen = function(o){ 
+  console.log('open', o);
+  ws.send(JSON.stringify({"body":{"pfNh":{"_":{"#":"pfNh",">":{"yay":1426024314477}},"yay":"lol"}}}));
+};
+ws.onclose = function(c){ console.log('close', c) };
+ws.onmessage = function(m){ console.log('message', m) };
+ws.onerror = function(e){ console.log('error', e) };
+```
+ - JSONP, **...**
 
 ## Key
 
@@ -81,7 +96,7 @@ You can tell other peers to remember a key and the soul it references, but there
 // paste this into your browser console
 var ws = new WebSocket('wss://gunjs.herokuapp.com/gun');
 ws.onopen = function(o){ 
-  console.log('open', o);
+  console.log('open', o);com
   ws.send(JSON.stringify({"url": {"pathname": "/example/test/make/key"}, "body": {"#": "vsTA2AUwkkE56kbLRdekWmN6"} }));
 };
 ws.onclose = function(c){ console.log('close', c) };
