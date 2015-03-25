@@ -2,7 +2,7 @@ At its core, gun is just a synchronization protocol - but that is boring and use
 
 
 ## API
-Because of the [approach](#approach), you can do do a lot of neat combinations in GUN.
+Because of the [approach](#approach), you can do a lot of neat combinations in GUN.
 
  - You can save a reference to an object and reuse it later from that context:
 ```javascript
