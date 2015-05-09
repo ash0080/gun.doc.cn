@@ -21,6 +21,8 @@ Deploying to the cloud is the middle ground, you are paying to outsource the phy
 
 ## Observations
 
-Traditionally database servers had to be provisioned, but GUN goes against this methodology.
+Traditionally database servers had to be provisioned, acting as a transactor for data on one or more disks. To be precise, this transactor is an abstraction and virtualization layer for storing structured data. That way the application developer does not have to worry about storage location. But cloud providers have already virtualized storage, such as S3 or GCS which are "infinite" hard drives. This is not to say that fixed size allocated disks are unavailable, they are - and significantly faster, but the constraints on their size are arbitrarily limited by the underlying virtualization.
 
-... working in progress ... 
+These arbitrary constraints are the very things that the database and cloud are trying to remove. Yet because there is such a prevalent expectation that things are limited, people keep resorting to finite drives by default. And how do you get around those defaults? By chunking data into tiny fixed sizes and storing and replicating them on a growing set of hard drives that are dedicated to a specific "shard" key or range. This is when sharding is necessary, such as when you run your own physical machines.
+
+However,
