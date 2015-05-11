@@ -25,4 +25,18 @@ Traditionally database servers had to be provisioned, acting as a transactor for
 
 These arbitrary constraints are the very things that the database and cloud are trying to remove. Yet because there is such a prevalent expectation that things are limited, people keep resorting to finite drives by default. And how do you get around those defaults? By chunking data into tiny fixed sizes and storing and replicating them on a growing set of hard drives that are dedicated to a specific "shard" key or range. This is when sharding is necessary, such as when you run your own physical machines.
 
-However,
+## Misconception
+
+Ironically, despite the scalability of the cloud's storage, people still deploy and shard databases across finite drives on these providers. This results in sharding still being a common practice, but has the following two unfortunate disadvantages with only one advantage:
+
+ - **A.** You pay for compute time as well as the total allocated storage cost rather than storage used
+ - **B.** You still need devops and sysadmin expertise to configure and coordinate shard keys and boxes.
+ - **C.** With the advantage of not getting locked into any proprietary virtualization system.
+
+Option (C) alone is worthwhile, but this is not a reason to suddenly start sharding on the cloud, it would be a reason to move off the cloud entirely to (3) because the underlying provisioning of machines is proprietary as well. So what? Maybe you are using the cloud to optimize cost, in which case (A) is going to cost more anyways. So no matter how you approach it, attempting to shard in the cloud is a misconception and should be avoided.
+
+## Conclusion
+
+Therefore GUN does not recommend sharding, as it assumes the majority of users will be deploying in the cloud. Additionally, this then removes one massive pain point for the developer - letting GUN automatically cache based on dynamic load rather than storage constraints. This makes things faster for your end user and less work for you personally.
+
+Finally, if you want to use GUN on your own machines (3) where you will have to shard, it is still possible via the priority and no-expiry options (documentation coming). Therefore GUN can shard when physically necessary, but it is highly recommended to be avoided everywhere else in order to reduce costs and complexity.
