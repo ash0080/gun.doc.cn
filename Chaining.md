@@ -16,7 +16,7 @@ Chained functions may be context independent of their proceeding function, or th
 |        |  put  |  get  |  path |  map  |  all  |  key  |  val  |  on   |
 |:------:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
 | *put*  |   D   |***i***|   D   |   D   |***i***|   D   |   D   |   D   |
-| *get*  |   D   |***i***|   D   |   D   |***i***|   D   |   D   |***i***|
+| *get*  |   D   |***i***|   D   |   D   |***i***|   D   |   D   |   D   |
 | *path* |   D   |***i***|   D   |   D   |***i***|   D   |   D   |***i***|
 | *map*  |   D   |***i***|   D   |   D   |***i***|   D   |   D   |***i***|
 | *all*  |***i***|***i***|   D   |   D   |***i***|***i***|   D   |   D   |
