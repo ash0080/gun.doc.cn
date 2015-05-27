@@ -21,7 +21,7 @@ In this example, we'll look at the following objects:
 }
 ```
 
-**Note:** This tutorial assumes that you've already set up a connection to gun, and that that connection is represented by the variable `gun`. You can read more about getting started [[here|Getting Data]].
+**Note:** This tutorial assumes that you've already set up a connection to gun, and that that connection is represented by the variable `gun`. You can read more about getting started [[here|Wire-Protocols-(v.0.1.0)]].
 
 To start off, we'll save Cecil to the key `person/cecil`
 
