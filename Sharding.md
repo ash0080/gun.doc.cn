@@ -29,7 +29,7 @@ These arbitrary constraints are the very things that the database and cloud are 
 
 Ironically, despite the scalability of the cloud's storage, people still deploy and shard databases across finite drives on these providers. This results in sharding still being a common practice, but has the following two unfortunate disadvantages with only one advantage:
 
- - **A.** You pay for compute time as well as the total allocated storage cost rather than storage used
+ - **A.** You pay for compute time as well as the total allocated storage cost rather than storage used.
  - **B.** You still need devops and sysadmin expertise to configure and coordinate shard keys and boxes.
  - **C.** With the advantage of not getting locked into any proprietary virtualization system.
 
