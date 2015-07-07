@@ -34,7 +34,7 @@
 
     - `var gun = Gun({s3: {key: '', secret: '', bucket: ''}})` on the server dumps to AWS S3, this is the preferred persistence layer.
 
-## **put** `gun.put(data, cb, options)`
+### **put** `gun.put(data, cb, options)`
 
  - When given a location –via a peer, `.get()`, or `.path()`– puts the attached primitive or JavaScript object data at that location.
 
