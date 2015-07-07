@@ -24,6 +24,6 @@ An alternative mechanism is the use of vector clocks.  In this case, messages ar
 
 In addition to the actual ordering of data, it is possible, and in a system with enough data being transmitted, highly probable, that data will in fact be sent at precisely the same moment.
 
-## Gun's Hypothetical Amnesia Machine (HAM)
+## GUN's Hypothetical Amnesia Machine (HAM)
 
-Gun's HAM combines timestamps, vector clocks, and a conflict resolution algorithm, to maximize the ordering of data and consistently resolve conflicts that do occur.
+GUN's HAM combines timestamps, vector clocks, and a conflict resolution algorithm, to maximize the ordering of data and consistently resolve conflicts that do occur.
