@@ -6,7 +6,7 @@
      - empty - Creates a local, in-memory *only* datastore.
      - url string - Creates a datastore that syncs with the designated peer.
      - array of url strings -  Creates a datastore that syncs with multiple peers.
-     - object - The previous options are converted aggregated into an object, including
+     - object - The previous options are aggregated into an object, including
         - options.
 
 
