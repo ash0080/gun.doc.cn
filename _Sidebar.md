@@ -1,7 +1,6 @@
 ##### Background on:
   - [[JSON Data Format|JSON-Data-Format]]
   - [[Semantics|Semantics]]
-  - [[Partials and Circular References|Partials-and-Circular-References]]
 
 ##### 0.1.0 API and How to:
   - Basic [[Wire Protocol|Wire-Protocols-(v.0.1.0)]] methods
@@ -11,6 +10,7 @@
   - [[Getting Data|Getting-Data-(v.0.1.0)]]
   - [[Reactive and Chainable API|Reactive-and-Chainable-API-(v.0.1.0)]] methods  
   - [[How to Create a GUN|How-to-Create-GUN]] library in a new language
+  - [[Partials and Circular References|Partials-and-Circular-References-(v.0.1.0)]]
 
 ##### More about GUN: 
   - [[CAP Theorem|CAP-Theorem]]
