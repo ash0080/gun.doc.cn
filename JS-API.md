@@ -1,5 +1,15 @@
 # NOTE: WORK IN PROGRESS; MAY HAVE ERRORS
 
+## **Gun** `Gun(options)`  
+  - Description: `Gun` instantiates a gun database.
+  - Options:
+     - empty - Creates a local, in-memory *only* datastore.
+     - url string - Creates a datastore that syncs with the designated peer.
+     - array of url strings -  Creates a datastore that syncs with multiple peers.
+     - object - The previous options are converted aggregated into an object, including
+        - options.
+
+
 ##`.put`
  - When given a location –via a peer, `.get()`, or `.path()`– puts the attached primitive or JavaScript object data at that location.
 
