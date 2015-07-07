@@ -1,16 +1,41 @@
 # NOTE: WORK IN PROGRESS; MAY HAVE ERRORS
 
-## **Gun** `Gun(options)`  
-  - Description: `Gun` instantiates a gun database.
-  - Options:
-     - empty - Creates a local, in-memory *only* datastore.
-     - url string - Creates a datastore that syncs with the designated peer.
-     - array of url strings -  Creates a datastore that syncs with multiple peers.
-     - object - The previous options are aggregated into an object, including
-        - options.
+### **Gun** `var gun = Gun(options)`
 
+  - Instantiates a gun database.
 
-##`.put`
+  - *Options* as
+
+     - `undefined` creates a local datastore using the default persistence layer, either localStorage or a file.
+
+     - `'string'` URL creates a datastore that attempts to sync with the specified peer.
+
+     - `['array']` of URL strings creates a datastore that attempts to syncs with multiple peers.
+
+     - `{obj:'ect'}` - All the previous options are aggregated into an actual options object, with
+
+        - `option['module']` if you are using a GUN module, you can pass it options via its name.
+
+        - `options.peers` is an object with the URLs as the field and a value of an object.
+
+        - `options.hooks` is an object with functions on `put`, `key`, `get`, or `all` hook fields.
+
+        - `options.uuid` is a function to override the default 24 random alphanumeric soul generator.
+
+  - Examples
+
+    - `var gun = Gun()`
+
+    - `var gun = Gun("http://localhost:8080/gun")`
+
+    - `var gun = Gun(["http://localhost:8080/gun", "http://gunjs.herokuapp.com/gun"])`
+
+    - `var gun = Gun({file: 'data.json'})` to change the name of the file that gets dumped to. **Warning!** The file module is the server's default persistence, and only be used for local development testing only!
+
+    - `var gun = Gun({s3: {key: '', secret: '', bucket: ''}})` on the server dumps to AWS S3, this is the preferred persistence layer.
+
+## **put** `gun.put(data, cb, options)`
+
  - When given a location –via a peer, `.get()`, or `.path()`– puts the attached primitive or JavaScript object data at that location.
 
  - **Examples**:  
