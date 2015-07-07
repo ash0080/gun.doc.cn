@@ -1,6 +1,6 @@
 ## Introduction
 
-When conversations happen face-to-face, the participants can tell what comments proceed and follow their own.  When conversations are spread out over space, that clear synchronicity is absent.  Gun's Hypothetical Amnesia Machine (HAM) uses a variety of mechanisms to algorithmically provide digital synchronicity to data.
+When conversations happen face-to-face, the participants can tell what comments proceed and follow their own.  When conversations are spread out over space, that clear synchronicity is absent.  GUN's Hypothetical Amnesia Machine (HAM) uses a variety of mechanisms to algorithmically provide digital synchronicity to data.
 
 There are a variety of mechanisms that can be used to determine the order of data, each of which has drawbacks.  
 
