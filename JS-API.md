@@ -1,6 +1,6 @@
-# NOTE: WORK IN PROGRESS; MAY HAVE ERRORS
+NOTE: WORK IN PROGRESS; MAY HAVE ERRORS
 
-### **Gun** `var gun = Gun(options)`
+### **<a name="Gun">Gun</a>** `var gun = Gun(options)`
 
   - Instantiates a gun database.
 
@@ -34,7 +34,7 @@
 
     - `var gun = Gun({s3: {key: '', secret: '', bucket: ''}})` on the server dumps to AWS S3, this is the preferred persistence layer.
 
-### **put** `gun.put(object, callback, options)`
+# **put** `gun.put(object, callback, options)`
 
  - Saves the object.
 
@@ -71,7 +71,7 @@
      ```
      both objects get saved into a graph.
 
-### **key** `gun.put(object).key(key, callback, options)`
+# **key** `gun.put(object).key(key, callback, options)`
 
   - Without a key, we cannot get our data back unless we scan over the entire graph. To get fast and easy access to the data, we give it a unique key. A key is a lot like keys in real life, once made they allow you to open up doors so you can enter into your data in many different ways.
 
@@ -89,53 +89,71 @@
 
     - `gun.put({title: "The Doctor", phone: '770-090-0461'}).key('user/thedoctor').key('phone/07700900461')` you can chain keys together to create multiple unique references to the same node.
 
-## **get** `gun.get(key, callback, options)`
+# **get** `gun.get(key, callback, options)`
 
   - Opens up a gun reference to the root object you had saved to that key. It will load the node so you can further manipulate it.
 
-  - `key` is a `'string'` name that
+  - `key` is a `'string'` name that exactly matches a key you have made earlier.
 
+  - `callback` is a `function(){}` which gets called as `callback(err, graph)` used for err handling and the raw graph. **Note** that you do not want to use this callback for every day development, as it gets called repeatedly to comply the wire protocol. Use **on** or **val** instead, they are convenience methods, this `callback` is for hooks and extensions.
 
--------------------------------------------------
-   - `gun.put({
-   - _`.put` object without a key_
+  - `options` is a `{obj:'ect'}` with
 
-     ```javascript  
-     var gun = Gun(location.origin + '/gun')  
-     gun.put({"field": "value"})  
-     ```   
-     - Assuming `gun` is the peer variable, this places the object directly on the peer's gun instance.  
-     - **CAUTION**: Without a key, this object can only be accessed with a subsequent `.all()` call.    
+    - `options.force` as `true` to pull from the local persistence layer or a peer rather than memory.
 
-   - _`.put` object on an existing key without a new, direct key_
+  - Examples
 
-     ```javascript  
-     var gun = Gun(location.origin + '/gun')  
-     gun.get('example/app/data')  
-         .put({"field": "value"})  
-     ```  
-     - Assuming `gun` is the peer variable and there is already an object at the `.get` key, then this merges the object within the specified `.get` key object.  
-     - This object can be accessed through the existing `.get` key or with an `.all()` call.
+    - `gun.get('user/thedoctor`)` returns a gun reference to The Doctor.
 
-   - _`.put` object on an existing key without a new, direct key_
+    - `gun.get('user/thedoctor', function(err, graph){})` to handle errs or inspect the graph from the wire.
 
-     ```javascript  
-     var gun = Gun(location.origin + '/gun')  
-     gun.get('example/app/data')  
-         .put("field": {"subfield1": "value1", "subfield2": "value2"})  
-     ```  
-     - Assuming `gun` is the peer variable and there is already an object at the `.get` key, then this merges the object within the specified `.get` key object.  
-     - This object can be accessed through the existing `.get` key or with an `.all()` call.
+    - `gun.get('user/thedoctor', function(){}, {force: true})` for a slower response, skipping memory.
 
-   - _`.put` object on an existing key with a new, direct key_
+# **on** `gun.get(key).on(callback, options)`
 
-     ```javascript  
-     var gun = Gun(location.origin + '/gun')  
-     gun.get('example/app/data')  
-         .put({"field": "value"})  
-         .key(`example/app/data/field`)
-     ```  
-     - Assuming `gun` is the peer variable and there is already an object at the `.get` key, then this merges the object within the specified `.get` key object.  
-     - This object can be accessed directly through the newly assigned key (`.get('example/app/data/field')`), indirectly through the previous `.get` key (`.get('example/app/data'`), or with an `.all()` call. 
+  - Retrieve a raw javascript `{obj:'ect'}` of the node on the `key`, and subscribe to all subsequent realtime changes. You want to use this method to actually synchronously react to your data, rather than being stuck in async land.
 
-##`.get`
+  - `callback` is a `function(){}` which gets called as `callback(data, field)` and every time the node changes. Where
+
+    - `data` is the raw javascript object of the node.
+
+    - `field` is the field name it came from, if any.
+
+  - `options` as `true` aggregates into an `{obj:'ect'}` with
+
+    - `options.change` as `true` makes `data` only have the delta difference of the change that happened, rather than the full node again and again.
+
+  - Examples
+
+    - ... 
+      ```javascript
+      gun.get('user/thedoctor').on(function(who, field){
+        console.log('The Doctor', who, field); // {title: "The Doctor", phone: '770-090-0461'}
+      })
+      ```
+
+    - While this looks no different from above, the `delta` will be on subsequent events. 
+      ```javascript
+      gun.get('user/thedoctor').on(function(delta, field){
+        console.log('What changes happened to The Doctor?', delta, field); // {title: "The Doctor", phone: '770-090-0461'}
+      }, true)
+      ```
+
+# **val** `gun.get('user/thedoctor').val(callback, options)`
+
+  - Is the same as **on** except only gets called once after the first peer, including the local peer, replies. It is slower than **on** and should be avoided, but is sometimes necessary. If you are using **val** it probably means your code has become spaghetti and very procedural, **on** is much cleaner and more functional.
+
+  - `callback` is a `function(){}` which gets called as `callback(data, field)` once after the node has been loaded, and has no realtime features.
+
+  - `options` none currently available.
+
+  - Examples
+
+    - ...
+      ```javascript
+      gun.get('user/thedoctor').val(function(who, field){
+        console.log('The Doctor', who, field); // {title: "The Doctor", phone: '770-090-0461'}
+      })
+      ```
+
+# **path**
