@@ -128,7 +128,8 @@ NOTE: WORK IN PROGRESS; MAY HAVE ERRORS
     - ... 
       ```javascript
       gun.get('user/thedoctor').on(function(who, field){
-        console.log('The Doctor', who, field); // {title: "The Doctor", phone: '770-090-0461'}
+        console.log('The Doctor', who, field);
+        // {title: "The Doctor", phone: '770-090-0461'}
       })
       ```
 
