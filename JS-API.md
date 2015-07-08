@@ -12,7 +12,7 @@
 
      - `{obj:'ect'}` - All the previous options are aggregated into an actual options object, with
 
-        - `option['module']` if you are using a GUN module, you can pass it options via its name.
+        - `options['module']` if you are using a GUN module, you can pass it options via its name.
 
         - `options.peers` is an object with the URLs as the field and a value of an object.
 
