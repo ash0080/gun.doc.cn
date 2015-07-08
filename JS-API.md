@@ -52,9 +52,9 @@ NOTE: WORK IN PROGRESS; MAY HAVE ERRORS
 
  - Examples
 
-   - `gun.put({hello: 'world'})` blindly fire and forget.
+   - `gun.put({hello: "world"})` blindly fire and forget.
 
-   - `gun.put({hello: 'world'}, function(err, ok){ })` to handle errs or know that your data actually got persisted.
+   - `gun.put({hello: "world"}, function(err, ok){ })` to handle errs or know that your data actually got persisted.
 
    - `gun.put({field: "value", multiple: "pairs!"})`
 
@@ -83,9 +83,9 @@ NOTE: WORK IN PROGRESS; MAY HAVE ERRORS
 
   - Examples
 
-    - `gun.put({hello: 'world'}).key('message/from/thedoctor')` blindly fire and forget.
+    - `gun.put({hello: "world"}).key('message/from/thedoctor')` blindly fire and forget.
 
-    - `gun.put({hello: 'world'}).key('message/from/thedoctor', function(err, ok){})` to handle errs or know that your key actually got persisted.
+    - `gun.put({hello: "world"}).key('message/from/thedoctor', function(err, ok){})` to handle errs or know that your key actually got persisted.
 
     - `gun.put({title: "The Doctor", phone: '770-090-0461'}).key('user/thedoctor').key('phone/07700900461')` you can chain keys together to create multiple unique references to the same node.
 
@@ -111,11 +111,11 @@ NOTE: WORK IN PROGRESS; MAY HAVE ERRORS
 
 ### **on** `gun.get(key).on(callback, options)`
 
-  - Retrieve a raw javascript `{obj:'ect'}` of the node on the `key`, and subscribe to all subsequent realtime changes. You want to use this method to actually synchronously react to your data, rather than being stuck in async land.
+  - Retrieve the raw javascript data associated with the `key`, and subscribe to all subsequent realtime changes. You want to use this method to actually synchronously react to your data, rather than being stuck in async land.
 
   - `callback` is a `function(){}` which gets called as `callback(data, field)` and every time the node changes. Where
 
-    - `data` is the raw javascript object of the node.
+    - `data` is a raw javascript object or primitive.
 
     - `field` is the field name it came from, if any.
 
@@ -151,13 +151,15 @@ NOTE: WORK IN PROGRESS; MAY HAVE ERRORS
 
   - Examples
 
-    - ...
+    - ... 
       ```javascript
       gun.get('user/thedoctor').val(function(who, field){
         console.log('The Doctor', who, field);
         // {title: "The Doctor", phone: '770-090-0461'}
       })
       ```
+
+    - `gun.get('user/thedoctor').val()` will automatically `console.log`, for easy debugging purposes.
 
 ### **path** `gun.get(key).path(path, callback, options)`
 
@@ -170,3 +172,126 @@ NOTE: WORK IN PROGRESS; MAY HAVE ERRORS
   - `options` currently none available.
 
   - Examples
+
+    - Gives us just the phone number and whenever it changes.
+      ```javascript
+      gun.get('user/thedoctor').path('phone').on(function(value, field){
+        console.log("The Doctor's number", value, field);
+        // '770-090-0461', 'phone'
+      })
+      ```
+
+    - Gives us just the title just once.
+      ```javascript
+      gun.get('user/thedoctor').path('title').val(function(value, field){
+        console.log("The Doctor's title", value, field);
+        // 'The Doctor', 'title'
+      })
+      ```
+
+### **map** `gun.get(key).map(callback, options)`
+
+  - Rather than having to know each field in advance and have to path into it separately, we can iterate over each field dynamically.
+
+  - `callback` is a `function(){}` which gets called as `callback(data, field)`, you can either use it as is or in conjunction with **on** or **val**. In the future this `callback` will be used to filter the data or do arbitrary queries.
+
+  - `options` as `true` aggregates into an `{obj:'ect'}` with
+
+    - `options.node` as `true` makes map only iterate over nested objects, skipping primitive values.
+
+  - Examples
+
+    - ...
+      ```javascript
+      gun.get('user/thedoctor').map(function(value, field){
+        console.log("For each field", value, field);
+        // '770-090-0461', 'phone'
+        // 'The Doctor', 'title'
+      })
+      ```
+
+    - ...
+      ```javascript
+      gun.get('user/thedoctor').map().on(function(value, field){
+        console.log("For each field, and on every change", value, field);
+        // '770-090-0461', 'phone'
+        // 'The Doctor', 'title'
+      })
+      ```
+
+    - ...
+      ```javascript
+      gun.get('user/thedoctor').map().val(function(value, field){
+        console.log("For each field, just once", value, field);
+        // '770-090-0461', 'phone'
+        // 'The Doctor', 'title'
+      })
+      ```
+
+### **back** `gun.back`
+
+  - This is not a method function, it is the previous gun reference in the chain. Allowing you to navigate back from where you have **path**ed or **map**ped.
+
+### **set** `gun.get(key).set(data, callback, options)`
+
+  - Is a convenience function that does a **put** to a random field name, adding the data to the set. Sets are unordered lists, similar to tables or collections in other databases. This is helpful when we are working with sets of data where we do not care what the field name is because we will be mapping over the data. **Warning** that this approach will always be slower than accessing things directly with a key, but sometimes it is exactly what we want.
+
+  - `data` can be an `{obj:'ect'}` like with **put**, or a value like a `'string'`, `42` number, `true` boolean, or `null`. **Note** that set returns a gun reference to the nested object if you pass it an object, if you pass it a value it returns the current gun reference.
+
+  - `callback` is a `function(){}` with the same specification as **put** because set relies upon it.
+
+  - `options` none currently available.
+
+  - Examples
+
+    - `gun.get('enemies/of/thedoctor').set("dalek")`
+
+    - `gun.get('enemies/of/thedoctor').set("cybermen").set("weeping angels")` we can only chain sets if they are primitives.
+
+    - `gun.get('enemies/of/thedoctor').set({title: "The Master", species: "Time Lord"}).back.set("silence")` if we do set an object, we can go **back** up to the previous gun reference which corresponds to the key that we **get**. Then we can continue with adding to our set.
+
+    - Now if we
+      ```javascript
+      gun.get('enemies/of/thedoctor').map().val(function(value, field){
+        console.log("For each item in the set, once", value);
+        // "dalek"
+        // "cybermen"
+        // "weeping angels"
+        // {title: "The Master", species: "Time Lord"}
+        // "silence"
+      })
+      ```
+      order is not guaranteed.
+
+    - But doing
+      ```javascript
+      gun.get('enemies/of/thedoctor').map(function(value, field){
+        console.log("For each node in the set", value);
+        // {title: "The Master", species: "Time Lord"}
+      }, true)
+      ```
+      filters out values, leaving us with just the objects in the set.
+
+### **not** `gun.get(key).not(callback, options)`
+
+  - Sometimes you might want to check if data on a key has not yet been defined. **Warning** there is no guarantee that the data does not actually exist somewhere on some peer that got disconnected. But, if you are using gun in a fairly traditional client-server setup this should mostly work but we still advise to avoid it.
+
+  - `callback` is a `function(){}` which gets called as `callback(defer, key)` only if the `key` could not be found, where
+
+    - `defer` is a `function(){}` which you call as `defer(chain)` where `chain` is some gun reference. Generally this is not needed, so you can simply `return chain` instead.
+
+    - `key` is the key name that could not be found.
+
+  - `options` none currently available.
+
+  - Examples
+
+    - ...
+      ```javascript
+      gun.get('somewhere').not(function(defer, key){
+        return gun.put({hello: "world"}).key(key);
+      }).val()
+      ```
+      if `'somewhere'` is not found, we put something on it and set its key. The chain that we `return` becomes the context for the `.val()` which then `console.log`s out `{hello: "world"}`!
+
+    - Be careful as `.not` is not an idempotent operation! If a false positive does happen, gun will attempt to do a pseudo merge on **get** across nodes sharing the same key.
