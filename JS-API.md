@@ -1,4 +1,4 @@
-### **<a name="Gun">Gun</a>** `var gun = Gun(options)`
+<h2><a name="Gun">Gun</a> <code>var gun = Gun(options)</code></h2>
 
   - Instantiates a gun database.
 
