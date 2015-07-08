@@ -8,7 +8,7 @@
 
      - `'string'` URL creates a datastore that attempts to sync with the specified peer.
 
-     - `['array']` of URL strings creates a datastore that attempts to syncs with multiple peers.
+     - `['array']` of URL strings creates a datastore that attempts to sync with multiple peers.
 
      - `{obj:'ect'}` - All the previous options are aggregated into an actual options object, with
 
