@@ -1,5 +1,3 @@
-NOTE: WORK IN PROGRESS; MAY HAVE ERRORS
-
 ### **<a name="Gun">Gun</a>** `var gun = Gun(options)`
 
   - Instantiates a gun database.
