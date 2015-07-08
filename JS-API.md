@@ -34,7 +34,7 @@ NOTE: WORK IN PROGRESS; MAY HAVE ERRORS
 
     - `var gun = Gun({s3: {key: '', secret: '', bucket: ''}})` on the server dumps to AWS S3, this is the preferred persistence layer.
 
-# **put** `gun.put(object, callback, options)`
+### **put** `gun.put(object, callback, options)`
 
  - Saves the object.
 
@@ -71,7 +71,7 @@ NOTE: WORK IN PROGRESS; MAY HAVE ERRORS
      ```
      both objects get saved into a graph.
 
-# **key** `gun.put(object).key(key, callback, options)`
+### **key** `gun.put(object).key(key, callback, options)`
 
   - Without a key, we cannot get our data back unless we scan over the entire graph. To get fast and easy access to the data, we give it a unique key. A key is a lot like keys in real life, once made they allow you to open up doors so you can enter into your data in many different ways.
 
@@ -89,7 +89,7 @@ NOTE: WORK IN PROGRESS; MAY HAVE ERRORS
 
     - `gun.put({title: "The Doctor", phone: '770-090-0461'}).key('user/thedoctor').key('phone/07700900461')` you can chain keys together to create multiple unique references to the same node.
 
-# **get** `gun.get(key, callback, options)`
+### **get** `gun.get(key, callback, options)`
 
   - Opens up a gun reference to the root object you had saved to that key. It will load the node so you can further manipulate it.
 
@@ -109,7 +109,7 @@ NOTE: WORK IN PROGRESS; MAY HAVE ERRORS
 
     - `gun.get('user/thedoctor', function(){}, {force: true})` for a slower response, skipping memory.
 
-# **on** `gun.get(key).on(callback, options)`
+### **on** `gun.get(key).on(callback, options)`
 
   - Retrieve a raw javascript `{obj:'ect'}` of the node on the `key`, and subscribe to all subsequent realtime changes. You want to use this method to actually synchronously react to your data, rather than being stuck in async land.
 
@@ -135,11 +135,12 @@ NOTE: WORK IN PROGRESS; MAY HAVE ERRORS
     - While this looks no different from above, the `delta` will be on subsequent events. 
       ```javascript
       gun.get('user/thedoctor').on(function(delta, field){
-        console.log('What changes happened to The Doctor?', delta, field); // {title: "The Doctor", phone: '770-090-0461'}
+        console.log('What changes happened to The Doctor?', delta, field);
+        // {title: "The Doctor", phone: '770-090-0461'}
       }, true)
       ```
 
-# **val** `gun.get('user/thedoctor').val(callback, options)`
+### **val** `gun.get(key).val(callback, options)`
 
   - Is the same as **on** except only gets called once after the first peer, including the local peer, replies. It is slower than **on** and should be avoided, but is sometimes necessary. If you are using **val** it probably means your code has become spaghetti and very procedural, **on** is much cleaner and more functional.
 
@@ -152,8 +153,19 @@ NOTE: WORK IN PROGRESS; MAY HAVE ERRORS
     - ...
       ```javascript
       gun.get('user/thedoctor').val(function(who, field){
-        console.log('The Doctor', who, field); // {title: "The Doctor", phone: '770-090-0461'}
+        console.log('The Doctor', who, field);
+        // {title: "The Doctor", phone: '770-090-0461'}
       })
       ```
 
-# **path**
+### **path** `gun.get(key).path(path, callback, options)`
+
+  - Traverses into the fields on the path, which allow you to explore the nested objects, relations, and values from the perspective of the root node that was given a key.
+
+  - `path` is a `'string'` of dot notation separated fields.
+
+  - `callback` is a `function(){}` which is called as `callback(err, data, field)` used for err handling and the raw data. **Note** like **get**, you do not want to use this callback for every day development, use **on** or **val** instead.
+
+  - `options` currently none available.
+
+  - Examples
