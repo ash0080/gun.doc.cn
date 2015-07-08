@@ -2,6 +2,8 @@
 ### Version 0.2.0 issue status: [![Queued](https://badge.waffle.io/amark/gun.svg?label=Queue&title=Queue)](http://waffle.io/amark/gun) [![In Progress](https://badge.waffle.io/amark/gun.svg?label=InProgress&title=In%20Progress)](http://waffle.io/amark/gun) [![Pending Deploy](https://badge.waffle.io/amark/gun.svg?label=Pending&title=Done)](http://waffle.io/amark/gun)
 ***
 
+## [v0.2.0 API Documentation](https://github.com/amark/gun/wiki/JS-API)
+
 ### Background on:
   - [[JSON Data Format|JSON-Data-Format]]
   - [[Semantics|Semantics]]
