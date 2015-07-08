@@ -38,9 +38,9 @@
 
  - Saves the object.
 
- - `object` is a javascript object, it can be deeply nested, be a [[partial|Partials and Circular References]], or have [[circular references|Partials and Circular References#circular-references]] in it, but it cannot have the following values inside of it: `undefined`, `Infinity`, `NaN`, `[]`.
+ - `object` is a javascript `{obj:'ect'}`, it can be deeply nested, be a [[partial|Partials and Circular References]], or have [[circular references|Partials and Circular References#circular-references]] in it, but it cannot have the following values inside of it: `undefined`, `Infinity`, `NaN`, `[]`.
 
- - `callback` is a function which gets called as `callback(err, ok)` after the highest level of persistence has happened per each connected peer. As long as there is no `err` then things should be ok, `ok` may not be defined. Acknowledgement of persistence is slow, but the write propagates across the network as fast as the pipes connecting them.
+ - `callback` is a `function(){}` which gets called as `callback(err, ok)` after the highest level of persistence has happened per each connected peer. As long as there is no `err` then things should be ok, `ok` may not be defined. Acknowledgement of persistence is slow, but the write propagates across the network as fast as the pipes connecting them.
 
    - *no* - If you are connected to no peers, it gets called back once from your local persistence hook.
 
@@ -48,7 +48,7 @@
 
    - *many* - If you are connected to many peers, it gets called back multiple times for each individual peer. That peer will respond as if it was the only peer in the above case.
 
- - `options` is an object, no options are currently available except maybe hook specific.
+ - `options` is an `{obj:'ect'}`, no options are currently available except maybe hook specific.
 
  - Examples
 
@@ -73,7 +73,15 @@
 
 ### **key** `gun.put(object).key(key, callback, options)`
 
-  - Without a key, we cannot get our data back unless we scan over the entire graph.
+  - Without a key, we cannot get our data back unless we scan over the entire graph. To get fast and easy access to the data, we give it a key. A key is a lot like keys in real life, once made they allow you to open up doors so you can enter into your data in many different ways.
+
+  - `key` is a `'string'`, the name you want to give your data to reference it later. Common practice is to namespace your keys into routes corresponding to resources.
+
+  - `callback` is a `function(){}` which gets called as `callback(err, ok)` in the same way **put** does.
+
+  - `options` as a `'string'` is a soul that you forcibly want to associate the `key` with, ignoring the current context that key is chained on.
+
+
 -------------------------------------------------
    - `gun.put({
    - _`.put` object without a key_
