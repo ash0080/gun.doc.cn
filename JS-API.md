@@ -1,3 +1,9 @@
+---
+
+***Please post documentation comments, questions, and suggestions to [[issue #70|https://github.com/amark/gun/issues/70]].***
+
+---
+
 ### <a name="Gun">Gun</a> <code>var gun = Gun(options)</code>
 
   - Instantiates a gun database.
