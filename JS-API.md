@@ -73,13 +73,27 @@
 
 ### **key** `gun.put(object).key(key, callback, options)`
 
-  - Without a key, we cannot get our data back unless we scan over the entire graph. To get fast and easy access to the data, we give it a key. A key is a lot like keys in real life, once made they allow you to open up doors so you can enter into your data in many different ways.
+  - Without a key, we cannot get our data back unless we scan over the entire graph. To get fast and easy access to the data, we give it a unique key. A key is a lot like keys in real life, once made they allow you to open up doors so you can enter into your data in many different ways.
 
   - `key` is a `'string'`, the name you want to give your data to reference it later. Common practice is to namespace your keys into routes corresponding to resources.
 
   - `callback` is a `function(){}` which gets called as `callback(err, ok)` in the same way **put** does.
 
   - `options` as a `'string'` is a soul that you forcibly want to associate the `key` with, ignoring the current context that key is chained on.
+
+  - Examples
+
+    - `gun.put({hello: 'world'}).key('message/from/thedoctor')` blindly fire and forget.
+
+    - `gun.put({hello: 'world'}).key('message/from/thedoctor', function(err, ok){})` to handle errs or know that your key actually got persisted.
+
+    - `gun.put({title: "The Doctor", phone: '770-090-0461'}).key('user/thedoctor').key('phone/07700900461')` you can chain keys together to create multiple unique references to the same node.
+
+## **get** `gun.get(key, callback, options)`
+
+  - Opens up a gun reference to the root object you had saved to that key. It will load the node so you can further manipulate it.
+
+  - `key` is a `'string'` name that
 
 
 -------------------------------------------------
