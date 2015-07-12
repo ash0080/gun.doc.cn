@@ -280,11 +280,11 @@
 
   - Sometimes you might want to check if data on a key has not yet been defined. **Warning** there is no guarantee that the data does not actually exist somewhere on some peer that got disconnected. But, if you are using gun in a fairly traditional client-server setup this should mostly work but we still advise to avoid it.
 
-  - `callback` is a `function(){}` which gets called as `callback(defer, key)` only if the `key` could not be found, where
-
-    - `defer` is a `function(){}` which you call as `defer(chain)` where `chain` is some gun reference. Generally this is not needed, so you can simply `return chain` instead.
+  - `callback` is a `function(){}` which gets called as `callback(key, kick)` only if the `key` could not be found, where
 
     - `key` is the key name that could not be found.
+
+    - `kick` is a `function(){}` which you call as `kick(chain)` where `chain` is some gun reference. Generally this is not needed, so you can simply `return chain` instead.
 
   - `options` none currently available.
 
@@ -292,7 +292,7 @@
 
     - ...
       ```javascript
-      gun.get('somewhere').not(function(defer, key){
+      gun.get('somewhere').not(function(key, kick){
         return gun.put({hello: "world"}).key(key);
       }).val()
       ```
