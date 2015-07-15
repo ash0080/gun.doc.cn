@@ -70,4 +70,20 @@ for(var i in localStorage){
 }
 ```
 
+Now on a server using the `file.js` driver, that typically saves to a single file of `data.json`. Try running this script in the same directory that has the json file:
+
+```javascript
+var fs = require('fs');
+var json = fs.readFileSync('./data.json');
+var all = JSON.parse(json);
+for(var i in all.keys){ 
+  var val = all.keys[i], graph = {};
+  if(val['#']){
+    graph[val['#']] = val;
+    all.keys[i] = graph;
+  }
+};
+fs.writeFileSync('./data.json', JSON.stringify(all));
+```
+Note! Change the `'./data.json'` accordingly if the file is named something else.
 ... WIP ...
