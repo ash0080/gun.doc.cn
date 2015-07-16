@@ -78,3 +78,12 @@ Note! Change the `'./data.json'` accordingly if the file is named something else
 Now spin your app back up and load it in the browser and it should work just fine (although you might have to refresh twice).
 
 Let us know if you have any issues.
+
+## Code
+
+Please rename the following method names, in this order:
+
+1. `get` -> `val`
+2. `load` -> `get`
+3. `set` -> `put`
+4. `blank` -> `not`
