@@ -8,6 +8,7 @@
   - [[JSON Data Format|JSON-Data-Format]]
   - [[Semantics|Semantics]]
   - [[Partials and Circular References|Partials-and-Circular-References]]
+  - [[Using Amazon AWS S3 As a Backup|AWS-S3-Security-Policy-Template-for-IAM-Users]]
 
 ### 0.1.0 API and How to:
   - Basic [[Wire Protocol|Wire-Protocols-(v.0.1.0)]] methods
