@@ -1,11 +1,18 @@
-The conflict resolution algorithm in gun is a unified computational model for functional and procedural programming. By interpolating data changes through a boundary function, we can accurately describe an isomorphic relationship between time series based mutable values and purely deterministic immutable values. This gives us the concurrency safety needed for scalable distributed systems, while still being able to react to our data in a convenient sequential process that is otherwise error prone to race conditions.
+All data is described in 4 simple properties:
+ - a **Universally Unique Identifier** to contain named values and distinguish them from other data with conflicting names.
+ - a **Name** to reference the actual value without knowing what it is in advance.
+ - the **Value** which is an indivisible piece of information, or a UUID that points to complex information which is itself composed of these 4 properties.
+ - a **State** to represent change or continuity between values of a name within a UUID.
 
-Existing methods use either timestamps or vector clocks, but both have critical flaws of exploitation or divergence. Using timestamps leads to any peer that has significant enough drift into the future to always win - which is unintentional and undesirable. Vector clocks break down on simultaneous events, meaning it does not really even address conflict resolution, just partial ordering - which can cause divergences on machine resets or over significant latencies. All other methods require some sort of central authority or consensus, which is not considered truly distributed because they fail on network partitions.
+Graphs accurately model these 4 properties, so these properties are correspondingly called node, field, value, and state. A state machine operating over an open-closed boundary uses the following conflict resolution rule:
 
-However, since timestamps are time series and vector clocks are deterministic states, gun's aforementioned boundary function can resolve the two. Thus, gun's conflict resolution algorithm can be expressed as the union of the two methods, gaining the benefits of both without their vulnerabilities. This was not how the algorithm was derived though, and it has correlations to many other phenomena in physical nature. We will explore those ideas after we dive into the actual code, which is named after a thought experiment called the Hypothetical Amnesia Machine.
+  1. If the **state** of the value in question is **above** the **upper boundary** then computing on that value should be deferred until another state.
+  2. If the **state** of the value in question is **equal or below** the **upper boundary** then computing on that value is valid unless:
+  3. There is another known **state** on the name of the value in question that is **above** the **state** we are computing. Or
+  4. There is another known **state** on the name of the value in question that is **equal** to the **state** we are computing on. Then
+  5. The **value** of **higher lexical order** should be preferred.
+  6. If they are of the **same lexical order** then values are identical other than their source.
 
-```javascript
-/* see Gun.HAM for now, this article is a WIP and will be updated later with a detailed breakdown later */
-```
+This next part may be confusing, but it is summarizing the above: The specified algorithm guarantees the deterministic convergence of every value at the known states over every machine within the operating boundary. It however does not guarantee linearizability of states because not all states may be known during the operating boundary of the machine, thus it is eventually consistent. If linearizability must be achieved then the data itself needs to explicitly link its sequencing which can be done ontop of this specification.
 
-The behavior of the boundary function to determine data synchronization is strikingly similar to all sorts of phenomenons in physical nature. Whether that be from the physics of light or potentially to cases of schizophrenia, because the math underlying them all is the same. Each peer, defined as an actor capable of computation, be it a neural network in a brain, a gun server, or the processing of electron orbital states in an atom, can all resolve to the exact same value for some given state, without any extra coordination.
+Please see `function HAM` in [gun core](../../blob/master/gun.js) for the javascript implementation of this algorithm.
