@@ -11,7 +11,7 @@ Graphs accurately model these 4 properties, so these properties are correspondin
   3. There is another known **state** on the name of the value in question that is **above** the **state** we are computing. Or
   4. There is another known **state** on the name of the value in question that is **equal** to the **state** we are computing on. Then
   5. The **value** of **higher lexical order** should be preferred.
-  6. If they are of the **same lexical order** then values are identical other than their source.
+  6. If they are of the **same lexical order** then the values are identical other than their source.
 
 This next part may be confusing, but it is summarizing the above: The specified algorithm guarantees the deterministic convergence of every value at the known states over every machine within the operating boundary. It however does not guarantee linearizability of states because not all states may be known during the operating boundary of the machine, thus it is eventually consistent. If linearizability must be achieved then the data itself needs to explicitly link its sequencing which can be done ontop of this specification.
 
