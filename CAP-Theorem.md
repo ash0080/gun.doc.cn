@@ -17,8 +17,8 @@ So how is strong consistency possible, then? It is built ontop of a messaging sy
 
 ### Linearizability
 
-While the last point is interesting, it is not recommended that one evolves GUN into a locking system. Instead, new research in Convergent Replicated Data Types (CRDTs), Directed Acyclic Graphs (DAGs), Operational Transformation (OT or WOOTs), and some Block Chain Ledgers provide similar guarantees without simulating any centralized mechanisms. These systems declare the "dependent causality" explicitly in the data, rather than the protocol - and thus should be preferred since they give you some form of linearizability without sacrificing the advantages of a peer-to-peer system.
+While the last point is interesting, it is not recommended that one evolves GUN into a locking system. Instead, new research in Convergent Replicated Data Types (CRDTs), Directed Acyclic Graphs (DAGs), Operational Transformation (OT or WOOTs), and some Block Chain Ledgers provide similar guarantees without simulating any centralized mechanisms. These systems declare the "dependent causality" explicitly in the data, rather than the protocol - and thus should be preferred since they give you some form of linearizability without sacrificing the advantages of a peer-to-peer system. See https://queue.acm.org/detail.cfm?id=2610533 for more details.
 
 ### Summary
 
-GUN is AP with eventual consistency by default, but it is possible to upgrade into a CP system but it is not recommended. Instead, one should apply some form of "dependent causality" into the data itself at the application layer manually or as a module that wraps it for you. For more on this subject, see https://queue.acm.org/detail.cfm?id=2610533 .
+GUN is AP with eventual consistency by default, but it is possible to upgrade into a CP system but it is not recommended. Instead, one should apply some form of "dependent causality" into the data itself at the application layer manually or as a module that wraps it for you.
