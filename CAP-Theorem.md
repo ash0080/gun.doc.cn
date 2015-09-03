@@ -21,4 +21,4 @@ While the last point is interesting, it is not recommended that one evolves GUN 
 
 ### Summary
 
-GUN is AP with eventual consistency by default, but it is possible to upgrade into a CP system but it is not recommended. Instead, one should apply some form of "dependent causality" into the data itself at the application layer manually or as a module that wraps it for you.
+GUN is AP with eventual consistency by default, but it is possible to upgrade into a CP system but it is not recommended. Instead, one should apply some form of "dependent causality" into the data itself at the application layer manually or as a module that wraps it for you. For more on this subject, see https://queue.acm.org/detail.cfm?id=2610533 .
