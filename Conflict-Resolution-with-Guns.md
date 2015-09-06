@@ -16,3 +16,16 @@ Graphs accurately model these 4 properties, so these properties are correspondin
 This next part may be confusing, but it is summarizing the above: The specified algorithm guarantees the deterministic convergence of every value at the known states over every machine within the operating boundary. It however does not guarantee linearizability of states because not all states may be known during the operating boundary of the machine, thus it is eventually consistent. If linearizability must be achieved then the data itself needs to explicitly link its sequencing which can be done ontop of this specification.
 
 Please see `function HAM` in [gun core](../../blob/master/gun.js) for the javascript implementation of this algorithm.
+
+### Drawbacks
+
+Please see the tradeoffs that are discussed on the [CAP Theorem](../CAP-Theorem) page.
+
+ - No strong consistency.
+ - No linearizability.
+ - No serializability.
+ - Vulnerable to the Double Spending problem.
+ - No implicit ordering like arrays, ordering must be explicitly maintained by the data.
+ - Do not do math operations on the data, instead do sums and counts on unique identifiers.
+
+It is important to note that GUN's conflict resolution algorithm is a ground work, it does not provide much other than synchronization on its own. Most useful behavior (such as ordering, arithmetic, etc.) need some idempotent CRDT or DAG framework built on top of this underlying base.
