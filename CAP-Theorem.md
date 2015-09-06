@@ -17,7 +17,7 @@ So how is strong consistency possible, then? It is built ontop of a messaging sy
 
 ### Linearizability
 
-While the last point is interesting, it is not recommended that one evolves GUN into a locking system. Instead, new research in Convergent Replicated Data Types (CRDTs), Directed Acyclic Graphs (DAGs), Operational Transformation (OT or WOOTs), and some Block Chain Ledgers provide similar guarantees without simulating any centralized mechanisms. These systems declare the "dependent causality" explicitly in the data, rather than the protocol - and thus should be preferred since they give you some form of linearizability without sacrificing the advantages of a peer-to-peer system. See https://queue.acm.org/detail.cfm?id=2610533 for more details.
+While the last point is interesting, it is not recommended that one evolves GUN into a locking system. Instead, new research in Convergent Replicated Data Types (CRDTs), Directed Acyclic Graphs (DAGs), Operational Transformation (OT or WOOTs), and some Block Chain Ledgers provide similar guarantees without simulating any centralized mechanisms. These systems declare the "dependent causality" explicitly in the data, rather than the protocol - and thus should be preferred since they give you some form of linearizability without sacrificing the advantages of a peer-to-peer system. See [this article](https://queue.acm.org/detail.cfm?id=2610533) for more details.
 
 ### Summary
 
