@@ -4,7 +4,7 @@ All data is described in 4 simple properties:
  - the **Value** which is an indivisible piece of information, or a UUID that points to complex information which is itself composed of these 4 properties.
  - a **State** to represent change or continuity between values of a name within a UUID.
 
-Graphs accurately model these 4 properties, so these properties are correspondingly called node, field, value, and state. A state machine operating over an open-closed boundary uses the following conflict resolution rule:
+Graphs accurately model these 4 properties, so these properties are correspondingly called node, field, value, and state. Data is delivery is **at least once**, where every peer is a state machine operating over an open-closed boundary using the following conflict resolution rule for idempotence:
 
   1. If the **state** of the value in question is **above** the **upper boundary** then computing on that value should be deferred until another state.
   2. If the **state** of the value in question is **equal or below** the **upper boundary** then computing on that value is valid unless:
