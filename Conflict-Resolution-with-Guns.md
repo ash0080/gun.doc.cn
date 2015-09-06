@@ -17,15 +17,11 @@ This next part may be confusing, but it is summarizing the above: The specified 
 
 Please see `function HAM` in [gun core](../../blob/master/gun.js) for the javascript implementation of this algorithm.
 
-### Drawbacks
+### Considerations
 
-Please see the tradeoffs that are discussed on the [CAP Theorem](../CAP-Theorem) page.
-
- - No strong consistency.
- - No linearizability.
- - No serializability.
+ - No strong consistency, no linearizability, and no serializability, see [CAP Theorem](../CAP-Theorem).
  - Vulnerable to the Double Spending problem.
  - No implicit ordering like arrays, ordering must be explicitly maintained by the data.
- - Do not do math operations on the data, instead do sums and counts on unique identifiers.
+ - Because of at least once delivery mechanics, arithmetic operations on the data directly is not commutative.
 
-It is important to note that GUN's conflict resolution algorithm is a ground work, it does not provide much other than synchronization on its own. Most useful behavior (such as ordering, arithmetic, etc.) need some idempotent CRDT or DAG framework built on top of this underlying base.
+It is important to note that GUN's conflict resolution algorithm is the ground work, it does not provide much other than deterministic synchronization by its own. Most useful behavior like ordering or arithmetic is more complex and needs a Directed Acyclic Graphs (DAGs) or Convergent Replicated Data Types (CRDTs) built on top of the underlying algorithm. We plan to provide extensions for these at some point.
