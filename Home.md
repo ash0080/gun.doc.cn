@@ -1,4 +1,10 @@
 ***
+Please post: 
+ - **_usage questions_** to [StackOverflow with the [gun] tag](http://stackoverflow.com/questions/tagged/gun)
+ - **_issues_** to [GitHub issues](https://github.com/amark/gun/issues)
+ - **_discussion_*** to [gitter](https://gitter.im/amark/gun)
+
+***
 ### Version 0.2.0 issue status: [![Queued](https://badge.waffle.io/amark/gun.svg?label=Queue&title=Queue)](http://waffle.io/amark/gun) [![In Progress](https://badge.waffle.io/amark/gun.svg?label=InProgress&title=In%20Progress)](http://waffle.io/amark/gun) [![Pending Deploy](https://badge.waffle.io/amark/gun.svg?label=Pending&title=Done)](http://waffle.io/amark/gun)
 ***
 
