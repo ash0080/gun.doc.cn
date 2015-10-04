@@ -10,6 +10,9 @@ Please post:
 
 ## [v0.2.0 API Documentation](https://github.com/amark/gun/wiki/JS-API)
 
+## Modules:
+  - [Schema by RangerMauve](https://github.com/RangerMauve/gun-schema)
+
 ### Background on:
   - [[Semantics|Semantics]]
   - [[JSON Data Format|JSON-Data-Format]]
