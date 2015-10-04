@@ -11,7 +11,7 @@ Please post:
 ## [v0.2.0 API Documentation](https://github.com/amark/gun/wiki/JS-API)
 
 ## Modules:
-  - [Schema by RangerMauve](https://github.com/RangerMauve/gun-schema)
+  - [Schema by RangerMauve](https://github.com/gundb/gun-schema)
 
 ### Background on:
   - [[Semantics|Semantics]]
