@@ -13,6 +13,9 @@ Please post:
 ## Modules:
   - [Schema by RangerMauve](https://github.com/gundb/gun-schema)
 
+## Projects:
+  - [TodoMVC by jveres](https://github.com/jveres/todomvc) [(live demo)](http://todos.loqali.com/)
+
 ### Background on:
   - [[Semantics|Semantics]]
   - [[JSON Data Format|JSON-Data-Format]]
