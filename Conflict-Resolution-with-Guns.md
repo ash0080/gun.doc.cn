@@ -19,7 +19,7 @@ Please see `function HAM` in [gun core](../../blob/master/gun.js) for the javasc
 
 ### Considerations
 
- - No strong consistency, no linearizability, and no serializability, see [CAP Theorem](../CAP-Theorem).
+ - No strong consistency, no linearizability, and no serializability, see [CAP Theorem](./CAP-Theorem).
  - Vulnerable to the Double Spending problem.
  - No implicit ordering like arrays, ordering must be explicitly maintained by the data.
  - Because of at least once delivery mechanics, arithmetic operations on the data directly is not commutative.
