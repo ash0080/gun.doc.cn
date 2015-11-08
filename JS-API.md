@@ -4,7 +4,8 @@
 
 ---
 
-### <a name="Gun">Gun</a> <code>var gun = Gun(options)</code>
+### **Gun** 
+#### `var gun = Gun(options)`
 
   - Instantiates a gun database.
 
@@ -38,7 +39,8 @@
 
     - `var gun = Gun({s3: {key: '', secret: '', bucket: ''}})` on the server dumps to AWS S3, this is the preferred persistence layer.
 
-### <a name="put">**put**</a> `gun.put(object, callback, options)`
+### **put**
+#### `gun.put(object, callback, options)`
 
  - Saves the object.
 
@@ -75,7 +77,8 @@
      ```
      both objects get saved into a graph.
 
-### <a name="key">**key**</a> `gun.put(object).key(key, callback, options)`
+### **key**
+#### `gun.put(object).key(key, callback, options)`
 
   - Without a key, we cannot get our data back unless we scan over the entire graph. To get fast and easy access to the data, we give it a unique key. A key is a lot like keys in real life, once made they allow you to open up doors so you can enter into your data in many different ways.
 
@@ -93,7 +96,8 @@
 
     - `gun.put({title: "The Doctor", phone: '770-090-0461'}).key('user/thedoctor').key('phone/07700900461')` you can chain keys together to create multiple unique references to the same node.
 
-### <a name="get">**get**</a> `gun.get(key, callback, options)`
+### **get**
+#### `gun.get(key, callback, options)`
 
   - Opens up a gun reference to the root object you had saved to that key. It will load the node so you can further manipulate it.
 
@@ -113,7 +117,8 @@
 
     - `gun.get('user/thedoctor', function(){}, {force: true})` for a slower response, skipping memory.
 
-### <a name="on">**on**</a> `gun.get(key).on(callback, options)`
+### **on**
+#### `gun.get(key).on(callback, options)`
 
   - Retrieve the raw javascript data associated with the `key`, and subscribe to all subsequent realtime changes. You want to use this method to actually synchronously react to your data, rather than being stuck in async land.
 
@@ -145,7 +150,8 @@
       }, true)
       ```
 
-### <a name="val">**val**</a> `gun.get(key).val(callback, options)`
+### **val**
+#### `gun.get(key).val(callback, options)`
 
   - Is the same as **on** except only gets called once after the first peer, including the local peer, replies. It is slower than **on** and should be avoided, but is sometimes necessary. If you are using **val** it probably means your code has become spaghetti and very procedural, **on** is much cleaner and more functional.
 
@@ -165,7 +171,8 @@
 
     - `gun.get('user/thedoctor').val()` will automatically `console.log`, for easy debugging purposes.
 
-### <a name="path">**path**</a> `gun.get(key).path(path, callback, options)`
+### **path**
+#### `gun.get(key).path(path, callback, options)`
 
   - Traverses into the fields on the path, which allow you to explore the nested objects, relations, and values from the perspective of the root node that was given a key.
 
@@ -193,7 +200,8 @@
       })
       ```
 
-### <a name="map">**map**</a> `gun.get(key).map(callback, options)`
+### **map**
+#### `gun.get(key).map(callback, options)`
 
   - Rather than having to know each field in advance and have to path into it separately, we can iterate over each field dynamically.
 
@@ -232,11 +240,13 @@
       })
       ```
 
-### <a name="back">**back**</a> `gun.back`
+### **back**
+#### `gun.back`
 
   - This is not a method function, it is the previous gun reference in the chain. Allowing you to navigate back from where you have **path**ed or **map**ped.
 
-### <a name="set">**set**</a> `gun.get(key).set(data, callback, options)`
+### **set**
+#### `gun.get(key).set(data, callback, options)`
 
   - Is a convenience function that does a **put** to a random field name, adding the data to the set. Sets are unordered lists, similar to tables or collections in other databases. This is helpful when we are working with sets of data where we do not care what the field name is because we will be mapping over the data. **Warning** that this approach will always be slower than accessing things directly with a key, but sometimes it is exactly what we want.
 
@@ -276,7 +286,8 @@
       ```
       filters out values, leaving us with just the objects in the set.
 
-### <a name="not">**not**</a> `gun.get(key).not(callback, options)`
+### **not**
+#### `gun.get(key).not(callback, options)`
 
   - Sometimes you might want to check if data on a key has not yet been defined. **Warning** there is no guarantee that the data does not actually exist somewhere on some peer that got disconnected. But, if you are using gun in a fairly traditional client-server setup this should mostly work but we still advise to avoid it.
 
