@@ -12,9 +12,11 @@ Please post:
 
 ## Modules:
   - [Schema by RangerMauve](https://github.com/gundb/gun-schema)
+  - [LevelDB driver by PsychoLlama](https://github.com/PsychoLlama/gun-level)
 
 ## Projects:
   - [TodoMVC by jveres](https://github.com/jveres/todomvc) [(live demo)](http://todos.loqali.com/)
+  - [Trace game by PsychoLlama](https://github.com/PsychoLlama/Trace)
 
 ### Background on:
   - [[Semantics|Semantics]]
