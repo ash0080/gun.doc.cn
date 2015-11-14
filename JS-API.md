@@ -111,7 +111,7 @@
 
   - Examples
 
-    - `gun.get('user/thedoctor`)` returns a gun reference to The Doctor.
+    - `gun.get('user/thedoctor)` returns a gun reference to The Doctor.
 
     - `gun.get('user/thedoctor', function(err, graph){})` to handle errs or inspect the graph from the wire.
 
