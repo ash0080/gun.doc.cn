@@ -1,10 +1,12 @@
 Because of an overlap in words, establishing a precise vocabulary is important.
 
 Example of conflict:
+
 - _Node_ can refer to a node in a graph, a node in a network, or node as in NodeJS.
 - _Set_ can refer to a set as in a subset, or the act of setting something in place.
 
 Therefore, please conduct your language with the following semantics:
+
 - **Group**, is an unordered collection of finite things.
 - **Peer**, is a gun server that can be connected to.
 - **Mesh**, is a group of one or more peers connected via some topology.
@@ -17,6 +19,7 @@ Therefore, please conduct your language with the following semantics:
 - **Key**, is an index used to hopefully find a node in a mesh.
 
 Now, for matters of operations, we will define the following:
+
 - **Set**, as a verb, is changing the value on a field, or fields.
 - **Stream**, the sets on a node over a series of divisible time.
 - **State**, the sum of streams on a node that a peer had at some time.
@@ -28,6 +31,7 @@ Now, for matters of operations, we will define the following:
 - **Sent**, proof that a message was received, might contain data that needs no receipt.
 
 Summaries of the API vocabulary...
+
 - **Key**, creates an index to remember a node by, typically for human use.
 - **Load**, open a key or bring a relation into cache, to start exploring a graph.
 - **Path**, navigate through a graph, via fields, by chaining relations together.
