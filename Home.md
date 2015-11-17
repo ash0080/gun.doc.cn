@@ -1,12 +1,4 @@
-***
-Please post: 
- - **_usage questions_** to [StackOverflow with the [gun] tag](http://stackoverflow.com/questions/tagged/gun)
- - **_issues_** to [GitHub issues](https://github.com/amark/gun/issues)
- - **_discussion_*** to [gitter](https://gitter.im/amark/gun)
 
-***
-### Version 0.2.0 issue status: [![Queued](https://badge.waffle.io/amark/gun.svg?label=Queue&title=Queue)](http://waffle.io/amark/gun) [![In Progress](https://badge.waffle.io/amark/gun.svg?label=InProgress&title=In%20Progress)](http://waffle.io/amark/gun) [![Pending Deploy](https://badge.waffle.io/amark/gun.svg?label=Pending&title=Done)](http://waffle.io/amark/gun)
-***
 
 ## [v0.2.0 API Documentation](https://github.com/amark/gun/wiki/JS-API)
 
@@ -14,7 +6,8 @@ Please post:
   - [Schema by RangerMauve](https://github.com/gundb/gun-schema)
   - [LevelDB driver by PsychoLlama](https://github.com/PsychoLlama/gun-level)
 
-## Projects:
+## [Projects](https://github.com/amark/gun/wiki/projects) 
+  - [Add yours!](https://github.com/amark/gun/wiki/projects)
   - [TodoMVC by jveres](https://github.com/jveres/todomvc) [(live demo)](http://todos.loqali.com/)
   - [Trace game by PsychoLlama](https://github.com/PsychoLlama/Trace)
 
@@ -28,5 +21,16 @@ Please post:
   - [[Conflict Resolution|Conflict-Resolution-with-Guns]]
   - [[CAP Theorem|CAP-Theorem]]
   - [[Sharding|Sharding]]
+
+***
+Please post: 
+ - **_usage questions_** to [StackOverflow with the [gun] tag](http://stackoverflow.com/questions/tagged/gun)
+ - **_issues_** to [GitHub issues](https://github.com/amark/gun/issues)
+ - **_discussion_** to [gitter](https://gitter.im/amark/gun)
+
+***
+
+### Version 0.2.0 issue status: [![Queued](https://badge.waffle.io/amark/gun.svg?label=Queue&title=Queue)](http://waffle.io/amark/gun) [![In Progress](https://badge.waffle.io/amark/gun.svg?label=InProgress&title=In%20Progress)](http://waffle.io/amark/gun) [![Pending Deploy](https://badge.waffle.io/amark/gun.svg?label=Pending&title=Done)](http://waffle.io/amark/gun)
+***
 
 ### [[0.1.0 Documentation|0.1.0]]
