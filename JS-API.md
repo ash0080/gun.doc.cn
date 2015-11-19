@@ -199,6 +199,39 @@
         // 'The Doctor', 'title'
       })
       ```
+  - **Potentially unexpected behavior**
+
+	- `Gun().get('example').path(0.123).set('data')`
+	- `Gun().get('user').path('first.last').set('data')`
+  
+
+	 **Behavior**:
+	 In these cases, if there is not an existing node at "0" or "first", these sets will silently fail.
+  
+		**Background**:
+		In the above cases, the values passed to `path` are not a number or string, rather they are the path values.  (Similar to nested object keys, e.g. the code `var user = {}; user.first.last = 'Smith';` would fail with 'TypeError: obj.first is undefined'.)  As a result, the above are actually shorted versions of:
+
+		`Gun().get('example').path(0).path(123).set('data')`
+		`Gun().get('user').path('first').path('last').set('data')`
+  
+
+		In the first case, the number '0.123' is first stringified.
+
+		In both cases, if the first path's node does not exist *and* there is no `set()` on the first path's node, then the second `path` and its `set('data')` are never reached.
+
+		**Resolutions**
+
+		- *Using just gun*
+
+			Because path isn't taking an actual string, if parent nodes may not exist, then they should be pathed into and set after pathing into each node.  For example:
+
+			`Gun().get('example').path(0).set().path(123).set('data')`
+			`Gun().get('user').path('first').set().path('last').set('data')`
+  
+
+		- *Alternatives*
+		
+			Modules *can* be written which will allow application-specific behavior.  Any such modules will likely perform slower than the core implementation.  At the time of this document, no modules have been written.
 
 ### **map**
 #### `gun.get(key).map(callback, options)`
