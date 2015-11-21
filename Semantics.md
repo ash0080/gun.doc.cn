@@ -16,24 +16,23 @@ Therefore, please conduct your language with the following semantics:
 - **Node**, a group of no, one, some, or all fields, as they change over time.
 - **Graph**, a group of nodes. Different from a "graph node" which is a node itself.
 - **Universe**, all nodes over all time over all meshes.
-- **Key**, is an index used to hopefully find a node in a mesh.
 
-Now, for matters of operations, we will define the following:
+- **Put**, as a verb, is changing the values on a group of one or some fields, in a group of one or some nodes.
+- **Key**, as a verb, creates an index trying to remember a group of one or some nodes.
+- **Get**, as a verb, opens a key or brings a relation into cache, to start exploring a graph.
+- **All**, as a verb, is a discovery mechanism for machines to find where keys, nodes, or peers are.
 
-- **Set**, as a verb, is changing the value on a field, or fields.
-- **Stream**, the sets on a node over a series of divisible time.
-- **State**, the sum of streams on a node that a peer had at some time.
-- **Sign**, verifying the hashed signature of a compressed state.
-- **Sync**, exchanging states and streams between peers to arrive at a signature.
-- **Save**, to snapshot the state of a node or nodes into storage by a peer.
+- **Stream**, the puts on a node over a series of divisible time.
+- **State**, the stream on a node that a peer had at a certain time.
+- **Sync**, exchanging states and streams between peers over time.
+- **Save**, to snapshot the state of a one or some ndoes into storage by a peer.
 - **Soul**, is the practically unique, immutable identifier for a node.
 - **Send**, firing off a message into a mesh, irregularly repeated until sent.
 - **Sent**, proof that a message was received, might contain data that needs no receipt.
 
-Summaries of the API vocabulary...
-
-- **Key**, creates an index to remember a node by, typically for human use.
-- **Load**, open a key or bring a relation into cache, to start exploring a graph.
-- **Path**, navigate through a graph, via fields, by chaining relations together.
-- **Get**, gives you the node or value from the path, and as they are changed.
-- **Set**, to change the value on a field or merge a node or nodes.
+- **On**, gives you the current node or value, and as they change.
+- **Path**, navigate on a graph, via fields, by chaining relations together.
+- **Map**, iterate on the fields in a graph and path into them.
+- **Not**, notifies you that the node or value requested is not known.
+- **Val**, attempts to gives you the node or value only once.
+- **Set**, adds an item into a set of items, or adds the null set.
