@@ -17,10 +17,14 @@ Therefore, please conduct your language with the following semantics:
 - **Graph**, a group of nodes. Different from a "graph node" which is a node itself.
 - **Universe**, all nodes over all time over all meshes.
 
+The following four operations read and write data are called the Wire Commands:
+
 - **Put**, as a verb, is changing the values on a group of one or some fields, in a group of one or some nodes.
 - **Key**, as a verb, creates an index trying to remember a group of one or some nodes.
 - **Get**, as a verb, opens a key or brings a relation into cache, to start exploring a graph.
 - **All**, as a verb, is a discovery mechanism for machines to find where keys, nodes, or peers are.
+
+Peer operations compose the following terms:
 
 - **Stream**, the puts on a node over a series of divisible time.
 - **State**, the stream on a node that a peer had at a certain time.
@@ -29,6 +33,8 @@ Therefore, please conduct your language with the following semantics:
 - **Soul**, is the practically unique, immutable identifier for a node.
 - **Send**, firing off a message into a mesh, irregularly repeated until sent.
 - **Sent**, proof that a message was received, might contain data that needs no receipt.
+
+API implementations expose the following methods:
 
 - **On**, gives you the current node or value, and as they change.
 - **Path**, navigate on a graph, via fields, by chaining relations together.
