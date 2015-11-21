@@ -48,4 +48,4 @@ If you can implement this in your language of choice, then congratulations you n
 
 To recap, all data in GUN gets boiled down to these 5 parameters such that they can be compared and converged on, given the HAM results. It is an incredibly simple algorithm but it is universally detailed in how to handle data synchronization.
 
-Here are some [unfinished slides](https://docs.google.com/presentation/d/1VIOJc0bdzUNs7yXMLKCcgwU8ZZqMh-G4XDJt8JRtvSA/edit#slide=id.g6c37d5900_0378) from a Tech Talk I gave on the HAM. However it might not be helpful without the video or audio.
+Here are some [slides](https://docs.google.com/presentation/d/1XEj6tgt0NbBzzMKIlJ2kuMWH41hY7IkUdCmUWahipdA/edit#slide=id.gba5bd53d5_0_72) from a Tech Talk I gave in Germany on the HAM. However it unfortunately was not recorded and may not be helpful without video or audio. I did a quick summary of it in [this talk](https://youtu.be/kzrmAdBAnn4?t=21m11s).
