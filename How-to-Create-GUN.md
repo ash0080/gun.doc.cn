@@ -9,14 +9,14 @@ Parameters:
  * `currentValue`: The data stored in the local machine.
 
 ```javascript
-function HAM(machineState, incomingState, currentState, incomingValue, currentValue){
+function HAM(machineState, incomingState, currentState, incomingValue, currentValue){ // TODO: Lester's comments on roll backs could be vulnerable to divergence, investigate!
 	if(machineState < incomingState){
 		// the incoming value is outside the boundary of the machine's state, it must be reprocessed in another state.
-		return {amnesiaQuarantine: true};
+		return {defer: true};
 	}
 	if(incomingState < currentState){
 		// the incoming value is within the boundary of the machine's state, but not within the range.
-		return {quarantineState: true};
+		return {historical: true};
 	}
 	if(currentState < incomingState){
 		// the incoming value is within both the boundary and the range of the machine's state.
