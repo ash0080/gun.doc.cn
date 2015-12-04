@@ -26,9 +26,9 @@ table.map(function(person){
 
 # What is happening?
 
-First we need to instantiate GUN. Then we need to select which table we want to load `FROM` (actual SQL support coming soon!) by doing `gun.get('my/table')`. You also notice the `.set()`? Tables (or collections or lists or 'arrays') are called 'sets' in GUN, akin to a (mathematical set)[https://en.wikipedia.org/wiki/Set_(mathematics)]. Calling `.set()` instantiates an *empty set* (or the *null set*) in case the table doesn't already exist.
+First we need to instantiate GUN. Then we need to select which table we want to load `FROM` (actual SQL support coming soon!) by doing `gun.get('my/table')`. You also notice the `.set()`? Tables (or collections or lists or 'arrays') are called 'sets' in GUN, akin to a [mathematical set](https://en.wikipedia.org/wiki/Set_(mathematics)). Calling `.set()` instantiates an *empty set* (or the *null set*) in case the table doesn't already exist.
 
-Next up is the schema for the table! GUN does not require a schema, but using schemas is recommended - if you are interested in a schema extension for GUN check out (RangerMauve's gun-schema)[https://github.com/gundb/gun-schema]. For this example we're going to simply use a class instead, thus the `function Person(){}`.
+Next up is the schema for the table! GUN does not require a schema, but using schemas is recommended - if you are interested in a schema extension for GUN check out [RangerMauve's gun-schema](https://github.com/gundb/gun-schema). For this example we're going to simply use a class instead, thus the `function Person(){}`.
 
 Now we want to insert records into our table! In GUN lingo, all we now have to do is add an *item* into the set. Thus `table.set({name: 'Alice', age: 24});`, but since we want a schema we call `new Person('Alice', 24)` instead. Let's repeat this a couple times adding records into our set.
 
