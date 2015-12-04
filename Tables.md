@@ -40,6 +40,6 @@ How do you check for uniqueness then? GUN has a unique primary ID called a 'soul
 
 You can actually think of a graph as table with every record in it. Any other 'table' you create then has a record that just points to primary ID in the graph table. Pretty simple, huh? But it is not just tables that work with graphs, documents do too! With a graph you don't actually store the entire document as a single record, instead every sub object in the document is stored in the graph table and the document is reconstructed with pointers. Woohoo!
 
-# What is the whole Truple thing?
+# What is the whole Tuple thing?
 
-People often throw around the word "truple" in graph databases, however truples are not necessary for graph databases. For instance, Neo4J uses a property graph model - and GUN is similar. That doesn't mean you cannot do truples though, you can. But that is for a different section.
+People often throw around the word "tuple" in graph databases, however tuples are not necessary for graph databases. For instance, Neo4J uses a property graph model - and GUN is similar. That doesn't mean you cannot do tuples though, you can. But that is for a different section.
