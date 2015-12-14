@@ -13,16 +13,16 @@ Chained functions may be context independent of their proceeding function, or th
 
 ### Chaining Dependency Table
 
-|        |  put  |  get  |  path |  map  |  all  |  key  |  val  |  on   |
+|        |  __.put( )  |  __.get( )  |  __.path( ) |  __.map( )  |  __.all( )  |  __.key( )  |  __.val( )  |  __.on( )   |
 |:------:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
-| *put*  |   D   |***i***|   D   |   D   |***i***|   D   |   D   |   D   |
-| *get*  |   D   |***i***|   D   |   D   |***i***|   D   |   D   |   D   |
-| *path* |   D   |***i***|   D   |   D   |***i***|   D   |   D   |   D   |
-| *map*  |   D   |***i***|   D   |   D   |***i***|   D   |   D   |   D   |
-| *all*  |***i***|***i***|   D   |   D   |***i***|***i***|   D   |   D   |
-| *key*  |***i***|***i***|***i***|***i***|***i***|***i***|***i***|***i***|
-| *val*  |***i***|***i***|***i***|***i***|***i***|***i***|***i***|***i***|
-| *on*   |***i***|***i***|***i***|***i***|***i***|***i***|***i***|***i***|
+| *.put( ).___*  |   D   |***i***|   D   |   D   |***i***|   D   |   D   |   D   |
+| *.get( ).___*  |   D   |***i***|   D   |   D   |***i***|   D   |   D   |   D   |
+| *.path( ).___* |   D   |***i***|   D   |   D   |***i***|   D   |   D   |   D   |
+| *.map( ).___*  |   D   |***i***|   D   |   D   |***i***|   D   |   D   |   D   |
+| *.all( ).___*  |***i***|***i***|   D   |   D   |***i***|***i***|   D   |   D   |
+| *.key( ).___*  |***i***|***i***|***i***|***i***|***i***|***i***|***i***|***i***|
+| *.val( ).___*  |***i***|***i***|***i***|***i***|***i***|***i***|***i***|***i***|
+| *.on( ).___*   |***i***|***i***|***i***|***i***|***i***|***i***|***i***|***i***|
 
 Rows represent the initial function, while columns represent the subsequent function.
   - D : Subsequent function is dependent on the previous function.  
