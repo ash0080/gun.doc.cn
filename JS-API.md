@@ -8,7 +8,7 @@
 #### `var gun = Gun(options)`
 
   - Instantiates a gun database.
-  - NOTE: This may also be called with new (e.g. `var gun = new Gun(optinos)`), but `new` is *not* necessary.
+  - NOTE: This may also be called with new (e.g. `var gun = new Gun(options)`), but `new` is *not* necessary.
 
   - `options` as
 
