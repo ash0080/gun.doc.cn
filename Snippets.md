@@ -56,7 +56,7 @@ playerNamesDB.value(function(data){
 ```
 For more information, see the thread starting at : https://gitter.im/amark/gun?at=566de558187e75ea0e48771e
 
-### `Gun.create()` to instantiate without `new`
+## `Gun.create()` to instantiate without `new`
 
 Linters will complain if a gun instance is created without the `new` keyword.
 You could either use `new`, or you could use `Gun.create([args])`.
@@ -68,3 +68,16 @@ Gun.create = function () {
 ```
 
 Referenced and suggested in [issue #6](https://github.com/amark/gun/issues/6)
+
+## Using gun for localStorage and peer storage
+
+```javascript
+var me = Gun();                                   // LocalStorage
+var gun = Gun('https://gunjs.herokuapp.com/gun'); // peer storage
+
+me.put({"I'm a":'rockstar'}).key('myself');
+gun.put({"We're a":'rockband'}).key('myself');
+
+me.get('myself').val();  // Object { _: Object, I'm a: "rockstar" } undefined
+gun.get('myself').val(); // Object { _: Object, We're a: "rockband" } undefined
+```
