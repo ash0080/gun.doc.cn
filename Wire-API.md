@@ -16,6 +16,19 @@ curl -X POST \
 }' \
 https://gunjs.herokuapp.com/gun
 ```
+
+#### ack
+
+```
+{ok: 1}
+```
+
+or
+
+```
+{err: "Persistence layer failed"}
+```
+
  - **WS**
 
 ```javascript
@@ -24,7 +37,7 @@ var ws = new WebSocket('wss://gunjs.herokuapp.com/gun');
 ws.onopen = function(o){ 
   console.log('open', o);
   ws.send(JSON.stringify({
-    "headers": {"ws-rid": "random"},
+    "headers": {"ws-rid": "id"},
     "body": {
       "soul": {
         "_": {"#": "soul", ">": {"field": 1, "hello": 1}},
@@ -37,6 +50,18 @@ ws.onopen = function(o){
 ws.onclose = function(c){ console.log('close', c) };
 ws.onmessage = function(m){ console.log('message', m) };
 ws.onerror = function(e){ console.log('error', e) };
+```
+
+#### ack
+
+```
+{headers: {"ws-rid": "id"}, body: {ok: 1}}
+```
+
+or
+
+```
+{headers: {"ws-rid": "id"}, body: {err: "Persistence layer failed"}}
 ```
 
 # get
