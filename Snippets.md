@@ -81,3 +81,23 @@ gun.put({"We're a":'rockband'}).key('myself');
 me.get('myself').val();  // Object { _: Object, I'm a: "rockstar" } undefined
 gun.get('myself').val(); // Object { _: Object, We're a: "rockband" } undefined
 ```
+
+## Preventing data synchronization
+
+Supposing your application has user specific data that you don't want to synchronize
+(for example, a game where you don't want your opponent to know your internal state),
+you could use this extension to save to localStorage *without* synchronizing.
+
+```javascript
+Gun.chain.local = function (data, cb, opt) {
+  opt = opt || { };
+  opt.peers = { };
+  return this.put(data, cb, opt)
+}
+
+var gun = new Gun().get('example')
+gun.path('data').local(private)
+gun.path('data').put(synchronized)
+```
+
+> **note:** this should work, but it is still under development.
