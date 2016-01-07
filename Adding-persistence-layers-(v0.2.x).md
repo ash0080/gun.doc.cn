@@ -9,7 +9,7 @@ There are a lot of methods and tools gun provides to manipulate data, but there 
 - [Key:](https://github.com/amark/gun/wiki/JS-API#key) name groups of data
 - [All:]() aggregate data
 
-Luckily, `.all` hasn't been implemented by gun yet, meaning we only have to worry about the other three methods, `.get`, `.put` and `.key`. We'll cover those operations and how they work, then at the end we'll see how to [expose those methods](#exposing-your-functions-to-gun) to gun. If you're looking for a more technical reading, take a look at the [wire spec](wire.md).
+Luckily, `.all` hasn't been implemented by gun yet, meaning we only have to worry about the other three methods, `.get`, `.put` and `.key`. We'll cover those operations and how they work, then at the end we'll see how to [expose those methods](#exposing-your-functions-to-gun) to gun. If you're looking for a more technical reading, take a look at the [wire spec](Wire-specification-and-API-(v0.2.x)).
 
 #### standard arguments
 
@@ -217,6 +217,6 @@ Since this function could potentially be run several times, we test to see if we
 
 It should be mentioned that you can override these methods on the server *and* on the client, meaning that you can exchange the localStorage engine with something else.
 
-If you want succinct documentation for the `.get`, `.put` and `.key` contracts, you can [find it here](wire.md).
+If you want succinct documentation for the `.get`, `.put` and `.key` contracts, you can [find it here](Wire-specification-and-API-(v0.2.x)).
 
 That should be about everything you'd want to know about making a persistence layer. If you have any questions, submit an issue or post in our [gitter channel](https://gitter.im/amark/gun) and we'll do our best to answer them! Thanks for reading :)
