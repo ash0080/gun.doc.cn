@@ -1,6 +1,6 @@
 
 
-## [v0.2.0 API Documentation](https://github.com/amark/gun/wiki/JS-API)
+## [v0.2.x API Documentation](https://github.com/amark/gun/wiki/JS-API)
 
 ## Modules:
   - [Schema by RangerMauve](https://github.com/gundb/gun-schema)
@@ -31,7 +31,7 @@ Please post:
 
 ***
 
-### Version 0.2.0 issue status: [![Queued](https://badge.waffle.io/amark/gun.svg?label=Queue&title=Queue)](http://waffle.io/amark/gun) [![In Progress](https://badge.waffle.io/amark/gun.svg?label=InProgress&title=In%20Progress)](http://waffle.io/amark/gun) [![Pending Deploy](https://badge.waffle.io/amark/gun.svg?label=Pending&title=Done)](http://waffle.io/amark/gun)
+### Version 0.2.x issue status: [![Queued](https://badge.waffle.io/amark/gun.svg?label=Queue&title=Queue)](http://waffle.io/amark/gun) [![In Progress](https://badge.waffle.io/amark/gun.svg?label=InProgress&title=In%20Progress)](http://waffle.io/amark/gun) [![Pending Deploy](https://badge.waffle.io/amark/gun.svg?label=Pending&title=Done)](http://waffle.io/amark/gun)
 ***
 
 ### [[0.1.0 Documentation|0.1.0]]
