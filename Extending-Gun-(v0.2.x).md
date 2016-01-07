@@ -24,4 +24,4 @@ Since gun's main goal is to synchronize data between clients and servers, it doe
 
 ### communication
 
-Gun uses websockets to synchronize information, falling back on jsonp if sockets aren't supported in your environment. However *both* transport layers could be exchanged with WebRTC, DDP or any other method of sending and receiving data. The process is similar to building a storage engine plugin, and is documented in [this guide](communication.md).
+Gun uses websockets to synchronize information, falling back on jsonp if sockets aren't supported in your environment. However *both* transport layers could be exchanged with WebRTC, DDP or any other method of sending and receiving data. The process is essentially the same as writing a persistence driver, where the peer you're messaging is treated as your persistence layer.
