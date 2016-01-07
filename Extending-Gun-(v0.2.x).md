@@ -11,7 +11,7 @@ This guide explains how to build drivers and extensions for gun. Basic knowledge
 First, let's get an idea for how gun can be extended and the sorts of hooks it provides to developers. Most plugins for gun will fit into 3 main categories:
 
 - [abstraction layers][abstraction]
-- [persistence layers](#persistence)
+- [persistence layers][persistence]
 - [communication layers](#communication)
 
 ### abstraction
@@ -20,7 +20,7 @@ Likely the easiest of the three, gun's API is fully extensible, allowing you to 
 
 ### persistence
 
-Since gun's main goal is to synchronize data between clients and servers, it doesn't take a strong stance on how your data is saved. Client side, it defaults to localStorage, while server side it exports to a file named `data.json`, although it's designed with plugins in mind so that your favorite storage engine, whether it be levelDB, Hadoop, IndexedDB, AWS, etc., should painlessly integrate with your project. Building a plugin for gun's persistence layer is fairly straightforward, and is outlined in [this guide][abstraction].
+Since gun's main goal is to synchronize data between clients and servers, it doesn't take a strong stance on how your data is saved. Client side, it defaults to localStorage, while server side it exports to a file named `data.json`, although it's designed with plugins in mind so that your favorite storage engine, whether it be levelDB, Hadoop, IndexedDB, AWS, etc., should painlessly integrate with your project. Building a plugin for gun's persistence layer is fairly straightforward, and is outlined in [this guide][persistence].
 
 ### communication
 
