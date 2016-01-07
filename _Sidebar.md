@@ -12,4 +12,4 @@
   - [[CAP Theorem|CAP-Theorem]]
   - [[Sharding|Sharding]]
 
-##### [[0.1.0 Documentation|0.1.0]]
+##### [[0.2.x Documentation|JS-API]]
