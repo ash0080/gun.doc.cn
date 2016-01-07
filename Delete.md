@@ -1,3 +1,3 @@
 # Deleting Data with GUN
 
-To delete data in gun you can `null` out a value. But please note, gun still stores the `null` value. If you need to permanently delete the data (this is not recommended) you need to purge the data in the underlying storage engines. If you need to do this (not recommended), please contact us at mark@gunDB.io or in the (gitter)[https://gitter.im/amark/gun] - we'll update this page with the feedback we get.
+To delete data in gun you can `null` out a value. But please note, gun still stores the `null` value. If you need to permanently delete the data (this is not recommended) you need to purge the data in the underlying storage engines. If you need to do this (not recommended), please contact us at mark@gunDB.io or in the [gitter](https://gitter.im/amark/gun) - we'll update this page with the feedback we get.
