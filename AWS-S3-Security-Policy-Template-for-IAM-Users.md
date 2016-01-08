@@ -1,6 +1,6 @@
 You need to use this Amazon S3 policy (replace both "YOURBUCKETHERE" with the S3 bucket you make/have for this app):
 
-```
+```javascript
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -20,7 +20,7 @@ You need to use this Amazon S3 policy (replace both "YOURBUCKETHERE" with the S3
 
 For your Amazon IAM User (in Security Credential's admin dashboard) that is associated with the Access Key and Secret Access Key from when you initialized GUN on the server:
 
-```
+```javascript
 var gun = Gun({
   file: 'data.json', // local testing and development
   s3: {
