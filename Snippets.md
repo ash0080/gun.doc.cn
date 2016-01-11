@@ -56,6 +56,42 @@ playerNamesDB.value(function(data){
 ```
 For more information, see the thread starting at : https://gitter.im/amark/gun?at=566de558187e75ea0e48771e
 
+## Saving/getting images in gun
+*Gun cannot save dom nodes.* That said, you can save a lot of other things, strings included, and image data can be expressed as a string.
+
+```javascript
+Gun.chain.image = function (img) {
+  if (!img.src) {
+    return this.val(function (src) {
+      img.src = src
+    });
+  }
+  var canvas = document.createElement('canvas');
+  var ctx = canvas.getContext('2d');
+  canvas.width = img.width;
+  canvas.height = img.height;
+  ctx.drawImage(img, 0, 0, img.width, img.height);
+  var data = canvas.toDataURL();
+  return this.put(data);
+}
+```
+
+Since there is no standard for extracting raw image data, [the best way](http://stackoverflow.com/questions/934012/get-image-data-in-javascript#answer-934925) is to render it to a canvas, then read the raw canvas data.
+
+Now you can save your image. Use `db.path('example image').image(yourImage)`. To read it back out again, pass in an image *without* a `.src` and the raw data will be loaded onto the empty image.
+
+```javascript
+// writing
+var img = find('existingImage')
+db.get('images').path('your image').image(img)
+
+// reading
+var img = document.createElement('img')
+// img.src === undefined
+db.get('images').path('your image').image(img)
+// img.src === 'data:image/png;base64,iVBO...'
+```
+
 ## `Gun.create()` to instantiate without `new`
 
 Linters will complain if a gun instance is created without the `new` keyword.
