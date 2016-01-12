@@ -1,6 +1,7 @@
 
 
 ## [v0.2.x API Documentation](https://github.com/amark/gun/wiki/JS-API)
+ - [Example snippets](Snippets-(0.2.x))
 
 ## Modules:
   - [Schema by RangerMauve](https://github.com/gundb/gun-schema)
