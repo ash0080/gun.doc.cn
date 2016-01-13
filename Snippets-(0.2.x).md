@@ -137,3 +137,20 @@ gun.path('data').put(synchronized)
 ```
 
 > **note:** this should work, but it is still under development.
+
+## gun.each
+`gun.map` streams pieces of each node in. To only get the full object, you can use this snippet.
+
+```javascript
+Gun.chain.each = function () {
+  var each = this.map();
+  return this.val.apply(each, arguments)
+}
+```
+
+**Usage**
+```javascript
+gun.get('examples').each(function (example) {
+  console.log(example)
+})
+```
