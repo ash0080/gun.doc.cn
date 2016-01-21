@@ -30,6 +30,8 @@
    - [property](#property)
    - [callback](#callbackerror-data-property)
    - [chain](#chain-context-3)
+ - [gun.back](#back)
+   - [examples](#examples-4)
 
 # <a name="Gun"></a>Gun(options)
 Used to creates a new gun database instance.
@@ -379,4 +381,28 @@ gun.get('API').path('path').path('chain')
 gun.get('API').path('path')
 /* and is different from */
 gun.get('API')
+```
+
+--------------------------
+# <a name="back"></a>gun.back
+Move up to the parent context on the chain.
+
+Every time a new chain is created, a reference to the old context is kept in the `back` property. It's not a function, but a reference to the `this` value you had *before* it was changed. For example, when calling [`.path`](#path), a new context is assigned to the `this` value, allowing you to chain directly off your context in jQuery style. If you want to return to your old context, just use `gun.back`.
+
+## Examples
+Moving to a parent context
+```javascript
+gun.get('peers')
+  /* change the context to my peer */
+  .path(myself)
+  .put(me)
+  /* go back to the "get" statement */
+  .back.map(...)
+```
+
+Another example
+```javascript
+gun.get('players').get('game/history').back
+// is the same as...
+gun.get('players')
 ```
