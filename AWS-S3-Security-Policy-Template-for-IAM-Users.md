@@ -30,7 +30,7 @@ var gun = Gun({
   }
 });
 ```
-Remember that your app needs to have these ENVIRONMENT VARIALBES available to them.
+Remember that your app needs to have these ENVIRONMENT VARIABLES available to them.
 
 If you are using Heroku, this is pretty easy. In their dashboard go and edit your app's ENVIRONMENT VARIABLE CONFIGs to the actual key, token, and bucket.
 
