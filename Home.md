@@ -3,7 +3,7 @@
 ## [v0.2.x API Documentation](https://github.com/amark/gun/wiki/JS-API)
  - [Example snippets](Snippets-(0.2.x))
 
-## Modules:
+## Modules
   - [Schema by RangerMauve](https://github.com/gundb/gun-schema)
   - [LevelDB driver by PsychoLlama](https://github.com/PsychoLlama/gun-level)
 
@@ -12,20 +12,20 @@
   - [TodoMVC by jveres](https://github.com/jveres/todomvc) [(live demo)](http://todos.loqali.com/)
   - [Trace game by PsychoLlama](https://github.com/PsychoLlama/Trace)
 
-### Background on:
+### Background on
   - [[Semantics|Semantics]]
   - [[JSON Data Format|JSON-Data-Format]]
   - [[Partials and Circular References|Partials-and-Circular-References]]
   - [[Using Tables with GUN|Tables]]
   - [[Using Amazon AWS S3 As a Backup|AWS-S3-Security-Policy-Template-for-IAM-Users]]
 
-### More about GUN: 
+### More about GUN
   - [[Conflict Resolution|Conflict-Resolution-with-Guns]]
   - [[CAP Theorem|CAP-Theorem]]
   - [[Sharding|Sharding]]
 
 ***
-Please post: 
+Please post
  - **_usage questions_** to [StackOverflow with the [gun] tag](http://stackoverflow.com/questions/tagged/gun)
  - **_issues_** to [GitHub issues](https://github.com/amark/gun/issues)
  - **_discussion_** to [gitter](https://gitter.im/amark/gun)
