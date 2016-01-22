@@ -29,4 +29,4 @@ In addition to the actual ordering of data, it is possible, and in a system with
 GUN's HAM combines timestamps, vector clocks, and a conflict resolution algorithm, to maximize the ordering of data and consistently resolve conflicts that do occur.
 
 ## Footnotes
-<sup>1</sup> Wikipedia entry on [Vector clock](https://en.wikipedia.org/wiki/Vector_clock)s
+<sup>1</sup> Wikipedia entry on [Vector clocks](https://en.wikipedia.org/wiki/Vector_clock)
