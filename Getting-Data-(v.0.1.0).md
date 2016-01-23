@@ -1,7 +1,7 @@
 Getting Data
 =============
 
-Now that we've looked at setting values in gun, let's look at retrieving them again. For starters, let's go get Cecil out of the database. If you haven't gone over the setting values, [[you probably want to start there|Setting Data]].
+Now that we've looked at setting values in gun, let's look at retrieving them again. For starters, let's go get Cecil out of the database. If you haven't gone over the setting values, [you probably want to start there](https://github.com/amark/gun/wiki/Setting-Data-%28v.0.1.0%29).
 
 ```javascript
 gun.load('person/cecil').get(function(cecil) {
