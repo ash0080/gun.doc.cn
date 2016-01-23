@@ -10,10 +10,10 @@ Previously the wire protocol looked this:
 
 Now it looks like this:
 
- - get, the response is now a graph.
- - put, pushing out stays as a graph.
- - key, stays as an association.
- - all, is being added.
+ - `get`, the response is now a graph.
+ - `put`, pushing out stays as a graph.
+ - `key`, stays as an association.
+ - `all`, is being added.
 
 Meaning we have broken how `get` behaves between versions, and we are adding `all` which shouldn't effect any old or new code.
 
