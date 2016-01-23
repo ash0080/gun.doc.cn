@@ -7,7 +7,7 @@
 ### **Gun** 
 #### `var gun = Gun(options)`
 
-  - Instantiates a gun database.
+  - Instantiates a gun database (specifying in the options parameters the connections and persistence endpoints).
   - NOTE: This may also be called with new (e.g. `var gun = new Gun(options)`), but `new` is *not* necessary.
 
   - `options` as
