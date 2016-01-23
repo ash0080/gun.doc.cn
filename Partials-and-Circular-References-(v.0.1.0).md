@@ -31,7 +31,7 @@ Partials let you work with your data without having to redownload the whole snap
 
 ## Circular References
 
-Similarly, in you might be familiar with doing something like:
+Similarly, you might be familiar with doing something like:
 
 ```javascript
 var mark = {
