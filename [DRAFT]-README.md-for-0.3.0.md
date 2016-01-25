@@ -66,7 +66,7 @@ GUN is designed to be as minimal as possible, with any additional functionality 
 
 ## License
 
-Designed with ♥ by Mark Nadal, the gun team, and many very awesome contributors.  Liberally licensed under [Zlib / MIT / Apache 2.0](https://github.com/amark/gun/blob/master/LICENSE.md).
+Designed with ♥ by Mark Nadal, the gun team, and many amazing contributors.  Liberally licensed under [Zlib / MIT / Apache 2.0](https://github.com/amark/gun/blob/master/LICENSE.md).
 
 ## Contributors
 
