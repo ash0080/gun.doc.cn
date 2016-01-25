@@ -1,3 +1,3 @@
- - [Schema by RangerMauve](https://github.com/gundb/gun-schema)
- - [LevelDB driver by PsychoLlama](https://github.com/PsychoLlama/gun-level)
- - [Namespaces for gun by PsychoLlama](https://github.com/PsychoLlama/Reticle)
+ - [Schema](https://github.com/gundb/gun-schema)  by [RangerMauve](https://github.com/RangerMauve)
+ - [LevelDB driver](https://github.com/PsychoLlama/gun-level) by [PsychoLlama](https://github.com/PsychoLlama)
+ - [Namespaces for gun](https://github.com/PsychoLlama/Reticle) by [PsychoLlama](https://github.com/PsychoLlama)
