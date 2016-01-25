@@ -31,6 +31,8 @@ GUN is a realtime, distributed, offline-first, graph database engine.
  - [Online example applications](http://gunjs.herokuapp.com/)
  - The above examples are included in this repo. You can run them locally by running the following commands in your terminal or on your command line:
 
+   > If you don't have [node](http://nodejs.org/) or [npm](https://www.npmjs.com/), read [this](https://github.com/amark/gun/blob/master/examples/install.sh) first.
+
    ```bash
    npm install gun
    cd node_modules/gun
