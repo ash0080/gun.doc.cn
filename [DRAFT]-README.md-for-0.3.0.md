@@ -1,4 +1,3 @@
-
 # gun
 
 <a href="https://npmjs.org/package/gun"><img align="right" alt="npm downloads" src="https://img.shields.io/npm/dm/gun.svg?style=flat" /></a>
@@ -17,15 +16,15 @@ GUN is a realtime, distributed, offline-first, graph database engine.
 ## Table of Contents
  - [Demos](#demos)
    - [Videos](#videos)
-   - [Projects](../projects)  
+   - [Projects](#projects)  
  - [How to get started](#how-to-get-started)
- - [Extensions](extensions)
- - [How can I help make gun even more awesome?](#how-can-i-help-make-gun-even-more-awesome?)
+ - [Modules](#modules)
+ - [How can I help make gun even more awesome?](#how-can-i-help-make-gun-even-more-awesome)
  - [License](#license)
    - [Contributors](#contributors)
  - [Changelog](#changelog)
  - [Stay up-to-date](#stay-up-to-date)
- - **[API Reference](../0.3.x-API)**
+ - **[API Reference](https://github.com/amark/gun/wiki/0.3.x-API)**  :arrow_upper_right:
 
 ## Demos
 
@@ -48,32 +47,26 @@ GUN is a realtime, distributed, offline-first, graph database engine.
  - [GUN's YouTube channel](https://www.youtube.com/channel/UCQAtpf-zi9Pp4__2nToOM8g/playlists) also has videos
 
 ### Projects
- - GUN users are encouraged to add their projects to this [running projects list](../projects).
+ - GUN users are encouraged to add their projects to this [running projects list](https://github.com/amark/gun/wiki/projects).
 
 ## How to get started
- - Download/Install
- - Example code [snippets](../snippets) to address specific situations
+ - Until we complete the [Getting Started with GUN](https://github.com/amark/gun/wiki/getting-started-(v0.3.x)) Guide, please review the [API documentation](0.3.x-API) and [examples' source code](https://github.com/amark/gun/blob/master/examples).
+ - Check out and add example code [snippets](https://github.com/amark/gun/wiki/snippets-(0.3.x)) —including micro-modules— to address specific situations.
 
-## Extensions
-GUN is designed to be as minimal as possible, with any additional functionality being provided via extensions.  Please refer to the [extensions](extensions) page for a list of existing extensions. Please refer to the [gun-extensions](https://github.com/gundb/gun-extensions/issues) repo to see what extensions have been requested or to request an extension.
+## Modules
+GUN is designed to be as minimal as possible, with any additional functionality being provided via modules.  Please refer to the [modules](https://github.com/amark/gun/wiki/modules) page for a list of existing extensions. Please refer to the [gun-extensions](https://github.com/gundb/gun-extensions/issues) repo to see what extensions have been requested or to request an extension.
 
 ## How can I help make gun even more awesome?
  - Star this repo
  - Follow us and share your appreciation via [Twitter](https://twitter.com/databasegun), [LinkedIn](https://www.linkedin.com/company/gun-inc), and [Facebook](//TODO: need link here)
- - [Share projects you've written](../projects)
+ - [Share projects you've written](https://github.com/amark/gun/wiki/projects)
  - [Build extensions or squish bugs](https://waffle.io/amark/gun)
- 	 - Pick an issue
-         - If working on an extension, familiarize yourself with the [Extending GUN's API](extending-guns-api)
- 	 - Fork or create the appropriate repo
- 	 - Create your feature branch: git checkout -b my-new-feature
-	 - Commit your changes: git commit -m 'Add some feature'
-	 - Push to the branch: git push origin my-new-feature
-	 - Submit a pull request :wink:
+         - If you are working on an extension, familiarize yourself with the [Extending GUN's API](https://github.com/amark/gun/wiki/Extending-Gun)
  - Donate moolah to help us keep coding
 
 ## License
 
-Designed with ♥ by Mark Nadal, the gun team, and many very awesome contributors.  Liberally licensed under [Zlib / MIT / Apache 2.0](../../blob/master/LICENSE.md).
+Designed with ♥ by Mark Nadal, the gun team, and many very awesome contributors.  Liberally licensed under [Zlib / MIT / Apache 2.0](https://github.com/amark/gun/blob/master/LICENSE.md).
 
 ## Contributors
 
@@ -84,10 +77,10 @@ Thanks to the following people who have contributed to GUN, via code, issues, or
 
 This list of contributors was manually compiled and alphabetically sorted. If we missed you, please submit an issue so we can get you added!
 
-## [Changelog](CHANGELOG.md#0.3.0)
+## [Changelog](https://github.com/amark/gun/wiki/CHANGELOG.md#0.3.0)
 
-Also see the [Release List](../../releases) and [Tag List](../../tags) for quick access to relevant versions.
+Also see the current [Release List](https://github.com/amark/gun/wiki/releases) and [Tag List](https://github.com/amark/gun/tags) for quick access to relevant versions.
 
 ==========================
-
+<a name="stay-up-to-date"></a>
 [![YouTube](https://img.shields.io/badge/You-Tube-red.svg)](https://www.youtube.com/channel/UCQAtpf-zi9Pp4__2nToOM8g) [![LinkedIn](https://img.shields.io/badge/Linked-In-blue.svg)](https://www.linkedin.com/company/gun-inc) [![Twitter Follow](https://img.shields.io/twitter/follow/databasegun.svg?style=social)](https://twitter.com/databasegun)
