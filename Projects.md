@@ -2,11 +2,11 @@
 
 ## Using
 
-  - [TodoMVC by jveres](https://github.com/jveres/todomvc) [(live demo)](http://todos.loqali.com/)
-  - [Trace game by PsychoLlama](https://github.com/PsychoLlama/Trace)
+  - ["Running Of The Leaves" Game](www.github.com/penguinman98/rotl) by [PenguinMan98] (using gun 0.2.5)
+  - [Trace game by PsychoLlama](https://github.com/PsychoLlama/Trace) (using gun 0.2.5)
+  - [TodoMVC by jveres](https://github.com/jveres/todomvc) [(live demo)](http://todos.loqali.com/) (using gun 0.1.0)
   - "Arrive" (permission to publish pending)
   - "Hackie" (permission to publish pending)
-  - "Running Of The Leaves" Game by [PenguinMan98] www.github.com/penguinman98/rotl
 
 ## Interested
 
