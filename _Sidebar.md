@@ -5,7 +5,7 @@
   - [[Semantics|Semantics]]
   - [[JSON Data Format|JSON-Data-Format]]
   - [[Partials and Circular References|Partials-and-Circular-References]]
-  - [[Using Amazon AWS S3 As a Backup|AWS-S3-Security-Policy-Template-for-IAM-Users]]
+  - [[Hosting with Amazon AWS|Hosting-with-Amazon-AWS]]
 
 ##### More about GUN: 
   - [[Conflict Resolution|Conflict-Resolution-with-Guns]]
