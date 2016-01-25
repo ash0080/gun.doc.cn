@@ -24,7 +24,7 @@ GUN is a realtime, distributed, offline-first, graph database engine.
    - [Contributors](#contributors)
  - [Changelog](#changelog)
  - [Stay up-to-date](#stay-up-to-date)
- - **[API Reference](https://github.com/amark/gun/wiki/0.3.x-API)**  :arrow_upper_right:
+ - **[API Reference](https://github.com/amark/gun/wiki/API-(0.3.x))**  :arrow_upper_right:
 
 ## Demos
 
