@@ -1,6 +1,6 @@
 
 
-## [v0.2.x API Documentation](https://github.com/amark/gun/wiki/JS-API)
+## [v0.2.x API Documentation](API-(v0.2.x))
  - [Example snippets](Snippets-(0.2.x))
 
 ## Modules
