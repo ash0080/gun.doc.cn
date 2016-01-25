@@ -1,5 +1,5 @@
 #### [Home](https://github.com/amark/gun/wiki)
-#### [[JS API|JS-API]]
+#### [[JS API|API-(v0.2.x)]]
 
 ##### Background on:
   - [[Semantics|Semantics]]
