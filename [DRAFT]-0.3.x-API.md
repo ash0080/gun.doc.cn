@@ -32,6 +32,10 @@
    - [chain](#chain-context-3)
  - [gun.back](#back)
    - [examples](#examples-4)
+ - [gun.on](#on)
+ - [gun.map](#map)
+ - [gun.val](#val)
+ - [gun.not](#not)
 
 # <a name="Gun"></a>Gun(options)
 Used to creates a new gun database instance.
@@ -383,7 +387,7 @@ gun.get('API').path('path')
 gun.get('API')
 ```
 
---------------------------
+-----------------------------
 # <a name="back"></a>gun.back
 Move up to the parent context on the chain.
 
@@ -406,3 +410,18 @@ gun.get('players').get('game/history').back
 // is the same as...
 gun.get('players')
 ```
+
+------------------------------------
+# <a name="on"></a> gun.on(callback)
+
+
+-------------------------------------
+# <a name="map"></a>gun.map(callback)
+
+
+--------------------------------------
+# <a name="not"></a> gun.not(callback)
+
+
+--------------------------------------
+# <a name="val"></a> gun.val(callback)
