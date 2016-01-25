@@ -1,4 +1,5 @@
 #### [Home](https://github.com/amark/gun/wiki)
+#### [[API v0.3.x|API-(v0.3.x)]] (WIP)
 #### [[API v0.2.x|API-(v0.2.x)]]
 
 ##### Background on:
@@ -12,4 +13,4 @@
   - [[CAP Theorem|CAP-Theorem]]
   - [[Sharding|Sharding]]
 
-##### [[0.2.x Documentation|home]]
+##### [[0.2.x Table of Contents|0.2.x-Table-of-Contents]]
