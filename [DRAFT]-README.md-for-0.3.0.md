@@ -62,7 +62,6 @@ GUN is designed to be as minimal as possible, with any additional functionality 
  - [Share projects you've written](https://github.com/amark/gun/wiki/projects)
  - [Build extensions or squish bugs](https://waffle.io/amark/gun)
          - If you are working on an extension, familiarize yourself with the [Extending GUN's API](https://github.com/amark/gun/wiki/Extending-Gun)
- - Donate moolah to help us keep coding
 
 ## License
 
