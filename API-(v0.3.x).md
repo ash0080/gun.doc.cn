@@ -33,6 +33,8 @@
    - [examples](#examples-7)
    - [chain](#chain-context-7)
  - [gun.val](#val)
+   - [examples](#examples-8)
+   - [chain](#chain-context-8)
 
 # <a name="Gun"></a>Gun(options)
 Used to creates a new gun database instance.
@@ -613,22 +615,43 @@ gun.get(keyName).not(handler) /* _might_ be the same as */ gun.get(keyName)
 
 --------------------------------------
 # <a name="val"></a> gun.val(callback)
+Read a full object without subscribing updates.
 
+`.val` will send a request for the node, and read out the value from the first peer that finishes their response. Since `.val` has to wait for a termination, it cannot stream data, slowing down the transmission of large objects considerably. If you simply want to read out an object without subscribing to changes, `.val` is your best option.
 
-  - Is the same as **on** except only gets called once after the first peer, including the local peer, replies. It is slower than **on** and should be avoided, but is sometimes necessary. If you are using **val** it probably means your code has become spaghetti and very procedural, **on** is much cleaner and more functional.
+> This method is excellent for learning and debugging, but should be avoided in production applications. Instead, use [`.on`](#on).
 
-  - `callback` is a `function(){}` which gets called as `callback(data, field)` once after the node has been loaded, and has no realtime features.
+`.val` takes two arguments:
 
-  - `options` none currently available.
+ - a `callback` function
+ - an `options` object
 
-  - Examples
+> **Tip:** If no callback is given, it will automatically log the result to the console.
 
-    - ... 
-      ```javascript
-      gun.get('user/thedoctor').val(function(who, field){
-        console.log('The Doctor', who, field);
-        // {title: "The Doctor", phone: '770-090-0461'}
-      })
-      ```
+No options are currently available for this method.
 
-    - `gun.get('user/thedoctor').val()` will automatically `console.log`, for easy debugging purposes.
+## Callback(value, property)
+The value is the fully-loaded object/primitive, and the property is the field it belongs under.
+
+## Examples
+Reading a full object
+```javascript
+// load in the full profile object
+gun.get('peers/' + userID).path('profile').val(function (profile) {
+  // render it, but only once. No updates.
+  view.show.user(profile)
+})
+```
+
+Reading a property
+```javascript
+gun.path('temperature').val(function (number) {
+  view.show.temp(number)
+})
+```
+
+Printing a value to the console
+```javascript
+gun.path('property').val()
+// `console.log` is automatically called
+```
