@@ -410,20 +410,6 @@ The context will always be different, since `.back`'s only purpose is to change 
 gun.path('property') /* is not the same as */ gun.path('property').back
 ```
 
-
-
-
-<br /><br /><br />
-
-> **Note:** the following documentation is adapted from version `0.2.x`, and is currently under revision.
-
-<br /><br /><br />
-
-
-
-
-
-
 ------------------------------------
 # <a name="on"></a> gun.on(callback)
 Subscribe to updates changes on a node or property real-time.
@@ -474,6 +460,20 @@ gun.get('lights').path('living room').on(function (state, room) {
 ```javascript
 gun.get(keyName).on(handler) /* is the same as */ gun.get(keyName)
 ```
+
+
+
+
+<br /><br /><br />
+
+> **Note:** the following documentation is adapted from version `0.2.x`, and is currently under revision.
+
+<br /><br /><br />
+
+
+
+
+
 
 -------------------------------------
 # <a name="map"></a>gun.map(callback)
