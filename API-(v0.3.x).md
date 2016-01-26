@@ -493,10 +493,25 @@ gun.map(callback, true)
 ## Examples
 Loop over a collection of objects
 ```javascript
-// each post
-gun.get(userID + '/posts').map(function (post, ID) {
-  view.show.post(post, ID)
+// for each status update
+gun.get(userID + '/feed/tweets').map(function (tweet, ID) {
+  // render it to the view
+  view.show.tweet(tweet, ID)
 }, true)
+// `true` filters primitives, ensuring only objects are shown.
+```
+
+Iterate over an object
+```javascript
+/*
+  where `visitor/stats` are {
+    'new customers': 35,
+    'returning': 65
+  }
+*/
+gun.get('visitor/stats').map(function (percent, category) {
+  pie.chart(category, percent)
+})
 ```
 
 ## Chain context
