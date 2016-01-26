@@ -407,6 +407,11 @@ The context will always be different, since `.back`'s only purpose is to change 
 ```javascript
 gun.path('property') /* is not the same as */ gun.path('property').back
 ```
+<br /><br /><br />
+
+> **Note:** the following documentation is adapted from version `0.2.x`, and is currently under revision.
+
+<br /><br /><br />
 
 ------------------------------------
 # <a name="on"></a> gun.on(callback)
