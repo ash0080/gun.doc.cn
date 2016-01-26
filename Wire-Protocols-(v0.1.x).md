@@ -7,7 +7,7 @@ First, we have the base URL a GUN peer is running on. Take these as examples:
 - [wss://gunjs.herokuapp.com/gun](wss://gunjs.herokuapp.com/gun)
 - [ws://localhost:8080/gun](ws://localhost:8080/gun)
 
-Currently only HTTP, JSONP, and WebSockets are implemented. It is not necessary to host a GUN server on '[/gun](/gun)', it could be on any path you want - including the root domain. The only important thing is that your users load your website and that developers know where to connect GUN peers.
+Currently only HTTP, JSONP, and WebSockets are implemented. It is not necessary to host a GUN server on '/gun', it could be on any path you want - including the root domain. The only important thing is that your users load your website and that developers know where to connect GUN peers.
 
 ## Security
 
