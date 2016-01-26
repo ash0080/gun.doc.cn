@@ -4,10 +4,22 @@
 
 ---
 
-This page documents simple code snippets which augment or modify basic gun functionality.
+This page documents simple code snippets which augment or modify basic gun functionality.  
+- [Tables](Tables) :arrow_upper_right:
+- [Strip metadata from returned nodes](#strip-metadata-from-returned-nodes)
+  - [`.live()` (to replace `.on()`)](#live-to-replace-on)
+  - [`.value()` (to replace `.val()`)](#value-to-replace-val)
+- [Saving/getting images in gun](#savinggetting-images-in-gun)
+- [`Gun.create()` to instantiate without `new`](#guncreate-to-instantiate-without-new)
+- [Using gun for localStorage and peer storage](#using-gun-for-localstorage-and-peer-storage)
+- [Preventing data synchronization](#preventing-data-synchronization)
+- [gun.each](#guneach)
+
 
 ## [Tables](Tables) :arrow_upper_right:
-
+  
+---
+  
 ## Strip metadata from returned nodes
 
 ### `.live()` (to replace `.on()`)
@@ -99,7 +111,9 @@ var img = document.createElement('img')
 db.get('images').path('your image').image(img)
 // img.src === 'data:image/png;base64,iVBO...'
 ```
-
+  
+---
+  
 ## `Gun.create()` to instantiate without `new`
 
 Linters will complain if a gun instance is created without the `new` keyword.
@@ -112,7 +126,9 @@ Gun.create = function () {
 ```
 
 Referenced and suggested in [issue #6](https://github.com/amark/gun/issues/6)
-
+  
+---
+  
 ## Using gun for localStorage and peer storage
 
 ```javascript
@@ -125,7 +141,9 @@ gun.put({"We're a":'rockband'}).key('myself');
 me.get('myself').val();  // Object { _: Object, I'm a: "rockstar" } undefined
 gun.get('myself').val(); // Object { _: Object, We're a: "rockband" } undefined
 ```
-
+   
+---
+  
 ## Preventing data synchronization
 
 Supposing your application has user specific data that you don't want to synchronize
