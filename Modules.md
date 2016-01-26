@@ -6,4 +6,4 @@ Schema validation module for node and the browser.<br />
 A LevelDB adapter that works with the levelDB module ecosystem.
 
 ### [reticle](https://github.com/PsychoLlama/Reticle)
-Namespace your data, preventing naming conflicts and clear separation between apps.
+Namespace your data, preventing naming conflicts and adding clear separation between apps.
