@@ -242,7 +242,7 @@ gun.path('node').key('nodes') /* same context as */ gun.path('node')
 
 ------------------------------------------------------------------------------------------
 # <a name="get"></a>gun.get(name)
-Load all data under that [key](#key) into the context, saving it to local persistence.
+Load all data under a [key](#key) into the context.
 
 It takes three parameters:
 
