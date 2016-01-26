@@ -63,7 +63,7 @@ GUN is designed to be as minimal as possible, with any additional functionality 
  - Follow us and share your appreciation via [Gitter](https://gitter.im/amark/gun), [Twitter](https://twitter.com/databasegun), [LinkedIn](https://www.linkedin.com/company/gun-inc), and [Facebook](https://www.facebook.com/databasegun)
  - [Share projects you've written](https://github.com/amark/gun/wiki/projects)
  - [Build extensions or squish bugs](https://waffle.io/amark/gun)
-         - If you are working on an extension, familiarize yourself with [Extending GUN's API](https://github.com/amark/gun/wiki/Extending-Gun)
+         - If you are working on an extension, familiarize yourself with [GUN's Module API](https://github.com/amark/gun/wiki/Building-Modules-for-Gun)
 
 ## License
 
