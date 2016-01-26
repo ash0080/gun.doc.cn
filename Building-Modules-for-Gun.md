@@ -6,12 +6,12 @@
 
 # Gun Plugins: a how-to guide
 
-This guide explains how to build drivers and extensions for gun. Basic knowledge about [gun's API](https://github.com/amark/gun/wiki/JS-API) is recommended, but not required to follow along.
+This guide explains how to build drivers and extensions for gun. Basic knowledge about [gun's API](API-(v0.3.x)) is recommended, but not required to follow along.
 
 First, let's get an idea for how gun can be extended and the sorts of hooks it provides to developers. Most plugins for gun will fit into 3 main categories:
 
-- [abstraction layers][abstraction]
-- [persistence layers][persistence]
+- [abstraction layers][#abstraction]
+- [persistence layers][#persistence]
 - [communication layers](#communication)
 
 ### Abstraction
