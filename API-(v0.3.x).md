@@ -424,7 +424,25 @@ gun.path('property') /* is not the same as */ gun.path('property').back
 
 ------------------------------------
 # <a name="on"></a> gun.on(callback)
-Subscribe to changes on a node or property
+Subscribe to changes on a node or property.
+
+## Callback(value, property)
+When the data is changed on the property or node you're listening to, the callback is fired and given the value at that point in time.
+
+## Options
+Currently, the only option is to filter old data, and only be given the changes. If you're listening to a node with 100 fields, and only one changes, you'll be passed a node with a single property, representing the change. Since it's often useful, there's a shorthand for it...
+
+Longhand syntax
+```javascript
+gun.on(callback, {
+  delta: true
+})
+```
+
+Shorthand syntax
+```javascript
+gun.on(callback, true)
+```
 
   - Retrieve the raw javascript data associated with the `key`, and subscribe to all subsequent realtime changes. You want to use this method to actually synchronously react to your data, rather than being stuck in async land.
 
