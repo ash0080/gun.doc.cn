@@ -24,7 +24,7 @@ The responsiblity of get is to find the data requested and stream it back to the
 
 ## name
 
-`get` can handle two types of requests: **[keys](#keys)** and **[relations](#relations)**.
+`get` can handle two types of requests: **[keys](#key)** and **[relations](#relation)**.
 
 #### Key
 
