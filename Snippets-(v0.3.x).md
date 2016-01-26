@@ -6,6 +6,8 @@
 
 This page documents simple code snippets which augment or modify basic gun functionality.
 
+## [Tables](Tables) :arrow_upper_right:
+
 ## Strip metadata from returned nodes
 
 ### `.live()` (to replace `.on()`)
