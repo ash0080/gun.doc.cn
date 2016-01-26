@@ -1,5 +1,5 @@
 #### [Home](https://github.com/amark/gun/wiki)
-#### [[0.3.x Table of Contents|0.3.x-Table-of-Contents]]
+#### [[0.3.x Table of Contents|0.3.x-Table-of-Contents]] (WIP)
 #### [[API v0.3.x|API-(v0.3.x)]] (WIP)
 #### [[API v0.2.x|API-(v0.2.x)]]
 
