@@ -540,20 +540,6 @@ Hopefully this demonstrates some of `.map`s expressive power. But to summarize a
 gun.get(keyName).map() /* is not the same as */ gun.get(keyName)
 ```
 
-
-
-
-<br /><br /><br />
-
-> **Note:** the following documentation is adapted from version `0.2.x`, and is currently under revision.
-
-<br /><br /><br />
-
-
-
-
-
-
 --------------------------------------
 # <a name="not"></a> gun.not(callback)
 Handle cases where data can't be found.
@@ -611,8 +597,23 @@ Those examples demonstrate the power and drama from `.not`. If a peer with the d
 gun.get(keyName).not(handler) /* _might_ be the same as */ gun.get(keyName)
 ```
 
+
+
+
+
+<br /><br /><br />
+
+> **Note:** the following documentation is adapted from version `0.2.x`, and is currently under revision.
+
+<br /><br /><br />
+
+
+
+
+
 --------------------------------------
 # <a name="val"></a> gun.val(callback)
+
 
   - Is the same as **on** except only gets called once after the first peer, including the local peer, replies. It is slower than **on** and should be avoided, but is sometimes necessary. If you are using **val** it probably means your code has become spaghetti and very procedural, **on** is much cleaner and more functional.
 
