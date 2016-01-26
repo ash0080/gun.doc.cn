@@ -1,4 +1,4 @@
-Any GUN library in any language must first start with the Hypothetical Amnesia Machine, which is is the conflict resolution algorithm. Also check out this unfinished wiki: https://github.com/amark/gun/wiki/Conflict-Resolution-with-Guns .
+Any GUN library in any language must first start with the Hypothetical Amnesia Machine, which is is the conflict resolution algorithm. Also check out the wiki page on [Conflict Resolution with Guns](Conflict-Resolution-with-Guns).
 
 Parameters:
 
