@@ -64,8 +64,8 @@ var gun = new Gun(options)
      will likely list the exposed options.
      [Here is a list of such modules...](https://github.com/amark/gun/wiki#modules)
 
-   - `options.init` is a boolean that tells the system whether you want to implicitly create
-	   data if it doesn't exist.
+   - `options.init` is a boolean that tells the system that you want to explicitly create
+      data if it doesn't exist.
 
 ### Examples
 Sync with one peer
@@ -107,8 +107,8 @@ Gun({
     put: putHandler
   },
 
-  // disable implicit collections
-  init: false
+  // disable implicit object saves
+  init: true
 })
 ```
 ---------------------------------------------------------
