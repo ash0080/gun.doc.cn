@@ -252,6 +252,8 @@ It takes three parameters:
 
 You'll almost never need to use the `callback` or `options` parameters, unless you're building bare-metal extensions.
 
+> No options are currently available for this method.
+
 ## Name
 The [`keyName`](#key) string is the name of the data you want to retrieve.
 
@@ -279,16 +281,6 @@ The callback is a listener for errors and raw node data. It may be called multip
 ```javascript
 gun.get(key, function (error, node) {
   // called many times
-})
-```
-
-## Options
-Currently one option is standardized: force gun to draw from persistence, not memory.
-
-```javascript
-// read from storage, not memory
-gun.get(key, null, {
-  force: true
 })
 ```
 
