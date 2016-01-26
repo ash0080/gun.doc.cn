@@ -22,4 +22,4 @@
 
 ---
 
-##### 0.2.x : [[Table of Contents|0.2.x-Table-of-Contents]] | [[API|API-(v0.2.x)]]
+###### 0.2.x : [[Table of Contents|0.2.x-Table-of-Contents]] | [[API|API-(v0.2.x)]]
