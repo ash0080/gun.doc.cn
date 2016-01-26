@@ -28,3 +28,6 @@ GUN is different than many other databases, in a variety of ways.  The following
   
  - **[Host with Amazon AWS](Hosting-with-Amazon-AWS)**  
    While gun does not require a data server, it is frequently useful to have a centralized or always on server.  Using Amazon's AWS service is one way to spin up such a server.
+
+ - **[Building Modules for Gun](Building-Modules-for-Gun)**
+   GUN is designed to be as minimal as possible, with any additional functionality being provided via modules. This page provides an overview of module types and links to building specific types of modules.
