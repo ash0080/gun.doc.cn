@@ -1,3 +1,9 @@
+---
+
+> ### NOTE: Examples work with gun version 0.2.x.  Will be upgrading soon for 0.3.x
+
+---
+
 So you want Tabular data with GUN? Huh? You can do that too! 
 
 ```javascript
