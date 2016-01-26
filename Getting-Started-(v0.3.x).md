@@ -31,3 +31,6 @@ GUN is different than many other databases, in a variety of ways.  The following
 
  - **[Building Modules for Gun](Building-Modules-for-Gun)**
    GUN is designed to be as minimal as possible, with any additional functionality being provided via modules. This page provides an overview of module types and links to building specific types of modules.
+
+ - **[Porting GUN](Porting-GUN)**  
+   While this version of gun is written in JavaScript, there is nothing precluding porting gun to other languages.  This page provides a high-level overview of the conflict resolution algorithm behind gun, to ease the porting process.
