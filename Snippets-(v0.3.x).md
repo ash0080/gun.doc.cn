@@ -5,6 +5,8 @@
 ---
 
 This page documents simple code snippets which augment or modify basic gun functionality.  
+
+Current Snippets are:
 - [Tables](Tables) :arrow_upper_right:
 - [Strip metadata from returned nodes](#strip-metadata-from-returned-nodes)
   - [`.live()` (to replace `.on()`)](#live-to-replace-on)
@@ -15,6 +17,7 @@ This page documents simple code snippets which augment or modify basic gun funct
 - [Preventing data synchronization](#preventing-data-synchronization)
 - [gun.each](#guneach)
 
+---
 
 ## [Tables](Tables) :arrow_upper_right:
   
