@@ -407,14 +407,24 @@ The context will always be different, since `.back`'s only purpose is to change 
 ```javascript
 gun.path('property') /* is not the same as */ gun.path('property').back
 ```
+
+
+
+
 <br /><br /><br />
 
 > **Note:** the following documentation is adapted from version `0.2.x`, and is currently under revision.
 
 <br /><br /><br />
 
+
+
+
+
+
 ------------------------------------
 # <a name="on"></a> gun.on(callback)
+Subscribe to changes on a node or property
 
   - Retrieve the raw javascript data associated with the `key`, and subscribe to all subsequent realtime changes. You want to use this method to actually synchronously react to your data, rather than being stuck in async land.
 
@@ -496,7 +506,7 @@ gun.path('property') /* is not the same as */ gun.path('property').back
 
     - `key` is the key name that could not be found.
 
-    - `kick` is a `function(){}` which you call as `kick(chain)` where `chain` is some gun reference. Generally this is not needed, so you can simply `return chain` instead.
+    - `kick` is a `function(){}` which you call as `kick(chain)` where `chain` is some gun reference. Generally this is discouraged, as it may cause part of the chain to repeat itself.
 
   - `options` none currently available.
 
@@ -505,7 +515,7 @@ gun.path('property') /* is not the same as */ gun.path('property').back
     - ...
       ```javascript
       gun.get('somewhere').not(function(key, kick){
-        return gun.put({hello: "world"}).key(key);
+        gun.put({hello: "world"}).key(key);
       }).val()
       ```
       if `'somewhere'` is not found, we put something on it and set its key. The chain that we `return` becomes the context for the `.val()` which then `console.log`s out `{hello: "world"}`!
