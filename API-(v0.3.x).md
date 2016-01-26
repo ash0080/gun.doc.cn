@@ -197,7 +197,7 @@ gun.path('key').put(value) /* same context as */ gun.path('key')
 # <a name="key"></a>gun.key(name)
 Index your data, so you can find it later, faster.
 
-We can think of keys as variables pointing to an object, and a node can have more than one name. Keys are one of gun's more powerful features.
+We can think of keys as variables pointing to an object, and a node can have more than one name.
 
 The `.key` method takes 3 arguments, and only the first is required:
  - the `name` of the category to join under
@@ -220,18 +220,17 @@ gun.key('examples', null, 'Zwl6PaS4oo7Ivt21X5bU0nds')
 ```
 
 ## Examples
-Aggregating data into a named object
+Aggregating fragmented data into a named object
 
 ```javascript
-gun.get(group).path('members').map(function (member) {
-  // group each member's interests together
-  this.path('interests').key(interests)
-})
+// each member of the chatroom
+gun.get('trace').path([userID, 'profile']).key(userID + '/profile')
+gun.get('battlefleet').path([userID, 'profile']).key(userID + '/profile')
 
-// each member's interests
-// now indexed into a single group
-gun.get(interests)
+gun.get(userID + '/profile')
+// contains the merged sum of all profile information
 ```
+This is especially useful since the intermediate objects might be large, and by putting a key on the data you're looking for, you won't need to perform the costly lookup in the future.
 
 Tagging data on insertion
 ```javascript
