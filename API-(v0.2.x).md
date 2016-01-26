@@ -1,6 +1,11 @@
 ---
 
 ***Please post documentation comments, questions, and suggestions to [[issue #70|https://github.com/amark/gun/issues/70]].***
+  
+--- 
+  
+
+> ## DEPRECATED VERSION 
 
 ---
 
