@@ -4,12 +4,11 @@ Making storage drivers for gun
 
 There are a lot of methods and tools gun provides to manipulate data, but there are only four that have to do with saving reading and writing:
 
-- [Get:](https://github.com/amark/gun/wiki/JS-API#get) fetch from the persistence layer
-- [Put:](https://github.com/amark/gun/wiki/JS-API#put) save to the persistence layer
-- [Key:](https://github.com/amark/gun/wiki/JS-API#key) name groups of data
-- [All:]() aggregate data
+- [Get:](API-(v0.3.x)#get) fetch from the persistence layer
+- [Put:](API-(v0.3.x)#put) save to the persistence layer
+- [Key:](API-(v0.3.x)#key) name groups of data
 
-Luckily, `.all` hasn't been implemented by gun yet, meaning we only have to worry about the other three methods, `.get`, `.put` and `.key`. We'll cover those operations and how they work, then at the end we'll see how to [expose those methods](#exposing-your-functions-to-gun) to gun. If you're looking for a more technical reading, take a look at the [wire spec](Wire-specification-and-API-(v0.2.x)).
+We'll cover these operations and how they work, then at the end we'll see how to [expose those methods](#exposing-your-functions-to-gun) to gun. If you're looking for a more technical reading, take a look at the [wire spec](Wire-specification-and-API-(v0.2.x)).
 
 #### standard arguments
 
