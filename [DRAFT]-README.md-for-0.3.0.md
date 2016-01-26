@@ -52,7 +52,7 @@ GUN is a realtime, distributed, offline-first, graph database engine.
  - GUN users are encouraged to add their projects to this [running projects list](https://github.com/amark/gun/wiki/projects).
 
 ## How to get started
- - Until we complete the [Getting Started with GUN](https://github.com/amark/gun/wiki/getting-started-(v0.3.x)) Guide, please review the [API documentation](0.3.x-API) and [examples' source code](https://github.com/amark/gun/blob/master/examples).
+ - Until we complete the [Getting Started with GUN](https://github.com/amark/gun/wiki/getting-started-(v0.3.x)) Guide, please review the [API documentation](API-(0.3.x)) and [examples' source code](https://github.com/amark/gun/blob/master/examples).
  - Check out and add example code [snippets](https://github.com/amark/gun/wiki/snippets-(0.3.x)) —including micro-modules— to address specific situations.
 
 ## Modules
