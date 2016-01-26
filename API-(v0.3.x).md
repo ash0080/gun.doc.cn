@@ -63,7 +63,7 @@ var gun = new Gun(options)
 
    - `options['module name']` allows you to pass options to a 3rd party module. Their project README
      will likely list the exposed options.
-     [Here is a list of such modules...](https://github.com/amark/gun/wiki#modules)
+     [Here is a list of such modules...](Modules)
 
    - `options.init` is a boolean that tells the system that you want to explicitly create
       data if it doesn't exist.
