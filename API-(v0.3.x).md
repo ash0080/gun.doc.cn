@@ -554,28 +554,54 @@ gun.get(keyName).map() /* is not the same as */ gun.get(keyName)
 
 --------------------------------------
 # <a name="not"></a> gun.not(callback)
+Handle cases where data can't be found.
 
-  - Sometimes you might want to check if data on a key has not yet been defined. **Warning** there is no guarantee that the data does not actually exist somewhere on some peer that got disconnected. But, if you are using gun in a fairly traditional client-server setup this should mostly work but we still advise to avoid it.
+If you need to know whether a property or key exists, you can check with `.not`. It will consult the connected peers and invoke the callback if there's reasonable certainty that none of them have the data available.
 
-  - `callback` is a `function(){}` which gets called as `callback(key, kick)` only if the `key` could not be found, where
+No options are currently available for this method.
 
-    - `key` is the key name that could not be found.
+> **Warning:** `.not` is dangerous, since there is no guarantee that the data doesn't exist elsewhere. Always consider that you may be overwriting other data.
 
-    - `kick` is a `function(){}` which you call as `kick(chain)` where `chain` is some gun reference. Generally this is discouraged, as it may cause part of the chain to repeat itself.
+## Callback(key, kick)
+If there's reason to believe the data doesn't exist, the callback will be invoked. It's purpose is to allow you to handle those cases intelligently. For example, you could check to see if a property doesn't exist, setting it to a default value. As mentioned previously, that can be dangerous, and should only be done if your app seriously depends on it.
 
-  - `options` none currently available.
+The callback takes two arguments, `key` and `kick`.
 
-  - Examples
+> **Note:** returning inside a callback is the same as calling `kick`.
 
-    - ...
-      ```javascript
-      gun.get('somewhere').not(function(key, kick){
-        gun.put({hello: "world"}).key(key);
-      }).val()
-      ```
-      if `'somewhere'` is not found, we put something on it and set its key. The chain that we `return` becomes the context for the `.val()` which then `console.log`s out `{hello: "world"}`!
+### Key/Property
+The name of the property or key that could not be found.
 
-    - Be careful as `.not` is not an idempotent operation! If a false positive does happen, gun will attempt to do a pseudo merge on **get** across nodes sharing the same key.
+### Kick
+`kick` is a function that accepts a chain context. It can be a bit tricky to wrap your head around. Essentially, gun uses your argument as it's new chain context, so no matter what context you were at previously, you can overwrite it using `kick`, sending it out to methods chained after. This is also discouraged, because it makes your code difficult to follow, and also may cause chain divergence. Let's go for something more concrete:
+```javascript
+gun.get(original).not(function (key, kick) {
+  kick(gun.get(otherKeyName))
+}).map(backup)
+```
+In that example, `.not` might have been called if the connected peers could find the data, meaning that `.get(backup)` was used instead. The problem arises when new data is received on `original`, meaning that the original chain finally has data to work from. `.map` is now running on two keys, `original` and `backup`.
+
+## Examples
+Providing defaults if they aren't found
+```javascript
+// if not found
+gun.get('players/3').not(function (key) {
+  // put in an object and key it
+  gun.put({
+    active: false
+  }).key(key)
+}).on(handler)
+// listen for changes on that key
+```
+
+Setting a property if it isn't found
+```javascript
+gun.path('chat.enabled').not(function (path) {
+  gun.path(path).put(false)
+})
+```
+
+Those examples demonstrate the power and drama from `.not`. If a peer with the data you're looking for (client or server) goes offline, you change the value of something, then they eventually rejoin, that information will converge, overwriting their data with yours. `.not` is a powerful tool, but should be used wisely.
 
 --------------------------------------
 # <a name="val"></a> gun.val(callback)
