@@ -1,5 +1,5 @@
 
-Now that we've looked at [[connecting to a peer|Connecting-to-Peers]] and [[putting values in gun|Putting Data]], let's look at retrieving them again. For starters, let's go get Sarah Jane out of the database. We'll start with the values we added during [[Putting Data|Putting Data]].
+Now that we've looked at [[connecting to a peer|API-(v0.2.x)#gun]] and [[putting values in gun|Putting-Data-(v0.2.x)]], let's look at retrieving them again. For starters, let's go get Sarah Jane out of the database. We'll start with the values we added during [[Putting Data|Putting-Data-(v0.2.x)]].
 ```javascript
 gun.get('companion/sarahjane').val(function(sarahjane) {
     console.log(sarahjane.location); // Prints `London` to the console
