@@ -123,6 +123,13 @@ It has three parameters, and only the first is required:
 
 `gun.put(data, callback)`
 
+> **Note:** when using `.put`, if any part of the chain is undefined, it is implicitly set as an empty object.
+```javascript
+gun.get('undefined key').path('undefined.properties').put(true)
+// `.put` creates an empty object on each undefined path/key,
+// and places the value at the last point.
+```
+
 ## Allowed types
 
 `.put` restricts the input to a specific subset:
@@ -257,7 +264,7 @@ You'll almost never need to use the `callback` or `options` parameters, unless y
 ## Name
 The [`keyName`](#key) string is the name of the data you want to retrieve.
 
-> Note that if you use `.path` or `.put` after retrieving a key that doesn't exist, the key is implicitly initialized as an empty object.
+> Note that if you use `.put` at any depth after retrieving a key that doesn't exist, the key is implicitly initialized as an empty object.
 
 ```javascript
 gun.get(existingData).put({ property: 'value' })
@@ -344,8 +351,6 @@ And the array format, which really becomes useful when using variables instead o
 ```javascript
 gun.get('settings').path(['themes', themeName])
 ```
-
-> If at any point the path is undefined, it's implicitly initialized as an empty object.
 
 ### Unexpected behavior
 The dot notation can do some strange things if you're not expecting it. Under the hood, everything is changed into a string, including floating point numbers. If you use a decimal in your path, it will split into two paths...
