@@ -18,7 +18,7 @@ In this example, we'll look at the following objects:
 }
 ```
 
-**Note:** This tutorial assumes that you've already set up a connection to gun, and that the connection is represented by the variable `gun`. You can read more about getting started on the [[Wire specification|Wire-specification-and-API-(v0.2.x)]] page.
+**Note:** This tutorial assumes that you've already set up a connection to gun, and that the connection is represented by the variable `gun`. You can read more about getting started on the [[wire specification|Wire-specification-and-API-(v0.2.x)]] page.
 
 To start off, we'll save Sarah Jane to the key `person/sarahjane`
 
