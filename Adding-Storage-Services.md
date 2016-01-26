@@ -32,7 +32,7 @@ new Gun({
 
 ### saving data with .put
 
-Every save operation in gun channels through `.put`. Gun formats the data before sending it to you, passing it as the first argument using gun's favorite data structure, the **graph**. Graphs are objects filled with other objects a single layer deep, who's property names are randomly generated strings we call "souls". It's pretty hard to visualize, so it can be handy to review [GUN’s Data Format (JSON)](GUN’s-Data-Format-(JSON)) and [Partials and Circular References](Partials-and-Circular-References-(v0.2.x)) before continueing.
+Every save operation in gun channels through `.put`. Gun formats the data before sending it to you, passing it as the first argument using gun's favorite data structure, the **graph**. Graphs are objects filled with other objects a single layer deep, who's property names are randomly generated strings we call "souls". It's pretty hard to visualize, so it can be handy to review [GUN’s Data Format](GUN’s-Data-Format-(JSON)) and [Partials & Circular References](Partials-and-Circular-References-(v0.2.x)) before continuing.
 
 You will need to accept three parameters, `(graph, callback, options)`.
 
