@@ -5,8 +5,8 @@
 
 ##### Background on:
   - [[Semantics|Semantics]]
-  - [[JSON Data Format|JSON-Data-Format]]
-  - [[Partials and Circular References|Partials-and-Circular-References]]
+  - [[GUN's Data Format (JSON)|GUN’s-Data-Format-(JSON)]]
+  - [[Partials and Circular References|Partials and Circular References (v0.2.x)]]
   - [[Hosting with Amazon AWS|Hosting-with-Amazon-AWS]]
 
 ##### More about GUN: 
