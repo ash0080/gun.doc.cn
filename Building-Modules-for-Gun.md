@@ -1,4 +1,4 @@
-> ###**note:** this guide is written for gun@0.2.x and will be outdated with gun@0.3.x, currently being tested on #develop.
+> ###**note:** this guide is written for gun v0.2.x and will be outdated with gun v0.3.x, currently being tested on #develop.
 
 [abstraction]: Adding-methods-to-the-gun-chain-(v0.2.x)
 [persistence]: Adding-persistence-layers-(v0.2.x)
