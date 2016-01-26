@@ -461,6 +461,60 @@ gun.get('lights').path('living room').on(function (state, room) {
 gun.get(keyName).on(handler) /* is the same as */ gun.get(keyName)
 ```
 
+-------------------------------------
+# <a name="map"></a>gun.map(callback)
+Loop over each property in a node, and subscribe to future changes. It's essentially performing a [`.path`](#path) on each field.
+
+If you don't know the property names to [`.path`](#path) into, or need to `"forEach"` over a group of data, the `.map` function is usually your best choice. It accepts two arguments:
+
+ - a `Callback` function
+ - an `Options` object
+
+## Callback(value, property)
+The callback is invoked as new data becomes available, and is subscribed to subsequent changes like [`.on`](#on). Since there may be multiple peers and several layers of data, the callback may be invoked with the same data multiple times, but it will always be the latest at that point in time. It's given both the value and the field it was placed under.
+
+## Options
+Currently, there is just one option. By passing an object with `node` set to true, you can skip primitive values and only iterate over nested objects. That option is so handy that it's found it's own shorthand...
+
+**Longhand syntax**
+```javascript
+gun.map(callback, {
+  node: true
+})
+```
+
+**Shorthand syntax**
+```javascript
+gun.map(callback, true)
+```
+
+## Examples
+
+
+## Chain context
+The context for `.map` is a bit tricky. All [dependent](Chaining#chaining-dependency-table) methods will treat a `.map` context as though it were split into every possible [`.path`](#path) from that object. Stay with me.
+
+If you run a [`.put(null)`](#put) directly after a `.map`, every field will be changed to null. Effectively, the `.map` statement applied the `.put` operation to every property on the object.
+```javascript
+/*
+  where `object` is {
+    field1: 'one',
+    field2: 'two'
+  }
+*/
+gun.get('object').map().put(null)
+/*
+  now `object` is {
+    field1: null,
+    field2: null
+  }
+*/
+```
+Hopefully this demonstrates some of `.map`s expressive power. But to summarize and stick with the `Chain Context` tradition, here's the gist:
+```javascript
+gun.get(keyName).map() /* is not the same as */ gun.get(keyName)
+```
+
 
 
 
@@ -473,47 +527,6 @@ gun.get(keyName).on(handler) /* is the same as */ gun.get(keyName)
 
 
 
-
-
--------------------------------------
-# <a name="map"></a>gun.map(callback)
-
-  - Rather than having to know each field in advance and have to path into it separately, we can iterate over each field dynamically.
-
-  - `callback` is a `function(){}` which gets called as `callback(data, field)`, you can either use it as is or in conjunction with **on** or **val**. In the future this `callback` will be used to filter the data or do arbitrary queries.
-
-  - `options` as `true` aggregates into an `{obj:'ect'}` with
-
-    - `options.node` as `true` makes map only iterate over nested objects, skipping primitive values.
-
-  - Examples
-
-    - ...
-      ```javascript
-      gun.get('user/thedoctor').map(function(value, field){
-        console.log("For each field", value, field);
-        // '770-090-0461', 'phone'
-        // 'The Doctor', 'title'
-      })
-      ```
-
-    - ...
-      ```javascript
-      gun.get('user/thedoctor').map().on(function(value, field){
-        console.log("For each field, and on every change", value, field);
-        // '770-090-0461', 'phone'
-        // 'The Doctor', 'title'
-      })
-      ```
-
-    - ...
-      ```javascript
-      gun.get('user/thedoctor').map().val(function(value, field){
-        console.log("For each field, just once", value, field);
-        // '770-090-0461', 'phone'
-        // 'The Doctor', 'title'
-      })
-      ```
 
 
 --------------------------------------
