@@ -32,7 +32,7 @@ A key is a graph containing relation objects, each pointing to other objects. `g
 
 #### Relation
 
-A relation is an object that points to another object, or *references* that object. Relations are always objects containing only one property named `"#"`, who's value is a `soul` ([more detail](graph-structure.md)). When passed a relation, `get` should return a graph containing the object it points to, keyed by it's soul.
+A relation is an object that points to another object, or *references* that object. Relations are always objects containing only one property named `"#"`, who's value is a `soul` ([more detail](GUN’s-Data-Format-(JSON))). When passed a relation, `get` should return a graph containing the object it points to, keyed by it's soul.
 
 ### callback(error, okay)
 
