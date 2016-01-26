@@ -15,7 +15,7 @@ Graphs accurately model these 4 properties, so these properties are correspondin
 
 This next part may be confusing, but it is summarizing the above: The specified algorithm guarantees the deterministic convergence of every value at the known states over every machine within the operating boundary. It however does not guarantee linearizability of states because not all states may be known during the operating boundary of the machine, thus it is eventually consistent. If linearizability must be achieved then the data itself needs to explicitly link its sequencing which can be done ontop of this specification.
 
-Please see `function HAM` in [gun core](../../blob/master/gun.js) for the javascript implementation of this algorithm.
+Please see `function HAM` in [gun core](../blob/master/gun.js) for the javascript implementation of this algorithm.
 
 ### Considerations
 
