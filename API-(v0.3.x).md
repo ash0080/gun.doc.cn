@@ -5,8 +5,6 @@
 
 ---------------------------------------------------------------------
 
-> **This page is currently being written**
-
 **Table of Contents**
  - [Gun constructor](#Gun)
  - [gun.put](#put)
@@ -598,20 +596,6 @@ Those examples demonstrate the power and drama from `.not`. If a peer with the d
 ```javascript
 gun.get(keyName).not(handler) /* _might_ be the same as */ gun.get(keyName)
 ```
-
-
-
-
-
-<br /><br /><br />
-
-> **Note:** the following documentation is adapted from version `0.2.x`, and is currently under revision.
-
-<br /><br /><br />
-
-
-
-
 
 --------------------------------------
 # <a name="val"></a> gun.val(callback)
