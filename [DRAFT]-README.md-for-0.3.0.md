@@ -78,7 +78,7 @@ Thanks to the following people who have contributed to GUN, via code, issues, or
 
 This list of contributors was manually compiled and alphabetically sorted. If we missed you, please submit an issue so we can get you added!
 
-## [Changelog](https://github.com/amark/gun/blob/develop/CHANGELOG.md#03)
+## [Changelog](https://github.com/amark/gun/blob/master/CHANGELOG.md#03)
 
 Also see the current [Release List](https://github.com/amark/gun/releases) and [Tag List](https://github.com/amark/gun/tags) for quick access to relevant versions.
 
