@@ -1,12 +1,11 @@
+> v0.2.x is deprecated in favor of [v0.3.x](API-(v0.3.x))
+---
+
 ---
 
 ***Please post documentation comments, questions, and suggestions to [[issue #70|https://github.com/amark/gun/issues/70]].***
   
 --- 
-  
-## DEPRECATED VERSION 
-
----
 
 ### **Gun** 
 #### `var gun = Gun(options)`
