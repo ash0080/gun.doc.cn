@@ -10,25 +10,15 @@
 **Table of Contents**
  - [Gun constructor](#Gun)
  - [gun.put](#put)
-   - [accepted values](#allowed-types)
-   - [callback](#callbackerror-ok)
    - [examples](#examples-1)
    - [chain](#chain-context)
  - [gun.key](#key)
-   - [name](#name)
-   - [callback](#callbackerror-ok-1)
-   - [options](#options-1)
    - [examples](#examples-2)
    - [chain](#chain-context-1)
  - [gun.get](#get)
-   - [name](#name-1)
-   - [callback](#callbackerror-node)
-   - [options](#options-2)
    - [examples](#examples-3)
    - [chain](#chain-context-2)
  - [gun.path](#path)
-   - [property](#property)
-   - [callback](#callbackerror-data-property)
    - [chain](#chain-context-3)
  - [gun.back](#back)
    - [examples](#examples-4)
@@ -421,14 +411,119 @@ gun.path('property') /* is not the same as */ gun.path('property').back
 ------------------------------------
 # <a name="on"></a> gun.on(callback)
 
+  - Retrieve the raw javascript data associated with the `key`, and subscribe to all subsequent realtime changes. You want to use this method to actually synchronously react to your data, rather than being stuck in async land.
+
+  - `callback` is a `function(){}` which gets called as `callback(data, field)` and every time the node changes. Where
+
+    - `data` is a raw javascript object or primitive.
+
+    - `field` is the field name it came from, if any.
+
+  - `options` as `true` aggregates into an `{obj:'ect'}` with
+
+    - `options.change` as `true` makes `data` only have the delta difference of the change that happened, rather than the full node again and again.
+
+  - Examples
+
+    - ... 
+      ```javascript
+      gun.get('user/thedoctor').on(function(who, field){
+        console.log('The Doctor', who, field);
+        // {title: "The Doctor", phone: '770-090-0461'}
+      })
+      ```
+
+    - While this looks no different from above, the `delta` will be on subsequent events. 
+      ```javascript
+      gun.get('user/thedoctor').on(function(delta, field){
+        console.log('What changes happened to The Doctor?', delta, field);
+        // {title: "The Doctor", phone: '770-090-0461'}
+      }, true)
+      ```
 
 -------------------------------------
 # <a name="map"></a>gun.map(callback)
+
+  - Rather than having to know each field in advance and have to path into it separately, we can iterate over each field dynamically.
+
+  - `callback` is a `function(){}` which gets called as `callback(data, field)`, you can either use it as is or in conjunction with **on** or **val**. In the future this `callback` will be used to filter the data or do arbitrary queries.
+
+  - `options` as `true` aggregates into an `{obj:'ect'}` with
+
+    - `options.node` as `true` makes map only iterate over nested objects, skipping primitive values.
+
+  - Examples
+
+    - ...
+      ```javascript
+      gun.get('user/thedoctor').map(function(value, field){
+        console.log("For each field", value, field);
+        // '770-090-0461', 'phone'
+        // 'The Doctor', 'title'
+      })
+      ```
+
+    - ...
+      ```javascript
+      gun.get('user/thedoctor').map().on(function(value, field){
+        console.log("For each field, and on every change", value, field);
+        // '770-090-0461', 'phone'
+        // 'The Doctor', 'title'
+      })
+      ```
+
+    - ...
+      ```javascript
+      gun.get('user/thedoctor').map().val(function(value, field){
+        console.log("For each field, just once", value, field);
+        // '770-090-0461', 'phone'
+        // 'The Doctor', 'title'
+      })
+      ```
 
 
 --------------------------------------
 # <a name="not"></a> gun.not(callback)
 
+  - Sometimes you might want to check if data on a key has not yet been defined. **Warning** there is no guarantee that the data does not actually exist somewhere on some peer that got disconnected. But, if you are using gun in a fairly traditional client-server setup this should mostly work but we still advise to avoid it.
+
+  - `callback` is a `function(){}` which gets called as `callback(key, kick)` only if the `key` could not be found, where
+
+    - `key` is the key name that could not be found.
+
+    - `kick` is a `function(){}` which you call as `kick(chain)` where `chain` is some gun reference. Generally this is not needed, so you can simply `return chain` instead.
+
+  - `options` none currently available.
+
+  - Examples
+
+    - ...
+      ```javascript
+      gun.get('somewhere').not(function(key, kick){
+        return gun.put({hello: "world"}).key(key);
+      }).val()
+      ```
+      if `'somewhere'` is not found, we put something on it and set its key. The chain that we `return` becomes the context for the `.val()` which then `console.log`s out `{hello: "world"}`!
+
+    - Be careful as `.not` is not an idempotent operation! If a false positive does happen, gun will attempt to do a pseudo merge on **get** across nodes sharing the same key.
 
 --------------------------------------
 # <a name="val"></a> gun.val(callback)
+
+  - Is the same as **on** except only gets called once after the first peer, including the local peer, replies. It is slower than **on** and should be avoided, but is sometimes necessary. If you are using **val** it probably means your code has become spaghetti and very procedural, **on** is much cleaner and more functional.
+
+  - `callback` is a `function(){}` which gets called as `callback(data, field)` once after the node has been loaded, and has no realtime features.
+
+  - `options` none currently available.
+
+  - Examples
+
+    - ... 
+      ```javascript
+      gun.get('user/thedoctor').val(function(who, field){
+        console.log('The Doctor', who, field);
+        // {title: "The Doctor", phone: '770-090-0461'}
+      })
+      ```
+
+    - `gun.get('user/thedoctor').val()` will automatically `console.log`, for easy debugging purposes.
