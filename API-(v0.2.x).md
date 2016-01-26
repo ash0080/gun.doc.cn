@@ -45,7 +45,7 @@
 
  - Saves the object.
 
- - `object` is a javascript `{obj:'ect'}`, it can be deeply nested, be a [[partial|Partials and Circular References]], or have [[circular references|Partials and Circular References#circular-references]] in it, but it cannot have the following values inside of it: `undefined`, `Infinity`, `NaN`, `[]`.
+ - `object` is a javascript `{obj:'ect'}`, it can be deeply nested, be a [[partial|Partials and Circular References (v0.2.x)]], or have [[circular references|Partials and Circular References (v0.2.x)#circular-references]] in it, but it cannot have the following values inside of it: `undefined`, `Infinity`, `NaN`, `[]`.
 
  - `callback` is a `function(){}` which gets called as `callback(err, ok)` after the highest level of persistence has happened per each connected peer. As long as there is no `err` then things should be ok, `ok` may not be defined. Acknowledgement of persistence is slow, but the write propagates across the network as fast as the pipes connecting them.
 
