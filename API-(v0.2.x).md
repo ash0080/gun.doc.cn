@@ -4,8 +4,7 @@
   
 --- 
   
-
-> ## DEPRECATED VERSION 
+## DEPRECATED VERSION 
 
 ---
 
