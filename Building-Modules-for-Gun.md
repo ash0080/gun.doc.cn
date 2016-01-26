@@ -1,8 +1,8 @@
 > ###**note:** this guide is written for gun v0.2.x and will be outdated with gun v0.3.x, currently being tested on #develop.
 
-[abstraction]: Adding-methods-to-the-gun-chain-(v0.2.x)
-[persistence]: Adding-persistence-layers-(v0.2.x)
-[communication]: Adding-communication-layers-(v0.2.x)
+[#abstraction]: Adding-methods-to-the-gun-chain-(v0.2.x)
+[#persistence]: Adding-persistence-layers-(v0.2.x)
+[#communication]: Adding-communication-layers-(v0.2.x)
 
 # Gun Plugins: a how-to guide
 
@@ -16,11 +16,11 @@ First, let's get an idea for how gun can be extended and the sorts of hooks it p
 
 ### Abstraction
 
-Likely the easiest of the three, gun's API is fully extensible, allowing you to define your own methods and abstraction layers or pull in existing ones. If this interests you or if you just want to jump in and start coding, read [this guide][abstraction].
+Likely the easiest of the three, gun's API is fully extensible, allowing you to define your own methods and abstraction layers or pull in existing ones. If this interests you or if you just want to jump in and start coding, read [Adding Methods to the GUN Chain][Adding-Methods-to-the-Gun-Chain].
 
 ### Persistence
 
-Since gun's main goal is to synchronize data between clients and servers, it doesn't take a strong stance on how your data is saved. Client side, it defaults to localStorage, while server side it exports to a file named `data.json`, although it's designed with plugins in mind so that your favorite storage engine, whether it be levelDB, Hadoop, IndexedDB, AWS, etc., should painlessly integrate with your project. Building a plugin for gun's persistence layer is fairly straightforward, and is outlined in [this guide][persistence].
+Since gun's main goal is to synchronize data between clients and servers, it doesn't take a strong stance on how your data is saved. Client side, it defaults to localStorage, while server side it exports to a file named `data.json`, although it's designed with plugins in mind so that your favorite storage engine, whether it be levelDB, Hadoop, IndexedDB, AWS, etc., should painlessly integrate with your project. Building a plugin for gun's persistence layer is fairly straightforward, and is outlined in [Adding Storage Services][Adding-Storage-Services].
 
 ### Communication
 
