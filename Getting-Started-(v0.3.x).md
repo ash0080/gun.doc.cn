@@ -12,6 +12,12 @@ And, if you'd like to contribute, helping with this page is a great place to sta
 
 GUN is different than many other databases, in a variety of ways.  The following pages provide a background on some of the theories behind gun, as well as examples of gun's implementation.  While it isn't necessary to read these to use gun, these explanations are useful to understanding how and why gun works the way it does.
 
+ - **[GUN’s Data Format (JSON)](GUN’s-Data-Format-(JSON))**  
+   GUN saves data in its own subset of JSON.  This page provides an overview of gun's use of JSON.
+
+ - **[Partials and Circular References (v0.2.x)](Partials-and-Circular-References-(v0.2.x))**  
+   Because gun is a graph database, it supports circular references between data.  This is accomplished via the use of partial nodes and references.  This page provides an overview and examples of gun's partials and circular references.
+
  - **[CAP Theorem](CAP-Theorem)**  
    An overview of tradeoffs that GUN decides to default to in relation to the CAP Theorem.
 
