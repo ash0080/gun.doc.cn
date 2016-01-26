@@ -10,7 +10,7 @@ For instance, take this object.
 }
 ```
 
-This object is composed of **field** and **value** pairs, where a value is always either `null`, `true` or `false`, a _number_ or _decimal_, a _string_, or a _relation_. For clarity, GUN will use a consistent [[vocabulary|Semantics]], where values are primitives that get saved as a whole update on their field.
+This object is composed of **field** and **value** pairs, where a value is always either `null`, `true` or `false`, a _number_ or _decimal_, a _string_, or a _relation_. For clarity, GUN will use a consistent [[vocabulary|Glossary]], where values are primitives that get saved as a whole update on their field.
 
 In order for GUN to deterministically converge on an update across many decentralized peers, it has to hold meta data about the fields and their values. This meta data is included in the GUN object itself, objects in GUN are called a **node**.
 
