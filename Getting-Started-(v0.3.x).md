@@ -4,7 +4,7 @@
 
 --- 
 
-Until we complete this Getting Started Guide, please review the [API documentation](API-(v0.2.x)) and [examples' source code](../gun/blob/master/examples).
+Until we complete this Getting Started Guide, please review the [API documentation](API-(v0.3.x)) and [examples' source code](../gun/blob/master/examples).
 
 And, if you'd like to contribute, helping with this page is a great place to start. :wink: 
 
