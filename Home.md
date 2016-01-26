@@ -1,39 +1,78 @@
 
 
-## [v0.2.x API Documentation](API-(v0.2.x))
- - [Example snippets](Snippets-(0.2.x))
+<h2>Table of Contents
+<a href="https://travis-ci.org/amark/gun"><img align="right" alt="Build status" src="https://travis-ci.org/amark/gun.svg?branch=master" /></a>
+<a href="https://gitter.im/amark/gun?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"><img align="right" alt="Gitter channel" src="https://badges.gitter.im/Join%20Chat.svg" /></a>
+</h2>
 
-## Modules
-  - [Schema by RangerMauve](https://github.com/gundb/gun-schema)
-  - [LevelDB driver by PsychoLlama](https://github.com/PsychoLlama/gun-level)
-  - [Namespaces for gun by PsychoLlama](https://github.com/PsychoLlama/Reticle)
 
-## [Projects](https://github.com/amark/gun/wiki/projects) 
-  - [Add yours!](https://github.com/amark/gun/wiki/projects)
-  - [TodoMVC by jveres](https://github.com/jveres/todomvc) [(live demo)](http://todos.loqali.com/)
-  - [Trace game by PsychoLlama](https://github.com/PsychoLlama/Trace)
+### **[API Reference](API-(v0.3.x))** 
 
-### Background on
-  - [[Semantics|Semantics]]
-  - [[JSON Data Format|JSON-Data-Format]]
-  - [[Partials and Circular References|Partials-and-Circular-References]]
-  - [[Using Tables with GUN|Tables]]
-  - [[Using Amazon AWS S3 As a Backup|Hosting-with-Amazon-AWS]]
+ - [Gun constructor](API-(v0.3.x)#Gun)
+ - [gun.put](API-(v0.3.x)#put)
+ - [gun.key](API-(v0.3.x)#key)
+ - [gun.get](API-(v0.3.x)#get)
+ - [gun.path](API-(v0.3.x)#path)
+ - [gun.back](API-(v0.3.x)#back)
+ - [gun.on](API-(v0.3.x)#on)
+ - [gun.map](API-(v0.3.x)#map)
+ - [gun.val](API-(v0.3.x)#val)
+ - [gun.not](API-(v0.3.x)#not)  
+  
+[Chaining](Chaining-(v0.3.x)) - reference table for chaining dependencies  
 
-### More about GUN
-  - [[Conflict Resolution|Conflict-Resolution-with-Guns]]
-  - [[CAP Theorem|CAP-Theorem]]
-  - [[Sharding|Sharding]]
 
-***
-Please post
- - **_usage questions_** to [StackOverflow with the [gun] tag](http://stackoverflow.com/questions/tagged/gun)
- - **_issues_** to [GitHub issues](https://github.com/amark/gun/issues)
- - **_discussion_** to [gitter](https://gitter.im/amark/gun)
+### [Modules](Modules) 
+   GUN is designed to be as minimal as possible, with any additional functionality being provided via modules.  Please refer to the [modules](modules) page for a list of existing extensions. Please refer to the [gun-extensions](https://github.com/gundb/gun-extensions/issues) repo to see what extensions have been requested or to request an extension.
 
-***
+### [Projects](Projects) 
+   GUN users are encouraged to add their projects to this [running projects list](projects).
 
-### Version 0.2.x issue status: [![Queued](https://badge.waffle.io/amark/gun.svg?label=Queue&title=Queue)](http://waffle.io/amark/gun) [![In Progress](https://badge.waffle.io/amark/gun.svg?label=InProgress&title=In%20Progress)](http://waffle.io/amark/gun) [![Pending Deploy](https://badge.waffle.io/amark/gun.svg?label=Pending&title=Done)](http://waffle.io/amark/gun)
-***
 
-### [[0.1.0 Documentation|0.1.x-Table-of-Contents]]
+### [Snippets](Snippets-(v0.3.x))  
+   [Snippets](Snippets-(v0.3.x)) provide small examples of using gun and include micro-modules.
+
+
+### Getting Started
+ - If you haven't already done so, check out the [README](../blob/master/README.md).
+ - Until we complete the [Getting Started with GUN](getting-started-(v0.3.x)) Guide, please review the [API documentation](API-(v0.3.x)) and [examples' source code](../blob/master/examples).
+ - Check out and add example code [snippets](snippets-(v0.3.x)) —including micro-modules— to address specific situations.
+
+### Getting Assistance
+
+<dl>
+  <dt>Usage Questions</dt>
+  <dd>Use the <code>gun</code> tag on
+    <a href="http://stackoverflow.com/questions/tagged/gun">StackOverflow</a>
+  </dd>
+
+  <dt>Issues</dt>
+  <dd>Add an issue to our
+    <a href="../issues">GitHub repo</a>
+  </dd>
+
+  <dt>Discussion</dt>
+  <dd>Say hello on our
+    <a href="https://gitter.im/amark/gun">Gitter channel</a>
+  </dd>
+</dl>
+
+### Contributing
+There are many ways that you can contribute to gun, some of the more popular are to:  
+ - Star this repo
+ - Follow us and share your appreciation via [Twitter](https://twitter.com/databasegun), [LinkedIn](https://www.linkedin.com/company/gun-inc), and [Facebook](https://www.facebook.com/databasegun)
+ - [Share projects you've written](projects)
+ - [Build extensions or squish bugs](https://waffle.io/amark/gun)
+         - If you are working on an extension, familiarize yourself with the [Extending GUN's API](Building-Modules-for-Gun)
+
+## [License](../blob/master/LICENSE.md)
+
+Designed with ♥ by Mark Nadal, the gun team, and many very awesome contributors.  Liberally licensed under [Zlib / MIT / Apache 2.0](../blob/master/LICENSE.md).
+
+## [Changelog](https://github.com/amark/gun/blob/develop/changelog.md#03)
+
+Also see the current [Release List](../releases) and [Tag List](../tags) for quick access to relevant versions.
+
+==========================
+<a name="stay-up-to-date"></a>
+[![YouTube](https://img.shields.io/badge/You-Tube-red.svg)](https://www.youtube.com/channel/UCQAtpf-zi9Pp4__2nToOM8g) [![LinkedIn](https://img.shields.io/badge/Linked-In-blue.svg)](https://www.linkedin.com/company/gun-inc) [![Twitter Follow](https://img.shields.io/twitter/follow/databasegun.svg?style=social)](https://twitter.com/databasegun)
