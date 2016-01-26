@@ -424,55 +424,54 @@ gun.path('property') /* is not the same as */ gun.path('property').back
 
 ------------------------------------
 # <a name="on"></a> gun.on(callback)
-Subscribe to changes on a node or property.
+Subscribe to updates changes on a node or property real-time.
 
 ## Callback(value, property)
-When the data is changed on the property or node you're listening to, the callback is fired and given the value at that point in time.
+When the property or node you're focused on is changed, the callback is immediately fired and given the value as it is at that point in time.
+
+Since gun uses data streams, the callback will probably be called multiple times as new chunk comes in.
 
 ## Options
-Currently, the only option is to filter old data, and only be given the changes. If you're listening to a node with 100 fields, and only one changes, you'll be passed a node with a single property, representing the change. Since it's often useful, there's a shorthand for it...
+Currently, the only option is to filter old data, and be given the changes, but nothing more. If you're listening to a node with 100 fields, and just one changes, you'll be passed a node with a single property representing that change. Since it's often useful, there's a shorthand for it...
 
-Longhand syntax
+**Longhand syntax**
 ```javascript
 gun.on(callback, {
   delta: true
 })
 ```
 
-Shorthand syntax
+**Shorthand syntax**
 ```javascript
 gun.on(callback, true)
 ```
 
-  - Retrieve the raw javascript data associated with the `key`, and subscribe to all subsequent realtime changes. You want to use this method to actually synchronously react to your data, rather than being stuck in async land.
+## Examples
+Listening for updates on a key
+```javascript
+gun.path('users/' + username).on(function (user) {
+  // update in real-time
+  if (user.online) {
+    view.show.active(user.name)
+  } else {
+    view.show.offline(user.name)
+  }
+})
+```
 
-  - `callback` is a `function(){}` which gets called as `callback(data, field)` and every time the node changes. Where
+Listening to updates on a field
+```javascript
+gun.get('lights').path('living room').on(function (state, room) {
+  // update the UI when the living room lights change state
+  view.lights[room].show(state)
+})
+```
 
-    - `data` is a raw javascript object or primitive.
-
-    - `field` is the field name it came from, if any.
-
-  - `options` as `true` aggregates into an `{obj:'ect'}` with
-
-    - `options.change` as `true` makes `data` only have the delta difference of the change that happened, rather than the full node again and again.
-
-  - Examples
-
-    - ... 
-      ```javascript
-      gun.get('user/thedoctor').on(function(who, field){
-        console.log('The Doctor', who, field);
-        // {title: "The Doctor", phone: '770-090-0461'}
-      })
-      ```
-
-    - While this looks no different from above, the `delta` will be on subsequent events. 
-      ```javascript
-      gun.get('user/thedoctor').on(function(delta, field){
-        console.log('What changes happened to The Doctor?', delta, field);
-        // {title: "The Doctor", phone: '770-090-0461'}
-      }, true)
-      ```
+## Chain Context
+`gun.on` does not change the chain context.
+```javascript
+gun.get(keyName).on(handler) /* is the same as */ gun.get(keyName)
+```
 
 -------------------------------------
 # <a name="map"></a>gun.map(callback)
