@@ -136,8 +136,8 @@ gun.get('undefined key').path('undefined.properties').put(true)
 `.put` restricts the input to a specific subset:
 
  - `objects`:
-   [partial](https://github.com/amark/gun/wiki/Partials-and-Circular-References#),
-   [circular](https://github.com/amark/gun/wiki/Partials-and-Circular-References#circular-references), and nested
+   [partial](Partials-and-Circular-References-(v0.2.x)),
+   [circular](Partials-and-Circular-References-(v0.2.x)#circular-references), and nested
  - `strings`
  - `numbers`
  - `booleans`
