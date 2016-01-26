@@ -19,6 +19,7 @@
 
 ### [Projects](Projects)
 ### [Modules](Modules)
+### [Snippets](Snippets)
 
 ---
 
