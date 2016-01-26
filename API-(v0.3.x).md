@@ -18,20 +18,21 @@
    - [chain](#chain-context-2)
  - [gun.path](#path)
    - [chain](#chain-context-3)
- - [gun.back](#back)
    - [examples](#examples-4)
+ - [gun.back](#back)
+   - [examples](#examples-5)
    - [chain](#chain-context-4)
  - [gun.on](#on)
-   - [examples](#examples-5)
+   - [examples](#examples-6)
    - [chain](#chain-context-5)
  - [gun.map](#map)
-   - [examples](#examples-6)
+   - [examples](#examples-7)
    - [chain](#chain-context-6)
  - [gun.not](#not)
-   - [examples](#examples-7)
+   - [examples](#examples-8)
    - [chain](#chain-context-7)
  - [gun.val](#val)
-   - [examples](#examples-8)
+   - [examples](#examples-9)
    - [chain](#chain-context-8)
 
 # <a name="Gun"></a>Gun(options)
@@ -370,6 +371,30 @@ The `callback` is used by bare-metal extensions to provide handling for errors a
  - `error`
  - the `data` partial
  - the `property` name
+
+## Examples
+Navigating to a property
+```javascript
+/*
+  where `user` is {
+    name: 'Bob'
+  }
+*/
+gun.get('user').path('name')
+```
+Once you've focused on the `name` property, you can chain other methods like [`.put`](#put) or [`.on`](#on) to interact with it.
+
+Moving through multiple properties
+```javascript
+/*
+  where `user` is {
+    name: { first: 'bob' }
+  }
+*/
+gun.get('user').path('name').path('first')
+// or the shorthand...
+gun.get('user').path('name.first')
+```
 
 ## Chain context
 `gun.path` creates a new context each time it's called, and is always a result of the previous context.
