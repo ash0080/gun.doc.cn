@@ -24,6 +24,8 @@
    - [examples](#examples-4)
    - [chain](#chain-context-4)
  - [gun.on](#on)
+   - [examples](#examples-5)
+   - [chain](#chain-context-5)
  - [gun.map](#map)
  - [gun.val](#val)
  - [gun.not](#not)
