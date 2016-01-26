@@ -29,8 +29,10 @@
  - [gun.map](#map)
    - [examples](#examples-6)
    - [chain](#chain-context-6)
- - [gun.val](#val)
  - [gun.not](#not)
+   - [examples](#examples-7)
+   - [chain](#chain-context-7)
+ - [gun.val](#val)
 
 # <a name="Gun"></a>Gun(options)
 Used to creates a new gun database instance.
@@ -602,6 +604,12 @@ gun.path('chat.enabled').not(function (path) {
 ```
 
 Those examples demonstrate the power and drama from `.not`. If a peer with the data you're looking for (client or server) goes offline, you change the value of something, then they eventually rejoin, that information will converge, overwriting their data with yours. `.not` is a powerful tool, but should be used wisely.
+
+## Chain Context
+`.not` may or may not change the context, depending on how it's used. It has developer-facing methods for manually changing the context, depending on whether or not data was found.
+```javascript
+gun.get(keyName).not(handler) /* _might_ be the same as */ gun.get(keyName)
+```
 
 --------------------------------------
 # <a name="val"></a> gun.val(callback)
