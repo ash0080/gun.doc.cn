@@ -18,7 +18,7 @@ GUN is different than many other databases, in a variety of ways.  The following
  - **[Conflict Resolution with Guns](Conflict-Resolution-with-Guns)**  
    An overview of how gun merges data.
 
- - **[DAP Theorem](DAP-Theorem)  
+ - **[DAP Theorem](DAP-Theorem)**  
    An overview of the relationship between decentralization, anonymity, and privacy.
 
 
