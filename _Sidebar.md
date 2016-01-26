@@ -4,7 +4,7 @@
 #### 0.3.x (WIP)
  - [[Table of Contents|0.3.x-Table-of-Contents]]
  - [[Getting Started|Getting-Started-(v0.3.x)]]
- - [[API|API-(v0.3.x)]]
+ - **[[API|API-(v0.3.x)]]**
 
 ##### Background on:
   - [[Semantics|Semantics]]
