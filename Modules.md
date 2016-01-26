@@ -1,3 +1,9 @@
- - [Schema](https://github.com/gundb/gun-schema)  by [RangerMauve](https://github.com/RangerMauve)
- - [LevelDB driver](https://github.com/PsychoLlama/gun-level) by [PsychoLlama](https://github.com/PsychoLlama)
- - [Namespaces for gun](https://github.com/PsychoLlama/Reticle) by [PsychoLlama](https://github.com/PsychoLlama)
+### [gun-schema](https://github.com/gundb/gun-schema)
+Schema validation module for node and the browser.<br />
+~ By [RangerMauve](https://github.com/RangerMauve)
+
+### [gun-level](https://github.com/PsychoLlama/gun-level)
+A LevelDB adapter that works with the levelDB module ecosystem.
+
+### [reticle](https://github.com/PsychoLlama/Reticle)
+Namespace your data, preventing naming conflicts and clear separation between apps.
