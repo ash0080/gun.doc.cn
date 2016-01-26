@@ -60,4 +60,4 @@ gun.get('companion/sarahjane').path('canine').put({
 }).key('canine/k9');
 ```
 
-For more information on getting data from GUN, check out the [[Getting Data|Getting Data]] wiki page.
+For more information on getting data from GUN, check out the [[Getting Data|Getting-Data-(v0.2.x)]] wiki page.
