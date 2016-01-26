@@ -63,7 +63,7 @@ GUN is designed to be as minimal as possible, with any additional functionality 
  - Follow us and share your appreciation via [Twitter](https://twitter.com/databasegun), [LinkedIn](https://www.linkedin.com/company/gun-inc), and [Facebook](https://www.facebook.com/databasegun)
  - [Share projects you've written](https://github.com/amark/gun/wiki/projects)
  - [Build extensions or squish bugs](https://waffle.io/amark/gun)
-         - If you are working on an extension, familiarize yourself with the [Extending GUN's API](https://github.com/amark/gun/wiki/Extending-Gun)
+         - If you are working on an extension, familiarize yourself with [Extending GUN's API](https://github.com/amark/gun/wiki/Extending-Gun)
 
 ## License
 
@@ -80,7 +80,7 @@ This list of contributors was manually compiled and alphabetically sorted. If we
 
 ## [Changelog](https://github.com/amark/gun/blob/develop/CHANGELOG.md#03)
 
-Also see the current [Release List](https://github.com/amark/gun/wiki/releases) and [Tag List](https://github.com/amark/gun/tags) for quick access to relevant versions.
+Also see the current [Release List](https://github.com/amark/gun/releases) and [Tag List](https://github.com/amark/gun/tags) for quick access to relevant versions.
 
 ==========================
 <a name="stay-up-to-date"></a>
