@@ -655,3 +655,9 @@ Printing a value to the console
 gun.path('property').val()
 // `console.log` is automatically called
 ```
+
+## Chain Context
+`gun.val` does not change the chain context.
+```javascript
+gun.get(keyName).val() /* is the same as */ gun.get(keyName)
+```
