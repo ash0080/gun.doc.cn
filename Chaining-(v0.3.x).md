@@ -1,4 +1,8 @@
+---
 
+# NEEDS TO BE VALIDATED/UPDATED FOR v0.3.0
+
+---
 
 Chained functions may be context independent of their proceeding function, or they may be dependent on the results of the proceeding function.  The Chaining Dependency Table below shows the relationship between immediately adjacent, chained functions.  
 
