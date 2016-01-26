@@ -216,6 +216,6 @@ Since this function could potentially be run several times, we test to see if we
 
 It should be mentioned that you can override these methods on the server *and* on the client, meaning that you can exchange the localStorage engine with something else.
 
-If you want succinct documentation for the `.get`, `.put` and `.key` contracts, you can [find it here](Wire-specification-and-API-(v0.2.x)).
+If you want succinct documentation for the `.get`, `.put` and `.key` contracts, you can find it in the [Wire specification and API](Wire-specification-and-API-(v0.2.x)).
 
 That should be about everything you'd want to know about making a persistence layer. If you have any questions, submit an issue or post in our [gitter channel](https://gitter.im/amark/gun) and we'll do our best to answer them! Thanks for reading :)
