@@ -7,7 +7,7 @@
  - **[[API|API-(v0.3.x)]]**
 
 ##### Background on:
-  - [[Semantics|Semantics]]
+  - [[Glossary|Glossary]]
   - [[GUN's Data Format (JSON)|GUN’s-Data-Format-(JSON)]]
   - [[Partials and Circular References|Partials and Circular References (v0.2.x)]]
   - [[Hosting with Amazon AWS|Hosting-with-Amazon-AWS]]
