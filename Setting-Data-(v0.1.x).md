@@ -63,4 +63,4 @@ gun.load('person/cecil').path('cat').set({
 }).key('cat/khoshekh');
 ```
 
-For more information on getting data from GUN, check out [[the wiki page|Getting Data-(v.0.1.0)]].
+For more information on getting data from GUN, check out [[Getting Data|https://github.com/amark/gun/wiki/0.1.x-Table-of-Contents#Getting-Data]] on the 0.1.x Table of Contents.
