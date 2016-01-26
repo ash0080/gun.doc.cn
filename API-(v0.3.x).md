@@ -27,6 +27,8 @@
    - [examples](#examples-5)
    - [chain](#chain-context-5)
  - [gun.map](#map)
+   - [examples](#examples-6)
+   - [chain](#chain-context-6)
  - [gun.val](#val)
  - [gun.not](#not)
 
@@ -489,7 +491,13 @@ gun.map(callback, true)
 ```
 
 ## Examples
-
+Loop over a collection of objects
+```javascript
+// each post
+gun.get(userID + '/posts').map(function (post, ID) {
+  view.show.post(post, ID)
+}, true)
+```
 
 ## Chain context
 The context for `.map` is a bit tricky. All [dependent](Chaining#chaining-dependency-table) methods will treat a `.map` context as though it were split into every possible [`.path`](#path) from that object. Stay with me.
