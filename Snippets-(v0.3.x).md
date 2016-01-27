@@ -16,6 +16,8 @@ Current Snippets are:
 - [Using gun for localStorage and peer storage](#using-gun-for-localstorage-and-peer-storage)
 - [Preventing data synchronization](#preventing-data-synchronization)
 - [gun.each](#guneach)
+- [anonymous_put](https://gist.github.com/metasean/d039054506c1ab6bafc6)  :arrow_upper_right:
+  - The anonymous_put method `.put()`s a value onto a parent object without the need for a pre-defined key.
 
 ---
 
@@ -183,3 +185,11 @@ gun.get('examples').each(function (example) {
   console.log(example)
 })
 ```
+
+---
+
+## [anonymous_put](https://gist.github.com/metasean/d039054506c1ab6bafc6) :arrow_upper_right:
+
+The anonymous_put method `.put()`s a value onto a parent object without the need for a pre-defined key.
+  
+---
