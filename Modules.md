@@ -2,7 +2,7 @@
 A LevelDB adapter that works with the levelDB module ecosystem.
 
 ### [gun-schema](https://github.com/gundb/gun-schema)
-Schema validation module for node and the browser.<br />
+Schema validation module for node and the browser.  
 ~ By [RangerMauve](https://github.com/RangerMauve)
 
 ### [labelmaker](https://github.com/PsychoLlama/labelmaker)
