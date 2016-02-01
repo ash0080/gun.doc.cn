@@ -1,16 +1,23 @@
 ### [gun-level](https://github.com/PsychoLlama/gun-level)
-A LevelDB adapter that works with the levelDB module ecosystem.
+A LevelDB adapter that works with the levelDB module ecosystem.  
+~ By [PsychoLlama](https://github.com/PsychoLlama)
 
 ### [gun-schema](https://github.com/gundb/gun-schema)
 Schema validation module for node and the browser.  
 ~ By [RangerMauve](https://github.com/RangerMauve)
 
 ### [labelmaker](https://github.com/PsychoLlama/labelmaker)
-Organize and index data into groups with tags.
+Organize and index data into groups with tags.  
+~ By [PsychoLlama](https://github.com/PsychoLlama)
 
 ### [onward](https://github.com/gundb/onward)
 Listen for changes on an entire document at once.  
 ~ By [amark](https://github.com/amark)
 
 ### [reticle](https://github.com/PsychoLlama/Reticle)
-Namespace your data, preventing naming conflicts and adding clear separation between apps.
+Namespace your data, preventing naming conflicts and adding clear separation between apps.  
+~ By [PsychoLlama](https://github.com/PsychoLlama)
+
+### [synchronous](https://github.com/gundb/synchronous)
+One way deep (document oriented) object data binding, similar to [onward](https://github.com/gundb/onward).  
+~ By [amark](https://github.com/amark)
