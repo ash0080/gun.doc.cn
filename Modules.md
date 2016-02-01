@@ -8,5 +8,9 @@ Schema validation module for node and the browser.
 ### [labelmaker](https://github.com/PsychoLlama/labelmaker)
 Organize and index data into groups with tags.
 
+### [onward](https://github.com/gundb/onward)
+Listen for changes on an entire document at once.  
+~ By [amark](https://github.com/amark)
+
 ### [reticle](https://github.com/PsychoLlama/Reticle)
 Namespace your data, preventing naming conflicts and adding clear separation between apps.
