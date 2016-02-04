@@ -35,8 +35,8 @@ GUN is different than many other databases, in a variety of ways.  The following
  - **[Delete Data](Delete)**  
    In distributed systems it is not possible to truly delete data.  This page explains why and how to practically delete data.
   
- - **[Host with Amazon AWS](Hosting-with-Amazon-AWS)**  
-   While gun does not require a data server, it is frequently useful to have a centralized or always on server.  Using Amazon's AWS service is one way to spin up such a server.
+ - **[Using Amazon S3 for Storage](Using-Amazon-S3-for-Storage)**  
+   While gun does not require a data server, it is frequently useful to have a centralized or always on server. You can host this server anywhere, but you may want to use Amazon's AWS S3 service to persist data to storage for cheap.
 
  - **[Build Modules for Gun](Building-Modules-for-Gun)**  
    GUN is designed to be as minimal as possible, with any additional functionality being provided via modules. This page provides an overview of module types and links to building specific types of modules.
