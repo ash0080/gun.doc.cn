@@ -2,6 +2,8 @@
 
 #### [[Getting Started|Getting-Started-(v0.3.x)]]
 #### **[[API|API-(v0.3.x)]]**
+##### Get Started With:
+  - [[Graphs|Graphs]]
 
 ##### Background on:
   - [[Glossary|Glossary]]
