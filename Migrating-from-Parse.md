@@ -126,3 +126,5 @@ gun.get('query/' + name).not(runQuery).map(...);
 
 
 
+---------------------------------------------------------
+If there are improvments or corrections you want to see, either make the changes or ping us on [Gitter](https://gitter.im/amark/gun). This document is a work in progress.
