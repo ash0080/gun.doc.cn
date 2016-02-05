@@ -1,3 +1,54 @@
+# Porting GUN to Other Languages
+
+We'll walk you through creating a reduced GUN server in your language of choice. It will not be useful as a library to other developers, but it will help you understand what is going on and communicate with GUN peers. You should be able to then expand upon it, adding a nice language specific API so it is usable by other developers.
+
+There are three main categories we'll need to implement for our minimal GUN server.
+
+1. Running a server that speaks GUN's wire spec.
+2. Understanding and implementing GUN's graph structure.
+3. Processing data through GUN's conflict resolution algorithm.
+
+That's it! Our target implementation will be WebSockets, JSON, and HAM.
+
+## Running a Server
+
+Your first objective is to get a WebSocket server up in your language which sends "hello world!" once every second to a browser which connects to it. Might as well append the count to the message as well. This tests to see if your language can do asynchronous and event driven logic. If it can't, then it will be pretty difficult to implement GUN. Hopefully your language of choice also has a WebSocket server module that somebody has written for you - if not, you can get your hands dirty and build it for everybody else or emulate WebSockets with JSONP over HTTP which we won't cover here.
+
+Here is the solution implemented in NodeJS:
+
+> Note: Code samples throughout this entire article should be considered as more pseudo code than anything else. There is no guarantee that any of them are perfectly working.
+
+```
+var WebSocketServer = require('ws').Server
+  , wss = new WebSocketServer({ port: 8080 });
+
+wss.on('connection', function connection(ws) {
+  ws.on('message', function incoming(message) {
+    console.log('received:', message);
+  });
+  var count = 0;
+  setInterval(function(){
+    count += 1;
+    ws.send('hello world ' + count);
+  }, 1000);
+});
+```
+
+And here is the code that you can paste into the browser to see if it and your WebSocket server works.
+
+```
+// paste this into your browser console to test your WebSocket server!
+var ws = new WebSocket('ws://localhost:8080'); // change this address to your server, if different!
+ws.onopen = function(o){ console.log('open', o) };
+ws.onclose = function(c){ console.log('close', c) };
+ws.onmessage = function(m){ console.log('message', m.data) };
+ws.onerror = function(e){ console.log('error', e) };
+```
+
+You might need to paste it into a browser tab that isn't on HTTPS or blocking cross origin. If you have problems, just wrap it into an HTML file that you save to your computer and then open it in the browser.
+
+## Conflict Resolution - THIS SECTION IS NOT FINISHED AND WILL PROBABLY BE ENTIRELY REWRITTEN
+
 Any GUN library in any language must first start with the Hypothetical Amnesia Machine, which is is the conflict resolution algorithm. Also check out the wiki page on [Conflict Resolution with Guns](Conflict-Resolution-with-Guns).
 
 Parameters:
