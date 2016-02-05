@@ -122,9 +122,9 @@ Now that you know how we are going to transfer data between languages, we can up
 
  - `GET` is any read on the data. It is always pushed over the network as a lexical cursor, this is intended to allow for even low memory devices to process large datasets. A lexical cursor is broken down into these parts, and could be serialized differently than JSON:
    - `#` UUID lexical match. For purposes here we will only handle an exact lexical match, we will not be going over the other matching conditions.
-   - '.' Field lexical match. We will not be covering this at all in this article.
-   - '=' Value lexical match. Same as above.
-   - '>' State lexical match. What are states? You'll find out soon enough.
+   - `.` Field lexical match. We will not be covering this at all in this article.
+   - `=` Value lexical match. Same as above.
+   - `>` State lexical match. What are states? You'll find out soon enough.
 
 > Note: As of the recent release of GUN v0.3.3, `GET` wire commands are not formatted properly. The reason why, as alluded above, is because only exact UUID matches are implemented. Thus the only thing that gets sent is the UUID whether it be a lexical cursor or not. We are fixing this.
 
