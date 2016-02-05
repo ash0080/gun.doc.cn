@@ -34,6 +34,7 @@
 
 
 ### Getting Started
+ - With [[graphs|Graphs]], an article that will step by step walk you through using key/value, relations, and documents in a graph.
  - If you haven't already done so, check out the [README](../blob/master/README.md).
  - Until we complete the [Getting Started with GUN](getting-started-(v0.3.x)) Guide, please review the [API documentation](API-(v0.3.x)) and [examples' source code](../blob/master/examples).
  - Check out and add example code [snippets](snippets-(v0.3.x)) —including micro-modules— to address specific situations.

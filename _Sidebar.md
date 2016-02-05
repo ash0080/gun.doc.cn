@@ -2,12 +2,14 @@
 
 #### [[Getting Started|Getting-Started-(v0.3.x)]]
 #### **[[API|API-(v0.3.x)]]**
+##### Get Started With:
+  - [[Graphs|Graphs]]
 
 ##### Background on:
   - [[Glossary|Glossary]]
   - [[GUN's Data Format (JSON)|GUN’s-Data-Format-(JSON)]]
   - [[Partials and Circular References|Partials and Circular References (v0.2.x)]]
-  - [[Hosting with Amazon AWS|Hosting-with-Amazon-AWS]]
+  - [[Using Amazon S3 for Storage|Using-Amazon-S3-for-Storage]]
 
 ##### More about GUN: 
   - [[Conflict Resolution|Conflict-Resolution-with-Guns]]
