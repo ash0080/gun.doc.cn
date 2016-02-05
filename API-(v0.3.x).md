@@ -193,6 +193,24 @@ gun.path('survey.submission').put(submission, function (err) {
 gun.path('key').put(value) /* same context as */ gun.path('key')
 ```
 
+## Unexpected behavior
+
+While nodes can be placed directly into gun by its reference:
+```javascript
+var msg = Gun().put({ text: 'Hello world!' })
+Gun().get('messages').set(msg)
+```
+Nodes with nested nodes can **NOT** successfully be placed directly into gun by its reference:
+```javascript
+var sender = Gun().put({ name: 'Tom' })
+var msg = Gun().put({
+  text: 'Hello world!',
+  sender: sender // this will fail
+})
+// however
+msg.path('sender').put(sender) // this will succeed
+``` 
+
 --------------------------------------------------
 # <a name="key"></a>gun.key(name)
 Index your data, so you can find it later, faster.
