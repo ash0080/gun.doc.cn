@@ -102,6 +102,29 @@ gun.put({
 
 > **Note:** every value given to `.put` is treated as a [partial](Partials-and-Circular-References-%28v0.2.x%29).
 
+### Removing data
+Gun takes a different approach from most databases. Where Parse has `.destroy`, gun has `.put(null)`. This is an important distinction, since gun doesn't actually remove the node itself, but rather breaks the reference to it, preventing it from being discovered. Part of this design decision is due to gun's remarkable ability to recover from catastrophic events. If your server bursts into flames, data will eventually trickle back in from the clients who have local copies. With this in mind, there's no such thing as "deleting" data, since you have no idea who else has a reference to it. An offline peer may reconnect and then the data is back again.
+
+```javascript
+/*
+	the 'data' key holds this structure:
+	`object` = { data: true }
+	`data` = { child: object }
+*/
+gun.get('data').path('child')
+// { data: true }
+
+gun.get('data').path('child').put(null)
+// the object still exists, but we've
+// destroyed the reference to it.
+/*
+	`object` = { data: true }
+  `data` = { child: null }
+*/
+```
+
+In the above example, we didn't remove the `object`, but we broke the reference to it.
+
 ### Queries
 Instead of doing an expensive database search every time you need data, we strongly encourage our users to index data on entry. It almost always improves performance drastically, and can have a strong impact on how your app is perceived. Since sometimes there's no way around performing a query, it's made fairly trivial to do it in vanilla javascript, just by using the API. Once again, we **strongly** recommend indexing the data as you run the query.
 
@@ -123,8 +146,24 @@ function runQuery() {
 gun.get('query/' + name).not(runQuery).map(...);
 ```
 
+### Fetching data
+This is where gun really excels. Where Parse has the `fetch` method, gun automatically listens for updates on everything it gets. While you can treat your data as a terminating value with `gun.val`, we invite our users to think of data as a stream of new values.
 
+Respond real-time as data streams in.
+```javascript
+Gun().get('data').on(function (data) {
+	// react to new data
+})
+```
 
+Just give me the first thing you find. Don't tell me about updates.
+```javascript
+Gun().get('data').val(function (data) {
+	// just fired on the first response. Boooring.
+})
+```
+
+> **Warning:** it can be tempting to use `.val`. Just keep in mind that one of your servers may not contain the full dataset.
 
 ---------------------------------------------------------
 If there are improvments or corrections you want to see, either make the changes or ping us on [Gitter](https://gitter.im/amark/gun). This document is a work in progress.
