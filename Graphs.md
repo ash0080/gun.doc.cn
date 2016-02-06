@@ -36,7 +36,11 @@ gun.get('person/bob').val(function(node){
 Now lets add all the people into a [set](https://en.wikipedia.org/wiki/Set_(mathematics)), you can think of this as a table in relational databases or a collection in NoSQL databases.
 
 ```javascript
-var people = gun.get('people').set(alice).set(bob).set(carl).set(dave);
+var people = gun.get('people');
+people.set(alice);
+people.set(bob);
+people.set(carl);
+people.set(dave);
 ```
 
 It is now easy to iterate through our list of people.
@@ -100,7 +104,10 @@ gun.get('startup/hype').put({ // or you could do `company.put({` instead.
 Documents in isolation are not very useful. Let's connect things and turn everything into a graph!
 
 ```javascript
-company.path('employees').set(dave).set(alice).set(bob);
+var employees = company.path('employees');
+employees.set(dave);
+employees.set(alice);
+employees.set(bob);
 
 alice.path('spouse').put(bob);
 bob.path('spouse').put(alice);
@@ -111,7 +118,8 @@ alice.path('employer').put(company);
 dave.path('kids').set(carl);
 carl.path('dad').put(dave);
 
-carl.path('friends').set(alice).set(bob);
+carl.path('friends').set(alice);
+carl.path('friends').set(bob);
 ```
 
 > Note: The distinction between `.put` and `.set` are important. You can have a simple directed link or you can have a one-to-many relationship. This is why we call everything a node in a graph.
@@ -122,4 +130,4 @@ Finally, let's read some data out. Starting with a key/value, pathing into field
 gun.get('person/alice').path('spouse.employer.employees').map().path('name').val("The employee's");
 ```
 
-Awesome, now all together - run it yourself: http://jsbin.com/rifafafaka/edit?js,console (Hit "Run", all logs except for the last one have been commented out).
+Awesome, now all together - run it yourself: http://jsbin.com/sedudahayi/edit?js,console (Hit "Run", all logs except for the last one have been commented out).
