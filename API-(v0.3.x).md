@@ -39,7 +39,7 @@
 Used to creates a new gun database instance.
 
 ```javascript
-var gun = new Gun(options)
+var gun = Gun(options)
 ```
 > **note:** `Gun` works with or without the `new` operator.
 
