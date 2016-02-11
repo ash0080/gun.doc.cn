@@ -640,7 +640,7 @@ gun.get(keyName).not(handler) /* _might_ be the same as */ gun.get(keyName)
 # <a name="val"></a> gun.val(callback)
 Read a full object without subscribing updates.
 
-`.val` will send a request for the node, and read out the value from the first peer that finishes their response. Since `.val` has to wait for a termination, it cannot stream data, slowing down the transmission of large objects considerably. If you simply want to read out an object without subscribing to changes, `.val` is your best option.
+`.val` will send a request for the node, and read out the value from the first peer that finishes their response. Since `.val` has to wait for a termination, it cannot stream data, slowing down the transmission of large objects considerably. If you simply want to read out an object without subscribing to changes, `.val` is your best option. Note that `.val` will subscribe for every new item of an object, but not for changes on those items.
 
 > This method is excellent for learning and debugging, but should be avoided in production applications. Instead, use [`.on`](#on).
 
