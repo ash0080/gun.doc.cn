@@ -18,86 +18,86 @@ A post can have many tags and a tag can be applied to many posts.
 A post can have many comments but a comment can only apply to one post.
 
 ### Creating our users
-```
+```javascript
 var markInfo = {
- name: “Mark”,
- username: “@amark”
+ name: "Mark",
+ username: "@amark"
 };
 var jesseInfo = {
- name: “Jesse”,
- username: “@PsychoLlama”
+ name: "Jesse",
+ username: "@PsychoLlama"
 };
-var mark = gun.get(‘user/’+markInfo.username).put(markInfo);
-var jesse = gun.get(‘user/’+jesseInfo.username).put(jesseInfo);
+var mark = gun.get('user/' + markInfo.username).put(markInfo);
+var jesse = gun.get('user/' + jesseInfo.username).put(jesseInfo);
 ```
 
 ### Creating a post
 The Post object:
-```
+```javascript
 var lipsum = {
- title: “Lorem ipsum dolor”,
- slug: “lorem-ipsum-dolor”,
- content: “Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.”
+ title: "Lorem ipsum dolor",
+ slug: "lorem-ipsum-dolor",
+ content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
 };
 ```
 Some tags
-```
+```javascript
 var lorem = {
- name: “lorem”,
- slug: “lorem”
+ name: "lorem",
+ slug: "lorem"
 };
 var ipsum = {
- name: “ipsum”,
- slug: “ipsum”
+ name: "ipsum",
+ slug: "ipsum"
 };
 var dolor = {
- name: “dolor”,
- slug: “dolor”
+ name: "dolor",
+ slug: "dolor"
 };
 ```
 Lets store them!
-```
-var lipsumPost = gun.get(‘post/’+lipsum.slug).put(lipsum);
-var loremTag = gun.get(‘tag/’+lorem.slug).put(lorem);
-var ipsumTag = gun.get(‘tag/’+ipsum.slug).put(ipsum);
-var dolorTag = gun.get(‘tag/’+dolor.slug).put(dolor);
+```javascript
+var lipsumPost = gun.get('post/' + lipsum.slug).put(lipsum);
+var loremTag = gun.get('tag/' + lorem.slug).put(lorem);
+var ipsumTag = gun.get('tag/' + ipsum.slug).put(ipsum);
+var dolorTag = gun.get('tag/' + dolor.slug).put(dolor);
 ```
 Let’s connect them! 
 First, we connect the post to its author, then we connect all the tags:
-```
-lipsumPost.path(‘author’).put(mark).path(‘posts’).set(lipsumPost)
- .path(‘tags’).set(loremTag).path(‘posts’).set(lipsumPost)
- .path(‘tags’).set(ipsumTag).path(‘posts’).set(lipsumPost)
- .path(‘tags’).set(dolorTag).path(‘posts’).set(lipsumPost);
+```javascript
+lipsumPost.path('author').put(mark).path('posts').set(lipsumPost)
+ .path('tags').set(loremTag).path('posts').set(lipsumPost)
+ .path('tags').set(ipsumTag).path('posts').set(lipsumPost)
+ .path('tags').set(dolorTag).path('posts').set(lipsumPost);
 ```
 ### Adding a comment
 The comment & its connections
-```
+```javascript
 var sit = {
  id: 1,
- text: “Sit amet, consectetur adipiscing elit.”
+ text: "Sit amet, consectetur adipiscing elit."
 };
-var sitComment = gun.get(‘comment/’+sit.id).put(sit);
-sitComment.path(‘author’).put(jesse).path(‘comments’).set(sitComment)
-     .path(‘post’).put(lipsumPost).path(‘comments’).set(sitComment);
+var sitComment = gun.get('comment/' + sit.id).put(sit);
+sitComment.path('author').put(jesse).path('comments').set(sitComment)
+     .path('post').put(lipsumPost).path('comments').set(sitComment);
 ```
 ### Checking it all works
 If you want to check that everything worked fine, you can log some of the references’ values to check.
-```
+```javascript
 mark.val(function(v){console.log(v);});
-mark.path(‘posts’).map().val(function(v){console.log(v);});
+mark.path('posts').map().val(function(v){console.log(v);});
 jesse.val(function(v){console.log(v);});
-jesse.path(‘comments’).map().val(function(v){console.log(v);});
-lipsumPost.path(‘comments’).map().val(function(v){console.log(v);});
-lipsumPost.path(‘author’).val(function(v){console.log(v);});
-lipsumPost.path(‘tags’).map().val(function(v){console.log(v);});
-loremTag.path(‘posts’).map().val(function(v){console.log(v);});
-sitComment.path(‘author’).val(function(v){console.log(v);});
-sitComment.path(‘post’).val(function(v){console.log(v);});
+jesse.path('comments').map().val(function(v){console.log(v);});
+lipsumPost.path('comments').map().val(function(v){console.log(v);});
+lipsumPost.path('author').val(function(v){console.log(v);});
+lipsumPost.path('tags').map().val(function(v){console.log(v);});
+loremTag.path('posts').map().val(function(v){console.log(v);});
+sitComment.path('author').val(function(v){console.log(v);});
+sitComment.path('post').val(function(v){console.log(v);});
 ```
 
 Having some fun
-```
+```javascript
 // Circular references + chaining = fun
 mark.path('posts').map() 
     .path('tags').map()
