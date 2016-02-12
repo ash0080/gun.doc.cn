@@ -19,9 +19,9 @@ With gun's unique architecture and graph database technology, your data is store
 
   gun.put({Hello:"world"}).key('Hello');  // Store a json { Hello: 'World'} at path 'Hello'
 
-  var HelloContainer = gun.get('Hello');
+  var HelloContainer = gun.get('Hello');  // Retrieve json from key 'Hello' 
   HelloContainer.on(function(data){
-                console.log (data);
+                console.log (data);       // Retrieve json from key 'Hello' 
           });
 </script>
 ```
