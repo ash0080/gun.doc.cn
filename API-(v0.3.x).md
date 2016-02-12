@@ -10,20 +10,21 @@ Each time a client receives data, gun makes a local copy for speed and efficienc
 
 With gun's unique architecture and graph database technology, your data is stored, retrieved and exchanged as serialized javascript objects. This means that every form of data that you store, manipulate and share data can be expressed natively by the developer without having to think outside of javascript objects. This design allows for emergent, flexible, and powerful data structures in your application and shared across processes. 
 
-`<script src="https://rawgit.com/amark/gun/master/gun.js"></script>`
-`<script>`
-  `var endpoints = [] `
-  `var gun = Gun(endpoints);`
+```javascript
+<script src="https://rawgit.com/amark/gun/master/gun.js"></script>
+<script>
 
-  `gun.put({Hello:"world"}).key('Hello');  // Store a String 'World!' at path 'Hello'`
+  var endpoints
+  var gun = Gun(endpoints);  // connect to an endpoint [] == in memory only
 
-  `var Hello = gun.get('Hello');`
-  `Hello.on(function(data){`
-                `console.log (data);`
-          `});`
-`</script>`
+  gun.put({Hello:"world"}).key('Hello');  // Store a json { Hello: 'World'} at path 'Hello'
 
-
+  var HelloContainer = gun.get('Hello');
+  HelloContainer.on(function(data){
+                console.log (data);
+          });
+</script>
+```
 ---------------------------------------------------------------------
 
 ***Please post documentation comments, questions, and suggestions to
