@@ -1,4 +1,5 @@
-What is Gun: Gun is a tiny distributed data storage and synchronization solution that runs everywhere. Gun lets you focus on what data you need to store, retrieve and share without having to focus on the how, why or where. Different Gun instances can have different persistence models which are transparent to the storage and retrieval code.
+# What is Gun: 
+Gun is a tiny distributed data storage and synchronization solution that runs everywhere. Gun lets you focus on what data you need to store, retrieve and share without having to focus on the how, why or where. Different Gun instances can have different persistence models which are transparent to the storage and retrieval code.
 
 Gun is an offline first object storage and retrieval engine based in javascript that is tiny and fast. While having extensive options for customization, Gun comes with sane defaults that make getting started just about as simple it gets. While you can start storing and retrieving data with virtually no setup, you can extend the connectivity of gun to multiple Gun Server Endpoints that stay in sync, are crash resistant, always preserve the integrity of your data and operations. 
 
