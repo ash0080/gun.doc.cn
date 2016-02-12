@@ -1,3 +1,17 @@
+What is Gun: Gun is a tiny distributed data storage and synchronization solution that runs everywhere. Gun lets you focus on what data you need to store, retrieve and share without having to focus on the how, why or where. Different Gun instances can have different persistence models which are transparent to the storage and retrieval code.
+
+Gun is an offline first object storage and retrieval engine based in javascript that is tiny and fast. While having extensive options for customization, Gun comes with sane defaults that make getting started just about as simple it gets. While you can start storing and retrieving data with virtually no setup, you can extend the connectivity of gun to multiple Gun Server Endpoints that stay in sync, are crash resistant, always preserve the integrity of your data and operations. 
+
+Gun can run standalone in your javascript context or it can connect to one or multiple partner storage processes. You can add more Gun Endpoints at any time, choosing to mix and match back end persistence mechanisms with no knowledge of the remote persistence models required. 
+
+Out of the box, gun makes data synchronization effortless, handling offline changes and gruesome merge conflicts across processes both seamless, version tracked and controlled.
+
+Each time a client receives data, gun makes a local copy for speed and efficiency, meaning that your most crucial data is backed up on every peer that uses it.  This makes the loss of important information nearly impossible, as all copies of the data must be destroyed for it to be lost. 
+
+With gun's unique architecture and graph database technology, your data is stored, retrieved and exchanged as serialized javascript objects. This means that every form of data that you store, manipulate and share data can be expressed natively by the developer without having to think outside of javascript objects. This design allows for emergent, flexible, and powerful data structures in your application and shared across processes. 
+
+
+
 ---------------------------------------------------------------------
 
 ***Please post documentation comments, questions, and suggestions to
