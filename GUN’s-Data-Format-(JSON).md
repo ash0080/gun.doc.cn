@@ -1,3 +1,5 @@
+### Basic JSON object
+
 The way GUN stores and communicates data is through a specific subset of denormalized JSON. This might sound confusing, but it is actually pretty simple.
 
 For instance, take this object.
@@ -9,6 +11,7 @@ For instance, take this object.
   name: "Mark Nadal"
 }
 ```
+### Metadata
 
 This object is composed of **field** and **value** pairs, where a value is always either `null`, `true` or `false`, a _number_ or _decimal_, a _string_, or a _relation_. For clarity, GUN will use a consistent [[vocabulary|Glossary]], where values are primitives that get saved as a whole update on their field.
 
@@ -23,7 +26,11 @@ In order for GUN to deterministically converge on an update across many decentra
 }
 ```
 
-That meta data is stored on the reserved `_` field. Every node also must have a universally unique ID, called a **soul**, which is also stored in the meta data under the reserved `#` field. Like so:
+That meta data is stored on the reserved `_` field. 
+
+### Soul  
+
+Every node also must have a universally unique ID, called a **soul**, which is also stored in the meta data under the reserved `#` field. Like so:
 
 ```javascript
 {
@@ -48,6 +55,7 @@ For the sake of comprehension, our example is using a very short soul. Souls sho
 }
 ```
 
+#### <a name="HAM"></a>Hypothetical Amnesia Machine (HAM) State
 Next up now is the meta data for the Hypothetical Amnesia Machine, reserved as the `>` field. This contains a copy of all the fields that have been on the node, with their corresponding convergence states. Such as:
 
 ```javascript
@@ -79,6 +87,8 @@ There you go, that is a complete GUN **node**. Since GUN can sync on partial nod
   name: "Mark Nadal"
 }
 ```
+
+### Graph
 
 What GUN will do, is it will denormalize it into a subset of JSON which is called a **graph**. We are going to hide the HAM meta data from our view for sake of clarity.
 
