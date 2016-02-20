@@ -8,32 +8,15 @@
 **Table of Contents**
  - [Gun constructor](#Gun)
  - [gun.put](#put)
-   - [examples](#examples-1)
-   - [chain](#chain-context)
  - [gun.key](#key)
-   - [examples](#examples-2)
-   - [chain](#chain-context-1)
  - [gun.get](#get)
-   - [examples](#examples-3)
-   - [chain](#chain-context-2)
  - [gun.path](#path)
-   - [examples](#examples-4)
-   - [chain](#chain-context-3)
+ - [gun.set](#set)
  - [gun.back](#back)
-   - [examples](#examples-5)
-   - [chain](#chain-context-4)
  - [gun.on](#on)
-   - [examples](#examples-6)
-   - [chain](#chain-context-5)
  - [gun.map](#map)
-   - [examples](#examples-7)
-   - [chain](#chain-context-6)
  - [gun.not](#not)
-   - [examples](#examples-8)
-   - [chain](#chain-context-7)
  - [gun.val](#val)
-   - [examples](#examples-9)
-   - [chain](#chain-context-8)
 
 # <a name="Gun"></a>Gun(options)
 Used to creates a new gun database instance.
@@ -422,6 +405,68 @@ gun.get('API').path('path')
 /* and is different from */
 gun.get('API')
 ```
+
+-----------------------------
+# <a name="set"></a>gun.set(instance, callback)
+Add a unique item to an unordered list.
+
+`gun.set` works in the sense of a mathematical set, where each item in the list is unique. If the same object is added twice, it's simply merged. The main distinction is that sets can only contain objects, not primitives.
+
+> **Note:** we may allow primitives in the future.
+
+## Instance
+`gun.set` takes a node to add to the set in the form of a gun instance. For example:
+```javascript
+var data = gun.get('data')
+var parent = gun.get('parent')
+parent.set(data)
+```
+The data must always evaluate to a node, since the soul is needed to create a unique field name. You can pass a reference to any node in gun.
+
+## Callback
+The callback is invoked exactly the same as `.put`, with `(error, okay)` parameters. The `okay` parameter may be undefined if underlying layers chose not to provide more information.
+
+## Previous API
+`v0.2.x` had a method called `.set` that works somewhat similar to the new method. The main distinctions:
+
+The old version...
+ - Wasn't a true set
+   It was basically "pushing" to a list
+ - Was becoming an API catchall
+   The method was becoming bloated with features
+
+In `v0.3.x` we decided to clean up the API and move the `.not/.put` behavior into a dedicated method called [`.init`](#init). To prevent too much confusion, we waited until `v0.3.4` before publishing the new `.set` method. Since some of the functionality was moved into the [`.init`](#init) method, we wanted an obvious distinction between this version and last version's `.set` method, so we chose not to allow primitive types (although they will be supported in the future).
+
+## Examples
+
+```javascript
+var gun = Gun()
+var bob = gun.get('bob')
+var dave = gun.get('dave')
+
+dave.path('friends').set(bob)
+bob.path('friends').set(dave)
+```
+The "friends" example is perfect, since the set guarantees that you won't have duplicates in your list.
+
+```javascript
+var gun = Gun()
+var book1 = gun.get('book1')
+var book2 = gun.get('book2')
+var book3 = gun.put({ title: title })
+
+var books = gun.get('books')
+books.set(book1)
+books.set(book2)
+books.set(book3)
+```
+
+## Chain Context
+`gun.set` changes the chain context.
+```javascript
+gun.path('friends') /* is not the same as */ gun.path('friends').set(friend)
+```
+
 
 -----------------------------
 # <a name="back"></a>gun.back
