@@ -16,6 +16,7 @@
  - [gun.on](#on)
  - [gun.map](#map)
  - [gun.not](#not)
+ - [gun.init](#init)
  - [gun.val](#val)
 
 # <a name="Gun"></a>Gun(options)
@@ -629,6 +630,7 @@ Hopefully this demonstrates some of `.map`s expressive power. But to summarize a
 gun.get(keyName).map() /* is not the same as */ gun.get(keyName)
 ```
 
+
 --------------------------------------
 # <a name="not"></a> gun.not(callback)
 Handle cases where data can't be found.
@@ -685,6 +687,36 @@ Those examples demonstrate the power and drama from `.not`. If a peer with the d
 ```javascript
 gun.get(keyName).not(handler) /* _might_ be the same as */ gun.get(keyName)
 ```
+
+
+--------------------------------
+# <a name="init"></a> gun.init()
+If a property or key hasn't been defined yet, set it as an object.
+
+> **Note:** this is automatically run recursively on each [`.put`](#put) unless explicitly disabled. You shouldn't need to use this method unless you're doing low-level operations or working with schematized data.
+
+This method helps prevent an unnecessarily verbose API. If it didn't exist, you would need to use [`.not`](#not) for every [`.get`](#get) or [`.path`](#path) to handle cases where it hasn't been defined. For example:
+
+```javascript
+gun.get('data').not(function (key) {
+  this.put({}).key(key)
+}).path('property').not(function (key) {
+  this.put({})
+}).path('next').put(data)
+```
+`.init` handles things more intelligently than a raw `.not` would, but the above example gives a good comparison. Here's an example using `.init` instead:
+
+```javascript
+gun.get('data').init().path('property').init().path('next').put(data)
+```
+
+However, with `v0.3.x`, the `init()` happens implicitly for all methods preceding a `.put`, meaning the above example is exactly equivalent to this:
+
+```javascript
+gun.get('data').path('property.next').put(data)
+```
+
+> **Warning:** this method hasn't reached stability and may change in the future.
 
 --------------------------------------
 # <a name="val"></a> gun.val(callback)
