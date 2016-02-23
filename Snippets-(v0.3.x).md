@@ -7,17 +7,18 @@
 This page documents simple code snippets which augment or modify basic gun functionality.  
 
 Current Snippets are:
-- [Tables](Tables) :arrow_upper_right:
-- [Strip metadata from returned nodes](#strip-metadata-from-returned-nodes)
-  - [`.live()` (to replace `.on()`)](#live-to-replace-on)
-  - [`.value()` (to replace `.val()`)](#value-to-replace-val)
-- [Saving/getting images in gun](#savinggetting-images-in-gun)
-- [`Gun.create()` to instantiate without `new`](#guncreate-to-instantiate-without-new)
-- [Using gun for localStorage and peer storage](#using-gun-for-localstorage-and-peer-storage)
-- [Preventing data synchronization](#preventing-data-synchronization)
-- [gun.each](#guneach)
-- [anonymous_put](https://gist.github.com/metasean/d039054506c1ab6bafc6)  :arrow_upper_right:
-  - The anonymous_put method `.put()`s a value onto a parent object without the need for a pre-defined key.
+ - [Tables](Tables) :arrow_upper_right:
+ - [Strip metadata from returned nodes](#strip-metadata-from-returned-nodes)
+   - [`.live()` (to replace `.on()`)](#live-to-replace-on)
+   - [`.value()` (to replace `.val()`)](#value-to-replace-val)
+ - [Saving/getting images in gun](#savinggetting-images-in-gun)
+ - [`Gun.create()` to instantiate without `new`](#guncreate-to-instantiate-without-new)
+ - [Using gun for localStorage and peer storage](#using-gun-for-localstorage-and-peer-storage)
+ - [Preventing data synchronization](#preventing-data-synchronization)
+ - [gun.each](#guneach)
+ - [anonymous_put](https://gist.github.com/metasean/d039054506c1ab6bafc6)  :arrow_upper_right:
+   - The anonymous_put method `.put()`s a value onto a parent object without the need for a pre-defined key.
+ - [crdt counter](#counter)
 
 ---
 
@@ -193,3 +194,36 @@ gun.get('examples').each(function (example) {
 The anonymous_put method `.put()`s a value onto a parent object without the need for a pre-defined key.
   
 ---
+
+## <a name="counter"></a> CRDT Counter
+
+A simple counter that can run in distributed systems without risking duplication. This is more an example of how gun can be used in distributed settings.
+
+```javascript
+Gun.chain.count = function (num) {
+  if (typeof num === 'number') {
+    this.path(Gun.text.random()).put(num);
+  }
+  if (typeof num === 'function') {
+    var sum = 0;
+    this.map().val(function (val) {
+      num(sum += val);
+    });
+  }
+  return this;
+};
+```
+
+**Example**
+```javascript
+var db = gun.get('count')
+db.count(+5)
+db.count(-8)
+db.count(function (value) {
+  console.log(value) // 5, -3
+})
+// prints: 5
+// prints: -3
+db.count(+10)
+// prints: 7
+```
