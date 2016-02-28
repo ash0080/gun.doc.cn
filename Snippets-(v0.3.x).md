@@ -16,6 +16,7 @@ Current Snippets are:
  - [Using gun for localStorage and peer storage](#using-gun-for-localstorage-and-peer-storage)
  - [Preventing data synchronization](#preventing-data-synchronization)
  - [gun.each](#guneach)
+ - [gun.date](#date)
  - [anonymous_put](https://gist.github.com/metasean/d039054506c1ab6bafc6)  :arrow_upper_right:
    - The anonymous_put method `.put()`s a value onto a parent object without the need for a pre-defined key.
  - [crdt counter](#counter)
@@ -184,6 +185,33 @@ Gun.chain.each = function () {
 ```javascript
 gun.get('examples').each(function (example) {
   console.log(example)
+})
+```
+
+---
+
+## <a name="date"></a> Storing Dates
+
+Simply store them as the millisecond value:
+
+```javascript
+Gun.chain.date = function (data) {
+  if (Gun.fns.is(data)) {
+    return this.val(function (val) {
+      data.call(this, new Date(val));
+    }
+  }
+  return this.put(data.getTime());
+};
+```
+
+Now you can easily save and read dates from gun. Examples:
+
+```javascript
+var date = new Date('Jan 1 2020');
+gun.path('now').date(date) // saves the date
+gun.path('now').date(function (date) {
+  console.log(date instanceof Date) // true
 })
 ```
 
