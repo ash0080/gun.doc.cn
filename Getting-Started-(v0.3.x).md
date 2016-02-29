@@ -9,7 +9,7 @@
 ## Introduction
 GUN is a tiny, distributed data storage and synchronization solution that runs everywhere. GUN lets you focus on the data you need to store, retrieve and share without having to focus on the how, why or where. Different gun instances can have different persistence models which are transparent to the storage and retrieval code.
 
-GUN is an offline-first, object storage and retrieval engine based in JavaScript that is tiny and fast. While having extensive options for customization, gun comes with sane defaults that make getting started just about as simple it gets. While you can start storing and retrieving data with virtually no setup, you can extend the connectivity of gun to multiple gun peers that stay in sync, are crash resistant, always preserve the integrity of your data and operations. 
+GUN is an offline-first, object storage and retrieval engine based in JavaScript that is tiny and fast. While having extensive options for customization, gun comes with sane defaults that make getting started just about as simple as it gets. While you can start storing and retrieving data with virtually no setup, you can extend the connectivity of gun to multiple gun peers that stay in sync, are crash resistant, always preserve the integrity of your data and operations. 
 
 GUN can run standalone in your JavaScript context or it can connect to one or multiple partner storage processes. You can add more gun peers at any time, choosing to mix and match back end persistence mechanisms with no knowledge of the remote persistence models required. 
 
