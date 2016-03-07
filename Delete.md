@@ -4,19 +4,19 @@ Gun takes a different approach to deletion than most other centralized services.
 
 ```javascript
 var gun = Gun().get('data').put({
-  object1: {'#': 'pointer1'},
-  object2: {'#': 'pointer2'}
+  object1: object2,
+  object2: object2
 })
 
-// add a pointer to a new node
-var removeMe = gun.path('object3').put({
-  data: true
+// set 'object3' to a new node
+gun.path('object3').put({
+  field: 'value'
 })
 
-// break the reference to the new node by updating the field
+// replace the value at 'object3' with `null`
 gun.path('object3').put(null)
 
-// now the pointer has been replaced with `null`
+// instead of pointing to an object, now it shows 'null'
 ```
 
 As soon as the value is set, in this case `null`, the update propagates to each peer, breaking the reference to the old node. If storage space is a concern, a garbage collection module could be built on top of gun that removes data when it's sat on the shelf too long. At that point you might want to consider migrating to a hosted solution such as AWS, which has ridiculously cheap rates and oodles of storage space.
