@@ -1,12 +1,6 @@
----
+# Simple plugins to augment, extend, or modify gun
 
-# ALL EXAMPLES NEED TO BE VALIDATED/UPDATED FOR v0.3.0
-
----
-
-This page documents simple code snippets which augment or modify basic gun functionality.  
-
-Current Snippets are:
+**Table of Contents**
  - [Tables](Tables) :arrow_upper_right:
  - [Strip metadata from returned nodes](#strip-metadata-from-returned-nodes)
    - [`.live()` (to replace `.on()`)](#live-to-replace-on)
@@ -17,7 +11,7 @@ Current Snippets are:
  - [Preventing data synchronization](#preventing-data-synchronization)
  - [gun.each](#guneach)
  - [gun.date](#date)
- - [anonymous_put](https://gist.github.com/metasean/d039054506c1ab6bafc6)  :arrow_upper_right:
+ - [Anonymous Put](https://gist.github.com/metasean/d039054506c1ab6bafc6)  :arrow_upper_right:
    - The anonymous_put method `.put()`s a value onto a parent object without the need for a pre-defined key.
  - [crdt counter](#counter)
 
@@ -217,7 +211,7 @@ gun.path('now').date(function (date) {
 
 ---
 
-## [anonymous_put](https://gist.github.com/metasean/d039054506c1ab6bafc6) :arrow_upper_right:
+## [Anonymous Put](https://gist.github.com/metasean/d039054506c1ab6bafc6) :arrow_upper_right:
 
 The anonymous_put method `.put()`s a value onto a parent object without the need for a pre-defined key.
   
