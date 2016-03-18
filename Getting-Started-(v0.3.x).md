@@ -1,10 +1,10 @@
 **Table of Contents**
- - [Introduction](#Introduction)
-    - [Example of an embedded peer](#Example-of-an-embedded-peer)
-    - [Example of server peers](#Example-of-server-peers)
-    - [Additional Learning Resources](#Additional-Learning-Resources)
+ - [Introduction](#introduction)
+    - [Example of an embedded peer](#example-of-an-embedded-peer)
+    - [Example of server peers](#example-of-server-peers)
+    - [Additional Learning Resources](#additional-learning-resources)
  - [Theory, Implementation, and Extensions of GUN](#theory-implementation-and-extensions-of-gun) 
- - [How To's](#How-To)   
+ - [How To's](#how-to)   
 
 ## Introduction
 GUN is a tiny, distributed data storage and synchronization solution that runs everywhere. GUN lets you focus on the data you need to store, retrieve and share without having to focus on the how, why or where. Different gun instances can have different persistence models which are transparent to the storage and retrieval code.
