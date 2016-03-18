@@ -3,7 +3,7 @@
     - [Example of an embedded peer](#Example-of-an-embedded-peer)
     - [Example of server peers](#Example-of-server-peers)
     - [Additional Learning Resources](#Additional-Learning-Resources)
- - [Theory, Implementation, and Extensions of GUN](#Theory-Implementation-and-Extensions-of-GUN) 
+ - [Theory, Implementation, and Extensions of GUN](#theory-implementation-and-extensions-of-gun) 
  - [How To's](#How-To)   
 
 ## Introduction
