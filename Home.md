@@ -13,6 +13,7 @@
  - [gun.key](API-(v0.3.x)#key)
  - [gun.get](API-(v0.3.x)#get)
  - [gun.path](API-(v0.3.x)#path)
+ - [gun.set](API-(v0.3.x)#set)
  - [gun.back](API-(v0.3.x)#back)
  - [gun.on](API-(v0.3.x)#on)
  - [gun.map](API-(v0.3.x)#map)
