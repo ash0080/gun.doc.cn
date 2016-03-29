@@ -19,6 +19,7 @@
 ### [Projects](Projects)
 ### [Modules](Modules)
 ### [Snippets](Snippets-(v0.3.x))
+### [FAQs](Frequently-Asked-Questions)
 
 ---
 
