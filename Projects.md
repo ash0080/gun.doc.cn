@@ -7,6 +7,7 @@
   - [TodoMVC](https://github.com/jveres/todomvc) by [jveres](https://github.com/jveres) - **[live demo](http://todos.loqali.com/)**
   - "Arrive" (permission to publish pending)
   - "Hackie" (permission to publish pending)
+  - "Gun CMS" (https://github.com/Stefdv/Gun-Server-CMS-App) by Stefdv
 
 ## Interested
 
