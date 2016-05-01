@@ -29,18 +29,18 @@ var gun = Gun(options)
 
 ## Options
 
- - `no params/undefined` creates a local datastore using the default persistence layer, either localStorage or a JSON file.
+ - no parameters `undefined` creates a local datastore using the default persistence layer, either localStorage or a JSON file.
 
- - passing an `array` of URLs creates a local datastore that attempts to sync with each URL.
+ - passing a URL `string` creates the above local datastore that also tries to sync with the URL.
 
-   - when only syncing with a single peer, you can leave out the array, sending in just a `string`.
+   - or you can pass in an `array` of URLs to sync with multiple peers.
 
- - `{ peers, wire, uuid... }` the previous options are actually aggregated into an `object` under the hood.
+ - the previous options are actually aggregated into an `object`, which you can pass in yourself.
 
    - `options.peers` is an object, where the URLs are properties, and the value is an empty object.
 
    - `options.wire` allows you to manually override module hooks for `put` and `get`
-     (however, gun exposes a more streamlined approach for building extensions and modules).
+     (however, gun exposes a more streamlined approach for building extensions and modules). **Note**: This will be deprecated, future versions of GUN will use a different better approach.
 
    - `options.uuid` allows you to override the default 24 random alphanumeric soul generator with
       your own function.
@@ -60,7 +60,7 @@ Gun('http://yourdomain.com/gun')
 
 Sync with many peers
 ```javascript
-Gun(['http://server1.com', 'http://server2.com'])
+Gun(['http://server1.com/gun', 'http://server2.com/gun'])
 ```
 
 Working with modules
