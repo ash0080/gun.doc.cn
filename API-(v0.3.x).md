@@ -31,7 +31,7 @@ var gun = Gun(options)
 
  - `no params/undefined` creates a local datastore using the default persistence layer, either localStorage or a JSON file.
 
- - passing an `array` of URLs creates a local datastore and attempts to sync it with each URL.
+ - passing an `array` of URLs creates a local datastore that attempts to sync with each URL.
 
    - when only syncing with a single peer, you can leave out the array, sending in just a `string`.
 
