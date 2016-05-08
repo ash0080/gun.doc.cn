@@ -2,7 +2,6 @@
 
 ## Using
 
-  - ["Running Of The Leaves" Game](https://github.com/penguinman98/rotl) by [PenguinMan98](https://github.com/PenguinMan98) (using gun v0.2.5)
   - [Trace game](https://github.com/PsychoLlama/Trace) by [PsychoLlama](https://github.com/PsychoLlama) - **[live demo](http://trace.gundb.io)**
   - [TodoMVC](https://github.com/jveres/todomvc) by [jveres](https://github.com/jveres) - **[live demo](http://todos.loqali.com/)**
   - "Arrive" (permission to publish pending)
