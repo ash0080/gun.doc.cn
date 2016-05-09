@@ -63,7 +63,7 @@ Connecting to the gun server from a browser should look something like this:
 <script src="http://localhost:8080/gun.js"></script>
 <script>
   // connects to your server!
-  var gun = new Gun('http://localhost:8080')
+  var gun = new Gun('http://localhost:8080/gun')
 </script>
 ```
 
