@@ -1,5 +1,3 @@
-# Running your own GUN server
-
 To sync with other peers on a browser, you'll need to connect to one or more servers. While learning gun or building small apps, you can simply use one of the community servers:
 
  - `http://gunjs.herokuapp.com/gun`<br />
