@@ -14,6 +14,7 @@
  - [Anonymous Put](https://gist.github.com/metasean/d039054506c1ab6bafc6)  :arrow_upper_right:
    - The anonymous_put method `.put()`s a value onto a parent object without the need for a pre-defined key.
  - [crdt counter](#counter)
+ - [recursion](#recursion)
 
 ---
 
@@ -248,4 +249,32 @@ db.count(function (value) {
 // prints: -3
 db.count(+10)
 // prints: 7
+```
+
+---
+
+## <a name='recursion'></a> Recursively iterate over a tree
+You can use this method to recursively map over a document structure.
+
+> If you recurse over a huge dataset, you might end up loading the entire thing into memory. Use this method wisely.
+
+```javascript
+Gun.chain.recurse = function (cb, filter) {
+  if (!(filter instanceof Object)) {
+    filter = {};
+  }
+  this.val(cb);
+  this.map().val(function (data) {
+    if (!(data instanceof Object)) {
+      return;
+    }
+    var soul = Gun.is.node.soul(data);
+    if (filter[soul]) {
+      return;
+    }
+    filter[soul] = true;
+    this.recurse(cb, filter);
+  });
+  return this;
+};
 ```
