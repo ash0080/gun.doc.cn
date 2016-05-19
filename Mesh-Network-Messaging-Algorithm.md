@@ -1,4 +1,4 @@
-From the [gitter](https://gitter.im/amark/gun#573ca3741794136a7d09e7d9):
+From the [gitter](https://gitter.im/amark/gun?at=573ca3741794136a7d09e7d9):
 
 GUN's messaging algorithm is based off a full mesh network
 
