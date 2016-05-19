@@ -2,7 +2,8 @@
 
 ## Using
   - [GiveMeCredit - a cryptocurrency where you earn trust and contribute value](https://github.com/GiveMeCredit/extension)
-  - [Trace game](https://github.com/PsychoLlama/Trace) by [PsychoLlama](https://github.com/PsychoLlama) - **[live demo](http://trace.gundb.io)**
+  - [Trace](https://github.com/PsychoLlama/Trace) by [PsychoLlama](https://github.com/PsychoLlama) - **[live demo](http://trace.gundb.io)**
+  - [Connect-4](https://github.com/PsychoLlama/connect-four) by [PsychoLlama](https://github.com/PsychoLlama) - **[live demo](https://gun-c4.herokuapp.com/)**
   - [TodoMVC](https://github.com/jveres/todomvc) by [jveres](https://github.com/jveres) - **[live demo](http://todos.loqali.com/)**
   - "Arrive" (permission to publish pending)
   - "Hackie" (permission to publish pending)
