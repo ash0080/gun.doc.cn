@@ -10,6 +10,7 @@
   - [[GUN's Data Format (JSON)|GUN’s-Data-Format-(JSON)]]
   - [[Partials and Circular References|Partials and Circular References (v0.2.x)]]
   - [[Using Amazon S3 for Storage|Using-Amazon-S3-for-Storage]]
+  - [[Mesh Network Messaging|Mesh-Network-Messaging-Algorithm]]
 
 ##### More about GUN: 
   - [[Conflict Resolution|Conflict-Resolution-with-Guns]]
