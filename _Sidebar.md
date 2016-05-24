@@ -11,6 +11,7 @@
   - [[Partials and Circular References|Partials and Circular References (v0.2.x)]]
   - [[Using Amazon S3 for Storage|Using-Amazon-S3-for-Storage]]
   - [[Mesh Network Messaging|Mesh-Network-Messaging-Algorithm]]
+  - [[Security & Auth|Security,-Authentication,-Authorization]]
 
 ##### More about GUN: 
   - [[Conflict Resolution|Conflict-Resolution-with-Guns]]
