@@ -16,19 +16,19 @@ We had a discussion on gitter on how to handle security in GUN, a peer-to-peer d
 
 The security question contains multiple parts:
 
-### How do we avoid someone masquerading as someone else ?
+**How do we avoid someone masquerading as someone else ?**
 
 The chat example is easy to understand: we do not want messages that seem to originated from Gandalf to actually be from Sauron. A game is another issue where player 1 (Sauron) could send position updates to player 2 (Frodo) and win by cheating.
 
-### How do we protect sensitive data from being read by unauthorised people ?
+**How do we protect sensitive data from being read by unauthorised people ?**
 
 The plan of action discussed by Frodo and Gandalf should not be seen by Sauron, right ? Real-world issues are countless but we can list a few: medical information, a book in the making, notes on your sex life, etc.
 
-### How do we share sensitive data with a group ?
+**How do we share sensitive data with a group ?**
 
 Gandalf and Frodo started exchanging messages and then Samwise joins the group and they want him to be able to read all their past and present exchanges.
 
-### How do we avoid app spamming ?
+**How do we avoid app spamming ?**
 
 If the database is not linked to a central (filtering and authenticating) authority, how do we avoid someone filling it up with junk data such as: "My Precious, My Precious, My Precious, My Precious, My Precious, My Precious, My Precious, My Precious, My Precious, My Precious, My Precious" ? Or simply someone writing `null` to every part of the database until the peer-to-peer sync erases all the data in everyone's copy.
 
@@ -36,14 +36,14 @@ In a gaming scenario, how do we avoid DOS (Denial Of Service) attacks like this 
 
 ## Some key concepts
 
-### Asymmetric or public-key cryptography
+**Asymmetric or public-key cryptography**
 
-A public key allows anybody to encrypt something but only the private key can be used to decrypt. How and why this works is like a fair tail with lots of strange animals ([elliptic curve](https://en.wikipedia.org/wiki/Elliptic_curve_cryptography) is one of them).
+A public key allows anybody to encrypt something but only the private key can be used to decrypt. How and why this works is like a fairy tail with lots of strange animals ([elliptic curve](https://en.wikipedia.org/wiki/Elliptic_curve_cryptography) is one of them).
 
     data + public key ==> unreadable junk
     unreadable junk + private key ==> data
 
-### Digital signature
+**Digital signature**
 
 This is the process by which a user can verify that a message really originated from a given user. Say Frodo receives a letter from Gandalf, he wants to be sure Gandalf actually wrote every single word of the letter. Digital signatures work like this:
 
