@@ -1,7 +1,4 @@
-To sync with other peers on a browser, you'll need to connect to one or more servers. While learning gun or building small apps, you can simply use one of the community servers:
-
- - `http://gunjs.herokuapp.com/gun`
-   Persists your data to Amazon S3.
+To sync with other peers on a browser, you'll need to connect to one or more servers. While learning gun or building small apps, you can simply use our community server:
 
  - `http://gungame.herokuapp.com/gun`
    Only keeps data in memory, purging often. Great for real-time apps like [`trace`](http://trace.gundb.io/) that don't need long term storage.
