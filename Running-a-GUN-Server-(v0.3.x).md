@@ -7,6 +7,8 @@ However, as soon as you start doing more with gun, you'll likely want full contr
 
 The good news: gun comes bundled with a server plugin when downloaded from [`npm`](https://npmjs.com/package/gun). Setting up a simple Node.js server is just a few lines of Javascript code.
 
+> If you want to skip all this, you can use [`gun-server`](https://www.npmjs.com/package/gun-server) on npm. It'll get you up and running fast.
+
 If you don't have the npm version of gun installed, you can run this in your terminal:
 
 ```bash
