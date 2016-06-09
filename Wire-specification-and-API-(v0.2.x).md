@@ -1,5 +1,49 @@
 # Gun Wire Methods
 
+Before diving into documentation, here is a quick sample of what the simplest (not well designed) driver looks like:
+
+(upcoming v0.5.x API)
+```javascript
+Gun.on('put', function(at){
+    for(var soul in at.graph){ // graph is the DELTA CHANGE of each node, but when we flush to disk we want the full node. The assumption here is that what we have in memory is the full node.
+        localStorage[soul] = JSON.stringify(at.gun.__.graph[soul]);
+    }
+    at.cb(null, {ok: "saved"}); // call the ACK callback.
+});
+
+Gun.on('get', function(at){
+    at.cb(null, JSON.parse(localStorage[at.lex.soul])); // call the reply callback.
+});
+```
+
+(v0.3.x API)
+```javascript
+var driver = {};
+
+Gun.on('opt').event(function(gun, opt){
+    // Note: This opt event gets called every time options update and for different instances of gun.
+
+    gun.__.opt.wire.put = put;
+    function put(graph, cb, o){
+        for(var soul in graph){ // graph is the DELTA CHANGE of each node, but when we flush to disk we want the full node. The assumption here is that what we have in memory is the full node.
+            localStorage[soul] = JSON.stringify(gun.__.graph[soul]);
+        }
+        cb(null, {ok: "saved"}); // call the ACK callback.
+    }
+
+    gun.__.opt.wire.get = get;
+    function get(lex, cb, o){
+        var soul = lex[Gun._.soul]; // only lookup the soul.
+        var node = JSON.parse(localStorage[soul]); // grab it from localStorage.
+        cb(null, node); // the current version of GUN
+        cb(null, Gun.is.node.soul.ify({}, soul)); // has a streaming format for responses
+        cb(null, {}); // which we are simplifying in the future.
+    }
+});
+```
+
+
+#Documentation
 Documentation for each of gun's wire methods, `.get`, `.put` and `.key`.
 
 ## put(graph, callback, options)
