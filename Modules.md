@@ -27,5 +27,5 @@ One way deep (document oriented) object data binding, similar to [onward](https:
 ~ By [amark](https://github.com/amark)
 
 ### [gun-hue](https://github.com/PsychoLlama/gun-hue)
-Explore and change your hue lighting with gun!
+Explore and change your hue lighting with gun!  
 ~ By [PsychoLlama](https://github.com/PsychoLlama)
