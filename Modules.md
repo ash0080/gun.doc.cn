@@ -25,3 +25,7 @@ Namespace your data, preventing naming conflicts and adding clear separation bet
 ### [synchronous](https://github.com/gundb/synchronous)
 One way deep (document oriented) object data binding, similar to [onward](https://github.com/gundb/onward).  
 ~ By [amark](https://github.com/amark)
+
+### [gun-hue](https://github.com/PsychoLlama/gun-hue)
+Explore and change your hue lighting with gun!
+~ By [PsychoLlama](https://github.com/PsychoLlama)
