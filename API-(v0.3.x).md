@@ -18,6 +18,7 @@
  - [gun.not](#not)
  - [gun.init](#init)
  - [gun.val](#val)
+ - [gun.opt](#opt)
 
 # <a name="Gun"></a>Gun(options)
 Used to creates a new gun database instance.
@@ -765,4 +766,28 @@ gun.path('property').val()
 `gun.val` does not change the chain context.
 ```javascript
 gun.get(keyName).val() /* is the same as */ gun.get(keyName)
+```
+---------------------------------------------------------
+# <a name="opt"></a> gun.opt(options)
+Change configuration of the gun database instance.
+
+The `options` argument is the same object you pass to the [constructor](#Gun). The `options`'s properties replace those in the instance's configuration but `options.peers` are **added** to peers known to the gun instance.
+
+## Examples
+Create the gun instance.
+```javascript
+gun = Gun('http://yourdomain.com/gun')
+```
+Change UUID generator:
+```javascript
+gun.opt({
+  uuid: function () {
+    return Math.floor(Math.random() * 4294967296);
+  }
+});
+```
+Add more peers:
+```javascript
+gun.opt({peers: ['http://anotherdomain.com/gun']})
+/* Now gun syncs with ['http://yourdomain.com/gun', 'http://anotherdomain.com/gun']. */
 ```
