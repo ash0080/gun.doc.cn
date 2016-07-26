@@ -22,7 +22,7 @@
 
 # <a name="Gun"></a>Gun(options)
 
-<a href="https://youtu.be/zvo6jC1OA3Y" title="GUN constructor"><img src="http://img.youtube.com/vi/zvo6jC1OA3Y/0.jpg" width="425px"></a>
+<a href="https://youtu.be/zvo6jC1OA3Y" title="GUN constructor"><img src="http://img.youtube.com/vi/zvo6jC1OA3Y/0.jpg" width="425px"></a><br>
 Used to creates a new gun database instance.
 
 ```javascript
