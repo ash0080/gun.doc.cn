@@ -517,6 +517,9 @@ gun.path('property') /* is not the same as */ gun.path('property').back
 
 ------------------------------------
 # <a name="on"></a> gun.on(callback)
+
+<a href="https://youtu.be/SEneRvDQysE" title="GUN on"><img src="http://img.youtube.com/vi/SEneRvDQysE/0.jpg" width="425px"></a><br>
+
 Subscribe to updates changes on a node or property real-time.
 
 ## Callback(value, property)
