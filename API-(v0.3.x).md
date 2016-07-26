@@ -103,6 +103,8 @@ Gun({
 <h1><a name="put"></a>gun.put(data, callback)</h1>
 Save data into gun, syncing it with your connected peers.
 
+<a href="https://youtu.be/QLg-Z-y5sVo" title="GUN constructor"><img src="http://img.youtube.com/vi/QLg-Z-y5sVo/0.jpg" width="425px"></a><br>
+
 It has three parameters, and only the first is required:
 
  1. the `data` to save
