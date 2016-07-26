@@ -204,6 +204,8 @@ msg.path('sender').put(sender) // this will succeed
 # <a name="key"></a>gun.key(name)
 Index your data, so you can find it later, faster.
 
+<a href="https://youtu.be/lMlSMdQLXC8" title="GUN key"><img src="http://img.youtube.com/vi/lMlSMdQLXC8/0.jpg" width="425px"></a><br>
+
 We can think of keys as variables pointing to an object, and a node can have more than one name.
 
 The `.key` method takes 3 arguments, and only the first is required:
@@ -257,6 +259,8 @@ gun.path('node').key('nodes') /* same context as */ gun.path('node')
 ------------------------------------------------------------------------------------------
 # <a name="get"></a>gun.get(name)
 Load all data under a [key](#key) into the context.
+
+<a href="https://youtu.be/wNrIrrLffs4" title="GUN get"><img src="http://img.youtube.com/vi/wNrIrrLffs4/0.jpg" width="425px"></a><br>
 
 It takes three parameters:
 
@@ -324,6 +328,9 @@ gun.get('materials').get('users') /* same context as */ gun.get('users')
 
 ---------------------------------------
 # <a name="path"></a>gun.path(property)
+
+<a href="https://youtu.be/UDZGVYLNLAU" title="GUN path"><img src="http://img.youtube.com/vi/UDZGVYLNLAU/0.jpg" width="425px"></a><br>
+
 Navigate through a node's properties
 
 `.path` accepts three parameters, but only the first is required.
@@ -414,6 +421,7 @@ gun.get('API')
 
 -----------------------------
 # <a name="set"></a>gun.set(instance, callback)
+
 Add a unique item to an unordered list.
 
 `gun.set` works in the sense of a mathematical set, where each item in the list is unique. If the same object is added twice, it's simply merged. The main distinction is that sets can only contain objects, not primitives.
@@ -476,6 +484,9 @@ gun.path('friends') /* is not the same as */ gun.path('friends').set(friend)
 
 -----------------------------
 # <a name="back"></a>gun.back
+
+<a href="https://youtu.be/UsWH8h3Y97M" title="GUN back"><img src="http://img.youtube.com/vi/UsWH8h3Y97M/0.jpg" width="425px"></a><br>
+
 Move up to the parent context on the chain.
 
 Every time a new chain is created, a reference to the old context is kept in the `back` property. It's not a function, but a reference to the `this` value you had *before* it was changed. For example, when calling [`.path`](#path), a new context is assigned to the `this` value, allowing you to chain directly off your context in jQuery style. If you want to return to your old context, just use `gun.back`.
@@ -562,6 +573,9 @@ On *any* update —even if a property is only updated with the same value— `gu
 
 -------------------------------------
 # <a name="map"></a>gun.map(callback)
+
+<a href="https://youtu.be/F2FSMsxMSic" title="GUN map"><img src="http://img.youtube.com/vi/F2FSMsxMSic/0.jpg" width="425px"></a><br>
+
 Loop over each property in a node, and subscribe to future changes. It's essentially performing a [`.path`](#path) on each field.
 
 If you don't know the property names to [`.path`](#path) into, or need to `"forEach"` over a group of data, the `.map` function is usually your best choice. It accepts two arguments:
@@ -638,6 +652,7 @@ gun.get(keyName).map() /* is not the same as */ gun.get(keyName)
 
 --------------------------------------
 # <a name="not"></a> gun.not(callback)
+
 Handle cases where data can't be found.
 
 If you need to know whether a property or key exists, you can check with `.not`. It will consult the connected peers and invoke the callback if there's reasonable certainty that none of them have the data available.
@@ -725,6 +740,9 @@ gun.get('data').path('property.next').put(data)
 
 --------------------------------------
 # <a name="val"></a> gun.val(callback)
+
+<a href="https://youtu.be/k-CkP43-uJo" title="GUN map"><img src="http://img.youtube.com/vi/k-CkP43-uJo/0.jpg" width="425px"></a><br>
+
 Read a full object without subscribing updates.
 
 `.val` will send a request for the node, and read out the value from the first peer that finishes their response. Since `.val` has to wait for a termination, it cannot stream data, slowing down the transmission of large objects considerably. If you simply want to read out an object without subscribing to changes, `.val` is your best option. Note that `.val` will subscribe for every new item of an object, but not for changes on those items.
