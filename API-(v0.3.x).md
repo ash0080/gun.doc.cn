@@ -747,7 +747,7 @@ gun.get('data').path('property.next').put(data)
 --------------------------------------
 # <a name="val"></a> gun.val(callback)
 
-<a href="https://youtu.be/k-CkP43-uJo" title="GUN map"><img src="http://img.youtube.com/vi/k-CkP43-uJo/0.jpg" width="425px"></a><br>
+<a href="https://youtu.be/k-CkP43-uJo" title="GUN val"><img src="http://img.youtube.com/vi/k-CkP43-uJo/0.jpg" width="425px"></a><br>
 
 Read a full object without subscribing updates.
 
