@@ -534,7 +534,7 @@ Currently, the only option is to filter old data, and be given the changes, but 
 **Longhand syntax**
 ```javascript
 gun.on(callback, {
-  delta: true
+  change: true
 })
 ```
 
@@ -591,12 +591,12 @@ If you don't know the property names to [`.path`](#path) into, or need to `"forE
 The callback is invoked as new data becomes available, and is subscribed to subsequent changes like [`.on`](#on). Since there may be multiple peers and several layers of data, the callback may be invoked with the same data multiple times, but it will always be the latest at that point in time. It's given both the value and the field it was placed under.
 
 ## Options
-Currently, there is just one option. By passing an object with `node` set to true, you can skip primitive values and only iterate over nested objects. That option is so handy that it's found it's own shorthand...
+Currently, there is just one option. By passing an object with `change` set to true, it will be have like `.on`'s `true`. It has its own shorthand...
 
 **Longhand syntax**
 ```javascript
 gun.map(callback, {
-  node: true
+  change: true
 })
 ```
 
@@ -606,16 +606,6 @@ gun.map(callback, true)
 ```
 
 ## Examples
-Loop over a collection of objects
-```javascript
-// for each status update
-gun.get(userID + '/feed/tweets').map(function (tweet, ID) {
-  // render it to the view
-  view.show.tweet(tweet, ID)
-}, true)
-// `true` filters primitives, ensuring only objects are shown.
-```
-
 Iterate over an object
 ```javascript
 /*
