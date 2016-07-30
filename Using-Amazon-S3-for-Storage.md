@@ -18,7 +18,7 @@ You need to use this Amazon S3 policy (replace both "YOURBUCKETHERE" with the S3
 }
 ```
 
-For your Amazon IAM User (in Security Credential's admin dashboard) that is associated with the Access Key and Secret Access Key from when you initialized GUN on the server:
+For your Amazon IAM User (in Security Credential's admin dashboard, create a custom policy first then create a new user, select it and attach that policy to it) that is associated with that user's Access Key and Secret Access Key from when you initialize GUN on the server:
 
 ```javascript
 var gun = Gun({
