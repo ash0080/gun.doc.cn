@@ -185,7 +185,7 @@ Gun uses graphs internally, so anything representable as a JavaScript object can
 Let's try something a bit more fun. You'll need your browser open to `index.html`...
 
 ```javascript
-// Update to a deeply nested object.
+// Update to a nested object.
 greetings.put({
   hello: {
     browser: 'Hey everyone!'
@@ -193,7 +193,7 @@ greetings.put({
 })
 ```
 
-Now you should see something different this time. Instead of the usual object with `hello: 'world'`, it'll point to a weird-looking object like this one:
+Now you should see something different this time. Instead of the usual object with `hello: 'world'`, it'll point to a weird-looking object like this:
 
 ```json
 { "#": "98VORPhZQhhUeNJaDdneuiGE" }
@@ -201,7 +201,7 @@ Now you should see something different this time. Instead of the usual object wi
 
 You don't have to worry about what that is, gun uses it to figure out how objects are connected. This is where we introduce a new method called `.path`, which is used to navigate an object's properties.
 
-We'll use the `path` method to read the value on `hello`.
+We'll use the [`path`](https://github.com/amark/gun/wiki/API-(v0.3.x)#path) method to read the value on `hello`.
 
 ```javascript
 // Get the property "hello" on greetings.
@@ -219,7 +219,7 @@ Let's go crazy and put a circular reference in there, just for fun. We'll link t
 
 ```javascript
 // Write the `hello` reference to the
-// property "hello".
+// property "self".
 hello.path('self').put(hello)
 ```
 
@@ -368,7 +368,7 @@ book.path('author.name').on(function (name) {
 
 Wrapping things up, graphs can do some pretty awesome stuff, and are powerful for beginners and masters alike.
 
-Hopefully that gives you a good place to start, and an idea of how gun works. From here, you might want to check these out:
+Hopefully that gives you a good place to start, and an idea of how gun works. Next, you might want to check these out:
 
  - [Our API reference sheet](https://github.com/amark/gun/wiki/API-%28v0.3.x%29)
  - [Our Gitter channel (say hi!!)](https://gitter.im/amark/gun/)
