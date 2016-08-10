@@ -80,6 +80,7 @@ $ npm install gun
 ```
 
 > Plug this into a `hello.js` file.
+
 ```javascript
 // Import the gun library
 var Gun = require('gun')
