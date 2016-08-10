@@ -1,10 +1,12 @@
 **Table of Contents**
  - [Introduction](#introduction)
-    - [Example of an embedded peer](#example-of-an-embedded-peer)
-    - [Example of server peers](#example-of-server-peers)
-    - [Additional Learning Resources](#additional-learning-resources)
- - [Theory, Implementation, and Extensions of GUN](#theory-implementation-and-extensions-of-gun)
- - [How To's](#how-to)
+   - [Offline-First](#offline-first)
+   - [Peer-to-Peer](#distributed)
+ - [Hello World - Browser](#hello-world---browser)
+ - [Hello World - Node.js](#hello-world---nodejs)
+ - [Syncing Peers in Real-Time](#real-time-sync)
+ - [Using Graphs](#graph-structures)
+ - [Further Reading](#how-to)
 
 ## Introduction
 Gun is a small, distributed data sync and storage solution that runs everywhere JavaScript does. GUN lets you focus on the data you need to store, retrieve and share without worrying about merge conflicts, network partitions, or synchronizing offline edits.
@@ -27,7 +29,7 @@ However, you don't need peers or servers to use GunDB, they're completely additi
 
 ### Hello World - Browser
 
-> Try it out! Paste this code into an `index.html` file.
+> Follow along! Paste this code into an `index.html` file.
 
 ```html
 <!DOCTYPE html>
@@ -67,9 +69,6 @@ However, you don't need peers or servers to use GunDB, they're completely additi
 </html>
 ```
 
-#### Graph Structure
-With gun's unique architecture and graph database technology, your data is stored, retrieved and exchanged as serialized gun nodes, which themselves wrap standard JavaScript objects. This means that every form of data that you store, manipulate, and share can be expressed natively by the developer without having to think outside of JavaScript objects. This design allows for emergent, flexible, and powerful data structures in your application and shared across processes.
-
 ### Hello World - Node.js
 
 > **Note:** If you don't have [node](http://nodejs.org/) or [npm](https://www.npmjs.com/) installed, [read this](https://docs.npmjs.com/getting-started/installing-node).
@@ -80,6 +79,7 @@ $ npm install gun
 ```
 
 > Plug this into a `hello.js` file.
+
 ```javascript
 // Import the gun library
 var Gun = require('gun')
