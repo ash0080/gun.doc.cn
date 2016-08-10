@@ -1,44 +1,28 @@
-Because of an overlap in words, establishing a precise vocabulary is important.
+Gun borrows some terms from graph theory and mesh networking, then defines some of it's own. Here you can find a summary of what they mean.
 
-Example of conflict:
+#### Node
+An object within a graph. It can contain primitive values, but not other objects (only pointers to other nodes). Also known as a [vertex](https://en.wikipedia.org/wiki/Vertex_(graph_theory)) in graph theory.
 
-- _Node_ can refer to a node in a graph, a node in a network, or node as in NodeJS.
-- _Set_ can refer to a set as in a subset, or the act of setting something in place.
+#### Pseudo-merge/Union
+An intelligent merge between two objects. Unlike `Object.assign`, it uses the [HAM](https://github.com/amark/gun/wiki/Conflict-Resolution-with-Guns) conflict resolution engine to ensure updates are merged commutatively.
 
-Therefore, please conduct your language with the following semantics:
+#### Pseudo-node/Key Node
+A special type of node in gun used for adding secondary indices (via the [`.key()`](https://github.com/amark/gun/wiki/API-(v0.3.x)#key) method). It provides a list of unique IDs to pseudo-merge into an aggregate node.
 
-- **Group**, is an unordered collection of finite things.
-- **Peer**, is a gun server that can be connected to.
-- **Mesh**, is a group of one or more peers connected via some topology.
-- **Partition**, is the disconnection of peers, forming a divergent mesh.
-- **Value**, is a binary, number, text, or relation that exists as a singular whole.
-- **Field**, is a symbol used to reference a value at any time.
-- **Node**, a group of no, one, some, or all fields, as they change over time.
-- **Graph**, a group of nodes. Different from a "graph node" which is a node itself.
-- **Universe**, all nodes over all time over all meshes.
+#### Soul
+A synonym for an object [Universally Unique Identifier](https://en.wikipedia.org/wiki/Universally_unique_identifier). Each node in gun has one (named "`#`" in the object metadata).
 
-The following four operations read and write data are called the Wire Commands:
+#### Graph
+An object that contains unique nodes.
 
-- **Put**, as a verb, is changing the values on a group of one or some fields, in a group of one or some nodes.
-- **Key**, as a verb, creates an index trying to remember a group of one or some nodes.
-- **Get**, as a verb, opens a key or brings a relation into cache, to start exploring a graph.
-- **All**, as a verb, is a discovery mechanism for machines to find where keys, nodes, or peers are.
+#### Peer
+A single device on a mesh network. Usually takes both roles of client and server.
 
-Peer operations compose the following terms:
+#### Mesh
+A collaborative network where each peer is responsible for forwarding others' messages (and responding to requests if it has the data). Refers to the concept of a [mesh network](https://en.wikipedia.org/wiki/Mesh_networking).
 
-- **Stream**, the puts on a node over a series of divisible time.
-- **State**, the stream on a node that a peer had at a certain time.
-- **Sync**, exchanging states and streams between peers over time.
-- **Save**, to snapshot the state of a one or some ndoes into storage by a peer.
-- **Soul**, is the practically unique, immutable identifier for a node.
-- **Send**, firing off a message into a mesh, irregularly repeated until sent.
-- **Sent**, proof that a message was received, might contain data that needs no receipt.
+#### Partition
+When one group of peers can't communicate another, such as two servers losing connection between each other, but still serving clients.
 
-API implementations expose the following methods:
-
-- **On**, gives you the current node or value, and as they change.
-- **Path**, navigate on a graph, via fields, by chaining relations together.
-- **Map**, iterate on the fields in a graph and path into them.
-- **Not**, notifies you that the node or value requested is not known.
-- **Val**, attempts to gives you the node or value only once.
-- **Set**, adds an item into a set of items, or adds the null set.
+#### Universe
+The sum total of all nodes and graphs across every peer in the application.
