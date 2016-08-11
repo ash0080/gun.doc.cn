@@ -1,28 +1,25 @@
 #### [Home](https://github.com/amark/gun/wiki)
 
-#### [[Getting Started|Getting-Started-(v0.3.x)]]
-#### **[[API|API-(v0.3.x)]]**
-##### Get Started With:
-  - [[Graphs|Graphs]]
+#### [Getting Started](https://github.com/amark/gun/wiki/Getting-Started-%28v0.3.x%29)
+#### **[API Reference](https://github.com/amark/gun/wiki/API-%28v0.3.x%29)**
 
-##### Background on:
-  - [[Glossary|Glossary]]
-  - [[GUN's Data Format (JSON)|GUN’s-Data-Format-(JSON)]]
-  - [[Partials and Circular References|Partials and Circular References (v0.2.x)]]
-  - [[Using Amazon S3 for Storage|Using-Amazon-S3-for-Storage]]
-  - [[Mesh Network Messaging|Mesh-Network-Messaging-Algorithm]]
-  - [[Security & Auth|Security,-Authentication,-Authorization]]
+##### Resources:
+ - [Thinking in graphs](https://github.com/amark/gun/wiki/Graphs)
+ - [Our data format](https://github.com/amark/gun/wiki/GUN%E2%80%99s-Data-Format-%28JSON%29)
+ - [Terminology](https://github.com/amark/gun/wiki/Glossary)
+ - [Using Amazon S3 for storage](https://github.com/amark/gun/wiki/Using-Amazon-S3-for-Storage)
+ - [Security & Auth](https://github.com/amark/gun/wiki/Security%2C-Authentication%2C-Authorization)
 
-##### More about GUN: 
-  - [[Conflict Resolution|Conflict-Resolution-with-Guns]]
-  - [[CAP Theorem|CAP-Theorem]]
-  - [[Sharding|Sharding]]
+##### More about GUN:
+ - [How writes are handled](https://github.com/amark/gun/wiki/Partials-and-Circular-References-%28v0.2.x%29)
+ - [The mesh network protocol](https://github.com/amark/gun/wiki/Mesh-Network-Messaging-Algorithm)
+ - [Conflict resolution](https://github.com/amark/gun/wiki/Conflict-Resolution-with-Guns)
+ - [Position in the CAP theorem](https://github.com/amark/gun/wiki/CAP-Theorem)
+ - [Sharding](https://github.com/amark/gun/wiki/Sharding)
 
-### [Projects](Projects)
-### [Modules](Modules)
-### [Snippets](Snippets-(v0.3.x))
-### [FAQs](Frequently-Asked-Questions)
+### [Projects](https://github.com/amark/gun/wiki/Projects)
+### [Modules](https://github.com/amark/gun/wiki/Modules)
 
 ---
 
-**0.2.x** : [[Table of Contents|0.2.x-Table-of-Contents]] | [[API|API-(v0.2.x)]]
+**v0.2.x**: [ToC](https://github.com/amark/gun/wiki/0.2.x-Table-of-Contents) | [API](https://github.com/amark/gun/wiki/API-%28v0.2.x%29)
