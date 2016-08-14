@@ -9,7 +9,7 @@
  - [Further Reading](#how-to)
 
 ## Introduction
-Gun is a small, distributed data sync and storage solution that runs everywhere JavaScript does. GUN lets you focus on the data you need to store, retrieve and share without worrying about merge conflicts, network partitions, or synchronizing offline edits.
+GUN is a small, distributed data sync and storage solution that runs everywhere JavaScript does. GUN lets you focus on the data you need to store, retrieve and share without worrying about merge conflicts, network partitions, or synchronizing offline edits.
 
 #### Offline-First
 When a browser peer sends a request, it'll merge the responses with it's own model using our [conflict resolution](https://github.com/amark/gun/wiki/Conflict-Resolution-with-Guns), then cache the result. Since it's cached on the client, there are a few interesting side effects:
@@ -23,9 +23,9 @@ This makes the loss of important information nearly impossible, as all copies of
 Servers act pretty much the same, but aren't as picky about what they cache.
 
 #### Distributed
-GunDB is peer-to-peer (multi-master replicated), meaning updates don't need a centralized controller. You save data on one machine, and you can sync it with other peers without needing complex consensus systems. It just works.
+GUN is peer-to-peer (multi-master replicated), meaning updates don't need a centralized controller. You save data on one machine, and you can sync it with other peers without needing complex consensus systems. It just works.
 
-However, you don't need peers or servers to use GunDB, they're completely additive. Here's an example of GunDB running in a browser without connecting to any peers...
+However, you don't need peers or servers to use GUN, they're completely additive. Here's an example of GUN running in a browser without connecting to any peers...
 
 ### Hello World - Browser
 
@@ -38,26 +38,26 @@ However, you don't need peers or servers to use GunDB, they're completely additi
 
 		<!-- Boilerplate HTML -->
 		<meta charset="utf-8">
-		<title>Hello World - GunDB</title>
+		<title>Hello World - GUN</title>
 	</head>
 	<body>
 
-		<!-- Loads the Gun library -->
+		<!-- Loads the GUN library -->
 		<script src="https://cdn.rawgit.com/amark/gun/master/gun.js"></script>
 
 		<script>
 
 		// We're not connecting to any peers
 		// just yet...
-		var peers = []
-		var gun = new Gun(peers)
+		var peers = [];
+		var gun = Gun(peers);
 
 		// Create an interface for the `greetings`
 		// key, storing it in a variable.
-		var greetings = gun.get('greetings')
+		var greetings = gun.get('greetings');
 
 		// Update the value on `greetings`.
-		greetings.put({ hello: 'world' })
+		greetings.put({ hello: 'world' });
 
 		// Read the value and listen for
 		// any changes.
@@ -82,13 +82,13 @@ $ npm install gun
 
 ```javascript
 // Import the gun library
-var Gun = require('gun')
+var Gun = require('gun');
 
 // Create a new gun instance
-var gun = new Gun()
+var gun = Gun();
 
 // Read `greetings`, saving it to a variable.
-var greetings = gun.get('greetings')
+var greetings = gun.get('greetings');
 
 // Update the value on `greetings`.
 greetings.put({
@@ -119,29 +119,29 @@ Let's put this in our `hello.js` file, right at the top.
 ```javascript
 // `http` is a standard library
 // built into node.
-var http = require('http')
+var http = require('http');
 
 // Create a new server instance.
-var server = new http.Server()
+var server = new http.Server();
 
 // Start the server on port 8080.
 server.listen(8080, function () {
   console.log('Server listening on http://localhost:8080/gun')
 })
 
-// Our Gun setup from the last example.
-var Gun = require('gun')
-var gun = new Gun()
+// Our GUN setup from the last example.
+var Gun = require('gun');
+var gun = Gun();
 
 // This time, we call `.wsp`.
-gun.wsp(server)
+gun.wsp(server);
 
 // ... The rest of `hello.js` ...
 ```
 
 Sweet! Now gun is accepting websocket connections through `http://localhost:8080/gun`. Now we can connect to it from our browser and sync stuff.
 
-Back in `index.html`, lets add that url to our list of peers, the array we passed to `new Gun`...
+Back in `index.html`, lets add that url to our list of peers, the array we passed to `Gun` constructor...
 
 ```javascript
 // ... html setup above ...
@@ -153,7 +153,7 @@ var peers = [
 ]
 
 // Set up gun, same as before.
-var gun = new Gun(peers)
+var gun = Gun(peers);
 
 // ... the rest of index.html ...
 ```
@@ -174,13 +174,13 @@ Throughout our examples, we've only used simple objects. But what happens when y
 Graphs can represent any structure, no matter how complex or interconnected. In fact, that's how JavaScript objects work under the hood, which is why you can do weird infinite self-references without breaking your computer:
 
 ```javascript
-var object = {}
-object.self = object
+var object = {};
+object.self = object;
 
-object.self.self.self.self //.....
+object.self.self.self.self; //.....
 ```
 
-Gun uses graphs internally, so anything representable as a JavaScript object can also be saved into gun. Well, not quite everything. If you want more detail, you can [read more about graphs here](https://github.com/amark/gun/wiki/Graphs).
+GUN uses graphs internally, so anything representable as a JavaScript object can also be saved into gun. Well, not quite everything. If you want more detail, you can [read more about graphs here](https://github.com/amark/gun/wiki/Graphs).
 
 Let's try something a bit more fun. You'll need your browser open to `index.html`...
 
@@ -205,7 +205,7 @@ We'll use the [`path`](https://github.com/amark/gun/wiki/API-(v0.3.x)#path) meth
 
 ```javascript
 // Get the property "hello" on greetings.
-var hello = greetings.path('hello')
+var hello = greetings.path('hello');
 
 // Listen for data on `greetings.hello`
 hello.on(function (value) {
@@ -220,13 +220,13 @@ Let's go crazy and put a circular reference in there, just for fun. We'll link t
 ```javascript
 // Write the `hello` reference to the
 // property "self".
-hello.path('self').put(hello)
+hello.path('self').put(hello);
 ```
 
 To drive the point home, let's print out the circular reference:
 
 ```javascript
-var self = hello.path('self.self.self.self')
+var self = hello.path('self.self.self.self');
 
 // Print the value on `self`
 self.on(function (update) {
@@ -261,16 +261,16 @@ Once Alice accepts, they add each other to their friends list, and you've got a 
 
 ```javascript
 // This could go on forever.....
-var alice = bob.friends.alice.friends.bob.friends.alice
+var alice = bob.friends.alice.friends.bob.friends.alice;
 ```
 
-###### In gunDB
+###### In GUN
 
-Gun can do this easily. You can try it out in your browser console!
+GUN can do this easily. You can try it out in your browser console!
 
 ```javascript
 // Get a reference to Bob's profile.
-var bob = gun.get('bob')
+var bob = gun.get('bob');
 
 // Update Bob's information
 bob.put({
@@ -279,7 +279,7 @@ bob.put({
 })
 
 // Same thing for Alice
-var alice = gun.get('alice')
+var alice = gun.get('alice');
 alice.put({
   name: 'Alice Davison',
   friends: {},
@@ -288,10 +288,10 @@ alice.put({
 // New method `.set()`: Adds the item to
 // a list. Similar to a mathematical "set",
 // where each member is unique.
-alice.path('friends').set(bob)
+alice.path('friends').set(bob);
 
 // Same thing for bob.
-bob.path('friends').set(alice)
+bob.path('friends').set(alice);
 
 // Print out Bob's name. Very inefficiently.
 bob
@@ -329,12 +329,12 @@ Here you are again, circular reference.
 var weir = book.author.books.The_Martian.author
 ```
 
-###### In gunDB
+###### In GUN
 Here's how you'd do it with gun:
 
 ```javascript
 // Get a reference to the book.
-var book = gun.get('books/The_Martian')
+var book = gun.get('books/The_Martian');
 
 // Set it's information.
 book.put({
@@ -343,7 +343,7 @@ book.put({
 })
 
 // Get a reference to the author.
-var weir = gun.get('authors/Andy_Weir')
+var weir = gun.get('authors/Andy_Weir');
 
 // Add some author information.
 weir.put({
@@ -352,11 +352,11 @@ weir.put({
 })
 
 // Set the author to point to Andy Weir.
-book.path('author').put(weir)
+book.path('author').put(weir);
 
 // Add the book as a unique member of
 // Weir's "books" list.
-weir.path('books').set(book)
+weir.path('books').set(book);
 
 // Print the author's name!
 book.path('author.name').on(function (name) {
