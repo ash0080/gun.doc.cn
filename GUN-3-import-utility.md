@@ -1,4 +1,4 @@
-`https://rawgit.com/amark/41d31de8911e6d5ebe13127180cf9588/raw/bb658b2460b14001e891f982073bc5a7e4e35186/gun3import.js`
+https://rawgit.com/amark/41d31de8911e6d5ebe13127180cf9588/raw/bb658b2460b14001e891f982073bc5a7e4e35186/gun3import.js
 
 or
 
