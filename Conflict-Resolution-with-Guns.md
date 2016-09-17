@@ -158,5 +158,6 @@ If you want more information about how the conflict engine works, you can messag
 ## Further Reading
  - [Where gun stands](https://github.com/amark/gun/wiki/CAP-Theorem) on the CAP theorem.
  - Some challenges to [distributed operations](http://codedependents.com/2014/01/13/mathematical-purity-in-distributed-systems-crdts-without-fear/).
+ - [Why banks are not ACID](http://highscalability.com/blog/2013/5/1/myth-eric-brewer-on-why-banks-are-base-not-acid-availability.html).
  - [Concerns about timestamps](https://aphyr.com/posts/299-the-trouble-with-timestamps) (Aphyr).
  - [Eventual Consistency vs Strong Eventual Consistency vs Strong Consistency](http://stackoverflow.com/questions/29381442/eventual-consistency-vs-strong-eventual-consistency-vs-strong-consistency).
