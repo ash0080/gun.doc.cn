@@ -2,6 +2,8 @@
 
 <a href="https://youtu.be/UBnkhpcLQuM" target="_blank" title="GUN map"><img src="http://img.youtube.com/vi/UBnkhpcLQuM/0.jpg" width="425px"></a><br>
 
+<a href="https://youtu.be/kEJv-vG6Z18" target="_blank" title="GUN map"><img src="http://img.youtube.com/vi/kEJv-vG6Z18/0.jpg" width="425px"></a><br>
+
 The conflict resolution algorithm (also called HAM) is at the center of everything gun does. It's how peers eventually arrive at the same state, and how offline edits are merged. Every change in the system goes through HAM.
 
 ## Requirements
