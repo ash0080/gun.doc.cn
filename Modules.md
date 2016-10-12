@@ -2,10 +2,6 @@
 Tag and untag nodes to custom tags/labels
 ~ By [Stefdv](https://github.com/stefdv)
 
-### [gun-collection](http://stefdv.github.io/gun-collection/components/gun-collection)
-Polymer bindings and web-components for gun.  
-~ By [Stefdv](https://github.com/stefdv)
-
 ### [gun-level](https://github.com/PsychoLlama/gun-level)
 A LevelDB adapter that works with the levelDB module ecosystem.  
 ~ By [PsychoLlama](https://github.com/PsychoLlama)
