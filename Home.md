@@ -6,7 +6,7 @@
 </h2>
 
 
-### **[API Reference](API-(v0.3.x))** 
+### **[API Reference](API-(v0.3.x))**
 
  - [Gun constructor](API-(v0.3.x)#Gun)
  - [gun.put](API-(v0.3.x)#put)
@@ -18,27 +18,28 @@
  - [gun.on](API-(v0.3.x)#on)
  - [gun.map](API-(v0.3.x)#map)
  - [gun.val](API-(v0.3.x)#val)
- - [gun.not](API-(v0.3.x)#not)  
-  
-[Chaining](Chaining-(v0.3.x)) - reference table for chaining dependencies  
+ - [gun.not](API-(v0.3.x)#not)
+
+[Chaining](Chaining-(v0.3.x)) - reference table for chaining dependencies
 
 
-### [Modules](Modules) 
+### [Modules](Modules)
    GUN is designed to be as minimal as possible, with any additional functionality being provided via modules.  Please refer to the [modules](modules) page for a list of existing extensions. Please refer to the [gun-extensions](https://github.com/gundb/gun-extensions/issues) repo to see what extensions have been requested or to request an extension.
 
-### [Projects](Projects) 
+### [Projects](Projects)
    GUN users are encouraged to add their projects to this [running projects list](projects).
 
 
-### [Snippets](Snippets-(v0.3.x))  
+### [Snippets](Snippets-(v0.3.x))
    [Snippets](Snippets-(v0.3.x)) provide small examples of using gun and include micro-modules.
 
-
 ### Getting Started
- - With [[graphs|Graphs]], an article that will step by step walk you through using key/value, relations, and documents in a graph.
- - If you haven't already done so, check out the [README](../blob/master/README.md).
- - Until we complete the [Getting Started with GUN](getting-started-(v0.3.x)) Guide, please review the [API documentation](API-(v0.3.x)) and [examples' source code](../blob/master/examples).
- - Check out and add example code [snippets](snippets-(v0.3.x)) —including micro-modules— to address specific situations.
+ - Here's our guide to [getting started with gun](https://github.com/amark/gun/wiki/Getting-Started-(v0.3.x)) and understanding it's core concepts.
+ - Learn how to [start a gun server](https://github.com/amark/gun/wiki/Running-a-GUN-Server-(v0.3.x)), so your browsers can sync between themselves.
+ - Explore [the power of graphs](https://github.com/amark/gun/wiki/Graphs) and how they can be used to represent useful data structures.
+ - If you haven't already done so, look at our [README](../blob/master/README.md).
+ - Peruse the [examples' source code](../blob/master/examples).
+ - Check out our list of [helpful API extensions](snippets-(v0.3.x)).
 
 ### Getting Assistance
 
@@ -60,12 +61,16 @@
 </dl>
 
 ### Contributing
-There are many ways that you can contribute to gun, some of the more popular are to:  
- - Star this repo
- - Follow us and share your appreciation via [Twitter](https://twitter.com/databasegun), [LinkedIn](https://www.linkedin.com/company/gun-inc), and [Facebook](https://www.facebook.com/databasegun)
- - [Share projects you've written](projects)
- - [Build extensions or squish bugs](https://waffle.io/amark/gun)
-         - If you are working on an extension, familiarize yourself with the [Extending GUN's API](Building-Modules-for-Gun)
+
+ - :star: Star our repository!
+ - :tv: Follow us!
+   - [Twitter](https://twitter.com/databasegun)
+   - [Facebook](https://www.facebook.com/databasegun)
+   - [YouTube](https://www.youtube.com/channel/UCQAtpf-zi9Pp4__2nToOM8g)
+   - [Meetup](https://www.meetup.com/GUN-User-Group/) (held monthly in Provo, Utah)
+ - :speaker: [Show off your gun projects!](projects)
+ - :shipit: [Help us squish bugs](https://waffle.io/amark/gun)
+ - :triangular_ruler: [Build some cool plugins](Building-Modules-for-Gun)
 
 ## [License](../blob/master/LICENSE.md)
 
