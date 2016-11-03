@@ -41,7 +41,7 @@ Every node also must have a universally unique ID, called a **soul**, which is a
 }
 ```
 
-For the sake of comprehension, our example is using a very short soul. Souls should never be this short, and should generated as a UUID or GUID or as some sufficiently long random alphanumeric string. They also should never conflict with any other node in any other app that uses GUN - more on this later. But first:
+For the sake of comprehension, our example is using a very short soul. Souls should never be this short, and should be generated as a UUID or GUID or as some sufficiently long random alphanumeric string. They also should never conflict with any other node in any other app that uses GUN - more on this later. But first:
 
 ```javascript
 {
