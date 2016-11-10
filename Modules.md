@@ -10,6 +10,10 @@ A LevelDB adapter that works with the levelDB module ecosystem.
 Schema validation module for node and the browser.  
 ~ By [RangerMauve](https://github.com/RangerMauve)
 
+### [gun-p2p-auth](https://github.com/swifty/gun-p2p-auth)
+A fully encrypted, peer-to-peer, auth component.  
+~ By [robertheessels](https://github.com/robertheessels)
+
 ### [labelmaker](https://github.com/PsychoLlama/labelmaker)
 Organize and index data into groups with tags.  
 ~ By [PsychoLlama](https://github.com/PsychoLlama)
