@@ -36,6 +36,7 @@
 ### Getting Started
  - Here's our guide to [getting started with gun](https://github.com/amark/gun/wiki/Getting-Started-(v0.3.x)) and understanding it's core concepts.
  - Learn how to [start a gun server](https://github.com/amark/gun/wiki/Running-a-GUN-Server-(v0.3.x)), so your browsers can sync between themselves.
+ - Or just clone the gun [starter app](https://github.com/gundb/gun-starter-app) to see how it all fits together.
  - Explore [the power of graphs](https://github.com/amark/gun/wiki/Graphs) and how they can be used to represent useful data structures.
  - If you haven't already done so, look at our [README](../blob/master/README.md).
  - Peruse the [examples' source code](../blob/master/examples).
