@@ -372,6 +372,7 @@ Hopefully that gives you a good place to start, and an idea of how gun works. Ne
 
  - [Our API reference sheet](https://github.com/amark/gun/wiki/API-%28v0.3.x%29)
  - [Our Gitter channel (say hi!!)](https://gitter.im/amark/gun/)
+ - [The gun starter app](https://github.com/gundb/gun-starter-app)
 
 ## Further Reading
 
