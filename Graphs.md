@@ -131,3 +131,27 @@ gun.get('person/alice').path('spouse.employer.employees').map().path('name').val
 ```
 
 Awesome, now all together - run it yourself: http://jsbin.com/sedudahayi/edit?js,console (Hit "Run", all logs except for the last one have been commented out).
+
+
+---
+
+these sets of operations access/set the same paths. given ```var gun = Gun();```
+
+```
+gun.get('TEST').put(data)
+// self delete... ack a read.
+gun.get('TEST').val( function( val, field ){ this.put( null ) } );
+```
+```
+gun.get('TEST').path( "clips").put(data)
+gun.get('TEST').put( {clips : data } )
+// untested, and probably wrong....
+// gun.get('TEST').val( function( val, field ){ this.path( field ).val( cb2 ) } );
+```
+```
+gun.get('TEST').path( "clips").path( 'video" ).put(data)
+gun.get('TEST').put( {clips : { video: data } } )
+gun.get('TEST').path( "clips.video").put(data)
+```
+
+paths passed to 'path' are parsed with '.' meaning a separate level... the same as passing a deeply nested structure.
