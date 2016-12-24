@@ -1,4 +1,4 @@
-Ladies and Gentlemen.
+Ladies and Gentlemen, here are the latest performance benchmarks on our Open Source Firebase database!
 
 ![](https://dl.dropboxusercontent.com/u/4374976/screenshots/ie6gun.png)
 
