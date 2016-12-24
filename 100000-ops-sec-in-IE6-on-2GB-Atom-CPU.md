@@ -1,4 +1,4 @@
-Ladies and Gentlemen, here are the latest performance benchmarks on our Open Source Firebase database!
+Ladies and Gentlemen, here are the latest performance benchmarks on our Open Source Firebase project - a realtime, decentralized, offline-first, [graph](https://github.com/amark/gun/wiki/graphs) database!
 
 ![](https://dl.dropboxusercontent.com/u/4374976/screenshots/ie6gun.png)
 
@@ -31,4 +31,4 @@ Resulting caveats:
  - These performance benchmarks rarely have cache misses, but replicates other database benchmarks (like Redis) which do the same. Measuring disk I/O is not very interesting.
  - Take all performance testing benchmarks with a huge grain of salt. That is why we're working on [panic](https://github.com/gundb/panic-server), a distributed testing runner.
 
-Hop on the [gitter](https://gitter.im/amark/gun) to learn more and chat with us!
+Check out our main [GitHub repo](https://github.com/amark/gun) to learn more or hop on the [gitter](https://gitter.im/amark/gun) to chat! 
