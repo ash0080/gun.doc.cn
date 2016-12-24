@@ -11,6 +11,8 @@ We're getting even better numbers on other devices:
  - Macbook Pro, Chrome Canary, **~80M ops/sec**.
  - Lenovo netbook, IE6, **~100K ops/sec**.
 
+Compare to Redis at 0.5M ops/sec (cached reads, Macbook Air), even with pipeline optimizations turned on, here: https://redis.io/topics/benchmarks .
+
 ## How did we accomplish 100,000 ops/sec in IE6?
 
 This test ran on the cheapest Windows laptop available on the market. A $150 2GB Atom CPU which was loaded up with IETester to do some performance benchmarking. These numbers represent a breakthrough in performance not possible with other databases. A technical deep dive is highlighted on the [Read the Source](https://www.youtube.com/watch?v=70dn1oZQFCk) podcast:
