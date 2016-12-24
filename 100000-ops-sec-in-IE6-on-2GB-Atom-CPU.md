@@ -21,7 +21,7 @@ This test ran on the cheapest Windows laptop available on the market. A $150 2GB
 
 For those who want the short summary:
 
-1. Use PTSD (Performance Testing Speed Development, like TDD) to micro-optimize your code without getting lost in micro-optimizations. This [tech talk](https://youtu.be/BEqH-oZ4UXI) is a must watch.
+1. Use PTSD (Performance Testing Speed Development, like TDD) to micro-optimize your code without getting lost in micro-optimizations. This [tech talk](https://youtu.be/BEqH-oZ4UXI) is a must watch - [@alexhultman](https://github.com/alexhultman), author of the high performance C++ [uWebSockets](https://github.com/uWebSockets/uWebSockets) library praised it [here](https://github.com/amark/gun/issues/261#issuecomment-262959696).
 2. Reduce function calls and prioritize hot code paths as the first if statements.
 3. Do work only once, then use centralized caching and cache updating to skip ever doing work again.
 
