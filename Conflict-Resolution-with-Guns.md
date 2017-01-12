@@ -1,9 +1,3 @@
-<a href="https://youtu.be/qKIn9L2obug" target="_blank" title="GUN map"><img src="http://img.youtube.com/vi/qKIn9L2obug/0.jpg" width="425px"></a><br>
-
-<a href="https://youtu.be/UBnkhpcLQuM" target="_blank" title="GUN map"><img src="http://img.youtube.com/vi/UBnkhpcLQuM/0.jpg" width="425px"></a><br>
-
-<a href="https://youtu.be/gRoJqzko_mE" target="_blank" title="GUN map"><img src="http://img.youtube.com/vi/gRoJqzko_mE/0.jpg" width="425px"></a><br>
-
 The conflict resolution algorithm (also called HAM) is at the center of everything gun does. It's how peers eventually arrive at the same state, and how offline edits are merged. Every change in the system goes through HAM.
 
 ## Requirements
@@ -49,7 +43,9 @@ There's a bit more nuance to updates with greater state, so we'll discuss that i
 ### Conflicts
 Well, according to the goals we listed, **it doesn't matter** what value we choose, so long as everyone chooses it. We just need to be consistent. Another advantage is that gun supports a subset of JSON, so we only need to handle conflicts in that subset.
 
-This allows us to define some simple rules that guarantee convergence, mostly through type and lexical comparisons.
+This allows us to define some simple rules that guarantee convergence, mostly through type and lexical comparisons. Here is a layman explanation, followed by more details:
+
+<a href="https://youtu.be/qKIn9L2obug" target="_blank" title="GUN map"><img src="http://img.youtube.com/vi/c80vSf45H4k/0.jpg" width="425px"></a><br>
 
 ##### Both are equal
 Then there's no conflict, it doesn't matter which you choose.
@@ -66,7 +62,9 @@ Compare their string values with `JSON.stringify`, choosing the greater of the t
 ### States
 This is dangerous territory, and if handled wrong can expose crippling application vulnerabilities. For example, a devious user submits an update with a state of 10 zillion. Now, no one gets to write until their state reaches 10 zillion plus 1.
 
-That's generally frowned on.
+That's generally frowned on. Check out this layman explainer:
+
+<a href="https://youtu.be/UBnkhpcLQuM" target="_blank" title="GUN map"><img src="http://img.youtube.com/vi/UBnkhpcLQuM/0.jpg" width="425px"></a><br>
 
 HAM handles this with user-relative merges. When the "10 zillion" update comes in, HAM simply waits until your machine reaches state 10 zillion before acknowledging it's existence. If an update isn't acknowledged, it never escapes volatile memory onto disk. We call this a deferred update.
 
@@ -81,7 +79,9 @@ By now you might have noticed we're not talking about Vector Clocks. Instead, gu
 
 One of our constraints with HAM is that synchronization algorithms should not be required, including [NTP](https://en.wikipedia.org/wiki/Network_Time_Protocol) and it's variants, so accurate clocks can never be assumed.
 
-Luckily, HAM doesn't care if your clock is accurate. It only cares about *machine-relative* ordering, and whether an update should be part of history, current state, or ignored until some point in the future.
+Luckily, HAM doesn't care if your clock is accurate. It only cares about *machine-relative* ordering, and whether an update should be part of history, current state, or ignored until some point in the future. For a layman explanation of this, check this video out:
+
+<a href="https://youtu.be/gRoJqzko_mE" target="_blank" title="GUN map"><img src="http://img.youtube.com/vi/gRoJqzko_mE/0.jpg" width="425px"></a><br>
 
 ### State Boundaries
 Each value has two dividing lines, the state of the last update, and what it considers your device's current time.
