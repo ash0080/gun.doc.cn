@@ -9,6 +9,7 @@
   - "Hackie" (permission to publish pending)
   - [Gun CMS] (https://github.com/Stefdv/Gun-Server-CMS-App) by [Stefdv](https://github.com/Stefdv)
   - [creeper.im - Send public messages to nearby people.](https://creeper.im)
+  - [Yazz] - Building an enterprise data sharing network with GunDB (https://github.com/zubairq/yazz)
 
 ## Interested
 
