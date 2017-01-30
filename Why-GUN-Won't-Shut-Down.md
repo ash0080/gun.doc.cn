@@ -2,6 +2,8 @@ Let us be frank here, the shut down of incredible companies like RethinkDB have 
 
 I explore more of my thoughts on Open Source licenses and the post-mortem of RethinkDB on this The Changelog podcast episode - https://changelog.com/podcast/236.
 
+<audio data-theme="night" data-src="https://changelog.com/podcast/236/embed" src="https://cdn.changelog.com/uploads/podcast/236/the-changelog-236.mp3" preload="none" class="changelog-episode" controls></audio><p><a href="https://changelog.com/podcast/236">The Changelog 236: GunDB, Venture Backed and Decentralized with Mark Nadal</a> – Listen on <a href="https://changelog.com/">Changelog.com</a></p><script async src="//cdn.changelog.com/embed.js"></script>
+
 One of the things that we are doing is making sure to always license our code as MIT or ZLIB or Apache 2. This is a promise (and a legal one too) to developers that the ideals and values of Open Source will always be there, first and foremost. In fact, the license was determined by you, a community vote, see here - https://github.com/amark/gun/issues/17 .
 
 Now, what about the macro-economics that are at play?
