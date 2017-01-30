@@ -1,6 +1,6 @@
 Let us be frank here, the shut down of incredible companies like RethinkDB have really shaken developer trust in Open Source. Let alone the shut down of companies like Parse and others. Why won't GUN fall prey to this same problem?
 
-I explore more of my thoughts on Open Source licenses and the post-mortem of RethinkDB on this The Change Log podcast episode - https://changelog.com/podcast .
+I explore more of my thoughts on Open Source licenses and the post-mortem of RethinkDB on this The Changelog podcast episode - https://changelog.com/podcast/236.
 
 One of the things that we are doing is making sure to always license our code as MIT or ZLIB or Apache 2. This is a promise (and a legal one too) to developers that the ideals and values of Open Source will always be there, first and foremost. In fact, the license was determined by you, a community vote, see here - https://github.com/amark/gun/issues/17 .
 
