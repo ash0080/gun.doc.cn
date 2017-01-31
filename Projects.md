@@ -8,7 +8,7 @@
   - "Arrive" (permission to publish pending)
   - "Hackie" (permission to publish pending)
   - [creeper.im - Send public messages to nearby people.](https://creeper.im)
-  - [Yazz] - Building an enterprise data sharing network with GunDB (https://github.com/zubairq/yazz)
+  - [GoShareData] - An enterprise system for data sharing database data with colleagues (https://github.com/zubairq/GoShareData)
 
 ## Interested
 
