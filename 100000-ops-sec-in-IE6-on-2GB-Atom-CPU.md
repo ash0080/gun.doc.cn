@@ -27,7 +27,6 @@ For those who want the short summary:
 
 Resulting caveats:
 
- - These tests are running on the bleeding edge `0.5` branch, only 60% of the API tests are currently passing.
  - These performance benchmarks rarely have cache misses, but replicates other database benchmarks (like Redis) which do the same. Measuring disk I/O is not very interesting.
  - Take all performance testing benchmarks with a huge grain of salt. That is why we're working on [panic](https://github.com/gundb/panic-server), a distributed testing runner.
 
