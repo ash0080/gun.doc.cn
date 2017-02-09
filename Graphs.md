@@ -1,6 +1,6 @@
-This article will go over how it is easy to create interconnected data with GUN's graph features. Graphs allow for a mix of many different data structures, and we will use all of them in this overview.
+This article will go over how it is easy to create interconnected data with GUN's graph features, combining key/value, relational, and document based data together. It will also be a great introductory guide on how to use pretty much every one of GUN's API methods.
 
-> Note: This article requires gun v0.3.3 or above.
+> Note: This article requires gun v0.5.x or above.
 
 First let's instantiate the database.
 
@@ -17,13 +17,13 @@ var carl = gun.get('person/carl').put({name: 'carl', age: 16});
 var dave = gun.get('person/dave').put({name: 'dave', age: 42});
 ```
 
-> Note: If no data is found on the key ('person/alice', etc.), gun will implicitly create, update, and `.key` it upon a `put`. This is useful and convenient, but can be problematic for some types of apps. To force gun to require that you explicitly initialize data first, instantiate with `Gun({init: true})` instead.
+> Note: If no data is found on the key ('person/alice', etc.) when we [`.get`](../API#get) it, gun will implicitly create and update it upon a [`.put`](../API#put). This is useful and convenient, but can be problematic for some types of apps. If you want to check if the data does not exist, use [`.not`](../API#not) first.
 
 What if we want to get their data? We can either chain off of the reference directly or get it again:
 
 ```javascript
-alice.val(function(node){
-  console.log('Alice!', node);
+alice.on(function(node){
+  console.log('Subscribed to Alice!', node);
 });
 
 gun.get('person/bob').val(function(node){
@@ -31,7 +31,7 @@ gun.get('person/bob').val(function(node){
 });
 ```
 
-> Note: GUN is a functional reactive database for event driven data, so using `.val` is discouraged because it indicates that you are doing things procedurally. Calling `.val()` (no callback) automatically asynchronously logs out the data, which is useful for debugging purposes.
+> Note: GUN is a functional reactive database for streaming event driven data, gotta hate buzzwords - right? This means that [`.on`](../API#on) subscribes to realtime updates, and may get called many times. Meanwhile [`.val`](../API#val) grabs the data once, which is useful for procedural operations. 
 
 Now lets add all the people into a [set](https://en.wikipedia.org/wiki/Set_(mathematics)), you can think of this as a table in relational databases or a collection in NoSQL databases.
 
@@ -43,15 +43,17 @@ people.set(carl);
 people.set(dave);
 ```
 
+> Note: [`.get`](../API#get) and [`.put](../API#put) are the core API of gun, everything else is just a convenient utility that wraps around them for specific uses - like [`.set`](../API#set) for inserting records.
+
 It is now easy to iterate through our list of people.
 
 ```javascript
-people.map(function(person){
+people.map().val(function(person){
   console.log("The person is", person);
 });
 ```
 
-> Note: In functional languages `map` is used similarly to a for each loop in javascript. Everything is continuously evaluating in GUN, including `.map`, and will get called when new items are added to the set or when an item is updated - but only for those changes, not the whole list again. This is great for realtime applications.
+> Note: If [`.map`](../API#map) is given no callback, it simply iterates over each item in the list "as is" - thus acting like a for each loop in javascript. Also, everything is continuously evaluating in GUN, including [`.map`](../API#map), so it will get called when new items are added as well as when an item is updated. It does not iterate through the whole list again every time, just the changes. This is great for realtime applications.
 
 Next we want to add a startup that some of these people work at. Document oriented data does a perfect job at capturing the hierarchy of a company. Let's do that with the following:
 
@@ -76,19 +78,19 @@ company.val(function(startup){
 });
 ```
 
-> Note: GUN returns partials to keep things fast. What you'll see logged out on `startup.address` is not the address itself, but a pointer to the address. Documents can be of any depth, as a result GUN streams only what you need by default.
+> Note: The data given in the callback is only 1 layer deep to keep things fast. What you'll see logged out on `startup.address` is not the address itself, but a pointer to the address. Because documents can be of any depth, GUN only streams out what you need by default, thus optimizing bandwidth.
 
-So what if you want to access the city property on the company's address? You can traverse into your document using the standard dot syntax.
+So what if you want to actually access the city property on the company's address then? [`.path`](../API#path) lets you traverse into your document using the standard dot notation syntax popular in javascript and document databases.
 
 ```javascript
-company.path('address.city').val(function(value, field){
+company.path('address.city').val(function(value, key){
   console.log("What is the city?", value);
 });
 ```
 
-> Note: As a result, your fields cannot have a '.' in them! The `field` in the callback is always the last property on the path.
+> Note: Sometimes a property name might have a '.' in it itself, like if a decimal `0.33` is used as the field. This is okay, because [`.path`](../API#path) just wraps around [`.get`](../API#get). So you can escape the decimal by doing `company.get('address').get('city')` instead. Also, the `key` in the callback is always the last property name in the field path.
 
-We just found out the company got funding and moved to a new office! Let's go ahead and update it.
+Good news! We just found out the company got funding and moved to a new office! Let's go ahead and update it.
 
 ```javascript
 gun.get('startup/hype').put({ // or you could do `company.put({` instead.
@@ -99,9 +101,9 @@ gun.get('startup/hype').put({ // or you could do `company.put({` instead.
 });
 ```
 
-> Note: Even writes are treated as partials in GUN. Meaning that the data will merge together with what already exists. This lets us update only the pieces that need to be without worrying about overwriting the whole document.
+> Note: GUN saves everything as a partial update, so you do not have to re-save the entire object every time (in fact, this should be avoided)! It automatically merges the updates for you by doing conflict resolution on the data. This lets us update only the pieces we want without worrying about overwriting the whole document.
 
-Documents in isolation are not very useful. Let's connect things and turn everything into a graph!
+However documents in isolation are not very useful. Let's connect things and turn everything into a graph!
 
 ```javascript
 var employees = company.path('employees');
@@ -122,36 +124,26 @@ carl.path('friends').set(alice);
 carl.path('friends').set(bob);
 ```
 
-> Note: The distinction between `.put` and `.set` are important. You can have a simple directed link or you can have a one-to-many relationship. This is why we call everything a node in a graph.
+> Note: We can have 1-1, 1-N, N-N relationships. By default every relationship is a "directed" graph (it only goes in one direction), so if you want bi-directional relationships you must explicitly save the data as being so (like with Dave and his kid, Carl). If you want to have meta information about the relationship, simply create an "edge" node that both properties point to instead. Many graph databases do this by default, but because not all data structures require it, gun leaves it to you to specify.
 
-Finally, let's read some data out. Starting with a key/value, pathing into fields on a document, then mapping over a table, then navigating into one of its columns and logging out its value with `.val`'s shortcut helper.
+Finally, let's read some data out. Starting with getting a key/value, then navigating into a document, then mapping over a table, then traversing into one of the columns and printing out all the values!
 
 ```javascript
-gun.get('person/alice').path('spouse.employer.employees').map().path('name').val("The employee's");
+gun.get('person/alice').path('spouse.employer.employees').map().path('name').val(function(data, key){
+  console.log("The employee's", key, data);
+});
 ```
 
-Awesome, now all together - run it yourself: http://jsbin.com/sedudahayi/edit?js,console (Hit "Run", all logs except for the last one have been commented out).
+Awesome, now run it all together: http://jsbin.com/mivaciwupa/edit?js,console (Hit "Run", all logs except for the last one have been commented out).
 
+GUN is that easy! And it all syncs in realtime across devices! Imagine what you can build?
 
----
+ - Be it [distributed machine learning with gun](http://myrighttocode.org/blog/artificial%20intelligence/particle%20swarm/genetic%20algorithm/collective%20knowledge/machine%20learning/gun-db-artificial-knowledge-sharing)
 
-these sets of operations access/set the same paths. given ```var gun = Gun();```
+ - or IoT apps with timeseries analysis and [live temperature data visualizations](https://github.com/Stefdv/gun-ui-lcd#syncing).
 
-```
-gun.get('TEST').put(data)
-// self delete... ack a read.
-gun.get('TEST').val( function( val, field ){ this.put( null ) } );
-```
-```
-gun.get('TEST').path( "clips").put(data)
-gun.get('TEST').put( {clips : data } )
-// untested, and probably wrong....
-// gun.get('TEST').val( function( val, field ){ this.path( field ).val( cb2 ) } );
-```
-```
-gun.get('TEST').path( "clips").path( 'video" ).put(data)
-gun.get('TEST').put( {clips : { video: data } } )
-gun.get('TEST').path( "clips.video").put(data)
-```
+ - How about multiplayer VR experiences, or [React apps](https://github.com/PsychoLlama/connect-four) like [online games](https://github.com/PsychoLlama/Trace)? Or [realtime GPS tracking](https://youtu.be/7ALHtbC9aOM) for autonomous drones that deliver burritos or Uber/Lyft like apps. 
 
-paths passed to 'path' are parsed with '.' meaning a separate level... the same as passing a deeply nested structure.
+ - Maybe you just want to create a social networking app, [getting started with a basic server](https://github.com/gundb/gun-starter-app) and using Angular or Webcomponents/Polymer instead. Better learn about P2P logins, security, and authentication with our [1 minute video explainers crash course on encryption](http://gun.js.org/explainers/data/security.html)!
+
+Whatever it is (except for banking), we hope you are excited and tackle it with gun! Make sure you join the [chat room](https://gitter.im/amark/gun) (everybody is nice and helpful there) and ask questions or complain about bugs/problems. Or if you think your company might be interested in using gun, we have some great [partnership plans](https://www.patreon.com/gunDB) (as well as some donation options, if you want to personally contribute some yummy meals to our tummy).
