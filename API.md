@@ -4,20 +4,21 @@
 [[issue #70|https://github.com/amark/gun/issues/70]].***
 
 ---------------------------------------------------------------------
-
-**Table of Contents**
+# Core API
  - [Gun constructor](#Gun)
  - [gun.put](#put)
  - [gun.get](#get)
  - [gun.back](#back)
+ - [gun.opt](#opt)
+
+# API
  - [gun.path](#path)
- - [gun.set](#set)
  - [gun.on](#on)
+ - [gun.val](#val)
+ - [gun.set](#set)
  - [gun.map](#map)
  - [gun.not](#not)
  - [gun.init](#init)
- - [gun.val](#val)
- - [gun.opt](#opt)
  - [gun.key](#key)
 
 # <a name="Gun"></a>Gun(options)
@@ -316,12 +317,37 @@ gun.get('player').path('game.score').back(1)
 gun.get('player').path('game')
 ```
 
-## Chain Context
+## Chain context
 The context will always be different, returning you to the
 ```javascript
 gun.get('key').get('property')
 /* is not the same as */
 gun.get('key').get('property').back()
+```
+
+--------------------------------------
+# <a name="opt"></a> gun.opt(options)
+Change the configuration of the gun database instance.
+
+The `options` argument is the same object you pass to the [constructor](#Gun). The `options`'s properties replace those in the instance's configuration but `options.peers` are **added** to peers known to the gun instance.
+
+## Examples
+Create the gun instance.
+```javascript
+gun = Gun('http://yourdomain.com/gun')
+```
+Change UUID generator:
+```javascript
+gun.opt({
+  uuid: function () {
+    return Math.floor(Math.random() * 4294967296);
+  }
+});
+```
+Add more peers:
+```javascript
+gun.opt({peers: ['http://anotherdomain.com/gun']})
+/* Now gun syncs with ['http://yourdomain.com/gun', 'http://anotherdomain.com/gun']. */
 ```
 
 ---------------------------------------
@@ -405,98 +431,36 @@ gun.get('API')
 ```
 
 -----------------------------
-# <a name="set"></a>gun.set(instance, callback)
-
-Add a unique item to an unordered list.
-
-`gun.set` works in the sense of a mathematical set, where each item in the list is unique. If the same object is added twice, it's simply merged. The main distinction is that sets can only contain objects, not primitives.
-
-> **Note:** we may allow primitives in the future.
-
-## Instance
-`gun.set` takes a node to add to the set in the form of a gun instance. For example:
-```javascript
-var data = gun.get('data')
-var parent = gun.get('parent')
-parent.set(data)
-```
-The data must always evaluate to a node, since the soul is needed to create a unique field name. You can pass a reference to any node in gun.
-
-## Callback
-The callback is invoked exactly the same as `.put`, with `(error, okay)` parameters. The `okay` parameter may be undefined if underlying layers chose not to provide more information.
-
-## Previous API
-`v0.2.x` had a method called `.set` that works somewhat similar to the new method. The main distinctions:
-
-The old version...
- - Wasn't a true set
-   It was basically "pushing" to a list
- - Was becoming an API catchall
-   The method was becoming bloated with features
-
-In `v0.3.x` we decided to clean up the API and move the `.not/.put` behavior into a dedicated method called [`.init`](#init). To prevent too much confusion, we waited until `v0.3.4` before publishing the new `.set` method. Since some of the functionality was moved into the [`.init`](#init) method, we wanted an obvious distinction between this version and last version's `.set` method, so we chose not to allow primitive types (although they will be supported in the future).
-
-## Examples
-
-```javascript
-var gun = Gun()
-var bob = gun.get('bob')
-var dave = gun.get('dave')
-
-dave.path('friends').set(bob)
-bob.path('friends').set(dave)
-```
-The "friends" example is perfect, since the set guarantees that you won't have duplicates in your list.
-
-```javascript
-var gun = Gun()
-var book1 = gun.get('book1')
-var book2 = gun.get('book2')
-var book3 = gun.put({ title: title })
-
-var books = gun.get('books')
-books.set(book1)
-books.set(book2)
-books.set(book3)
-```
-
-## Chain Context
-`gun.set` changes the chain context.
-```javascript
-gun.path('friends') /* is not the same as */ gun.path('friends').set(friend)
-```
-
-------------------------------------
-# <a name="on"></a> gun.on(callback)
+# <a name="on"></a> gun.on(callback, option)
 
 <a href="https://youtu.be/SEneRvDQysE" title="GUN on"><img src="http://img.youtube.com/vi/SEneRvDQysE/0.jpg" width="425px"></a><br>
 
-Subscribe to updates changes on a node or property real-time.
+Subscribe to updates and changes on a node or property in realtime.
 
-## Callback(value, property)
-When the property or node you're focused on is changed, the callback is immediately fired and given the value as it is at that point in time.
+## Callback(data, key)
+When the property or node you're focused on changes, this callback is immediately fired with the data as it is at that point in time.
 
-Since gun uses data streams, the callback will probably be called multiple times as new chunk comes in.
+Since gun streams data, the callback will probably be called multiple times as new chunk comes in.
 
-## Options
-Currently, the only option is to filter old data, and be given the changes, but nothing more. If you're listening to a node with 100 fields, and just one changes, you'll be passed a node with a single property representing that change. Since it's often useful, there's a shorthand for it...
+## Option
+Currently, the only option is to filter out old data, and just be given the changes. If you're listening to a node with 100 fields, and just one changes, you'll instead be passed a node with a single property representing that change rather than the full node every time.
 
 **Longhand syntax**
 ```javascript
-gun.on(callback, {
+gun.get('foo').on(callback, {
   change: true
 })
 ```
 
 **Shorthand syntax**
 ```javascript
-gun.on(callback, true)
+gun.get('foo').on(callback, true)
 ```
 
 ## Examples
 Listening for updates on a key
 ```javascript
-gun.path('users/' + username).on(function (user) {
+gun.get('users').path(username).on(function(user){
   // update in real-time
   if (user.online) {
     view.show.active(user.name)
@@ -508,7 +472,7 @@ gun.path('users/' + username).on(function (user) {
 
 Listening to updates on a field
 ```javascript
-gun.get('lights').path('living room').on(function (state, room) {
+gun.get('lights').path('living room').on(function(state, room){
   // update the UI when the living room lights change state
   view.lights[room].show(state)
 })
@@ -517,82 +481,137 @@ gun.get('lights').path('living room').on(function (state, room) {
 ## Chain Context
 `gun.on` does not change the chain context.
 ```javascript
-gun.get(keyName).on(handler) /* is the same as */ gun.get(keyName)
+gun.get(key).on(handler) /* is the same as */ gun.get(key)
 ```
 
 ## Unexpected behavior
 
-On *any* update —even if a property is only updated with the same value— `gun.on(cb,true)` fires.  Even if the value does not change, the [HAM state](GUN’s-Data-Format-(JSON)#hypothetical-amnesia-machine-ham-state) will still be updated.
+Data is only 1 layer deep, a full document is not returned (there are extensions available that do that), this helps keep things fast.
 
+It will be called many times.
 
 -------------------------------------
+# <a name="val"></a> gun.val(callback, option)
+
+<a href="https://youtu.be/k-CkP43-uJo" title="GUN val"><img src="http://img.youtube.com/vi/k-CkP43-uJo/0.jpg" width="425px"></a><br>
+
+Get the current data without subscribing to updates.
+
+## Option
+
+ - `wait` controls the asynchronous timing (see unexpected behavior, below). `gun.get('foo').val(cb, {wait: 0})`
+
+## Callback(data, key)
+The data is the value for that chain at that given point in time. And they key is the last property name or ID of the node.
+
+## Examples
+```javascript
+gun.get('peer').path(userID).path('profile').val(function(profile){
+  // render it, but only once. No updates.
+  view.show.user(profile)
+})
+```
+
+Reading a property
+```javascript
+gun.get('IoT').path('temperature').val(function(number){
+  view.show.temp(number)
+})
+```
+
+## Chain Context
+`gun.val` does not currently change the context of the chain, but it is being discussed for future versions that it will - so try to avoid chaining off of `.val` for now.
+
+## Unexpected behavior
+
+`.val` is synchronous and immediate (at extremely high performance) if the data has already been loaded.
+
+`.val` is asynchronous and on a **debounce timeout** while data is still being loaded - so it may be called completely out of order compared to other functions. This is intended because gun streams partials of data, so `val` avoids firing immediately because it may not represent the "complete" data set yet. You can control this timeout with the `wait` option.
+
+Data is only 1 layer deep, a full document is not returned (there are extensions available that do that), this helps keep things fast.
+
+---------------------------------------------------------
+# <a name="set"></a>gun.set(data, callback)
+
+Add a unique item to an unordered list.
+
+`gun.set` works like a mathematical set, where each item in the list is unique. If the item is added twice, it will be merged. This means only objects, for now, are supported.
+
+## Data
+Data should be a gun reference or an object.
+```javascript
+var user = gun.get('alice').put({name: "Alice"});
+gun.get('users').set(user);
+```
+
+## Callback
+The callback is invoked exactly the same as `.put`, since `.set` is just a convenience wrapper around `.put`.
+
+## Examples
+
+```javascript
+var gun = Gun();
+var bob = gun.get('bob').put({name: "Bob"});
+var dave = gun.get('dave').put({name: "Dave"});
+
+dave.path('friends').set(bob);
+bob.path('friends').set(dave);
+```
+The "friends" example is perfect, since the set guarantees that you won't have duplicates in your list.
+
+## Chain Context
+`gun.set` changes the chain context, it returns the item reference.
+```javascript
+gun.path('friends') /* is not the same as */ gun.path('friends').set(friend)
+```
+
+------------------------------------
 # <a name="map"></a>gun.map(callback)
 
 <a href="https://youtu.be/F2FSMsxMSic" title="GUN map"><img src="http://img.youtube.com/vi/F2FSMsxMSic/0.jpg" width="425px"></a><br>
 
-Loop over each property in a node, and subscribe to future changes. It's essentially performing a [`.path`](#path) on each field.
+Loop over each property in a node, and listen to each property as well as any changes on the node itself (such as future inserts). It is essentially performing a [`.path`](#path) on each field.
 
 If you don't know the property names to [`.path`](#path) into, or need to `"forEach"` over a group of data, the `.map` function is usually your best choice. It accepts two arguments:
 
- - a `Callback` function
- - an `Options` object
+ - a `callback` function.
 
-## Callback(value, property)
-The callback is invoked as new data becomes available, and is subscribed to subsequent changes like [`.on`](#on). Since there may be multiple peers and several layers of data, the callback may be invoked with the same data multiple times, but it will always be the latest at that point in time. It's given both the value and the field it was placed under.
-
-## Options
-Currently, there is just one option. By passing an object with `change` set to true, it will be have like `.on`'s `true`. It has its own shorthand...
-
-**Longhand syntax**
-```javascript
-gun.map(callback, {
-  change: true
-})
-```
-
-**Shorthand syntax**
-```javascript
-gun.map(callback, true)
-```
+> Note: In future versions of gun the `callback` function will act as a transform filter. If no callback is specified, it will default to a transform filter that makes no changes to the data (therefore acting like a `forEach`). In the meantime, we highly recommend you do not pass `map` a callback, and instead either `map().on(cb)` or `map().val(cb)` to get the data.
 
 ## Examples
 Iterate over an object
 ```javascript
 /*
-  where `visitor/stats` are {
+  where `stats` are {
     'new customers': 35,
     'returning': 65
   }
 */
-gun.get('visitor/stats').map(function (percent, category) {
+gun.get('stats').map().on(function(percent, category) {
   pie.chart(category, percent)
 })
 ```
+Or `forEach`ing through every user.
+```javascript
+gun.get('users').map().val(function(user, id){
+  ui.list.user(user);
+});
+```
 
 ## Chain context
-The context for `.map` is a bit tricky. All [dependent](Chaining#chaining-dependency-table) methods will treat a `.map` context as though it were split into every possible [`.path`](#path) from that object. Stay with me.
-
-If you run a [`.put(null)`](#put) directly after a `.map`, every field will be changed to null. Effectively, the `.map` statement applied the `.put` operation to every property on the object.
+`.map` changes the context of the chain to hold many chains simultaneously. Check out this example:
 ```javascript
-/*
-  where `object` is {
-    field1: 'one',
-    field2: 'two'
-  }
-*/
-gun.get('object').map().put(null)
-/*
-  now `object` is {
-    field1: null,
-    field2: null
-  }
-*/
+gun.get('users').map().path('name').on(cb);
 ```
-Hopefully this demonstrates some of `.map`s expressive power. But to summarize and stick with the `Chain Context` tradition, here's the gist:
+Everything after the `map()` will be done for every item in the list, such that you'll get called with each name for every user in the list. This can be combined in really expressive and powerful ways.
 ```javascript
-gun.get(keyName).map() /* is not the same as */ gun.get(keyName)
+gun.get('users').map().path('friends').map().path('pet').on(cb);
 ```
+This will give you each pet of every friend of every user!
 
+```javascript
+gun.get(key).map() /* is not the same as */ gun.get(key)
+```
 
 --------------------------------------
 # <a name="not"></a> gun.not(callback)
@@ -601,163 +620,44 @@ Handle cases where data can't be found.
 
 If you need to know whether a property or key exists, you can check with `.not`. It will consult the connected peers and invoke the callback if there's reasonable certainty that none of them have the data available.
 
-No options are currently available for this method.
+> **Warning:** `.not` has no guarantees, since data could theoretically exist on an unrelated peer that we have no knowledge of. If you only have one server, and data is synced through it, then you have a pretty reasonable assurance that a `not` found means that the data doesn't exist yet. Just be mindful of how you use it.
 
-> **Warning:** `.not` is dangerous, since there is no guarantee that the data doesn't exist elsewhere. Always consider that you may be overwriting other data.
+## Callback(key)
+If there's reason to believe the data doesn't exist, the callback will be invoked. This can be used as a check to prevent implicitly writing data (as described in [`.put`](#put)).
 
-## Callback(key, kick)
-If there's reason to believe the data doesn't exist, the callback will be invoked. It's purpose is to allow you to handle those cases intelligently. For example, you could check to see if a property doesn't exist, setting it to a default value. As mentioned previously, that can be dangerous, and should only be done if your app seriously depends on it.
-
-The callback takes two arguments, `key` and `kick`.
-
-> **Note:** returning inside a callback is the same as calling `kick`.
-
-### Key/Property
+### Key
 The name of the property or key that could not be found.
-
-### Kick
-`kick` is a function that accepts a chain context. It can be a bit tricky to wrap your head around. Essentially, gun uses your argument as it's new chain context, so no matter what context you were at previously, you can overwrite it using `kick`, sending it out to methods chained after. This is also discouraged, because it makes your code difficult to follow, and also may cause chain divergence. Let's go for something more concrete:
-```javascript
-gun.get(original).not(function (key, kick) {
-  kick(gun.get(otherKeyName))
-}).map(backup)
-```
-In that example, `.not` might have been called if the connected peers could find the data, meaning that `.get(backup)` was used instead. The problem arises when new data is received on `original`, meaning that the original chain finally has data to work from. `.map` is now running on two keys, `original` and `backup`.
 
 ## Examples
 Providing defaults if they aren't found
 ```javascript
 // if not found
-gun.get('players/3').not(function (key) {
+gun.get('players/3').not(function(key){
   // put in an object and key it
-  gun.put({
+  gun.get(key).put({
     active: false
-  }).key(key)
+  });
 }).on(handler)
 // listen for changes on that key
 ```
 
 Setting a property if it isn't found
 ```javascript
-gun.path('chat.enabled').not(function (path) {
-  gun.path(path).put(false)
+gun.get('chat').path('enabled').not(function(path){
+  this.put(false)
 })
 ```
 
-Those examples demonstrate the power and drama from `.not`. If a peer with the data you're looking for (client or server) goes offline, you change the value of something, then they eventually rejoin, that information will converge, overwriting their data with yours. `.not` is a powerful tool, but should be used wisely.
-
-## Chain Context
-`.not` may or may not change the context, depending on how it's used. It has developer-facing methods for manually changing the context, depending on whether or not data was found.
+## Chain context
+`.not` does not change the context of the chain.
 ```javascript
-gun.get(keyName).not(handler) /* _might_ be the same as */ gun.get(keyName)
+gun.get(key).not(handler) /* is the same as */ gun.get(key)
 ```
 
 
 --------------------------------
 # <a name="init"></a> gun.init()
-If a property or key hasn't been defined yet, set it as an object.
-
-> **Note:** this is automatically run recursively on each [`.put`](#put) unless explicitly disabled. You shouldn't need to use this method unless you're doing low-level operations or working with schematized data.
-
-This method helps prevent an unnecessarily verbose API. If it didn't exist, you would need to use [`.not`](#not) for every [`.get`](#get) or [`.path`](#path) to handle cases where it hasn't been defined. For example:
-
-```javascript
-gun.get('data').not(function (key) {
-  this.put({}).key(key)
-}).path('property').not(function (key) {
-  this.put({})
-}).path('next').put(data)
-```
-`.init` handles things more intelligently than a raw `.not` would, but the above example gives a good comparison. Here's an example using `.init` instead:
-
-```javascript
-gun.get('data').init().path('property').init().path('next').put(data)
-```
-
-However, with `v0.3.x`, the `init()` happens implicitly for all methods preceding a `.put`, meaning the above example is exactly equivalent to this:
-
-```javascript
-gun.get('data').path('property.next').put(data)
-```
-
-> **Warning:** this method hasn't reached stability and may change in the future.
-
---------------------------------------
-# <a name="val"></a> gun.val(callback)
-
-<a href="https://youtu.be/k-CkP43-uJo" title="GUN val"><img src="http://img.youtube.com/vi/k-CkP43-uJo/0.jpg" width="425px"></a><br>
-
-Read a full object without subscribing updates.
-
-`.val` will send a request for the node, and read out the value from the first peer that finishes their response. Since `.val` has to wait for a termination, it cannot stream data, slowing down the transmission of large objects considerably. If you simply want to read out an object without subscribing to changes, `.val` is your best option. Note that `.val` will subscribe for every new item of an object, but not for changes on those items.
-
-> This method is excellent for learning and debugging, but should be avoided in production applications. Instead, use [`.on`](#on).
-
-`.val` takes two arguments:
-
- - a `callback` function
- - an `options` object
-
-> **Tip:** If no callback is given, it will automatically log the result to the console.
-
-No options are currently available for this method.
-
-## Callback(value, property)
-The value is the fully-loaded object/primitive, and the property is the field it belongs under.
-
-## Examples
-Reading a full object
-```javascript
-// load in the full profile object
-gun.get('peers/' + userID).path('profile').val(function (profile) {
-  // render it, but only once. No updates.
-  view.show.user(profile)
-})
-```
-
-Reading a property
-```javascript
-gun.path('temperature').val(function (number) {
-  view.show.temp(number)
-})
-```
-
-Printing a value to the console
-```javascript
-gun.path('property').val()
-// `console.log` is automatically called
-```
-
-## Chain Context
-`gun.val` does not change the chain context.
-```javascript
-gun.get(keyName).val() /* is the same as */ gun.get(keyName)
-```
----------------------------------------------------------
-# <a name="opt"></a> gun.opt(options)
-Change configuration of the gun database instance.
-
-The `options` argument is the same object you pass to the [constructor](#Gun). The `options`'s properties replace those in the instance's configuration but `options.peers` are **added** to peers known to the gun instance.
-
-## Examples
-Create the gun instance.
-```javascript
-gun = Gun('http://yourdomain.com/gun')
-```
-Change UUID generator:
-```javascript
-gun.opt({
-  uuid: function () {
-    return Math.floor(Math.random() * 4294967296);
-  }
-});
-```
-Add more peers:
-```javascript
-gun.opt({peers: ['http://anotherdomain.com/gun']})
-/* Now gun syncs with ['http://yourdomain.com/gun', 'http://anotherdomain.com/gun']. */
-```
-
+Is being deprecated, now in 0.5.x and above.
 
 --------------------------------------------------
 # <a name="key"></a>gun.key(name)
