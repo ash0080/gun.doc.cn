@@ -96,7 +96,8 @@ It has three parameters, and only the first is required:
 > **Note:** when using `.put`, if any part of the chain does not exist yet, it will implicitly create it as an empty object.
 ```javascript
 gun.get('something').path('that.does.not.exist.yet').put("Hello World!");
-// `.put` will if needed, backwards create a document so "Hello World!" has a place to be saved.
+// `.put` will if needed, backwards create a document
+// so "Hello World!" has a place to be saved.
 ```
 
 ## Allowed types
