@@ -114,7 +114,7 @@ gun.get('something').path('that.does.not.exist.yet').put("Hello World!");
 
 Gun will refuse `undefined`, `NaN`, `Infinity`, and `arrays`.
 
-> Traditional arrays are dangerous in real-time apps
+> Traditional arrays are dangerous in real-time apps. Use [gun.set](#set) instead for a table of items.
 
 ## Callback(error, ok)
   
