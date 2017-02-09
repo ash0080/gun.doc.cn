@@ -42,18 +42,12 @@ var gun = Gun(options)
 
    - `options.peers` is an object, where the URLs are properties, and the value is an empty object.
 
-   - `options.wire` allows you to manually override module hooks for `put` and `get`
-     (however, gun exposes a more streamlined approach for building extensions and modules). **Note**: This will be deprecated, future versions of GUN will use a different better approach.
-
    - `options.uuid` allows you to override the default 24 random alphanumeric soul generator with
       your own function.
 
    - `options['module name']` allows you to pass options to a 3rd party module. Their project README
      will likely list the exposed options.
      [Here is a list of such modules...](Modules)
-
-   - `options.init` is a boolean that tells the system that you want to explicitly create
-      data if it doesn't exist.
 
 ### Examples
 Sync with one peer
@@ -79,24 +73,10 @@ Gun({
   // simple JSON persistence (bundled)
   // meant for ease of getting started
   // NOT meant for production
-  file: 'file/path.json'
-})
-```
+  file: 'file/path.json',
 
-Advanced options
-```javascript
-Gun({
   // set your own UUID function
-  uuid: function () {...},
-
-  // set your own get/put handlers
-  wire: {
-    get: getHandler,
-    put: putHandler
-  },
-
-  // disable implicit object saves
-  init: true
+  uuid: function () {...}
 })
 ```
 ---------------------------------------------------------
