@@ -90,15 +90,13 @@ It has three parameters, and only the first is required:
 
  1. the `data` to save
  2. an optional `callback`, invoked on each acknowledgment
- 3. an `options` object, though no options are available yet
 
 `gun.put(data, callback)`
 
-> **Note:** when using `.put`, if any part of the chain is undefined, it is implicitly set as an empty object.
+> **Note:** when using `.put`, if any part of the chain does not exist yet, it will implicitly create it as an empty object.
 ```javascript
-gun.get('undefined key').path('undefined.properties').put(true)
-// `.put` creates an empty object on each undefined path/key,
-// and places the value at the last point.
+gun.get('something').path('that.does.not.exist.yet').put("Hello World!");
+// `.put` will if needed, backwards create a document so "Hello World!" has a place to be saved.
 ```
 
 ## Allowed types
