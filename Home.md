@@ -6,19 +6,19 @@
 </h2>
 
 
-### **[API Reference](API-(v0.3.x))**
+### **[API Reference](API)**
 
- - [Gun constructor](API-(v0.3.x)#Gun)
- - [gun.put](API-(v0.3.x)#put)
- - [gun.key](API-(v0.3.x)#key)
- - [gun.get](API-(v0.3.x)#get)
- - [gun.path](API-(v0.3.x)#path)
- - [gun.set](API-(v0.3.x)#set)
- - [gun.back](API-(v0.3.x)#back)
- - [gun.on](API-(v0.3.x)#on)
- - [gun.map](API-(v0.3.x)#map)
- - [gun.val](API-(v0.3.x)#val)
- - [gun.not](API-(v0.3.x)#not)
+ - [Gun constructor](API#Gun)
+ - [gun.put](API#put)
+ - [gun.key](API#key)
+ - [gun.get](API#get)
+ - [gun.path](API#path)
+ - [gun.set](API#set)
+ - [gun.back](API#back)
+ - [gun.on](API#on)
+ - [gun.map](API#map)
+ - [gun.val](API#val)
+ - [gun.not](API#not)
 
 [Chaining](Chaining-(v0.3.x)) - reference table for chaining dependencies
 
