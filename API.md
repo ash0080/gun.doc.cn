@@ -208,6 +208,8 @@ Gun().put({
 }):
 ```
 For the most part, gun will handle this perfectly fine. It will attempt to automatically merge every nested object as a partial. However, if it cannot find data (due to a network failure, or a peer it has never spoken with) to merge with it will generate new random UUIDs. You are unlikely to see this in practice, because your apps will probably save data based on user interaction (with previously loaded data). If you do have this problem, consider giving each one of your sub-objects a deterministic ID.
+
+
 --------------------------------------------------
 # <a name="key"></a>gun.key(name)
 Index your data, so you can find it later, faster.
