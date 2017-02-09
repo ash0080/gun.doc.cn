@@ -22,6 +22,7 @@
 
 [Chaining](Chaining-(v0.3.x)) - reference table for chaining dependencies
 
+### [You should read the crash course on GUN](graphs)!
 
 ### [Modules](Modules)
    GUN is designed to be as minimal as possible, with any additional functionality being provided via modules.  Please refer to the [modules](modules) page for a list of existing extensions. Please refer to the [gun-extensions](https://github.com/gundb/gun-extensions/issues) repo to see what extensions have been requested or to request an extension.
