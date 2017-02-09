@@ -112,21 +112,24 @@ gun.get('something').path('that.does.not.exist.yet').put("Hello World!");
  - `booleans`
  - `null`
 
-Gun will refuse `undefined`, `NaN`, `Infinity`, and `arrays`.
+Values that will be rejected are `undefined`, `NaN`, `Infinity`, `arrays`, and others.
 
-> Traditional arrays are dangerous in real-time apps. Use [gun.set](#set) instead for a table of items.
+> Traditional arrays are dangerous in real-time apps. Use [gun.set](#set) instead.
 
-## Callback(error, ok)
+## Callback(ack)
   
-The `callback` is fired each time a peer responds with an error or successful persistence message, including the local cache. Acknowledgement can be slow, but the write propagates across networks as fast as the pipes connecting them.
+ - `ack.err`, if there was an error during save.
+ - `ack.ok`, if there was a success message (none is required though).
 
-If the error argument is undefined, then the operation succeeded, although the exact values are left up to the module developer.
+The `callback` is fired for each peer that responds with an error or successful persistence message, including the local cache. Acknowledgement can be slow, but the write propagates across networks as fast as the pipes connecting them.
+
+If the error property is undefined, then the operation succeeded, although the exact values are left up to the module developer.
 
 ## Examples
 
 Saving objects
 ```javascript
-gun.path('propertyName').put({
+gun.get('key').put({
   property: 'value',
   object: {
     nested: true
@@ -137,20 +140,20 @@ gun.path('propertyName').put({
 Saving primitives
 ```javascript
 // strings
-gun.path('name.first').put('Dave')
+gun.get('person').path('name.first').put('Alice')
 
 // numbers
-gun.path('temperature').put(58.6)
+gun.get('IoT').path('temperature').put(58.6)
 
 // booleans
-gun.path('enabled').put(true)
+gun.get('player').path('alive').put(true)
 ```
 
 Using the callback
 ```javascript
-gun.path('survey.submission').put(submission, function (err) {
-  if (err) {
-    return ui.show.error(err)
+gun.get('survey').path('submission').put(submission, function(ack){
+  if(ack.err){
+    return ui.show.error(ack.err)
   }
   ui.show.success(true)
 })
@@ -159,19 +162,32 @@ gun.path('survey.submission').put(submission, function (err) {
 ## Chain context
 `gun.put` does not change the gun context.
 ```javascript
-gun.path('key').put(value) /* same context as */ gun.path('key')
+gun.get('key').put(value) /* same context as */ gun.path('key')
 ```
 
 ## Unexpected behavior
 
-While nodes can be placed directly into gun by its reference:
+You cannot save primitive values at the root level.
 ```javascript
-var msg = Gun().put({ text: 'Hello world!' })
-Gun().get('messages').set(msg)
+Gun().put("oops");
 ```
-Nodes with nested nodes can **NOT** successfully be placed directly into gun by its reference:
+All data is normalized to a parent node.
 ```javascript
-var sender = Gun().put({ name: 'Tom' })
+Gun().put({foo: 'bar'}); // internally becomes...
+Gun().get(randomUUID).put({foo: 'bar'});
+
+Gun().get('user').path('alice').put(data); // internally becomes...
+Gun().get('user').put({'alice': data});
+// An update to both user and alice happen, not just alice.
+```
+You can save a gun chain reference,
+```javascript
+var ref = Gun().put({text: 'Hello world!'})
+Gun().get('message').path('first').put(ref)
+```
+But you cannot save it inline.
+```javascript
+var sender = Gun().put({name: 'Tom'})
 var msg = Gun().put({
   text: 'Hello world!',
   sender: sender // this will fail
