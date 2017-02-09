@@ -8,7 +8,6 @@
 **Table of Contents**
  - [Gun constructor](#Gun)
  - [gun.put](#put)
- - [gun.key](#key)
  - [gun.get](#get)
  - [gun.path](#path)
  - [gun.set](#set)
@@ -19,6 +18,7 @@
  - [gun.init](#init)
  - [gun.val](#val)
  - [gun.opt](#opt)
+ - [gun.key](#key)
 
 # <a name="Gun"></a>Gun(options)
 
@@ -91,14 +91,9 @@ It has three parameters, and only the first is required:
  1. the `data` to save
  2. an optional `callback`, invoked on each acknowledgment
 
-`gun.put(data, callback)`
+`gun.get('key').put({hello: "world"}, function(ack){})`
 
-> **Note:** when using `.put`, if any part of the chain does not exist yet, it will implicitly create it as an empty object.
-```javascript
-gun.get('something').path('that.does.not.exist.yet').put("Hello World!");
-// `.put` will if needed, backwards create a document
-// so "Hello World!" has a place to be saved.
-```
+You do not need to re-save the entire object every time, gun will automatically merge your data into what already exists as a "partial" update.
 
 ## Allowed types
 
@@ -112,9 +107,16 @@ gun.get('something').path('that.does.not.exist.yet').put("Hello World!");
  - `booleans`
  - `null`
 
-Values that will be rejected are `undefined`, `NaN`, `Infinity`, `arrays`, and others.
+Other values, like `undefined`, `NaN`, `Infinity`, `arrays`, will be rejected.
 
 > Traditional arrays are dangerous in real-time apps. Use [gun.set](#set) instead.
+
+> **Note:** when using `.put`, if any part of the chain does not exist yet, it will implicitly create it as an empty object.
+```javascript
+gun.get('something').path('that.does.not.exist.yet').put("Hello World!");
+// `.put` will if needed, backwards create a document
+// so "Hello World!" has a place to be saved.
+```
 
 ## Callback(ack)
   
@@ -162,7 +164,7 @@ gun.get('survey').path('submission').put(submission, function(ack){
 ## Chain context
 `gun.put` does not change the gun context.
 ```javascript
-gun.get('key').put(value) /* same context as */ gun.path('key')
+gun.get('key').put(data) /* same context as */ gun.get('key')
 ```
 
 ## Unexpected behavior
@@ -178,7 +180,7 @@ Gun().get(randomUUID).put({foo: 'bar'});
 
 Gun().get('user').path('alice').put(data); // internally becomes...
 Gun().get('user').put({'alice': data});
-// An update to both user and alice happen, not just alice.
+// An update to both user and alice happens, not just alice.
 ```
 You can save a gun chain reference,
 ```javascript
@@ -207,107 +209,45 @@ Gun().put({
   }
 }):
 ```
-For the most part, gun will handle this perfectly fine. It will attempt to automatically merge every nested object as a partial. However, if it cannot find data (due to a network failure, or a peer it has never spoken with) to merge with it will generate new random UUIDs. You are unlikely to see this in practice, because your apps will probably save data based on user interaction (with previously loaded data). If you do have this problem, consider giving each one of your sub-objects a deterministic ID.
-
-
---------------------------------------------------
-# <a name="key"></a>gun.key(name)
-Index your data, so you can find it later, faster.
-
-<a href="https://youtu.be/lMlSMdQLXC8" title="GUN key"><img src="http://img.youtube.com/vi/lMlSMdQLXC8/0.jpg" width="425px"></a><br>
-
-We can think of keys as variables pointing to an object, and a node can have more than one name.
-
-The `.key` method takes 3 arguments, and only the first is required:
- - the `name` of the category to join under
- - the `callback` to invoke on each acknowledgment
- - `options` for configuration
-
-## Name
-A string representing the name of a group to attach a node to. Common practice is to namespace your keys into routes: `.key('users/cities/Provo')`
-
-> **note:** keys are case sensitive
-
-## Callback(error, ok)
-The same behavior as the callback in [gun.put](#put).
-
-## Options
-Ignore the chain context, tagging a node directly by it's soul.
-```javascript
-// find node by soul "Zwl6..." and tag it under "examples"
-gun.key('examples', null, 'Zwl6PaS4oo7Ivt21X5bU0nds')
-```
-
-## Examples
-Aggregating fragmented data into a named object
-
-```javascript
-// each member of the chatroom
-gun.get('trace').path([userID, 'profile']).key(userID + '/profile')
-gun.get('battlefleet').path([userID, 'profile']).key(userID + '/profile')
-
-gun.get(userID + '/profile')
-// contains the merged sum of all profile information
-```
-This is especially useful since the intermediate objects might be large, and by putting a key on the data you're looking for, you won't need to perform the costly lookup in the future.
-
-Tagging data on insertion
-```javascript
-gun.get(group).path([memberID, 'contact']).put({
-  twitter: '@databaseGun',
-  gitter: 'gitter.im/amark/gun'
-}).key(group + '/' + memberID + '/contact')
-```
-By putting a name on the data, the operation will be faster in the future since it won't need to request the potentially large `group` object, or even the member object. We can skip straight to the data we need. This functionality pairs nicely with [`.not`](#not).
-
-## Chain context
-`gun.key` does not change the context.
-```javascript
-gun.path('node').key('nodes') /* same context as */ gun.path('node')
-```
+For the most part, gun will handle this perfectly fine. It will attempt to automatically merge every nested object as a partial. However, if it cannot find data (due to a network failure, or a peer it has never spoken with) to merge with it will generate new random UUIDs. You are unlikely to see this in practice, because your apps will probably save data based on user interaction (with previously loaded data). But if you do have this problem, consider giving each one of your sub-objects a deterministic ID.
 
 ------------------------------------------------------------------------------------------
-# <a name="get"></a>gun.get(name)
-Load all data under a [key](#key) into the context.
+# <a name="get"></a>gun.get(key)
+Where to read data from.
 
 <a href="https://youtu.be/wNrIrrLffs4" title="GUN get"><img src="http://img.youtube.com/vi/wNrIrrLffs4/0.jpg" width="425px"></a><br>
 
 It takes three parameters:
 
- - `keyName`
+ - `key`
  - `callback`
- - `options`
 
-You'll almost never need to use the `callback` or `options` parameters, unless you're building bare-metal extensions.
+`gun.get('key').get('property', function(ack){})`
 
-> No options are currently available for this method.
+You will usually be using [gun.on](#on) or [gun.val](#val) to actually retrieve your data, not this `callback` (it is intended for more low level control, for module and extensions).
 
-## Name
-The [`keyName`](#key) string is the name of the data you want to retrieve.
+## Key
+The `key` is the ID or property name of the data that you saved from earlier (or that will be saved later).
 
-> Note that if you use `.put` at any depth after retrieving a key that doesn't exist, the key is implicitly initialized as an empty object.
+> Note that if you use `.put` at any depth after a `get` it first reads the data and then writes, merging the data as a partial update.
 
 ```javascript
-gun.get(existingData).put({ property: 'value' })
-/*
-  {
-    data: ...,
-    property: 'value',
-    data: ...
-  }
-*/
+gun.get('key').put({property: 'value'})
 
-gun.get(nonExistentKey).put({ property: 'value' })
-// { property: 'value' }
+gun.get('key').on(function(data, key){
+  // {property: 'value'}, 'key'
+})
 ```
 
-## Callback(error, node)
-The callback is a listener for errors and raw node data. It may be called multiple times for a single request, since gun uses a streaming architecture. If you need to listen for incoming data, use [`.not`](#not) or [`.val`](#val).
+## Callback(ack)
 
-> The callback is exposed for bare-metal extensions. Most developers will never need it.
+ - `ack.put`, the raw data.
+ - `ack.get`, the key, ID, or property name of the data.
+
+The callback is a listener for read errors, not found, and updates. It may be called multiple times for a single request, since gun uses a reactive streaming architecture. Generally, you'll find [`.not`](#not), [`.on`](#on), and [`.val`](#val) as more convenient for every day use. Skip to those!
 
 ```javascript
-gun.get(key, function (error, node) {
+gun.get(key, function(ack){
   // called many times
 })
 ```
@@ -316,24 +256,31 @@ gun.get(key, function (error, node) {
 
 Retrieving a key
 ```javascript
-// retrieve all available seats
-gun.get('seats/available').map(ui.show.seats)
+// retrieve all available users
+gun.get('users').map().on(ui.show.users)
 ```
 
 Using the callback
 ```javascript
-gun.get(key, function (error, node) {
-  if (error) {
+gun.get(key, function(ack){
+  if(ack.err){
     server.log(error)
+  } else
+  if(!ack.put){
+    // not found
+  } else {
+    // data!
   }
 })
 ```
 
 ## Chain context
-After calling `gun.get`, the chain context refers to the data you requested, regardless of what happened before calling `gun.get`.
+Chaining multiple `get`s together changes the context of the chain, allowing you to access, traverse, and navigate a graph, node, table, or document.
+
+> Note: For users upgrading versions, prior to v0.5.x `get` used to always return a context from the absolute root of the database. If you want to go back to the root, either save a reference `var root = Gun();` or now use [`.back(-1)`](#back).
 
 ```javascript
-gun.get('materials').get('users') /* same context as */ gun.get('users')
+gun.get('user').get('alice') /* same context as */ gun.get('users').path('alice')
 ```
 
 ---------------------------------------
@@ -816,3 +763,8 @@ Add more peers:
 gun.opt({peers: ['http://anotherdomain.com/gun']})
 /* Now gun syncs with ['http://yourdomain.com/gun', 'http://anotherdomain.com/gun']. */
 ```
+
+
+--------------------------------------------------
+# <a name="key"></a>gun.key(name)
+Currently disabled. Potentially will be deprecated or made into an extension.
