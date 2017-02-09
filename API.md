@@ -9,9 +9,9 @@
  - [Gun constructor](#Gun)
  - [gun.put](#put)
  - [gun.get](#get)
+ - [gun.back](#back)
  - [gun.path](#path)
  - [gun.set](#set)
- - [gun.back](#back)
  - [gun.on](#on)
  - [gun.map](#map)
  - [gun.not](#not)
@@ -283,28 +283,63 @@ Chaining multiple `get`s together changes the context of the chain, allowing you
 gun.get('user').get('alice') /* same context as */ gun.get('users').path('alice')
 ```
 
+## Unexpected behavior
+
+Most callbacks in gun will be called multiple times.
+
+-----------------------------
+# <a name="back"></a>gun.back(amount)
+
+Move up to the parent context on the chain.
+
+Every time a new chain is created, a reference to the old context is kept to go `back` to.
+
+## Amount
+
+The number of times you want to go back up the chain. `-1` or `Infinity` will take you to the root.
+
+## Examples
+Moving to a parent context
+```javascript
+gun.get('users')
+  /* now change the context to alice */
+  .get('alice')
+  .put(data)
+  /* go back up the chain once, to 'users' */
+  .back().map(...)
+```
+
+Another example
+```javascript
+gun.get('player').path('game.score').back(1)
+// is the same as...
+gun.get('player').path('game')
+```
+
+## Chain Context
+The context will always be different, returning you to the
+```javascript
+gun.get('key').get('property')
+/* is not the same as */
+gun.get('key').get('property').back()
+```
+
 ---------------------------------------
-# <a name="path"></a>gun.path(property)
+# <a name="path"></a>gun.path(key)
 
 <a href="https://youtu.be/UDZGVYLNLAU" title="GUN path"><img src="http://img.youtube.com/vi/UDZGVYLNLAU/0.jpg" width="425px"></a><br>
 
-Navigate through a node's properties
+Path does the same thing as `get` but has some conveniences built in.
 
-`.path` accepts three parameters, but only the first is required.
-
- - the `property` name
- - an optional `callback` function
- - an `options` object, although none are supported yet
-
-## Property
-The `property` is the name of the field to move to.
+## Key
+The key `property` is the name of the field to move to.
 
 ```javascript
 // move to the "themes" field on the settings object
 gun.get('settings').path('themes')
 ```
 
-Once you've changed the context, you can read, write, and `path` forward from that field. Although you can just chain one `path` after another, that can be unnecessarily verbose, so there are two shorthand styles:
+Once you've changed the context, you can read, write, and `path` again from that field. While you can just chain one `path` after another, it becomes verbose, so there are two shorthand styles:
 
  - dot format
  - array format
@@ -331,16 +366,9 @@ gun.path(30.5)
 gun.path(30).path(5)
 ```
 
-This can be especially confusing if you've disabled implicit initialization, as the chain might never resolve to a value.
+This can be especially confusing as the chain might never resolve to a value.
 
-We may change this in the near future.
-
-## Callback(error, data, property)
-The `callback` is used by bare-metal extensions to provide handling for errors and raw data streams. Like `.get`, if you want to listen for new data, use the [`.on`](#on) or [`.val`](#val) methods. With that said, the callback takes three arguments:
-
- - `error`
- - the `data` partial
- - the `property` name
+> Note: For users upgrading from versions prior to v0.5.x, `path` used to be necessary - now it is purely a convenience wrapper around `get`.
 
 ## Examples
 Navigating to a property
@@ -436,40 +464,6 @@ books.set(book3)
 `gun.set` changes the chain context.
 ```javascript
 gun.path('friends') /* is not the same as */ gun.path('friends').set(friend)
-```
-
-
------------------------------
-# <a name="back"></a>gun.back
-
-<a href="https://youtu.be/UsWH8h3Y97M" title="GUN back"><img src="http://img.youtube.com/vi/UsWH8h3Y97M/0.jpg" width="425px"></a><br>
-
-Move up to the parent context on the chain.
-
-Every time a new chain is created, a reference to the old context is kept in the `back` property. It's not a function, but a reference to the `this` value you had *before* it was changed. For example, when calling [`.path`](#path), a new context is assigned to the `this` value, allowing you to chain directly off your context in jQuery style. If you want to return to your old context, just use `gun.back`.
-
-## Examples
-Moving to a parent context
-```javascript
-gun.get('peers')
-  /* change the context to my peer */
-  .path(myself)
-  .put(me)
-  /* go back to the "get" statement */
-  .back.map(...)
-```
-
-Another example
-```javascript
-gun.get('players').get('game/history').back
-// is the same as...
-gun.get('players')
-```
-
-## Chain Context
-The context will always be different, since `.back`'s only purpose is to change it.
-```javascript
-gun.path('property') /* is not the same as */ gun.path('property').back
 ```
 
 ------------------------------------
