@@ -1,3 +1,5 @@
+Haven't read the [**crash course**](graphs) yet? Check it out first, then come back here.
+
 **Table of Contents**
  - [Introduction](#introduction)
    - [Offline-First](#offline-first)
