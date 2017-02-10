@@ -23,4 +23,4 @@ While the last point is interesting, it is not recommended that one evolves GUN 
 
 GUN is AP with eventual consistency by default, but it is possible to upgrade into a CP system but it is not recommended. Instead, one should apply some form of "dependent causality" into the data itself at the application layer manually or as a module that wraps it for you.
 
-Again, we recommend you check out the [tech talk](http://gun.js.org/distributed/matters.html).
+Again, we recommend you check out the [tech talk](http://gun.js.org/distributed/matters.html). After you have read it, check out the documentation on how it is implemented, [here](../Conflict-Resolution-with-Guns).
