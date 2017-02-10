@@ -1,5 +1,7 @@
 The conflict resolution algorithm (also called HAM) is at the center of everything gun does. It's how peers eventually arrive at the same state, and how offline edits are merged. Every change in the system goes through HAM.
 
+Before reading this, we recommend you read through this tech talk, which [explains the high level concepts in easy to understand](http://gun.js.org/distributed/matters.html) terms.
+
 ## Requirements
 These are the constraints HAM operates under.
 
@@ -21,20 +23,18 @@ A key-value pair is atomic to HAM, meaning it won't try to merge primitives toge
 
 Let's consider an example:
 
-We have a node with one property, "username", a value of `@UberLlama`, and a state of `10`.
-
-<!-- twitter handle? -->
+We have a node with one property, `"name"`, a value of `"Alice"`, and a state of `10`.
 
 ```json
 {
-	"username": {
-		"value": "@UberLlama",
+	"name": {
+		"value": "Alice",
 		"state": 10
 	}
 }
 ```
 
-We get an update that lists "username" as `@TopLlama` and state as `8`. Since the update state is less than our current state, we list it as only historically important, and don't include it in our data.
+We get an update that lists "alice" as `"Allison"` and state as `8`. Since the update state is less than our current state, we list it as only historically important, and don't include it in our data.
 
 > Unless you're using a journaling plugin, historical updates are ignored.
 
@@ -47,16 +47,10 @@ This allows us to define some simple rules that guarantee convergence, mostly th
 
 <a href="https://youtu.be/qKIn9L2obug" target="_blank" title="GUN map"><img src="http://img.youtube.com/vi/c80vSf45H4k/0.jpg" width="425px"></a><br>
 
-##### Both are equal
+##### Both are lexically equal
 Then there's no conflict, it doesn't matter which you choose.
 
-##### Both are pointers
-Get the UIDs they point to, and see which string is greater. That's the winner.
-
-##### Only one is a pointer
-Choose that one.
-
-##### Both are primitives
+##### They are lexically unequal
 Compare their string values with `JSON.stringify`, choosing the greater of the two.
 
 ### States
@@ -66,48 +60,48 @@ That's generally frowned on. Check out this layman explainer:
 
 <a href="https://youtu.be/UBnkhpcLQuM" target="_blank" title="GUN map"><img src="http://img.youtube.com/vi/UBnkhpcLQuM/0.jpg" width="425px"></a><br>
 
-HAM handles this with user-relative merges. When the "10 zillion" update comes in, HAM simply waits until your machine reaches state 10 zillion before acknowledging it's existence. If an update isn't acknowledged, it never escapes volatile memory onto disk. We call this a deferred update.
+HAM handles this with machine relative vector. When the "10 zillion" update comes in, HAM simply waits until your machine reaches the state of 10 zillion before acknowledging it's existence. If an update isn't acknowledged, it never escapes volatile memory onto disk. We call this a deferred update.
 
-If no other machines have reached that state, only the attacker will acknowledge the update and persist it to disk.
+This is good, because if no other machines have reached that state, the attacker will have no advantage over any other machine in the system. Their update intentionally remains volatile, giving the attacker only two options - retry with a non-malicious state that is closer to other machines, or bare the responsibility of keeping the update safe themselves until other machines catch up.
 
-By now you might have noticed we're not talking about Vector Clocks. Instead, gun uses timestamps. At this point, some people are feeling uncomfortable, and rightly so. Timestamps [can be dangerous](https://aphyr.com/posts/299-the-trouble-with-timestamps), since:
+It turns out this vector can be calculated for any linear value. Numbers, decimals, alphabets, or even with timestamps - which should sound scary. Timestamps [are dangerous](https://aphyr.com/posts/299-the-trouble-with-timestamps), since:
 
  - System time doesn't always move forward (NTP corrections).
  - Clock synchronization isn't always reliable.
  - Some clocks move faster than others.
  - Your system time might be off by any amount (especially when considering user meddling).
 
-One of our constraints with HAM is that synchronization algorithms should not be required, including [NTP](https://en.wikipedia.org/wiki/Network_Time_Protocol) and it's variants, so accurate clocks can never be assumed.
+One of the constraints with HAM is that synchronization algorithms should not be required, including [NTP](https://en.wikipedia.org/wiki/Network_Time_Protocol) and it's variants, so accurate clocks can never be assumed.
 
-Luckily, HAM doesn't care if your clock is accurate. It only cares about *machine-relative* ordering, and whether an update should be part of history, current state, or ignored until some point in the future. For a layman explanation of this, check this video out:
+Luckily, HAM doesn't care if your clock is accurate. It only cares about *machine relative* ordering, and whether an update should be part of history, current state, or ignored until some point in the future. For a layman explanation of this, check this video out:
 
 <a href="https://youtu.be/gRoJqzko_mE" target="_blank" title="GUN map"><img src="http://img.youtube.com/vi/gRoJqzko_mE/0.jpg" width="425px"></a><br>
 
 ### State Boundaries
-Each value has two dividing lines, the state of the last update, and what it considers your device's current time.
+Each value is compared to the state of the last update and the state of your device's current loose clock.
 
 Back to our `username` example:
 
 ```json
 {
-	"username": {
-		"value": "@UberLlama",
+	"name": {
+		"value": "Alice",
 		"state": 10
 	}
 }
 ```
 
-Your system clock is at state `15`.
+Say your system clock is at state `15`.
 
-> We're using smaller numbers than `Date.now()` because they're easier to mentally compare and reason about.
+> We're using smaller numbers than `Date.now()` because they're easier to mentally compare and reason about, but they have the same mathematical properties.
 
 #### Historical State
-Any update with a state less than the last update (`10`) is considered stale and no longer relevant.
+Any update with a state less than the last update (`10`) is considered stale and no longer relevant - if wanted, it can be journaled.
 ```javascript
 // This update is too old.
 var update = {
-	username: {
-		value: "@TopLlama",
+	name: {
+		value: "Allison",
 		state: 8,
 	},
 }
@@ -115,27 +109,27 @@ var update = {
 
 #### Operating State
 
-Any update with state greater than the last update (`10`), yet less than your process state (`15`) is immediately merged. The state of the last update now refers to what we just merged (`12`).
+Any update with state greater than the last update (`10`), yet less than your process state (`15`) is immediately merged. The state of the last update now becomes what we just merged to (`12`).
 
 ```javascript
 // Sweet spot!
 // This will be merged.
 var update = {
-	username: {
-		value: "@PsychoLlama",
+	name: {
+		value: "Alicia",
 		state: 12,
 	},
 }
 ```
 
 #### Deferred State
-Any update with a state greater than your system clock (`15`) is considered deferred, and won't be processed until your clock reaches that point.
+Any update with a state greater than your system clock (`15`) is considered deferred, and won't be processed until your clock reaches that point. The further it is into the future, the larger vector it has in terms of distance before being processed.
 ```javascript
 // Nope, ignore this until the
 // clock reaches state `22`.
 var update = {
-	username: {
-		value: "@SupremeLlama",
+	name: {
+		value: "Ally",
 		state: 22,
 	},
 }
@@ -148,10 +142,10 @@ If an update node has a field that the source object doesn't, the source node's 
 
 The same process can be repeated for graphs, iterating over each node in an update graph and merging it with the source.
 
-You can find the HAM implementation in [`gun.js`](https://github.com/amark/gun/blob/master/gun.js) under the name `Gun.HAM`.
+You can find the HAM implementation in [`gun.js`](https://github.com/amark/gun/blob/master/gun.js) under the name `function HAM`.
 
 ### Considerations
-HAM doesn't guarantee multi-process linearizability because in highly-available systems, you don't know when all updates have finished network propagation. Instead, it guarantees Strong Eventual Consistency (SEC). If linearizability is necessary, either use a consensus system like [Paxos](http://research.microsoft.com/en-us/um/people/lamport/pubs/paxos-simple.pdf) (sacrificing availability), or explicitly build it into your data.
+HAM doesn't guarantee multi-process linearizability because in highly-available systems, you don't know when all updates have finished network propagation. Instead, it guarantees Strong Eventual Consistency (SEC). If linearizability is necessary, either use a consensus system like [Paxos](http://research.microsoft.com/en-us/um/people/lamport/pubs/paxos-simple.pdf) (sacrificing availability), or explicitly build it into your data using linked lists, directed acyclic graphs (DAGs), or others.
 
  - No Strong Consistency, linearizability, or serializability.
  - Vulnerable to the [Double Spending problem](https://en.wikipedia.org/wiki/Double-spending).
@@ -165,3 +159,5 @@ If you want more information about how the conflict engine works, you can messag
  - [Why banks are not ACID](http://highscalability.com/blog/2013/5/1/myth-eric-brewer-on-why-banks-are-base-not-acid-availability.html).
  - [Concerns about timestamps](https://aphyr.com/posts/299-the-trouble-with-timestamps) (Aphyr).
  - [Eventual Consistency vs Strong Eventual Consistency vs Strong Consistency](http://stackoverflow.com/questions/29381442/eventual-consistency-vs-strong-eventual-consistency-vs-strong-consistency).
+
+Again, we strongly recommend you check out the [tech talk](http://gun.js.org/distributed/matters.html).
