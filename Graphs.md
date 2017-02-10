@@ -43,7 +43,7 @@ people.set(carl);
 people.set(dave);
 ```
 
-> Note: [`.get`](../API#get) and [`.put](../API#put) are the core API of gun, everything else is just a convenient utility that wraps around them for specific uses - like [`.set`](../API#set) for inserting records.
+> Note: [`.get`](../API#get) and [`.put`](../API#put) are the core API of gun, everything else is just a convenient utility that wraps around them for specific uses - like [`.set`](../API#set) for inserting records.
 
 It is now easy to iterate through our list of people.
 
