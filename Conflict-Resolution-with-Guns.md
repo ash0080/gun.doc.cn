@@ -2,7 +2,7 @@ The conflict resolution algorithm (also called HAM) is at the center of everythi
 
 Before reading this, we recommend you read through this tech talk, which [explains the high level concepts in easy to understand](http://gun.js.org/distributed/matters.html) terms. Also, check out the primer on our [CAP Theorem](CAP-Theorem) tradeoffs.
 
-Finally, for those of you who know of Kyle Kingsbury (Aphyr), here are [some good tweets about us](https://twitter.com/aphyr/status/646302398575587332) from him. We are building out our own Jepsen tests with [PANIC](https://github.com/gundb/panic-server), a distributed testing framework.
+Finally, for those of you who know of Kyle Kingsbury (Aphyr), here are [some good tweets about us](https://twitter.com/aphyr/status/646302398575587332) from him. We are building out Jepsen tests with [PANIC](https://github.com/gundb/panic-server), our distributed testing framework.
 
 ## Requirements
 These are the constraints HAM operates under.
