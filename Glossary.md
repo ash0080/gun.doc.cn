@@ -1,4 +1,4 @@
-Gun borrows some terms from graph theory and mesh networking, then defines some of it's own. Here you can find a summary of what they mean.
+Gun borrows some terms from graph theory and mesh networking, then defines some of its own. Here you can find a summary of what they mean.
 
 #### Node
 An object within a graph. It can contain primitive values, but not other objects (only pointers to other nodes). Also known as a [vertex](https://en.wikipedia.org/wiki/Vertex_(graph_theory)) in graph theory.
