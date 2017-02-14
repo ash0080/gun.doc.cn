@@ -287,6 +287,7 @@ Similar to `.not` but blocks the rest of the chain from running if there is no d
 For instance, if this is just running in the browser which is connected to a single server - then you are probably good. However if you are running this as a federated server that only occasionally syncs with other servers, you might get false positives (where your local server doesn't have the data yet, so it triggers the `no` condition immediately, but then the other peers "later" discover the data does exist). Just use a different extension if this might be a problem.
 
 ```javascript
+// requires gun v0.5.9+
 Gun.chain.no = function(cb){
     var gun = this, chain = gun.chain(), flag;
     gun.not(function(a, b, c){
