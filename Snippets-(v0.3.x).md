@@ -278,3 +278,35 @@ Gun.chain.recurse = function (cb, filter) {
   return this;
 };
 ```
+---
+
+## <a name="no"></a> No
+
+Similar to `.not` but blocks the rest of the chain from running if there is no data. Useful for **non-idempotent** operations, which causes us to have a big warning: If you are doing updates based off of the conditionality of whether data exists or not, you need to decide what level of certainty is happening!
+
+For instance, if this is just running in the browser which is connected to a single server - then you are probably good. However if you are running this as a federated server that only occasionally syncs with other servers, you might get false positives (where your local server doesn't have the data yet, so it triggers the `no` condition immediately, but then the other peers "later" discover the data does exist). Just use a different extension if this might be a problem.
+
+```javascript
+Gun.chain.no = function(cb){
+    var gun = this, chain = gun.chain(), flag;
+    gun.not(function(a, b, c){
+        flag = true;
+        if(!cb){ return }
+        cb.call(this, a, b, c)
+    });
+    gun.get(function(at, ev){
+        if(flag){ return ev.off() }
+        chain._.on('in', at);
+    });
+    return chain;
+}
+```
+
+**Example**
+
+```
+gun.get('alice').no(function(){
+  // if I get called, then nothing below will ever get called.
+  // if I do not get called, the others will get called.
+}).val(cb).path('pet').on(cb);
+```
