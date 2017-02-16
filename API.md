@@ -520,7 +520,7 @@ gun.get('IoT').path('temperature').val(function(number){
 ```
 
 ## Chain Context
-`gun.val` does not currently change the context of the chain, but it is being discussed for future versions that it will - so try to avoid chaining off of `.val` for now.
+`gun.val` does not currently change the context of the chain, but it is being discussed for future versions that it will - so try to avoid chaining off of `.val` for now. This feature is now in experimental mode with `v0.6.x`, but only if `.val()` is not passed a callback. A useful example would be `gun.get('users').val().map().on(cb)` this will tell gun to get the current users in the list and subscribe to each of them, but not any new ones. Please test this behavior and recommend suggestions.
 
 ## Unexpected behavior
 
@@ -570,13 +570,11 @@ gun.path('friends') /* is not the same as */ gun.path('friends').set(friend)
 
 <a href="https://youtu.be/F2FSMsxMSic" title="GUN map"><img src="http://img.youtube.com/vi/F2FSMsxMSic/0.jpg" width="425px"></a><br>
 
-Loop over each property in a node, and listen to each property as well as any changes on the node itself (such as future inserts). It is essentially performing a [`.path`](#path) on each field.
+Map iterates over each property and item on a node, passing it down the chain, behaving like a forEach on your data. It also subscribes to every item as well and listens for newly inserted items. It accepts one argument:
 
-If you don't know the property names to [`.path`](#path) into, or need to `"forEach"` over a group of data, the `.map` function is usually your best choice. It accepts two arguments:
+ - a `callback` function that transforms the data as it passes through. If the data is transformed to `undefined` it gets filtered out of the chain.
 
- - a `callback` function.
-
-> Note: In future versions of gun the `callback` function will act as a transform filter. If no callback is specified, it will default to a transform filter that makes no changes to the data (therefore acting like a `forEach`). In the meantime, we highly recommend you do not pass `map` a callback, and instead either `map().on(cb)` or `map().val(cb)` to get the data.
+> Note: As of `v0.6.x` the transform function is in experimental mode. Please play with it and report bugs or suggestions on how it could be improved to be more useful.
 
 ## Examples
 Iterate over an object
