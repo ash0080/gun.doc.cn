@@ -1,9 +1,5 @@
----------------------------------------------------------------------
+Think these docs could be improved? Contribute to the wiki! Or [[comment|https://github.com/amark/gun/issues/70]].
 
-***Please post documentation comments, questions, and suggestions to
-[[issue #70|https://github.com/amark/gun/issues/70]].***
-
----------------------------------------------------------------------
 # Core API
  - [Gun constructor](#Gun)
  - [gun.put](#put)
