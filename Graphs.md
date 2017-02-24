@@ -31,7 +31,7 @@ gun.get('person/bob').val(function(node){
 });
 ```
 
-> Note: GUN is a functional reactive database for streaming event driven data, gotta hate buzzwords - right? This means that [`.on`](../API#on) subscribes to realtime updates, and may get called many times. Meanwhile [`.val`](../API#val) grabs the data once, which is useful for procedural operations. 
+> Note: GUN is a functional reactive database for streaming event driven data, gotta hate buzzwords - right? This means that [`.on`](API#on) subscribes to realtime updates, and may get called many times. Meanwhile [`.val`](../API#val) grabs the data once, which is useful for procedural operations. 
 
 Now lets add all the people into a [set](https://en.wikipedia.org/wiki/Set_(mathematics)), you can think of this as a table in relational databases or a collection in NoSQL databases.
 
