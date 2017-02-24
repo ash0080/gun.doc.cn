@@ -124,19 +124,16 @@ Let's put this in our `hello.js` file, right at the top.
 var http = require('http');
 
 // Create a new server instance.
-var server = new http.Server();
+var server = http.createServer();
+
+// Our GUN setup from the last example.
+var Gun = require('gun');
+var gun = Gun({web: server});
 
 // Start the server on port 8080.
 server.listen(8080, function () {
   console.log('Server listening on http://localhost:8080/gun')
 })
-
-// Our GUN setup from the last example.
-var Gun = require('gun');
-var gun = Gun();
-
-// This time, we call `.wsp`.
-gun.wsp(server);
 
 // ... The rest of `hello.js` ...
 ```
