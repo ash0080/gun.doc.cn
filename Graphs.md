@@ -17,7 +17,7 @@ var carl = gun.get('person/carl').put({name: 'carl', age: 16});
 var dave = gun.get('person/dave').put({name: 'dave', age: 42});
 ```
 
-> Note: If no data is found on the key ('person/alice', etc.) when we [`.get`](../API#get) it, gun will implicitly create and update it upon a [`.put`](../API#put). This is useful and convenient, but can be problematic for some types of apps. If you want to check if the data does not exist, use [`.not`](../API#not) first.
+> Note: If no data is found on the key ('person/alice', etc.) when we [`.get`](API#get) it, gun will implicitly create and update it upon a [`.put`](API#put). This is useful and convenient, but can be problematic for some types of apps. If you want to check if the data does not exist, use [`.not`](API#not) first.
 
 What if we want to get their data? We can either chain off of the reference directly or get it again:
 
@@ -31,7 +31,7 @@ gun.get('person/bob').val(function(node){
 });
 ```
 
-> Note: GUN is a functional reactive database for streaming event driven data, gotta hate buzzwords - right? This means that [`.on`](API#on) subscribes to realtime updates, and may get called many times. Meanwhile [`.val`](../API#val) grabs the data once, which is useful for procedural operations. 
+> Note: GUN is a functional reactive database for streaming event driven data, gotta hate buzzwords - right? This means that [`.on`](API#on) subscribes to realtime updates, and may get called many times. Meanwhile [`.val`](API#val) grabs the data once, which is useful for procedural operations. 
 
 Now lets add all the people into a [set](https://en.wikipedia.org/wiki/Set_(mathematics)), you can think of this as a table in relational databases or a collection in NoSQL databases.
 
@@ -43,7 +43,7 @@ people.set(carl);
 people.set(dave);
 ```
 
-> Note: [`.get`](../API#get) and [`.put`](../API#put) are the core API of gun, everything else is just a convenient utility that wraps around them for specific uses - like [`.set`](../API#set) for inserting records.
+> Note: [`.get`](API#get) and [`.put`](API#put) are the core API of gun, everything else is just a convenient utility that wraps around them for specific uses - like [`.set`](API#set) for inserting records.
 
 It is now easy to iterate through our list of people.
 
@@ -53,7 +53,7 @@ people.map().val(function(person){
 });
 ```
 
-> Note: If [`.map`](../API#map) is given no callback, it simply iterates over each item in the list "as is" - thus acting like a for each loop in javascript. Also, everything is continuously evaluating in GUN, including [`.map`](../API#map), so it will get called when new items are added as well as when an item is updated. It does not iterate through the whole list again every time, just the changes. This is great for realtime applications.
+> Note: If [`.map`](API#map) is given no callback, it simply iterates over each item in the list "as is" - thus acting like a for each loop in javascript. Also, everything is continuously evaluating in GUN, including [`.map`](API#map), so it will get called when new items are added as well as when an item is updated. It does not iterate through the whole list again every time, just the changes. This is great for realtime applications.
 
 Next we want to add a startup that some of these people work at. Document oriented data does a perfect job at capturing the hierarchy of a company. Let's do that with the following:
 
@@ -80,7 +80,7 @@ company.val(function(startup){
 
 > Note: The data given in the callback is only 1 layer deep to keep things fast. What you'll see logged out on `startup.address` is not the address itself, but a pointer to the address. Because documents can be of any depth, GUN only streams out what you need by default, thus optimizing bandwidth.
 
-So what if you want to actually access the city property on the company's address then? [`.path`](../API#path) lets you traverse into your document using the standard dot notation syntax popular in javascript and document databases.
+So what if you want to actually access the city property on the company's address then? [`.path`](API#path) lets you traverse into your document using the standard dot notation syntax popular in javascript and document databases.
 
 ```javascript
 company.path('address.city').val(function(value, key){
@@ -88,7 +88,7 @@ company.path('address.city').val(function(value, key){
 });
 ```
 
-> Note: Sometimes a property name might have a '.' in it itself, like if a decimal `0.33` is used as the field. This is okay, because [`.path`](../API#path) just wraps around [`.get`](../API#get). So you can escape the decimal by doing `company.get('address').get('city')` instead. Also, the `key` in the callback is always the last property name in the field path.
+> Note: Sometimes a property name might have a '.' in it itself, like if a decimal `0.33` is used as the field. This is okay, because [`.path`](API#path) just wraps around [`.get`](API#get). So you can escape the decimal by doing `company.get('address').get('city')` instead. Also, the `key` in the callback is always the last property name in the field path.
 
 Good news! We just found out the company got funding and moved to a new office! Let's go ahead and update it.
 
