@@ -8,7 +8,6 @@ Solves the following problem:
 
 Suppose you have a `set` "PlayersDb" that consists of 500+ players and you want to 
 
-* build an Array with all players
 * subscribe to the players personal 'score'
 
 you could do:
@@ -26,10 +25,23 @@ gun.get('playersDB').map().path('score').on(function(node,soul){
 
 })
 ```
-The problem with this approach is that when the subscription runs the fist time it will go through all 500+ players and calls the callback. But you want the callback to run only when something changes. 
-Building your initial Array is something you could do with `valMapEnd` or `Each`
+### Pros:
+* initialy all 500+ players will trigger the callback which is easy to build an initial Array
+* It will trigger when a new node is added.
 
+###  Cons: 
+initialy all 500+ players will trigger the callback including the part where it's modifying the Array your building at that same moment.
+
+## subscribe
 `.subscribe()` will only call the callback when something actually changes without going through all nodes initially.
+
+### Pros
+it only triggers when the property your subscribing on changes;
+
+### Cons:
+* You can't build your initial Array with it.
+* It will NOT be triggered when a new node is added.
+
 
 For more information, see the thread starting at :https://gitter.im/amark/gun?at=58b48562e961e53c7f76230c
 
