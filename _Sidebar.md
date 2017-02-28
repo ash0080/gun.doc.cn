@@ -20,7 +20,8 @@
 
 ### [Projects](https://github.com/amark/gun/wiki/Projects)
 ### [Modules](https://github.com/amark/gun/wiki/Modules)
-
+### [Snippets (v0.6.x)](https://github.com/amark/gun/wiki/Snippets-(v0.6.x))
+### [Snippets (v0.3.x)](https://github.com/amark/gun/wiki/Snippets-(v0.3.x))
 ---
 
 **v0.2.x**: [ToC](https://github.com/amark/gun/wiki/0.2.x-Table-of-Contents) | [API](https://github.com/amark/gun/wiki/API-%28v0.2.x%29)
