@@ -6,7 +6,7 @@
 
 ### `.subscribe()` (to replace `.on()`)
 
-## Turns out to be kinda useless...i'll keep it here for now but i'm working on a smarter solution.
+### Turns out to be kinda useless...i'll keep it here for now but i'm working on a smarter solution.
 
 Solves the following problem:
 
