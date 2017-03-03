@@ -1,4 +1,5 @@
 # Simple plugins to augment, extend, or modify gun
+## Turns out to be kinda useless...i'll keep it here for now but i'm working on a smarter solution.
 
 **Table of Contents**
 - [`.subscribe()` (to replace `.on()`)](#subscribe-to-replace-on)
