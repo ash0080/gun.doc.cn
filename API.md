@@ -1,7 +1,7 @@
 Think these docs could be improved? Contribute to the wiki! Or [[comment|https://github.com/amark/gun/issues/70]].
 
 # Core API
- - [Gun constructor](#Gun)
+ - [Gun constructor](#gun)
  - [gun.put](#put)
  - [gun.get](#get)
  - [gun.back](#back)
@@ -17,7 +17,7 @@ Think these docs could be improved? Contribute to the wiki! Or [[comment|https:/
  - [gun.init](#init)
  - [gun.key](#key)
 
-# <a name="Gun"></a>Gun(options)
+# <a name="gun"></a>Gun(options)
 
 <a href="https://youtu.be/zvo6jC1OA3Y" title="GUN constructor"><img src="http://img.youtube.com/vi/zvo6jC1OA3Y/0.jpg" width="425px"></a><br>
 Used to creates a new gun database instance.
@@ -325,7 +325,7 @@ gun.get('key').get('property').back()
 # <a name="opt"></a> gun.opt(options)
 Change the configuration of the gun database instance.
 
-The `options` argument is the same object you pass to the [constructor](#Gun). The `options`'s properties replace those in the instance's configuration but `options.peers` are **added** to peers known to the gun instance.
+The `options` argument is the same object you pass to the [constructor](#gun). The `options`'s properties replace those in the instance's configuration but `options.peers` are **added** to peers known to the gun instance.
 
 ## Examples
 Create the gun instance.
