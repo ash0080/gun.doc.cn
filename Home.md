@@ -8,7 +8,7 @@
 
 ### **[API Reference](API)**
 
- - [Gun constructor](API#Gun)
+ - [Gun constructor](API#gun)
  - [gun.put](API#put)
  - [gun.key](API#key)
  - [gun.get](API#get)
