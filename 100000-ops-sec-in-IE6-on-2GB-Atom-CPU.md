@@ -1,6 +1,6 @@
 Ladies and Gentlemen, here are the latest performance benchmarks on our Open Source Firebase project - a realtime, decentralized, offline-first, [graph](https://github.com/amark/gun/wiki/graphs) database!
 
-![](https://dl.dropboxusercontent.com/u/4374976/screenshots/ie6gun.png)
+![](https://raw.githubusercontent.com/gundb/gundb.github.io/master/see/ie6.png)
 
 Thank you.
 
