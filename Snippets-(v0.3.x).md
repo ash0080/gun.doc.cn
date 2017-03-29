@@ -1,5 +1,7 @@
 # Simple plugins to augment, extend, or modify gun
 
+## WARNING: THIS DOCUMENTATION IS LARGELY OUT OF DATE (v0.3.0 not v0.6+), TO SEE MORE UPDATED ONES, CHECK OUT: https://github.com/kristianmandrup/chain-gun
+
 **Table of Contents**
  - [Tables](Tables) :arrow_upper_right:
  - [Strip metadata from returned nodes](#strip-metadata-from-returned-nodes)
