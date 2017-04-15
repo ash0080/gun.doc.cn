@@ -32,6 +32,7 @@ Add the following prior to instantiating Gun:
 ```javascript
 Gun.chain.live = function(cb, opt){ 
   return this.on(function(val, field){ 
+    val = Gun.obj.copy(val);
     delete val._; 
     cb.call(this, val, field); 
   }, opt); 
@@ -60,6 +61,7 @@ Add the following prior to instantiating Gun:
 ```javascript
 Gun.chain.value = function(cb, opt){
   return this.val(function(val, field){
+    val = Gun.obj.copy(val);
     delete val._;
     cb.call(this, val, field);
   }, opt);
