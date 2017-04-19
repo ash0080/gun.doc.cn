@@ -1,14 +1,19 @@
-Immediate Focus:
+Rough roadmap, subject to frequent change:
 
- - SQLite driver (done)
- - P2P crypto social network example to experiment with how security/auth adapters should work. (in progress)
- - uWS driver to start testing end-to-end coordination and load testing performance. (done)
+ - 0.6 was load testing
 
-Interested In:
+ - 0.7 is SEA (security, encryption, authorization)
 
- - SQL query engine extension
- - Mango query engine extension
+ - 0.8 will probably be LRU/expiry with continuous load testing
 
-Dream Of:
- - Auto price optimized S3/disk radix driver
- - WebRTC sharding
+ - 0.9 will probably be fixing some embarrassing things I'm cheating on
+
+ - 1.0 celebration/documentation
+
+ - 1.1 SQL for kicks
+
+ - 1.2 Mango query
+ 
+ - 1.3 WebRTC
+
+ - 1.4 radix storage engine
