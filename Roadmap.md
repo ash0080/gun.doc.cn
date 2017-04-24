@@ -4,7 +4,7 @@ Rough roadmap, subject to frequent change:
 
  - 0.7 is SEA (security, encryption, authorization)
 
- - 0.8 will probably be LRU/expiry with continuous load testing
+ - 0.8 will probably be LRU / TTL / GC with continuous load testing
 
  - 0.9 will probably be fixing some embarrassing things I'm cheating on
 
