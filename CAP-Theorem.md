@@ -1,4 +1,4 @@
-This is not a discussion on what the CAP Theorem is, but on the tradeoffs that GUN decides to default to. Mark gave a great talk on this in Berlin, which [explains everything in easy to understand](http://gun.js.org/distributed/matters.html) terms. Kyle Kingsbury (Aphyr) of the Jepsen tests was there, and he [tweeted](https://twitter.com/aphyr/status/646302398575587332) about us.
+This is not a discussion on what the CAP Theorem is, but on the tradeoffs that GUN decides to default to. Mark gave a great talk on this in Berlin, which [explains everything in easy to understand](http://gun.js.org/distributed/matters.html) terms. Kyle Kingsbury (Aphyr) of the Jepsen tests was there, and he [tweeted](https://twitter.com/aphyr/status/646302398575587332) about us. And don't forget to check out our security series on [P2P cryptography](http://gun.js.org/explainers/data/security.html).
 
 ### AP
 
