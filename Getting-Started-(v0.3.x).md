@@ -14,7 +14,7 @@ Haven't read the [**crash course**](graphs) yet? Check it out first, then come b
 GUN is a small, distributed data sync and storage solution that runs everywhere JavaScript does. GUN lets you focus on the data you need to store, retrieve and share without worrying about merge conflicts, network partitions, or synchronizing offline edits.
 
 #### Offline-First
-When a browser peer sends a request, it'll merge the responses with it's own model using our [conflict resolution](https://github.com/amark/gun/wiki/Conflict-Resolution-with-Guns), then cache the result. Since it's cached on the client, there are a few interesting side effects:
+When a browser peer sends a request, it'll merge the responses with its own model using our [conflict resolution](https://github.com/amark/gun/wiki/Conflict-Resolution-with-Guns), then cache the result. Since it's cached on the client, there are a few interesting side effects:
 
  - The next time the client sends that request, the response is instantaneous, even when offline.
  - Data is replicated on each client that requests it.
