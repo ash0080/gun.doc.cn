@@ -10,7 +10,9 @@ Here is an early-preview demo of it working in action:
 
 To learn more about how it works, check out our [1 minute explainer series on cryptography](http://gun.js.org/explainers/data/security.html).
 
-We'll be releasing the example and the SEA framework soon as part of our 0.7 version, feel free to hit us up with questions on the [gitter](https://gitter.im/amark/gun) in the meanwhile.
+We'll be releasing the example and the SEA framework soon as part of our 0.7 version, and we are **looking for crackers to audit the system** - email me if you'd like to volunteer. The libraries underneath are currently jsrsasign and cryptojs.
+
+Feel free to hit us up with questions on the [gitter](https://gitter.im/amark/gun) in the meanwhile.
 
 Cheers,
 
