@@ -373,7 +373,11 @@ gun.get('settings').path('themes').path('active')
 
 // shorthand
 gun.get('settings').path('themes.active')
+
+// which happens to be the the same as
+gun.get('settings').get('themes').get('active')
 ```
+
 
 And the array format, which really becomes useful when using variables instead of literal strings:
 ```javascript
