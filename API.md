@@ -83,7 +83,7 @@ Gun({
 
 Save data into gun, syncing it with your connected peers.
 
-It has three parameters, and only the first is required:
+It has two parameters, and only the first is required:
 
  1. the `data` to save
  2. an optional `callback`, invoked on each acknowledgment
@@ -214,7 +214,7 @@ Where to read data from.
 
 <a href="https://youtu.be/wNrIrrLffs4" title="GUN get"><img src="http://img.youtube.com/vi/wNrIrrLffs4/0.jpg" width="425px"></a><br>
 
-It takes three parameters:
+It takes two parameters:
 
  - `key`
  - `callback`
