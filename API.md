@@ -600,6 +600,7 @@ Or `forEach`ing through every user.
   user456: "Dex",
   user789: "Bob"
 }
+*/
 gun.get('users').map().val(function(user, id){
   ui.list.user(user);
 });
