@@ -1,3 +1,5 @@
+> WARNING: This documentation is out of date. We use a different storage adapter system now.
+
 # Persistence
 
 Making storage drivers for gun
