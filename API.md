@@ -44,7 +44,7 @@ var gun = Gun(options)
 
    - `options['module name']` allows you to pass options to a 3rd party module. Their project README
      will likely list the exposed options.
-     [Here is a list of such modules...](Modules)
+     [Here is a list of such modules...](https://github.com/amark/gun/wiki/Modules)
 
 ### Examples
 Sync with one peer
