@@ -9,6 +9,7 @@
   - "Hackie" (permission to publish pending)
   - [creeper.im - Send public messages to nearby people.](https://creeper.im)
   - [GoShareData] - An enterprise system for data sharing database data with colleagues (https://github.com/zubairq/GoShareData)
+  - [JS-Trafficlights](https://github.com/niccord/js-trafficlights) - trafficlights manager for limited resource access, like VPNs or remote desktops
 
 ## Interested
 
