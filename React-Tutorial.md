@@ -94,6 +94,7 @@ To test that this works we’ll run the application. In the package.json file th
 $yarn startOpen up a browser window and navigate to [http://localhost:8080](http://localhost:8080/) to see the home page. In that window open the developer tools. In the console we will run some commands to interact with the database to see that it works on the client and that it synchronizes with the server peer node.
 
 &gt;`var note = {title: 'first item', text: 'from command line'};`
+
 &gt;`gun.put(note);`
 
 Inspecting db/data.json in our project we can see there is data similar to this:
