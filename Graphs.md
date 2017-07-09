@@ -80,15 +80,13 @@ company.val(function(startup){
 
 > Note: The data given in the callback is only 1 layer deep to keep things fast. What you'll see logged out on `startup.address` is not the address itself, but a pointer to the address. Because documents can be of any depth, GUN only streams out what you need by default, thus optimizing bandwidth.
 
-So what if you want to actually access the city property on the company's address then? [`.path`](API#path) lets you traverse into your document using the standard dot notation syntax popular in javascript and document databases.
+So what if you want to actually access the city property on the company's address then? [`.get`](API#path) also lets you traverse into the key/value pairs on sub-objects. Take this for example:
 
 ```javascript
-company.path('address.city').val(function(value, key){
+company.get('address').get('city').val(function(value, key){
   console.log("What is the city?", value);
 });
 ```
-
-> Note: Sometimes a property name might have a '.' in it itself, like if a decimal `0.33` is used as the field. This is okay, because [`.path`](API#path) just wraps around [`.get`](API#get). So you can escape the decimal by doing `company.get('address').get('city')` instead. Also, the `key` in the callback is always the last property name in the field path.
 
 Good news! We just found out the company got funding and moved to a new office! Let's go ahead and update it.
 
@@ -106,22 +104,22 @@ gun.get('startup/hype').put({ // or you could do `company.put({` instead.
 However documents in isolation are not very useful. Let's connect things and turn everything into a graph!
 
 ```javascript
-var employees = company.path('employees');
+var employees = company.get('employees');
 employees.set(dave);
 employees.set(alice);
 employees.set(bob);
 
-alice.path('spouse').put(bob);
-bob.path('spouse').put(alice);
+alice.get('spouse').put(bob);
+bob.get('spouse').put(alice);
 
-alice.path('spouse').path('employer').put(company);
-alice.path('employer').put(company);
+alice.get('spouse').get('employer').put(company);
+alice.get('employer').put(company);
 
-dave.path('kids').set(carl);
-carl.path('dad').put(dave);
+dave.get('kids').set(carl);
+carl.get('dad').put(dave);
 
-carl.path('friends').set(alice);
-carl.path('friends').set(bob);
+carl.get('friends').set(alice);
+carl.get('friends').set(bob);
 ```
 
 > Note: We can have 1-1, 1-N, N-N relationships. By default every relationship is a "directed" graph (it only goes in one direction), so if you want bi-directional relationships you must explicitly save the data as being so (like with Dave and his kid, Carl). If you want to have meta information about the relationship, simply create an "edge" node that both properties point to instead. Many graph databases do this by default, but because not all data structures require it, gun leaves it to you to specify.
@@ -129,12 +127,12 @@ carl.path('friends').set(bob);
 Finally, let's read some data out. Starting with getting a key/value, then navigating into a document, then mapping over a table, then traversing into one of the columns and printing out all the values!
 
 ```javascript
-gun.get('person/alice').path('spouse.employer.employees').map().path('name').val(function(data, key){
+gun.get('person/alice').get('spouse.employer.employees').map().get('name').val(function(data, key){
   console.log("The employee's", key, data);
 });
 ```
 
-Awesome, now run it all together: http://jsbin.com/mivaciwupa/edit?js,console (Hit "Run", all logs except for the last one have been commented out).
+Awesome, now run it all together: http://jsbin.com/webikepoxa/edit?js,console (Hit "Run", all logs except for the last one have been commented out).
 
 GUN is that easy! And it all syncs in realtime across devices! Imagine what you can build?
 
