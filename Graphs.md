@@ -1,6 +1,6 @@
 This article will go over how it is easy to create interconnected data with GUN's graph features, combining key/value, relational, and document based data together. It will also be a great introductory guide on how to use pretty much every one of GUN's API methods.
 
-> Note: This article requires gun v0.5.x or above.
+> Note: This article requires gun v0.8.x or above.
 
 First let's instantiate the database.
 
@@ -127,7 +127,7 @@ carl.get('friends').set(bob);
 Finally, let's read some data out. Starting with getting a key/value, then navigating into a document, then mapping over a table, then traversing into one of the columns and printing out all the values!
 
 ```javascript
-gun.get('person/alice').get('spouse.employer.employees').map().get('name').val(function(data, key){
+gun.get('person/alice').get('spouse').get('employer').get('employees').map().get('name').val(function(data, key){
   console.log("The employee's", key, data);
 });
 ```
