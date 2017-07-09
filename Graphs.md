@@ -136,7 +136,7 @@ Awesome, now run it all together: http://jsbin.com/webikepoxa/edit?js,console (H
 
 GUN is that easy! And it all syncs in realtime across devices! Imagine what you can build?
 
- - Be it [distributed machine learning with gun](http://myrighttocode.org/blog/artificial%20intelligence/particle%20swarm/genetic%20algorithm/collective%20knowledge/machine%20learning/gun-db-artificial-knowledge-sharing)!
+ - Be it [distributed machine learning with gun](https://github.com/cstefanache/cstefanache.github.io/blob/master/_posts/2016-08-02-gun-db-artificial-knowledge-sharing.md#gundb)!
 
  - Or IoT apps with timeseries analysis and [live temperature data visualizations](https://github.com/Stefdv/gun-ui-lcd#syncing).
 
