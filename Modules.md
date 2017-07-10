@@ -1,5 +1,5 @@
-### [guntagger](https://www.npmjs.com/package/guntagger)
-Tag and untag nodes to custom tags/labels
+### [gun-tag]https://www.npmjs.com/package/gun-tag)
+Tag, untag, filter and find intersects on nodes.
 ~ By [Stefdv](https://github.com/stefdv)
 
 ### [gun-level](https://github.com/PsychoLlama/gun-level)
