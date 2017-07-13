@@ -607,6 +607,14 @@ gun.get('users').map().val(function(user, id){
 ```
 The above will be called 3 times.
 
+Here's a summary of .map() behavior depending on where it is on the chain:
+- users.map().on(cb) subscribes to changes on every user and to users as they are added.
+- users.map().val(cb) gets each user once, including ones that are added over time.
+- users.val().map().on(cb) gets the user list once, but subscribes to changes on each of those users (not added ones).
+- users.val().map().val(cb) gets the user list once, gets each of those users only once (not added ones).
+
+
+
 ## Chain context
 `.map` changes the context of the chain to hold many chains simultaneously. Check out this example:
 ```javascript
