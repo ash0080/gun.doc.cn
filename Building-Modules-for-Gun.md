@@ -1,3 +1,37 @@
+# EXAMPLE OF v0.8+ STORAGE ADAPTER
+
+```javascript
+Gun.on('opt', function(ctx){
+	this.to.next(ctx);
+	var opt = ctx.opt, no;
+	if(ctx.once){ return }
+
+	ctx.on('put', function(msg){
+		this.to.next(msg);
+		var err;
+		Gun.graph.is(msg.put, function(node, soul){
+			err = err || STORAGEwithPATCH.put(soul, node);
+		});
+		if(!msg['@']){ // only reply if this update isn't an ACK also.
+			ctx.on('in', {'@': msg['#'], err: err, ok: err? no : 1}); // reply with ACK to msg id.
+		}
+	});
+
+	ctx.on('get', function(msg){
+		this.to.next(msg);
+		var node, err;
+		try{ node = READfromSTORAGE(msg.get['#']);
+		catch(e){ err = e }
+		if(node && msg.get['.']){
+			node = Gun.state.to(node, msg.get['.']); // filter node down to the 1 property
+		}
+		ctx.on('in', {'@': msg['#'], put: Gun.graph.node(node), err: err}); // ACK the GET. 
+	});
+});
+```
+
+## THE REST OF THE DOCUMENTATION MAY BE OUTDATED
+
 > ###**note:** this guide is written for gun v0.2.x and will be outdated with gun v0.3.x, currently being tested on #develop.
 
 # Gun Plugins: a how-to guide
