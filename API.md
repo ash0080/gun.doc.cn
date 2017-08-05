@@ -563,6 +563,8 @@ gun.get(key).map() /* is not the same as */ gun.get(key)
 
 <a href="https://youtu.be/UDZGVYLNLAU" title="GUN path"><img src="http://img.youtube.com/vi/UDZGVYLNLAU/0.jpg" width="425px"></a><br>
 
+> Warning: Not included by default! You must include it yourself via `require('gun/lib/path.js')` or `<script src="/gun/lib/path.js"></script>`!
+
 Path does the same thing as `get` but has some conveniences built in.
 
 ## Key
@@ -645,6 +647,7 @@ gun.get('API')
 --------------------------------------
 # <a name="not"></a> gun.not(callback)
 
+> Warning: Not included by default! You must include it yourself via `require('gun/lib/not.js')` or `<script src="/gun/lib/not.js"></script>`!
 Handle cases where data can't be found.
 
 If you need to know whether a property or key exists, you can check with `.not`. It will consult the connected peers and invoke the callback if there's reasonable certainty that none of them have the data available.
@@ -682,3 +685,52 @@ gun.get('chat').path('enabled').not(function(path){
 ```javascript
 gun.get(key).not(handler) /* is the same as */ gun.get(key)
 ```
+
+--------------------------------------
+# <a name="open"></a> gun.open(callback)
+
+> Warning: Not included by default! You must include it yourself via `require('gun/lib/open.js')` or `<script src="/gun/lib/open.js"></script>`!
+
+Open behaves very similarly to [gun.on](#on), except it gives you **the full depth of document** on every update. It also works with graphs, tables, or other data structures. Think of it as opening up a live connection to a document.
+
+> Note: This will automatically load everything it can find on the context. This may sound convenient, but may be unnecessary and excessive - resulting in more bandwidth and slower load times for larger data. It could also result in your entire database being loaded, if your app is highly interconnected.
+
+## Callback(data)
+
+The callback has 1 parameter, and will get called every time an update happens anywhere in the full depth of the data.
+
+## Data
+
+Unlike most of the API, `open` does not give you a node. It gives you a copy of your data with all metadata removed. Updates to the callback will return the same data, with changes modified onto it.
+
+## Examples
+```javascript
+// include .open
+gun.get('person/mark').open(function(mark){
+  mark; // {name: "Mark Nadal", pet: {name: "Frizzles", species: "kitty", slave: {...}}}
+});
+
+var human = {
+  name: "Mark Nadal",
+  pet: {
+    name: "Frizzles",
+    species: "kitty" // for science!
+  }
+};
+human.pet.slave = human;
+
+gun.get('person/mark').put(human);
+```
+
+## Chain context
+`.open` does not change the context.
+
+```javascript
+gun.get('company/acme').open(cb).get('employees').map().val(cb)
+```
+
+## Unexpected behavior
+
+If you do not use a schema with `.open(cb)` it can only best guess and approximate whether the data is fully loaded or not. As a result, do not assume all the data will be available on the first callback - it may take several calls for things to fully load, so code defensively! By default, it waits 1ms after each piece of data it receives before triggering the callback. You can change the default by passing an option like `.open(cb, {wait: 99})` which forces it to wait 99ms before triggering (which is the default [gun.val](#val) has).
+
+--------------------------------------
