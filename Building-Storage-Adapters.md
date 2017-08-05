@@ -65,7 +65,7 @@ The context received in the above example `put` example can take a few shapes. H
 ```
 The context received contains a `put` key which contains a node delta to be written as well as some metadata that Gun uses in various ways (chiefly the conflict resolution algorithm). You must store the metadata and the actual values.
 
-** Warning: all `put`s are Node delta/diffs and not full nodes. If you treat a delta like a full node, you could have data loss!!**
+** Warning: all `put`s are Node delta/diffs and not full nodes. If you treat a delta like a full node, you could have data loss!! **
 
 Here is a more complex example that includes node relationships, omitting the metadata for the sake of clarity:
 
