@@ -52,3 +52,5 @@ interview.put(data);
 ```
 
 When the data is saved with `put` it will trigger `.on('value', cb)` to be called with the full interview document.
+
+This shim wraps [gun.open](https://github.com/amark/gun/wiki/API#open) in the extended API.
