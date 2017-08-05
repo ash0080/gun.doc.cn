@@ -5,7 +5,7 @@ Contributions would be highly appreciated, consider this the place to add common
 # Use
 
 ## NodeJS
-```
+```javascript
 var Gun = require('gun');
 require('gun/lib/shim');
 ```
@@ -26,7 +26,7 @@ With a build tool, you should know how to bundle them into 1 file based on the t
 
 This will loosely approximate Firebase's behavior. Here is an example:
 
-```
+```javascript
 var gun = Gun('http://localhost:8080/gun'), ID = 'asdf';
 
 gun.get('interview/' + ID).on('value', function(tree){
@@ -36,7 +36,7 @@ gun.get('interview/' + ID).on('value', function(tree){
 
 This will give you the full document every time it changes. It works for documents with circular references too!
 
-```
+```javascript
 var interview = gun.get('interview/' + ID);
 
 var data = {
