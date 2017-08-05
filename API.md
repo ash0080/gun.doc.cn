@@ -410,7 +410,7 @@ gun.get(key).on(handler) /* is the same as */ gun.get(key)
 
 ## Unexpected behavior
 
-Data is only 1 layer deep, a full document is not returned (there are extensions available that do that), this helps keep things fast.
+Data is only 1 layer deep, a full document is not returned (see the [gun.open](#open) extension for that), this helps keep things fast.
 
 It will be called many times.
 
@@ -452,7 +452,7 @@ gun.get('IoT').path('temperature').val(function(number){
 
 `.val` is asynchronous and on a **debounce timeout** while data is still being loaded - so it may be called completely out of order compared to other functions. This is intended because gun streams partials of data, so `val` avoids firing immediately because it may not represent the "complete" data set yet. You can control this timeout with the `wait` option.
 
-Data is only 1 layer deep, a full document is not returned (there are extensions available that do that), this helps keep things fast.
+Data is only 1 layer deep, a full document is not returned (see the [gun.load](#open) extension for that), this helps keep things fast.
 
 ---------------------------------------------------------
 # <a name="set"></a>gun.set(data, callback)
