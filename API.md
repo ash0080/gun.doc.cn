@@ -691,7 +691,7 @@ gun.get(key).not(handler) /* is the same as */ gun.get(key)
 
 > Warning: Not included by default! You must include it yourself via `require('gun/lib/open.js')` or `<script src="/gun/lib/open.js"></script>`!
 
-Open behaves very similarly to [gun.on](#on), except it gives you **the full depth of document** on every update. It also works with graphs, tables, or other data structures. Think of it as opening up a live connection to a document.
+Open behaves very similarly to [gun.on](#on), except it gives you **the full depth of a document** on every update. It also works with graphs, tables, or other data structures. Think of it as opening up a live connection to a document.
 
 > Note: This will automatically load everything it can find on the context. This may sound convenient, but may be unnecessary and excessive - resulting in more bandwidth and slower load times for larger data. It could also result in your entire database being loaded, if your app is highly interconnected.
 
