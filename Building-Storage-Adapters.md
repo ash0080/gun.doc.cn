@@ -258,7 +258,7 @@ db.on('in', {
 
 # Words of Caution
 
-* If you're shipping your adapter as a package available via NPM, ** DO NOT INCLUDE `GUN` IN YOUR PACKAGE DEPENDENCIES! **
+* If you're shipping your adapter as a package available via NPM, **DO NOT INCLUDE `GUN` IN YOUR PACKAGE DEPENDENCIES!**
 * If you anticipate large nodes at all, be sure to account for these and enable `read` streaming. Otherwise, you risk crashes when nodes overwhelm the memory.
 * A `get` request will result in a `write` request. Using the `dedupId`s you can filter out when these duplicate write requests come through. 
 
