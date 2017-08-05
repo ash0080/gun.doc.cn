@@ -4,18 +4,23 @@ Think these docs could be improved? Contribute to the wiki! Or [[comment|https:/
  - [Gun constructor](#gun)
  - [gun.put](#put)
  - [gun.get](#get)
- - [gun.back](#back)
  - [gun.opt](#opt)
+ - [gun.chain](#chain)
+ - [gun.back](#back)
 
-# API
- - [gun.path](#path)
+# Main API
  - [gun.on](#on)
  - [gun.val](#val)
  - [gun.set](#set)
  - [gun.map](#map)
+
+# Extended API
+ - [gun.path](#path)
  - [gun.not](#not)
- - [gun.init](#init)
- - [gun.key](#key)
+ - [gun.open](#open)
+ - [gun.load](#load)
+
+# Core
 
 # <a name="gun"></a>Gun(options)
 
@@ -284,6 +289,30 @@ gun.get('user').get('alice') /* same context as */ gun.get('users').path('alice'
 
 Most callbacks in gun will be called multiple times.
 
+--------------------------------------
+# <a name="opt"></a> gun.opt(options)
+Change the configuration of the gun database instance.
+
+The `options` argument is the same object you pass to the [constructor](#gun). The `options`'s properties replace those in the instance's configuration but `options.peers` are **added** to peers known to the gun instance.
+
+## Examples
+Create the gun instance.
+```javascript
+gun = Gun('http://yourdomain.com/gun')
+```
+Change UUID generator:
+```javascript
+gun.opt({
+  uuid: function () {
+    return Math.floor(Math.random() * 4294967296);
+  }
+});
+```
+Add more peers:
+```javascript
+gun.opt({peers: ['http://anotherdomain.com/gun']})
+/* Now gun syncs with ['http://yourdomain.com/gun', 'http://anotherdomain.com/gun']. */
+```
 -----------------------------
 # <a name="back"></a>gun.back(amount)
 
@@ -321,114 +350,9 @@ gun.get('key').get('property')
 gun.get('key').get('property').back()
 ```
 
---------------------------------------
-# <a name="opt"></a> gun.opt(options)
-Change the configuration of the gun database instance.
+-----------------------------
 
-The `options` argument is the same object you pass to the [constructor](#gun). The `options`'s properties replace those in the instance's configuration but `options.peers` are **added** to peers known to the gun instance.
-
-## Examples
-Create the gun instance.
-```javascript
-gun = Gun('http://yourdomain.com/gun')
-```
-Change UUID generator:
-```javascript
-gun.opt({
-  uuid: function () {
-    return Math.floor(Math.random() * 4294967296);
-  }
-});
-```
-Add more peers:
-```javascript
-gun.opt({peers: ['http://anotherdomain.com/gun']})
-/* Now gun syncs with ['http://yourdomain.com/gun', 'http://anotherdomain.com/gun']. */
-```
-
----------------------------------------
-# <a name="path"></a>gun.path(key)
-
-<a href="https://youtu.be/UDZGVYLNLAU" title="GUN path"><img src="http://img.youtube.com/vi/UDZGVYLNLAU/0.jpg" width="425px"></a><br>
-
-Path does the same thing as `get` but has some conveniences built in.
-
-## Key
-The key `property` is the name of the field to move to.
-
-```javascript
-// move to the "themes" field on the settings object
-gun.get('settings').path('themes')
-```
-
-Once you've changed the context, you can read, write, and `path` again from that field. While you can just chain one `path` after another, it becomes verbose, so there are two shorthand styles:
-
- - dot format
- - array format
-
-Here's dot notation in action:
-```javascript
-// verbose
-gun.get('settings').path('themes').path('active')
-
-// shorthand
-gun.get('settings').path('themes.active')
-
-// which happens to be the the same as
-gun.get('settings').get('themes').get('active')
-```
-
-
-And the array format, which really becomes useful when using variables instead of literal strings:
-```javascript
-gun.get('settings').path(['themes', themeName])
-```
-
-### Unexpected behavior
-The dot notation can do some strange things if you're not expecting it. Under the hood, everything is changed into a string, including floating point numbers. If you use a decimal in your path, it will split into two paths...
-```javascript
-gun.path(30.5)
-// interprets to
-gun.path(30).path(5)
-```
-
-This can be especially confusing as the chain might never resolve to a value.
-
-> Note: For users upgrading from versions prior to v0.5.x, `path` used to be necessary - now it is purely a convenience wrapper around `get`.
-
-## Examples
-Navigating to a property
-```javascript
-/*
-  where `user` is {
-    name: 'Bob'
-  }
-*/
-gun.get('user').path('name')
-```
-Once you've focused on the `name` property, you can chain other methods like [`.put`](#put) or [`.on`](#on) to interact with it.
-
-Moving through multiple properties
-```javascript
-/*
-  where `user` is {
-    name: { first: 'bob' }
-  }
-*/
-gun.get('user').path('name').path('first')
-// or the shorthand...
-gun.get('user').path('name.first')
-```
-
-## Chain context
-`gun.path` creates a new context each time it's called, and is always a result of the previous context.
-```javascript
-gun.get('API').path('path').path('chain')
-/* is different from */
-gun.get('API').path('path')
-/* and is different from */
-gun.get('API')
-```
+# Main
 
 -----------------------------
 # <a name="on"></a> gun.on(callback, option)
@@ -630,6 +554,94 @@ This will give you each pet of every friend of every user!
 gun.get(key).map() /* is not the same as */ gun.get(key)
 ```
 
+---------------------------------------
+
+# Extended
+
+---------------------------------------
+# <a name="path"></a>gun.path(key)
+
+<a href="https://youtu.be/UDZGVYLNLAU" title="GUN path"><img src="http://img.youtube.com/vi/UDZGVYLNLAU/0.jpg" width="425px"></a><br>
+
+Path does the same thing as `get` but has some conveniences built in.
+
+## Key
+The key `property` is the name of the field to move to.
+
+```javascript
+// move to the "themes" field on the settings object
+gun.get('settings').path('themes')
+```
+
+Once you've changed the context, you can read, write, and `path` again from that field. While you can just chain one `path` after another, it becomes verbose, so there are two shorthand styles:
+
+ - dot format
+ - array format
+
+Here's dot notation in action:
+```javascript
+// verbose
+gun.get('settings').path('themes').path('active')
+
+// shorthand
+gun.get('settings').path('themes.active')
+
+// which happens to be the the same as
+gun.get('settings').get('themes').get('active')
+```
+
+
+And the array format, which really becomes useful when using variables instead of literal strings:
+```javascript
+gun.get('settings').path(['themes', themeName])
+```
+
+### Unexpected behavior
+The dot notation can do some strange things if you're not expecting it. Under the hood, everything is changed into a string, including floating point numbers. If you use a decimal in your path, it will split into two paths...
+```javascript
+gun.path(30.5)
+// interprets to
+gun.path(30).path(5)
+```
+
+This can be especially confusing as the chain might never resolve to a value.
+
+> Note: For users upgrading from versions prior to v0.5.x, `path` used to be necessary - now it is purely a convenience wrapper around `get`.
+
+## Examples
+Navigating to a property
+```javascript
+/*
+  where `user` is {
+    name: 'Bob'
+  }
+*/
+gun.get('user').path('name')
+```
+Once you've focused on the `name` property, you can chain other methods like [`.put`](#put) or [`.on`](#on) to interact with it.
+
+Moving through multiple properties
+```javascript
+/*
+  where `user` is {
+    name: { first: 'bob' }
+  }
+*/
+gun.get('user').path('name').path('first')
+// or the shorthand...
+gun.get('user').path('name.first')
+```
+
+## Chain context
+`gun.path` creates a new context each time it's called, and is always a result of the previous context.
+```javascript
+gun.get('API').path('path').path('chain')
+/* is different from */
+gun.get('API').path('path')
+/* and is different from */
+gun.get('API')
+```
+
 --------------------------------------
 # <a name="not"></a> gun.not(callback)
 
@@ -670,12 +682,3 @@ gun.get('chat').path('enabled').not(function(path){
 ```javascript
 gun.get(key).not(handler) /* is the same as */ gun.get(key)
 ```
-
-
---------------------------------
-# <a name="init"></a> gun.init()
-Is being deprecated, now in 0.5.x and above.
-
---------------------------------------------------
-# <a name="key"></a>gun.key(name)
-Currently disabled. Potentially will be deprecated or made into an extension.
