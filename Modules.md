@@ -6,6 +6,14 @@ Tag, untag, filter and find intersects on nodes.
 A LevelDB adapter that works with the levelDB module ecosystem.  
 ~ By [PsychoLlama](https://github.com/PsychoLlama)
 
+### [gun-mongo](https://github.com/sjones6/gun-mongo)
+A MongoDB Adapter that stores entire nodes in Mongo documents
+~ By [sjones6](https://github.com/sjones6)
+
+### [gun-mongo-key](https://github.com/sjones6/gun-mongo-key)
+A MongoDB Adapter that stores nodes as key:value pairs in Mongo documents
+~ By [sjones6](https://github.com/sjones6)
+
 ### [gun-schema](https://github.com/gundb/gun-schema)
 Schema validation module for node and the browser.  
 ~ By [RangerMauve](https://github.com/RangerMauve)
