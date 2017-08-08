@@ -61,7 +61,7 @@ It runs through the root and is emitted as a put event. The default listener sho
 
 1. Make sure the data is a valid graph.
 2. Calculate the diff from the current graph using the conflict resolution rule.
-3. Merge the diff into the graph.
+3. Merge the diff into the graph for whatever data this peer is tracking.
 4. Emit the diff down the chain.
 5. Resume the put event.
 
@@ -72,11 +72,20 @@ Now we can GET the data we just saved by generating an event that follows the wi
 ```
 gun._.on('out', {
 	get: {'#':'ASDF'}
-	'#': gun._.ask(function(at){
+	'#': gun._.ask(function(msg){
 
 	})
 })
 ```
+
+`ask` creates a message ID and uses the event system to subscribe to it. This way, any messages that acknowledge that ID behave as a response to the request. The default `get` listener should do the following:
+
+1. Check that it is a valid lexical cursor, if not then resume the get event. (That way other listeners can handle non-standard requests.)
+2. If there is no lexical match in the graph, resume the event. (So other listeners, like storage adapters, can process it.)
+3. If there is a match, acknowledge the `get` request with a `put` message that has a graph of only the matching data.
+4. If this peer is not tracking that data, or if this is the first time this peer has seen matching data, or if there could be more matching data, then resume the event.
+
+> A note for storage adapters, same thing applies there as well. Since storage is usually an asynchronous operation, it is smart to cache writes as they happen. But until a read has merged against the graph, there is no guarantee that the pending write is the correct read.
 
 ## Chain
 
