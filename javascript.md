@@ -87,6 +87,8 @@ gun._.on('out', {
 
 > A note for storage adapters, same thing applies there as well. Since storage is usually an asynchronous operation, it is smart to cache writes as they happen. But until a read has merged against the graph, there is no guarantee that the pending write is the correct read.
 
+The responses we get may be eventually consistent, duplicates across different peers, partial, or out of order.
+
 ## Chain
 
 Speaking the wire spec directly to the root is not a usable API. Instead, it would be more useful to have an API that supports these features:
