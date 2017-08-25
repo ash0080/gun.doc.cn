@@ -734,3 +734,42 @@ gun.get('company/acme').open(cb).get('employees').map().val(cb)
 If you do not use a schema with `.open(cb)` it can only best guess and approximate whether the data is fully loaded or not. As a result, do not assume all the data will be available on the first callback - it may take several calls for things to fully load, so code defensively! By default, it waits 1ms after each piece of data it receives before triggering the callback. You can change the default by passing an option like `.open(cb, {wait: 99})` which forces it to wait 99ms before triggering (which is the default [gun.val](#val) has).
 
 --------------------------------------
+# <a name="bye"></a> gun.bye()
+
+> Warning: Not included by default! You must include it yourself via `require('gun/lib/bye.js')` or `<script src="/gun/lib/bye.js"></script>`!
+
+`bye` lets you change data after that browser peer disconnects. This is useful for games and status messages, that if a player leaves you can remove them from the game or set a user's status to "away".
+
+> Note: This requires a server side component, and therefore must be included there as well in order for this to work. In the future it should be generalizable to P2P settings, however may not be as reliable. 
+
+## Chain context
+
+It returns a **special chain context** with **only 1 method on it** of `put`. It currently **does not support chaining**, however in the future we hope to make it more chainable. Keep this in mind until then.
+
+## Examples
+
+
+```javascript
+gun.get('marknadal').get('status').put("I'm online!");
+
+gun.get('marknadal').get('status').bye().put("I'm offline. :(");
+```
+
+Even though this is **written entirely in the browser**, the `put` will get called **on the server** when this browser tab disconnects.
+
+> Note: A user might have multiple tabs open on your website, just because they close 1 tab does not mean they are now offline. We recommend you use `.bye()` for data related to browser tab sessions, and then aggregate those sessions together to determine if the the user as a whole is online or offline.
+
+```javascript
+var player = gun.get('kittycommando1337');
+
+gun.get('game').get('players').set(player);
+
+gun.get('game').get('players').get('kittycommando1337').bye().put(null);
+```
+
+This deletes the player from the game when they go offline or disconnect from the server. It does not delete the player, just whether they are a player of the game or not.
+
+
+## Unexpected behavior
+
+`bye()` is in experimental alpha, please report any problems or bugs you have with it. Note again that it does not fire immediately, and it does not get run from the browser. It makes the data change on the server when that browser tab disconnects.
