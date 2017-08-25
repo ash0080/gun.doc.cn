@@ -19,6 +19,7 @@ Think these docs could be improved? Contribute to the wiki! Or [[comment|https:/
  - [gun.not](#not)
  - [gun.open](#open)
  - [gun.load](#load)
+ - [gun.bye](#bye)
 
 # Core
 
