@@ -17,6 +17,7 @@ With a build tool, you should know how to bundle them into 1 file based on the t
 ```
 <script src="/gun.js"></script>
 <script src="/gun/lib/open.js"></script>
+<script src="/gun/lib/bye.js"></script>
 <script src="/gun/lib/shim.js"></script>
 ```
 
@@ -56,3 +57,31 @@ When the data is saved with `put` it will trigger `.on('value', cb)` to be calle
 [Try this shim out now, with this live demo on jsbin](http://jsbin.com/xodoxolawa/edit?html,js,console)!
 
 This shim wraps [gun.open](https://github.com/amark/gun/wiki/API#open) in the extended API.
+
+## `.onDisconnect()`
+
+This loosely approximates Firebase's behavior. Remember though, GUN uses `put` instead of `set` - just as a tip. Here is how it works:
+
+```javascript
+var gun = Gun('http://localhost:8080/gun'), sessionID = 'asdf';
+
+var tab = gun.get('marknadal').get('tabs').get(sessionID).put('online');
+
+tab.onDisconnect().put('offline');
+```
+
+We can use this to create a "presence" system, such that another user can track whether their friend is online or not based on how many tabs they have open:
+
+```javascript
+gun.get('ambercazzell').get('friends').get('marknadal').get('tabs').on('value', function(sessions){
+  for(var tab in sessions){
+    if('online' === sessions[tab]){
+      UI.update("Your friend is online!");
+      return;
+    }
+  }
+  UI.update("Your friend is offline.");
+});
+```
+
+This shim proxies [gun.bye](https://github.com/amark/gun/wiki/API#bye) in the extended API.
