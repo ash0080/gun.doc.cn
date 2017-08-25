@@ -91,14 +91,6 @@ __ Large Nodes: 10000 Properties Each __
 * Update 10 nodes: : 37709ms; 37.709s; 3428.091 ms/node; errors: 0.
 * Update single field on 10 nodes: : 3587ms; 3.587s; 326.091 ms/node; errors: 0.
 
-## Gun-File
-
-[npm](https://www.npmjs.com/package/gun-file)/[github](https://github.com/d3x0r/gun-file) by [d3x0r](https://github.com/d3x0r)
-
-## Gun-Level
-
-[npm](https://www.npmjs.com/package/gun-file)/[github](https://github.com/d3x0r/gun-file) by [d3x0r](https://github.com/d3x0r)
-
 ## Gun-Mongo-key
 
 Key:value Adapter for MongoDB
@@ -144,6 +136,18 @@ __ Small Nodes: 10 Properties Each __
 * Write 10000 nodes: : 9764ms; 9.764s; 0.9764 ms/node.
 * Read 10000 nodes: : 4579ms; 4.579s; 0.4579 ms/node.
 * Update 10000 nodes: : 8599ms; 8.599s; 0.8599 ms/node.
+
+## Gun-File
+
+A local filesystem adapter.
+
+[npm](https://www.npmjs.com/package/gun-file)/[github](https://github.com/d3x0r/gun-file) by [d3x0r](https://github.com/d3x0r)
+
+## Gun-Level
+
+An adapter that can be plugged in to LevelDB, and any LevelDown implementations.
+
+[npm](https://www.npmjs.com/package/gun-level)/[github](https://github.com/PsychoLlama/gun-level) by [PsychoLlama](https://github.com/PsychoLlama)
 
 # Running Benchmarks
 
