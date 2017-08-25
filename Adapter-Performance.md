@@ -25,6 +25,8 @@ Benchmarks include four operations on nodes of 3 sizes:
 * Medium nodes: 1,000 properties each
 * Large nodes: 10,000 properties each
 
+These performance tests do not completely reflect a production environment since each operation waits for the preceding to complete before continuing. In production, you should probably anticipate some level of concurrency.
+
 ## Gun-DB
 
 Storage in local filesystem via Sqlite + VFS
