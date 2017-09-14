@@ -85,3 +85,31 @@ gun.get('ambercazzell').get('friends').get('marknadal').get('tabs').on('value', 
 ```
 
 This shim proxies [gun.bye](https://github.com/amark/gun/wiki/API#bye) in the extended API.
+
+## `.connected(cb)`
+
+A cleaner implementation of Firebase's
+
+```javascript
+var connectedRef = new Firebase('http://abc.firebaseio.com/.info/connected');
+connectedRef.on('value', function(snap){
+  //...
+});
+```
+
+Instead, just do
+
+```javascript
+var gun = Gun('http://localhost:8080/gun');
+
+gun.connected(function(boo){
+  if(boo){
+    UI.notify("You are back online!");
+    gun.get('status').onDisconnect().put('offline');
+  } else {
+    UI.notify("You are offline!");
+  }
+});
+```
+
+Please report if `connected().on('value', cb)` would be preferred.
