@@ -112,4 +112,6 @@ gun.connected(function(boo){
 });
 ```
 
+> **Note**: GUN uses lazy loading to conserve bandwidth and battery! So `connected` will only fire after the first read or a write has been performed.  This is not a bug.
+
 Please report if `connected().on('value', cb)` would be preferred.
