@@ -19,6 +19,7 @@ Think these docs could be improved? Contribute to the wiki! Or [[comment|https:/
  - [gun.not](#not)
  - [gun.open](#open)
  - [gun.load](#load)
+ - [gun.then](#then)
  - [gun.bye](#bye)
 
 # Core
@@ -733,6 +734,62 @@ gun.get('company/acme').open(cb).get('employees').map().val(cb)
 ## Unexpected behavior
 
 If you do not use a schema with `.open(cb)` it can only best guess and approximate whether the data is fully loaded or not. As a result, do not assume all the data will be available on the first callback - it may take several calls for things to fully load, so code defensively! By default, it waits 1ms after each piece of data it receives before triggering the callback. You can change the default by passing an option like `.open(cb, {wait: 99})` which forces it to wait 99ms before triggering (which is the default [gun.val](#val) has).
+
+--------------------------------------
+# <a name="then"></a> gun.then(cb)
+
+> Warning: Not included by default! You must include it yourself via `require('gun/lib/then.js')` or `<script src="/gun/lib/then.js"></script>`!
+
+Returns a promise for you to use.
+
+> Note: a gun chain is not promises! You must include and call `.then()` to promisify a gun chain!
+
+### cb(resolved)
+
+`cb` is a function that has 1 parameter.
+
+`resolved` is the data.
+
+## `.promise(cb)`
+
+`.then(cb)` has a cousin of `.promise(cb)` which behaves the same way except that `resolved` is an object with:
+
+```javascript
+resolved = {
+  put: data,
+  get: key,
+  gun: ref // if applicable
+}
+```
+
+In case you need more context or metadata.
+
+## Chain context
+
+It is no longer a gun chain, but you can chain promises off of it!
+
+## Examples
+
+
+```javascript
+Promise.race([
+    gun.get('alice').then(), // must be called!
+    gun.get('bob').then() // must be called!
+])
+```
+
+Or use it with `async`!
+
+```javascript
+async function get(name) {
+     var node = await gun.get(name).then();
+     return node;
+};
+```
+
+## Unexpected behavior
+
+A gun chain is **not** already a promise, you must call `then()` to make it a promise.
 
 --------------------------------------
 # <a name="bye"></a> gun.bye()
