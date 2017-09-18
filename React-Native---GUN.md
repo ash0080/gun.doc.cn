@@ -20,8 +20,8 @@ In the browser, Gun will dump the graph into LocalStorage to achieve longer-term
 In React Native, if you want to retain application data for either offline use or for long-term storage on the device itself, you can plug Gun into a few community built adapters:
 
 * [AsyncStorage](https://github.com/staltz/gun-asyncstorage) by [staltz](https://github.com/staltz)
-* [SQLite](https://github.com/staltz/gun-react-native-sqlite) by [sjones6](https://github.com/sjones6)
-* [Realm](https://github.com/staltz/gun-realm) by [sjones6](https://github.com/sjones6)
+* [SQLite](https://github.com/sjones6/gun-react-native-sqlite) by [sjones6](https://github.com/sjones6)
+* [Realm](https://github.com/sjones6/gun-realm) by [sjones6](https://github.com/sjones6)
 
 If you choose not to use any long-term storage option, that's totally fine. Gun will keep as much of the graph as possible in memory, which will be dumped every time the application is restarted.
 
