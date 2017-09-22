@@ -21,6 +21,7 @@ Think these docs could be improved? Contribute to the wiki! Or [[comment|https:/
  - [gun.load](#load)
  - [gun.then](#then)
  - [gun.bye](#bye)
+ - [gun.later](#later)
 
 # Core
 
@@ -697,13 +698,11 @@ Open behaves very similarly to [gun.on](#on), except it gives you **the full dep
 
 > Note: This will automatically load everything it can find on the context. This may sound convenient, but may be unnecessary and excessive - resulting in more bandwidth and slower load times for larger data. It could also result in your entire database being loaded, if your app is highly interconnected.
 
-## Callback(data)
+### Callback(data)
 
 The callback has 1 parameter, and will get called every time an update happens anywhere in the full depth of the data.
 
-## Data
-
-Unlike most of the API, `open` does not give you a node. It gives you a copy of your data with all metadata removed. Updates to the callback will return the same data, with changes modified onto it.
+ - `data`. Unlike most of the API, `open` does not give you a node. It gives you a copy of your data with all metadata removed. Updates to the callback will return the same data, with changes modified onto it.
 
 ## Examples
 ```javascript
@@ -734,6 +733,13 @@ gun.get('company/acme').open(cb).get('employees').map().val(cb)
 ## Unexpected behavior
 
 If you do not use a schema with `.open(cb)` it can only best guess and approximate whether the data is fully loaded or not. As a result, do not assume all the data will be available on the first callback - it may take several calls for things to fully load, so code defensively! By default, it waits 1ms after each piece of data it receives before triggering the callback. You can change the default by passing an option like `.open(cb, {wait: 99})` which forces it to wait 99ms before triggering (which is the default [gun.val](#val) has).
+
+--------------------------------------
+# <a name="load"></a> gun.load(cb, opt)
+
+> Warning: Not included by default! You must include it yourself via `require('gun/lib/load.js')` or `<script src="/gun/lib/open.js"></script><script src="/gun/lib/load.js"></script>`!
+
+Loads the full object once. It is the same as `open` but with the behavior of [`val`](#val).
 
 --------------------------------------
 # <a name="then"></a> gun.then(cb)
@@ -831,3 +837,40 @@ This deletes the player from the game when they go offline or disconnect from th
 ## Unexpected behavior
 
 `bye()` is in experimental alpha, please report any problems or bugs you have with it. Note again that it does not fire immediately, and it does not get run from the browser. It makes the data change on the server when that browser tab disconnects.
+
+--------------------------------------
+# <a name="later"></a> gun.later(cb, seconds)
+
+> Warning: Not included by default! You must include it yourself via `require('gun/lib/later.js')` or `<script src="/gun/lib/open.js"></script><script src="/gun/lib/later.js"></script>`!
+
+Say you save some data, but want to do something with it later, like expire it or refresh it. Well, then `later` is for you! You could use this to easily implement a TTL or similar behavior.
+
+### cb(data, key)
+
+ - `data`, is a safe snapshot of what you saved, including full depth documents or circular graphs, without any of the metadata.
+ - `key` is the name of the data.
+ - `this` is the gun reference that it was called with.
+
+### seconds
+
+Is the number of seconds you want to wait before firing the callback.
+
+## Chain context
+
+It returns itself, as in `gun.later() === gun`.
+
+## Examples
+
+See a full working [example here, at jsbin](http://jsbin.com/veyezoxuhe/edit?html,js,console)!
+
+```javascript
+gun.get('foo').put(data).later(function(data, key){
+  this.get('session').put(null); // expire data!
+}, 2); // 2 seconds!
+```
+
+## Unexpected behavior
+
+1. Exact timing is not guaranteed! Because it uses `setTimeout` underneath. Further, after the timeout, it must then open and load the snapshot, this will likely add at least `1`ms to the delay. **Experimental**: If this is problematic, please report it, as we can modify the implementation of `later` to be more precise.)
+
+2. If a process/browser has to restart, the timeout will not be called. **Experimental**: If this behavior is needed, please report it, as it could be added to the implementation.
