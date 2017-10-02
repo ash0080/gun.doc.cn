@@ -202,6 +202,8 @@ You don't have to worry about what that is, gun uses it to figure out how object
 
 We'll use the [`path`](https://github.com/amark/gun/wiki/API-(v0.3.x)#path) method to read the value on `hello`.
 
+[Warning: Not included by default! You must include it yourself via require('gun/lib/path.js') or <script src="/gun/lib/path.js"></script>!](http://gun.js.org/docs/path.html)
+
 ```javascript
 // Get the property "hello" on greetings.
 var hello = greetings.path('hello');
