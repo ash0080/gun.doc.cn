@@ -8,6 +8,10 @@ Here is an early-preview demo of it working in action:
 
 <a href="https://youtu.be/52Z72bDCtMU" title="2 min demo of auth"><img src="http://img.youtube.com/vi/52Z72bDCtMU/0.jpg" width="425px"></a>
 
+And another newer demo of the API:
+
+<a href="https://youtu.be/ik_dqXBMBHw" title="2 min demo of auth"><img src="http://img.youtube.com/vi/ik_dqXBMBHw/0.jpg" width="425px"></a>
+
 To learn more about how it works, check out our [1 minute explainer series on cryptography](http://gun.js.org/explainers/data/security.html).
 
 We'll be releasing the example and the SEA framework soon as part of our 0.7 version, and we are **looking for crackers to audit the system** - email me if you'd like to volunteer. The libraries underneath are currently jsrsasign and cryptojs.
