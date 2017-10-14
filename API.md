@@ -365,7 +365,7 @@ gun.get('key').get('property').back()
 Subscribe to updates and changes on a node or property in realtime.
 
 ## Callback(data, key)
-When the property or node you're focused on changes, this callback is immediately fired with the data as it is at that point in time.
+Once initially and whenever the property or node you're focused on changes, this callback is immediately fired with the data as it is at that point in time.
 
 Since gun streams data, the callback will probably be called multiple times as new chunk comes in.
 
