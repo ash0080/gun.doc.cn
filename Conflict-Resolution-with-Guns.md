@@ -16,6 +16,8 @@ The same state should be reached regardless of what order updates arrive in (upd
 ### Conflict Handling
 When merge conflicts happen, every machine should independently choose the same value (Strong Eventual Consistency).
 
+<a href="https://youtu.be/neqz5t4FSJI" target="_blank" title="GUN"><img src="http://img.youtube.com/vi/neqz5t4FSJI/0.jpg" width="425px"></a><br>
+
 ## Implementation
 Ultimately, we want to accept an update and merge it into our own data. Since gun's data structure is graph-oriented, updates will be in graph-format.
 
@@ -46,6 +48,8 @@ There's a bit more nuance to updates with greater state, so we'll discuss that i
 Well, according to the goals we listed, **it doesn't matter** what value we choose, so long as everyone chooses it. We just need to be consistent. Another advantage is that gun supports a subset of JSON, so we only need to handle conflicts in that subset.
 
 This allows us to define some simple rules that guarantee convergence, mostly through type and lexical comparisons. Here is a layman explanation, followed by more details:
+
+> **NOTE: Lexical sort is only used if there is a conflict on the exact same value at the exact same time.**
 
 <a href="https://youtu.be/qKIn9L2obug" target="_blank" title="GUN map"><img src="http://img.youtube.com/vi/c80vSf45H4k/0.jpg" width="425px"></a><br>
 
