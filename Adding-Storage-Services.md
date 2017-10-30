@@ -1,6 +1,6 @@
 > WARNING: This documentation is out of date. We use a different storage adapter system now.
 
-Use @sjone6 's excellent gun `flint` framework instead in the meanwhile (and even after) we update documentation:
+Use @sjones6 's excellent gun `flint` framework instead in the meanwhile (and even after) we update documentation:
 
 https://github.com/sjones6/gun-flint
 
