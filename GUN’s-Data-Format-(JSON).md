@@ -37,7 +37,7 @@ Every node also must have a universally unique ID, called a **soul**, which is a
   _: {'#':'ASDF'},
   age: 23,
   hacker: true,
-  name: "Mark Nadal"add another node to the system.
+  name: "Mark Nadal"
 }
 ```
 
