@@ -16,6 +16,49 @@ To learn more about how it works, check out our [1 minute explainer series on cr
 
 We'll be releasing the example and the SEA framework soon as part of our 0.7 version, and we are **looking for crackers to audit the system** - email me if you'd like to volunteer. We have now switched to using the browser native Web Cryptography API instead of jsrsasign and cryptojs, thanks to the work of [@mhelander](https://github.com/mhelander).
 
+To get started, you can use SEA in the browser with the following:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gun/lib/cryptomodules.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gun/sea.js"></script>
+```
+
+> Note: `lib/cryptomodules` name will change in the future, you'll need to keep your app up to date.
+
+Now in your javascript you can do:
+
+```javascript
+var gun = Gun();
+var user = gun.user();
+```
+
+To create a cryptographic identity, use the following command:
+
+```javascript
+// Browser Native Web Crypto API is used to PBKDF2 extend your password.
+user.create('alice', 'unsafepassword', function(ack){
+  // done creating user!
+});
+```
+
+Once you have created a user, you can log them in with:
+
+```javascript
+// Browser Native Web Crypto API is used to PBKDF2 extend your password.
+user.auth('alice', 'unsafepassword', function(ack){
+  // logged in!
+});
+```
+
+Finally, you can then save data to their account that nobody else can write to:
+
+```javascript
+user.get('profile').put({name: "Mark Nadal", lives: "Bay Area"});
+```
+
+Shared objects and private data will be available next with SEA.
+
 Feel free to hit us up with questions on the [gitter](https://gitter.im/amark/gun) in the meanwhile.
 
 Cheers,
