@@ -55,7 +55,7 @@ Finally, you can then save data to their account that nobody else can write to:
 
 ```javascript
 var alice = {name: "Alice"};
-alice.boss = {name: "Fluffy", slave: alice};
+alice.boss = {name: "Fluffy", species: "Kitty", slave: alice};
 user.get('profile').put(alice);
 ```
 
