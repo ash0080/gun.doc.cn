@@ -54,8 +54,22 @@ user.auth('alice', 'unsafepassword', function(ack){
 Finally, you can then save data to their account that nobody else can write to:
 
 ```javascript
-user.get('profile').put({name: "Mark Nadal", lives: "Bay Area"});
+var alice = {name: "Alice"};
+alice.boss = {name: "Fluffy", slave: alice};
+user.get('profile').put(alice);
 ```
+
+On disk and over the wire the data is stored with cryptographic signatures. This way, nobody can modify the data except for the user who owns it.
+
+But if you use GUN to get the data, it automatically verifies and decrypts the data for you:
+
+```javascript
+user.get('profile').get('boss').get('slave').get('name').val(function(data){
+  console.log("The boss's slave's name is:", data); // Alice
+});
+```
+
+Now try running it yourself at https://codepen.io/anon/pen/QajxOz?editors=1012 !
 
 Shared objects and private data will be available next with SEA.
 
