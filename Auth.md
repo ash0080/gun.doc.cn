@@ -1,22 +1,14 @@
-Ladies and Gentlemen,
+So you want to build a decentralized Twitter with end-to-end encryption, that works right in the browser? All with MIT licensed Open Source code?
 
-I am proud to announce an early preview of our end-to-end encrypted authorization framework, SEA (Security, Encryption, Authorization)!
+Then you've come to the right spot. First, watch these 1 minute explainer videos on how cryptography works:
 
-It uses ECDSA, PBKDF2, AES, to create proof of work, encrypt data, generate signatures, and verify data. This is done entirely peer-to-peer and replaces the dangerous model of having a server be a middleman for performing authorization.
+<a href="http://gun.js.org/explainers/data/security.html" title="2 min demo of auth"><img src="http://img.youtube.com/vi/ccKThyaDR30/0.jpg" width="425px"></a>
 
-Here is an early-preview demo of it working in action:
+Second, thanks to the work of [@mhelander](https://github.com/mhelander) on the SEA (Security, Encryption, Authorization) framework, your app will use the latest native Web Crypto API for all the functions explained in the video series, like ECDSA, PBKDF2, AES, and more. Here is a demo of it working in action:
 
 <a href="https://youtu.be/52Z72bDCtMU" title="2 min demo of auth"><img src="http://img.youtube.com/vi/52Z72bDCtMU/0.jpg" width="425px"></a>
 
-And another newer demo of the API:
-
-<a href="https://youtu.be/ik_dqXBMBHw" title="2 min demo of auth"><img src="http://img.youtube.com/vi/ik_dqXBMBHw/0.jpg" width="425px"></a>
-
-To learn more about how it works, check out our [1 minute explainer series on cryptography](http://gun.js.org/explainers/data/security.html).
-
-We'll be releasing the example and the SEA framework soon as part of our 0.7 version, and we are **looking for crackers to audit the system** - email me if you'd like to volunteer. We have now switched to using the browser native Web Cryptography API instead of jsrsasign and cryptojs, thanks to the work of [@mhelander](https://github.com/mhelander).
-
-To get started, you can use SEA in the browser with the following:
+To get started building your app, just include SEA in your app:
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
@@ -24,16 +16,16 @@ To get started, you can use SEA in the browser with the following:
 <script src="https://cdn.jsdelivr.net/npm/gun/sea.js"></script>
 ```
 
-> Note: `lib/cryptomodules` name will change in the future, you'll need to keep your app up to date.
+> Note: If the CDN becomes compromised, your app could be hacked, consider Electron-ifying your app to remove any hosts. Also, `lib/cryptomodules` name will change in the future, you'll need to keep your app up to date.
 
-Now in your javascript you can do:
+Now in your javascript you can instantiate gun and and reference your user:
 
 ```javascript
 var gun = Gun();
 var user = gun.user();
 ```
 
-To create a cryptographic identity, use the following command:
+To create a cryptographic identity backed by a public/private key-pair (see the video explainer), just do:
 
 ```javascript
 // Browser Native Web Crypto API is used to PBKDF2 extend your password.
@@ -59,9 +51,9 @@ alice.boss = {name: "Fluffy", species: "Kitty", slave: alice};
 user.get('profile').put(alice);
 ```
 
-On disk and over the wire the data is stored with cryptographic signatures. This way, nobody can modify the data except for the user who owns it.
+When it is stored on disk or sent over the wire, it uses cryptographic signatures (see the video explainer), to secure the account and data without relying upon any trusted servers!
 
-But if you use GUN to get the data, it automatically verifies and decrypts the data for you:
+And then when you use GUN to read the data, it automatically verifies and decrypts the data for you:
 
 ```javascript
 user.get('profile').get('boss').get('slave').get('name').val(function(data){
@@ -69,11 +61,15 @@ user.get('profile').get('boss').get('slave').get('name').val(function(data){
 });
 ```
 
-Now try running it yourself at https://codepen.io/anon/pen/QajxOz?editors=1012 !
+Try running it yourself at https://codepen.io/anon/pen/QajxOz?editors=1012 !
 
-Shared objects and private data will be available next with SEA.
+Now that you have P2P identities, you can combine it with the logic from the [5min interactive ToDo app tutorial](http://gun.js.org/think.html), to create a list of tweets from the user.
+
+We'll leave creating the UI to you, since that is harder than building realtime decentralized apps with gun! We will follow up with some example apps in the future. For now, this is an introduction to getting started with SEA and GUN!
 
 Feel free to hit us up with questions on the [gitter](https://gitter.im/amark/gun) in the meanwhile.
+
+Shared objects and private data will be available next with SEA.
 
 Cheers,
 
