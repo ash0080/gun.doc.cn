@@ -404,7 +404,13 @@ gun.get('lights').path('living room').on(function(state, room){
   view.lights[room].show(state)
 })
 ```
-
+## IMPORTANT
+There's a 'bug' when dealing with multiple levels.
+```
+gun.get('home').get('lights').on(cb,true);
+gun.get('home').get('lights').put({state:'on'})       // BAD fires twice
+gun.get('home').get('lights').get('state').put('on')  // GOOD fires once
+```
 ## Chain Context
 `gun.on` does not change the chain context.
 ```javascript
