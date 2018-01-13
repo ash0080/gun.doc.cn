@@ -93,6 +93,23 @@ Gun.js DataViz Elements ~ By [Stefdv](https://github.com/Stefdv)
 GunDB Polyglot Server [ https/wss + letsencrypt ]
 
 
+
+## Examples
+Examples, demos and tools demonstrating Gun features and capabilities
+
+#### [GitHub Examples](https://github.com/amark/gun/tree/master/examples)
+Original, up to date Gun examples
+
+#### [gun-scape](https://github.com/lmangani/gun-scape)
+GunDB Cytoscape Graph Visualizer with [Live Editor](https://goo.gl/qDTBx7)
+
+## Deployment
+### Docker
+#### [arsenal-dock](https://github.com/sjones6/arsenal-dock)
+A Docker container for running GunJS
+
+------------
+
 ## Integrations
 Projects using or integrating with Gun
 #### [GiveMeCredit](https://github.com/GiveMeCredit/extension)
@@ -124,17 +141,3 @@ Spaghetti I/O Event Processing, Interpolation, Correlation with Gun persistence 
 
 #### [fastify-gun](https://github.com/lmangani/fastify-gun)
 Fastify is a Fast and low overhead modular web framework, supporting persistence layer using Gun ~ By [lmangani](https://github.com/lmangani)
-
-## Examples
-Examples, demos and tools demonstrating Gun features and capabilities
-
-#### [GitHub Examples](https://github.com/amark/gun/tree/master/examples)
-Original, up to date Gun examples
-
-#### [gun-scape](https://github.com/lmangani/gun-scape)
-GunDB Cytoscape Graph Visualizer with [Live Editor](https://goo.gl/qDTBx7)
-
-## Deployment
-### Docker
-#### [arsenal-dock](https://github.com/sjones6/arsenal-dock)
-A Docker container for running GunJS
