@@ -81,7 +81,7 @@ https://github.com/sjones6/gun-adapter-perf ~ By [sjones6](https://github.com/sj
 #### [vue-gun](https://github.com/sjones6/vue-gun)
 Vue plugin to add Gun integration ~ By [sjones6](https://github.com/sjones6)
 
-#### [vue-gun](https://github.com/sjones6/gun-react-native)
+#### [gun-react-native](https://github.com/sjones6/gun-react-native)
 A distribution of Gun designed to work with React Native out of the box ~ By [sjones6](https://github.com/sjones6)
 
 #### [gun-realm](https://github.com/sjones6/gun-realm)
