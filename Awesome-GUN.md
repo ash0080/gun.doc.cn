@@ -66,24 +66,24 @@ Fastify module to provide persistence layer using Gun
 
 ## Projects
 
-## Using
-### [GiveMeCredit](https://github.com/GiveMeCredit/extension)
+### Using
+#### [GiveMeCredit](https://github.com/GiveMeCredit/extension)
 A cryptocurrency where you earn trust and contribute value
 
-### [Trace](https://github.com/PsychoLlama/Trace) 
+#### [Trace](https://github.com/PsychoLlama/Trace) 
 ~ By [PsychoLlama](https://github.com/PsychoLlama) - **[live demo](http://trace.gundb.io)**
 
-### [Connect-4](https://github.com/PsychoLlama/connect-four) 
+#### [Connect-4](https://github.com/PsychoLlama/connect-four) 
 ~ By [PsychoLlama](https://github.com/PsychoLlama) - **[live demo](https://gun-c4.herokuapp.com/)**
 
-### [TodoMVC](https://github.com/jveres/todomvc) 
+#### [TodoMVC](https://github.com/jveres/todomvc) 
 ~ By [jveres](https://github.com/jveres) - **[live demo](http://todos.loqali.com/)**
 
-### [creeper.im](https://creeper.im)
+#### [creeper.im](https://creeper.im)
 Send public messages to nearby people.
 
-### [GoShareData](https://github.com/zubairq/GoShareData)
+#### [GoShareData](https://github.com/zubairq/GoShareData)
 An enterprise system for data sharing database data with colleagues 
 
-### [JS-Trafficlights](https://github.com/niccord/js-trafficlights)
+#### [JS-Trafficlights](https://github.com/niccord/js-trafficlights)
 Trafficlights manager for limited resource access, like VPNs or remote desktops
