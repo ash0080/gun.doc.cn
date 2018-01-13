@@ -2,7 +2,7 @@
 A curated list of [Gun](https://github.com/amark/gun) resources, modules and projects.  :gun: 
 
 ## Documentation
-### [Gun Wiki](https://github.com/amark/gun/wiki/)
+#### [Gun Wiki](https://github.com/amark/gun/wiki/)
 
 <br>
 
