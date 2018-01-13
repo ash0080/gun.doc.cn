@@ -6,6 +6,10 @@ Tag, untag, filter and find intersects on nodes.
 A LevelDB adapter that works with the levelDB module ecosystem.  
 ~ By [PsychoLlama](https://github.com/PsychoLlama)
 
+### [gun-level-browser-indexedDB](https://github.com/zrrrzzt/choo-gun-leveldb-test)
+Example of LevelDB binding with indexedDB in the browser with GUN and choo.
+ ~ By [zrrrzzt](https://github.com/zrrrzzt)
+
 ### [gun-mongo](https://github.com/sjones6/gun-mongo)
 A MongoDB Adapter that stores entire nodes in Mongo documents
 ~ By [sjones6](https://github.com/sjones6)
