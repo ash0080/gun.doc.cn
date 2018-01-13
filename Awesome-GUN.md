@@ -6,61 +6,78 @@ A curated list of [Gun](https://github.com/amark/gun) resources, modules and pro
 
 
 ## Modules
-### Native
+### Core
 #### [gun-tag](https://www.npmjs.com/package/gun-tag)
-Tag, untag, filter and find intersects on nodes.
-~ By [Stefdv](https://github.com/stefdv)
-
-#### [gun-level](https://github.com/PsychoLlama/gun-level)
-A LevelDB adapter that works with the levelDB module ecosystem.  
-~ By [PsychoLlama](https://github.com/PsychoLlama)
-
-#### [gun-level-browser-indexedDB](https://github.com/zrrrzzt/choo-gun-leveldb-test)
-Example of LevelDB binding with indexedDB in the browser with GUN and choo.
- ~ By [zrrrzzt](https://github.com/zrrrzzt)
-
-#### [gun-mongo](https://github.com/sjones6/gun-mongo)
-A MongoDB Adapter that stores entire nodes in Mongo documents
-~ By [sjones6](https://github.com/sjones6)
-
-#### [gun-mongo-key](https://github.com/sjones6/gun-mongo-key)
-A MongoDB Adapter that stores nodes as key:value pairs in Mongo documents
-~ By [sjones6](https://github.com/sjones6)
+Tag, untag, filter and find intersects on nodes ~ By [Stefdv](https://github.com/stefdv)
 
 #### [gun-schema](https://github.com/gundb/gun-schema)
-Schema validation module for node and the browser.  
-~ By [RangerMauve](https://github.com/RangerMauve)
+Schema validation module for node and the browser ~ By [RangerMauve](https://github.com/RangerMauve)
 
 #### [gun-p2p-auth](https://github.com/swifty/gun-p2p-auth)
-A fully encrypted, peer-to-peer, auth component.  
-~ By [robertheessels](https://github.com/robertheessels)
+A fully encrypted, peer-to-peer, auth component ~ By [robertheessels](https://github.com/robertheessels)
 
 #### [labelmaker](https://github.com/PsychoLlama/labelmaker)
-Organize and index data into groups with tags.  
-~ By [PsychoLlama](https://github.com/PsychoLlama)
+Organize and index data into groups with tags ~ By [PsychoLlama](https://github.com/PsychoLlama)
 
 #### [onward](https://github.com/gundb/onward)
-Listen for changes on an entire document at once.  
-~ By [amark](https://github.com/amark)
+Listen for changes on an entire document at once ~ By [amark](https://github.com/amark)
 
 #### [reticle](https://github.com/PsychoLlama/Reticle)
-Namespace your data, preventing naming conflicts and adding clear separation between apps.  
-~ By [PsychoLlama](https://github.com/PsychoLlama)
+Namespace your data, preventing naming conflicts and adding clear separation between apps ~ By [PsychoLlama](https://github.com/PsychoLlama)
 
 #### [synchronous](https://github.com/gundb/synchronous)
-One way deep (document oriented) object data binding, similar to [onward](https://github.com/gundb/onward).  
-~ By [amark](https://github.com/amark)
+One way deep (document oriented) object data binding, similar to [onward](https://github.com/gundb/onward) ~ By [amark](https://github.com/amark)
 
+#### [gun-ws](https://github.com/d3x0r/gun-ws)
+Extended websocket provider for Gun ~ By [d3x0r](https://github.com/d3x0r)
+
+### Storage
+#### [gun-level](https://github.com/PsychoLlama/gun-level)
+A LevelDB adapter that works with the levelDB module ecosystem ~ By [PsychoLlama](https://github.com/PsychoLlama)
+
+#### [gun-level-browser-indexedDB](https://github.com/zrrrzzt/choo-gun-leveldb-test)
+Example of LevelDB binding with indexedDB in the browser with GUN and choo ~ By [zrrrzzt](https://github.com/zrrrzzt)
+
+#### [gun-mongo](https://github.com/sjones6/gun-mongo)
+A MongoDB Adapter that stores entire nodes in Mongo documents ~ By [sjones6](https://github.com/sjones6)
+
+#### [gun-mongo-key](https://github.com/sjones6/gun-mongo-key)
+A MongoDB Adapter that stores nodes as key:value pairs in Mongo documents ~ By [sjones6](https://github.com/sjones6)
+
+#### [gun-db](https://github.com/d3x0r/gun-db)
+sqlite storage adapter for Gun ~ By [d3x0r](https://github.com/d3x0r)
+
+#### [gun-file](https://github.com/d3x0r/gun-file)
+Local Storage adapter for Gun ~ By [d3x0r](https://github.com/d3x0r)
+
+#### [gun-cassandra](https://github.com/lmangani/gun-cassandra)
+Experimental Cassandra / Elassandra persistence layer for Gun ~ By [lmangani](https://github.com/lmangani)
+
+### Generic
 #### [gun-hue](https://github.com/PsychoLlama/gun-hue)
-Explore and change your hue lighting with gun!  
-~ By [PsychoLlama](https://github.com/PsychoLlama)
-
-### [gun-cassandra](https://github.com/lmangani/gun-cassandra)
-Experimental Cassandra / Elassandra persistence layer for Gun 
-~ By [lmangani](https://github.com/lmangani)
+Explore and change your hue lighting with gun! ~ By [PsychoLlama](https://github.com/PsychoLlama)
 
 
-## Projects
+## Development
+### Core
+#### [gun-flint](https://github.com/sjones6/gun-flint)
+Micro-framework for building Gun adapters ~ By [sjones6](https://github.com/sjones6)
+
+#### [gun-adapter-perf](https://github.com/sjones6/gun-adapter-perf)
+https://github.com/sjones6/gun-adapter-perf ~ By [sjones6](https://github.com/sjones6)
+
+### User-Interface
+#### [vue-gun](https://github.com/sjones6/vue-gun)
+Vue plugin to add Gun integration ~ By [sjones6](https://github.com/sjones6)
+
+#### [vue-gun](https://github.com/sjones6/gun-react-native)
+A distribution of Gun designed to work with React Native out of the box ~ By [sjones6](https://github.com/sjones6)
+
+#### [gun-realm](https://github.com/sjones6/gun-realm)
+A React Native RealmJS adapter for GunJS ~ By [sjones6](https://github.com/sjones6)
+
+
+## Integrations
 Projects using or integrating with Gun
 #### [GiveMeCredit](https://github.com/GiveMeCredit/extension)
 A cryptocurrency where you earn trust and contribute value
@@ -94,11 +111,16 @@ Fastify is a Fast and low overhead modular web framework, supporting persistence
 ## Examples
 Examples, demos and tools demonstrating Gun features and capabilities
 
-### [GitHub Examples](https://github.com/amark/gun/tree/master/examples)
+#### [GitHub Examples](https://github.com/amark/gun/tree/master/examples)
 Original, up to date Gun examples
 
-### [polyGun](https://github.com/lmangani/polyGun-letsencrypt)
+#### [polyGun](https://github.com/lmangani/polyGun-letsencrypt)
 GunDB Polyglot Server [ https/wss + letsencrypt ]
 
-### [gun-scape](https://github.com/lmangani/gun-scape)
+#### [gun-scape](https://github.com/lmangani/gun-scape)
 GunDB Cytoscape Graph Visualizer with [Live Editor](https://goo.gl/qDTBx7)
+
+## Deployment
+
+#### [arsenal-dock](https://github.com/sjones6/arsenal-dock)
+A Docker container for running GunJS
