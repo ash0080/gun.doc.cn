@@ -83,6 +83,13 @@ A distribution of Gun designed to work with React Native out of the box ~ By [sj
 #### [gun-realm](https://github.com/sjones6/gun-realm)
 A React Native RealmJS adapter for GunJS ~ By [sjones6](https://github.com/sjones6)
 
+#### [gun-ui](https://github.com/Stefdv/gun-ui)
+Gun.js DataViz Elements ~ By [Stefdv](https://github.com/Stefdv)
+
+### SSL Helpers
+#### [polyGun](https://github.com/lmangani/polyGun-letsencrypt)
+GunDB Polyglot Server [ https/wss + letsencrypt ]
+
 
 ## Integrations
 Projects using or integrating with Gun
@@ -121,9 +128,6 @@ Examples, demos and tools demonstrating Gun features and capabilities
 
 #### [GitHub Examples](https://github.com/amark/gun/tree/master/examples)
 Original, up to date Gun examples
-
-#### [polyGun](https://github.com/lmangani/polyGun-letsencrypt)
-GunDB Polyglot Server [ https/wss + letsencrypt ]
 
 #### [gun-scape](https://github.com/lmangani/gun-scape)
 GunDB Cytoscape Graph Visualizer with [Live Editor](https://goo.gl/qDTBx7)
