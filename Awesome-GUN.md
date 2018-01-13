@@ -65,7 +65,8 @@ Experimental Cassandra / Elassandra persistence layer for Gun ~ By [lmangani](ht
 Explore and change your hue lighting with gun! ~ By [PsychoLlama](https://github.com/PsychoLlama)
 
 #### [gun-ui-lcd](https://github.com/Stefdv/gun-ui-lcd) 
-(Still under development to fit the latest Gun version ( 0.9.x )
+(Still under development to fit the latest Gun version ( 0.9.x ) )
+
 Component to attach an html lcd to Gun ~ By [Stefdv](https://github.com/Stefdv)
 
 <br>
@@ -89,7 +90,8 @@ A distribution of Gun designed to work with React Native out of the box ~ By [sj
 A React Native RealmJS adapter for GunJS ~ By [sjones6](https://github.com/sjones6)
 
 #### [gun-ui-gauge](https://github.com/Stefdv/gun-ui-gauge)
-(Still under development to fit the latest Gun version ( 0.9.x )
+(Still under development to fit the latest Gun version ( 0.9.x ) )
+
 Add a GunDB controlled gauge to your webpage ~ By [Stefdv](https://github.com/Stefdv)
 
 ### SSL Helpers
