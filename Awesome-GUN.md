@@ -64,7 +64,7 @@ Experimental Cassandra / Elassandra persistence layer for Gun ~ By [lmangani](ht
 #### [gun-hue](https://github.com/PsychoLlama/gun-hue)
 Explore and change your hue lighting with gun! ~ By [PsychoLlama](https://github.com/PsychoLlama)
 
-#### [gun-hue](https://github.com/Stefdv/gun-ui-lcd)
+#### [gun-ui-lcd](https://github.com/Stefdv/gun-ui-lcd)
 Component to attach an html lcd to Gun ~ By [Stefdv](https://github.com/Stefdv)
 
 <br>
