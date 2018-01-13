@@ -88,6 +88,9 @@ A React Native RealmJS adapter for GunJS ~ By [sjones6](https://github.com/sjone
 #### [gun-ui](https://github.com/Stefdv/gun-ui)
 Gun.js DataViz Elements ~ By [Stefdv](https://github.com/Stefdv)
 
+#### [gun-ui-gauge](https://github.com/Stefdv/gun-ui-gauge)
+Add a GunDB controlled gauge to your webpage ~ By [Stefdv](https://github.com/Stefdv)
+
 ### SSL Helpers
 #### [polyGun](https://github.com/lmangani/polyGun-letsencrypt)
 GunDB Polyglot Server [ https/wss + letsencrypt ]
