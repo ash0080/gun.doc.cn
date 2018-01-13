@@ -45,3 +45,7 @@ One way deep (document oriented) object data binding, similar to [onward](https:
 ### [gun-hue](https://github.com/PsychoLlama/gun-hue)
 Explore and change your hue lighting with gun!  
 ~ By [PsychoLlama](https://github.com/PsychoLlama)
+
+### [gun-cassandra](https://github.com/lmangani/gun-cassandra)
+Experimental Cassandra / Elassandra persistence layer for Gun 
+~ By [lmangani](https://github.com/lmangani)
