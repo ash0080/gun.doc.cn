@@ -4,6 +4,7 @@ A curated list of [Gun](https://github.com/amark/gun) resources, modules and pro
 ## Documentation
 ### [Gun Wiki](https://github.com/amark/gun/wiki/)
 
+<br>
 
 ## Modules
 ### Core
@@ -66,6 +67,7 @@ Explore and change your hue lighting with gun! ~ By [PsychoLlama](https://github
 #### [gun-hue](https://github.com/Stefdv/gun-ui-lcd)
 Component to attach an html lcd to Gun ~ By [Stefdv](https://github.com/Stefdv)
 
+<br>
 
 ## Development
 ### Core
@@ -96,6 +98,7 @@ Add a GunDB controlled gauge to your webpage ~ By [Stefdv](https://github.com/St
 GunDB Polyglot Server [ https/wss + letsencrypt ]
 
 
+<br>
 
 ## Examples
 Examples, demos and tools demonstrating Gun features and capabilities
@@ -106,12 +109,14 @@ Original, up to date Gun examples
 #### [gun-scape](https://github.com/lmangani/gun-scape)
 GunDB Cytoscape Graph Visualizer with [Live Editor](https://goo.gl/qDTBx7)
 
+<br>
+
 ## Deployment
 ### Docker
 #### [arsenal-dock](https://github.com/sjones6/arsenal-dock)
 A Docker container for running GunJS
 
-------------
+<br>
 
 ## Integrations
 Projects using or integrating with Gun
