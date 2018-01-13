@@ -38,6 +38,9 @@ Load full document structures to Gun ~ By [IMGNRY](https://github.com/IMGNRY)
 #### [gun-most](https://github.com/ctrlplusb/gun-most)
 Extends gunDB with the ability to chain into most.js observables ~ By [ctrlplusb](https://github.com/ctrlplusb)
 
+### [graphql-gun](https://github.com/brysgo/graphql-gun)
+Augmented graphql query interface for Gun
+
 ### Storage
 #### [gun-level](https://github.com/PsychoLlama/gun-level)
 A LevelDB adapter that works with the levelDB module ecosystem ~ By [PsychoLlama](https://github.com/PsychoLlama)
