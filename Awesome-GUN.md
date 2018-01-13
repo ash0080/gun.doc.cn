@@ -31,6 +31,10 @@ One way deep (document oriented) object data binding, similar to [onward](https:
 #### [gun-ws](https://github.com/d3x0r/gun-ws)
 Extended websocket provider for Gun ~ By [d3x0r](https://github.com/d3x0r)
 
+#### [load](https://github.com/IMGNRY/load)
+Load full document structures to Gun ~ By [IMGNRY](https://github.com/IMGNRY)
+
+
 ### Storage
 #### [gun-level](https://github.com/PsychoLlama/gun-level)
 A LevelDB adapter that works with the levelDB module ecosystem ~ By [PsychoLlama](https://github.com/PsychoLlama)
@@ -56,6 +60,9 @@ Experimental Cassandra / Elassandra persistence layer for Gun ~ By [lmangani](ht
 ### Generic
 #### [gun-hue](https://github.com/PsychoLlama/gun-hue)
 Explore and change your hue lighting with gun! ~ By [PsychoLlama](https://github.com/PsychoLlama)
+
+#### [gun-hue](https://github.com/Stefdv/gun-ui-lcd)
+Component to attach an html lcd to Gun ~ By [Stefdv](https://github.com/Stefdv)
 
 
 ## Development
@@ -101,12 +108,13 @@ An enterprise system for data sharing database data with colleagues
 Trafficlights manager for limited resource access, like VPNs or remote desktops
 
 #### [SENTINL](https://github.com/sirensolutions/sentinl)
-Clustering the Kibi/Kibana Alerting & Reporting Application _(watcher)_
-~ By [lmangani](https://github.com/lmangani) and [Sergey Bondarenko](https://github.com/sergibondarenko)
+Clustering the Kibi/Kibana Alerting & Reporting Application _(watcher)_ ~ By [lmangani](https://github.com/lmangani) and [Sergey Bondarenko](https://github.com/sergibondarenko)
+
+#### [paStash](https://github.com/sipcapture/paStash)
+Spaghetti I/O Event Processing, Interpolation, Correlation with Gun persistence ~ By [lmangani](https://github.com/lmangani)
 
 #### [fastify-gun](https://github.com/lmangani/fastify-gun)
-Fastify is a Fast and low overhead modular web framework, supporting persistence layer using Gun 
-~ By [lmangani](https://github.com/lmangani)
+Fastify is a Fast and low overhead modular web framework, supporting persistence layer using Gun ~ By [lmangani](https://github.com/lmangani)
 
 ## Examples
 Examples, demos and tools demonstrating Gun features and capabilities
