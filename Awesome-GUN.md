@@ -34,6 +34,8 @@ Extended websocket provider for Gun ~ By [d3x0r](https://github.com/d3x0r)
 #### [load](https://github.com/IMGNRY/load)
 Load full document structures to Gun ~ By [IMGNRY](https://github.com/IMGNRY)
 
+#### [gun-most](https://github.com/ctrlplusb/gun-most)
+Extends gunDB with the ability to chain into most.js observables ~ By [ctrlplusb](https://github.com/ctrlplusb)
 
 ### Storage
 #### [gun-level](https://github.com/PsychoLlama/gun-level)
