@@ -22,6 +22,7 @@ Think these docs could be improved? Contribute to the wiki! Or [[comment|https:/
  - [gun.then](#then)
  - [gun.bye](#bye)
  - [gun.later](#later)
+ - [gun.unset](#unset)
 
 # Core
 
@@ -882,7 +883,7 @@ gun.get('foo').put(data).later(function(data, key){
 2. If a process/browser has to restart, the timeout will not be called. **Experimental**: If this behavior is needed, please report it, as it could be added to the implementation.
 
 --------------------------------------
-# <a name="later"></a> gun.unset(node)
+# <a name="unset"></a> gun.unset(node)
 
 > Warning: Not included by default! You must include it yourself via `require('gun/lib/unset.js')` or `<script src="/gun/lib/unset.js"></script><script src="/gun/lib/unset.js"></script>`!
 
