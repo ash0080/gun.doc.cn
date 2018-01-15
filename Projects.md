@@ -1,3 +1,6 @@
+# THIS PAGE IS BEING MOVED TO https://github.com/amark/gun/wiki/Awesome-GUN
+## please add to ^ not this page.
+
 **Please edit this page and add your project** - there are two sections, pending/interested in using gun and ones already using gun. This will give you some exposure but is also really important for us (GUN) to keep track of who we need to dedicate time to helping out.
 
 ## Using
