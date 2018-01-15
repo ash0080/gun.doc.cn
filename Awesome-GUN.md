@@ -63,6 +63,9 @@ Local Storage adapter for Gun ~ By [d3x0r](https://github.com/d3x0r)
 #### [gun-cassandra](https://github.com/lmangani/gun-cassandra)
 Experimental Cassandra / Elassandra persistence layer for Gun ~ By [lmangani](https://github.com/lmangani)
 
+#### [gun-elastic](https://github.com/lmangani/gun-elastic)
+Experimental Elasticsearch persistence layer for Gun/Flint ~ By [lmangani](https://github.com/lmangani)
+
 ### Generic
 #### [gun-hue](https://github.com/PsychoLlama/gun-hue)
 Explore and change your hue lighting with gun! ~ By [PsychoLlama](https://github.com/PsychoLlama)
