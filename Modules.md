@@ -1,3 +1,6 @@
+# THIS PAGE IS BEING MOVED TO https://github.com/amark/gun/wiki/Awesome-GUN
+## please edit ^ not this page.
+
 ### [gun-tag](https://www.npmjs.com/package/gun-tag)
 Tag, untag, filter and find intersects on nodes.
 ~ By [Stefdv](https://github.com/stefdv)
