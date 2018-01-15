@@ -880,3 +880,21 @@ gun.get('foo').put(data).later(function(data, key){
 1. Exact timing is not guaranteed! Because it uses `setTimeout` underneath. Further, after the timeout, it must then open and load the snapshot, this will likely add at least `1`ms to the delay. **Experimental**: If this is problematic, please report it, as we can modify the implementation of `later` to be more precise.)
 
 2. If a process/browser has to restart, the timeout will not be called. **Experimental**: If this behavior is needed, please report it, as it could be added to the implementation.
+
+--------------------------------------
+# <a name="later"></a> gun.unset(node)
+
+> Warning: Not included by default! You must include it yourself via `require('gun/lib/unset.js')` or `<script src="/gun/lib/unset.js"></script><script src="/gun/lib/unset.js"></script>`!
+
+After you save some data in an unordered list, you may need to remove it. 
+
+```JavaScript
+let gun = new Gun();
+let machines = gun.get('machines');
+let machine = gun.get('machine/tesseract');
+machine.put({faces: 24, cells: 8, edges: 32});
+// let's add machine to the list of machines;
+machines.set(machine);
+// now let's remove machine from the list of machines
+machines.unset(machine);
+```
