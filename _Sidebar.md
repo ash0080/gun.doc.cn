@@ -3,7 +3,7 @@
 #### **[Crash Course](https://github.com/amark/gun/wiki/graphs)**
 #### **[API Reference](https://github.com/amark/gun/wiki/API)**
 #### [Getting Started](https://github.com/amark/gun/wiki/Getting-Started-%28v0.3.x%29)
-### [Modules / Projects / Resources](https://github.com/amark/gun/wiki/Awesome-GUN)
+### [Modules / Projects](https://github.com/amark/gun/wiki/Awesome-GUN)
 
 ##### Resources:
  - [Our data format](https://github.com/amark/gun/wiki/GUN%E2%80%99s-Data-Format-%28JSON%29)
