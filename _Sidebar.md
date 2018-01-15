@@ -3,6 +3,7 @@
 #### **[Crash Course](https://github.com/amark/gun/wiki/graphs)**
 #### **[API Reference](https://github.com/amark/gun/wiki/API)**
 #### [Getting Started](https://github.com/amark/gun/wiki/Getting-Started-%28v0.3.x%29)
+### [Modules / Projects / Resources](https://github.com/amark/gun/wiki/Awesome-GUN)
 
 ##### Resources:
  - [Our data format](https://github.com/amark/gun/wiki/GUN%E2%80%99s-Data-Format-%28JSON%29)
@@ -17,11 +18,3 @@
  - [How the Algorithm works](http://gun.js.org/distributed/matters.html)
  - [Position on the CAP theorem](https://github.com/amark/gun/wiki/CAP-Theorem)
  - [Sharding](https://github.com/amark/gun/wiki/Sharding)
-
-### [Projects](https://github.com/amark/gun/wiki/Projects)
-### [Modules](https://github.com/amark/gun/wiki/Modules)
-### [Snippets (v0.6.x)](https://github.com/amark/gun/wiki/Snippets-(v0.6.x))
-### [Snippets (v0.3.x)](https://github.com/amark/gun/wiki/Snippets-(v0.3.x))
----
-
-**v0.2.x**: [ToC](https://github.com/amark/gun/wiki/0.2.x-Table-of-Contents) | [API](https://github.com/amark/gun/wiki/API-%28v0.2.x%29)
