@@ -63,9 +63,11 @@ user.get('profile').get('boss').get('slave').get('name').val(function(data){
 
 Try running it yourself at https://codepen.io/anon/pen/QajxOz?editors=1012 !
 
-Now that you have P2P identities, you can combine it with the logic from the [5min interactive ToDo app tutorial](http://gun.js.org/think.html), to create a list of tweets from the user.
+Now that you have P2P identities, we will combine it with the logic from the [2min interactive ToDo app tutorial](http://gun.js.org/think.html), to create a list of tweets from the user:
 
-We'll leave creating the UI to you, since that is harder than building realtime decentralized apps with gun! We will follow up with some example apps in the future. For now, this is an introduction to getting started with SEA and GUN!
+To do this, [follow along with the 4 minute interactive P2P Twitter tutorial](https://scrimba.com/c/c2gBgt4)!
+
+Now you have built a fully decentralized end-to-end encrypted app with GUN, congratulations! Check out the rest of the docs to learn more, like how to synchronize your data with other peers or about the rest of the API.
 
 Feel free to hit us up with questions on the [gitter](https://gitter.im/amark/gun) in the meanwhile.
 
