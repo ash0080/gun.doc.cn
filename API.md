@@ -29,7 +29,7 @@ Think these docs could be improved? Contribute to the wiki! Or [[comment|https:/
 # <a name="gun"></a>Gun(options)
 
 <a href="https://youtu.be/zvo6jC1OA3Y" title="GUN constructor"><img src="http://img.youtube.com/vi/zvo6jC1OA3Y/0.jpg" width="425px"></a><br>
-Used to creates a new gun database instance.
+Used to create a new gun database instance.
 
 ```javascript
 var gun = Gun(options)
