@@ -7,7 +7,7 @@ A curated list of [Gun](https://github.com/amark/gun) resources, modules and pro
 <br>
 
 ## Modules
-### Core
+
 #### [gun-tag](https://www.npmjs.com/package/gun-tag)
 Tag, untag, filter and find intersects on nodes ~ By [Stefdv](https://github.com/stefdv)
 
@@ -78,7 +78,7 @@ Component to attach an html lcd to Gun ~ By [Stefdv](https://github.com/Stefdv)
 <br>
 
 ## Development
-### Core
+
 #### [gun-flint](https://github.com/sjones6/gun-flint)
 Micro-framework for building Gun adapters ~ By [sjones6](https://github.com/sjones6)
 
@@ -115,6 +115,9 @@ Original, up to date Gun examples
 
 #### [gun-scape](https://github.com/lmangani/gun-scape)
 GunDB Cytoscape Graph Visualizer with [Live Editor](https://goo.gl/qDTBx7)
+
+#### [Next.js](https://github.com/zrrrzzt/gun-next-example)
+Example of how to get started with Next.js and GUN!
 
 <br>
 
