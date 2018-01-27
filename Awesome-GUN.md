@@ -100,6 +100,10 @@ A React Native RealmJS adapter for GunJS ~ By [sjones6](https://github.com/sjone
 
 Add a GunDB controlled gauge to your webpage ~ By [Stefdv](https://github.com/Stefdv)
 
+#### [gun-kibana-graph](https://github.com/lmangani/kibana_graph)
+Visualization Plugin to display Gun graphs in Kibana ~ By [lmangani](https://github.com/lmangani)
+
+
 ### SSL Helpers
 #### [polyGun](https://github.com/lmangani/polyGun-letsencrypt)
 GunDB Polyglot Server [ https/wss + letsencrypt ]
