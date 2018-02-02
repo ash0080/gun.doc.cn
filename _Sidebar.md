@@ -9,7 +9,7 @@
  - [Our data format](https://github.com/amark/gun/wiki/GUN%E2%80%99s-Data-Format-%28JSON%29)
  - [Terminology](https://github.com/amark/gun/wiki/Glossary)
  - [Using Amazon S3 for storage](https://github.com/amark/gun/wiki/Using-Amazon-S3-for-Storage)
- - [Security & Auth](https://github.com/amark/gun/wiki/Security%2C-Authentication%2C-Authorization)
+ - [Security, Auth, ACL](https://github.com/amark/gun/wiki/auth)
 
 ##### More about GUN:
  - [How writes are handled](https://github.com/amark/gun/wiki/Partials-and-Circular-References-%28v0.2.x%29)
