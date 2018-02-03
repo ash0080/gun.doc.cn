@@ -913,16 +913,14 @@ Note the capital "G" in `Gun`, as opposed to an instance variable called `gun`.
 
 ### Gun.node.is(data)
 
-Returns `true` or `false` depending on whether `data` is a gun node.
+Returns true if `data` is a gun node, otherwise false.
 
 ### Gun.node.soul(data)
 
-Returns the `gun` ID for `data` instead of manually grabbing its metadata (i.e. `data["_"]["#"]`).
+Returns `data`'s `gun` ID (instead of manually grabbing its metadata i.e. `data["_"]["#"]`, which is faster but could change in the future).
 
-Note: Returns `undefined` if `data` is not correct gun data.
+Returns `undefined` if `data` is not correct gun data.
 
-### Gun.node.ify(json)`
+### Gun.node.ify(json)
 
-Returns a "gun-ified" variant of the `json` input by providing a new gun ID.
-
-```
+Returns a "gun-ified" variant of the `json` input by injecting a new gun ID into the metadata field.
