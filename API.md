@@ -24,6 +24,10 @@ Think these docs could be improved? Contribute to the wiki! Or [[comment|https:/
  - [gun.later](#later)
  - [gun.unset](#unset)
 
+# Utils
+
+ - [Gun.node](#utils)
+
 # Core
 
 # <a name="gun"></a>Gun(options)
@@ -898,4 +902,27 @@ machine.put({faces: 24, cells: 8, edges: 32});
 machines.set(machine);
 // now let's remove machine from the list of machines
 machines.unset(machine);
+```
+
+--------------------------------------
+# <a name="utils"></a> Gun utils
+
+While running, Gun provides several high-level utility functions for querying and manipulating our components.
+
+Note the capital "G" in `Gun`, as opposed to an instance variable called `gun`.
+
+### Gun.node.is(data)
+
+Returns `true` or `false` depending on whether `data` is a gun node.
+
+### Gun.node.soul(data)
+
+Returns the `gun` ID for `data` instead of manually grabbing its metadata (i.e. `data["_"]["#"]`).
+
+Note: Returns `undefined` if `data` is not correct gun data.
+
+### Gun.node.ify(json)`
+
+Returns a "gun-ified" variant of the `json` input by providing a new gun ID.
+
 ```
