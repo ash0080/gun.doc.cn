@@ -26,7 +26,7 @@ Think these docs could be improved? Contribute to the wiki! Or [[comment|https:/
 
 # Utils
 
- - [Gun.node](#utils)
+ - [Gun.node](#utilities)
 
 # Core
 
@@ -905,7 +905,7 @@ machines.unset(machine);
 ```
 
 --------------------------------------
-# <a name="utils"></a> Gun utils
+# <a name="utilities"></a> Gun utils
 
 While running, Gun provides several high-level utility functions for querying and manipulating our components.
 
