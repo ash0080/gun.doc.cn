@@ -34,9 +34,36 @@ Now you should see the message in the browser console.
 
 ### Require
 
-```javascript
-var Gun = require('/path/to/gun');
+Another way to include Gun in your browser app is with `require`.
+
+First you need to install Gun with NPM or Yarn:
+
+```sh
+$ npm install gun
 ```
+or
+```sh
+$ yarn add gun
+```
+
+Then require Gun in your script:
+
+```javascript
+var Gun = require('gun');
+```
+
+And test it like this:
+
+```javascript
+  var gun = Gun()
+  var greetings = gun.get('greetings')
+  greetings.put({hello: 'world'})
+  greetings.on(function (data) {
+    console.log('Update!', data)
+  })
+```
+
+After running you should see the message in the browser console.
 
 ### Import (ES6)
 
