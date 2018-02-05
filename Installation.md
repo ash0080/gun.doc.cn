@@ -67,9 +67,38 @@ After running you should see the message in the browser console.
 
 ### Import (ES6)
 
+Similar to `require` you can include Gun with `import`.
+
+First you need to install Gun with NPM or Yarn:
+
+```sh
+$ npm install gun
+```
+or
+```sh
+$ yarn add gun
+```
+
+Then import Gun in your script:
+
 ```javascript
 import '/path/to/gun'
 ```
+
+And test it like this:
+
+```javascript
+  var gun = Gun()
+  var greetings = gun.get('greetings')
+  greetings.put({hello: 'world'})
+  greetings.on(function (data) {
+    console.log('Update!', data)
+  })
+```
+
+After running you should see the message in the browser console.
+
+> Note that right now, even though you import, Gun is defined and used as a global variable.
 
 ## On the server
 
