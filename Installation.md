@@ -104,8 +104,6 @@ After running you should see the message in the browser console.
 
 First you need to install Gun with NPM or Yarn:
 
-> **Note:** If you don't have [node](http://nodejs.org/) or [npm](https://www.npmjs.com/) installed, [read this](https://docs.npmjs.com/getting-started/installing-node).
-
 ```sh
 $ npm install gun
 ```
@@ -113,6 +111,8 @@ or
 ```sh
 $ yarn add gun
 ```
+
+> **Note:** If you don't have [node](http://nodejs.org/) or [npm](https://www.npmjs.com/) installed, [read this](https://docs.npmjs.com/getting-started/installing-node).
 
 Then require Gun in your script `hello.js`:
 
