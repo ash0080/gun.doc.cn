@@ -1,5 +1,6 @@
 # Getting started
 ## Introduction: Introduction
+## Installation: Installation
 ## Getting started: Getting-Started-%28v0.3.x%29
 ## Crash Course: Graphs
 # Reference
