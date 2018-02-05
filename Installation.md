@@ -11,11 +11,26 @@ Just pick your favorite way of including scripts...
 
 ### Include as script tag
 
-The easiest way is to just include Gun in the `head` tag of your `index.html` page:
+The easiest way is to just include Gun in the `<head>` tag of your `index.html` page:
 
 ```html
 <script src="https://cdn.rawgit.com/amark/gun/master/gun.js"></script>
 ```
+
+And you can then test it by adding this to your `index.html`:
+
+```html
+<script>
+  var gun = Gun()
+  var greetings = gun.get('greetings')
+  greetings.put({hello: 'world'})
+  greetings.on(function (data) {
+    console.log('Update!', data)
+  })
+</script>
+```
+
+Now you should see the message in the browser console.
 
 ### Require
 
