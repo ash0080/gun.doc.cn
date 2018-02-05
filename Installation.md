@@ -100,16 +100,41 @@ After running you should see the message in the browser console.
 
 > Note that right now, even though you import, Gun is defined and used as a global variable.
 
-## On the server
+## On the server (Node.js)
 
-### NPM
+First you need to install Gun with NPM or Yarn:
+
+> **Note:** If you don't have [node](http://nodejs.org/) or [npm](https://www.npmjs.com/) installed, [read this](https://docs.npmjs.com/getting-started/installing-node).
 
 ```sh
 $ npm install gun
 ```
-
-### Yarn
-
+or
 ```sh
 $ yarn add gun
 ```
+
+Then require Gun in your script `hello.js`:
+
+```javascript
+var Gun = require('gun');
+```
+
+For testing add to `hello.js`:
+
+```javascript
+  var gun = Gun()
+  var greetings = gun.get('greetings')
+  greetings.put({hello: 'world'})
+  greetings.on(function (data) {
+    console.log('Update!', data)
+  })
+```
+
+Then run the script:
+
+```sh
+$ node ./hello.js
+```
+
+After running you should see the message in the console output.
