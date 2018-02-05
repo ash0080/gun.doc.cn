@@ -1,4 +1,3 @@
-## Introduction
 GUN is a small, distributed data sync and storage solution that runs everywhere JavaScript does. GUN lets you focus on the data you need to store, retrieve and share without worrying about merge conflicts, network partitions, or synchronizing offline edits.
 
 #### Offline-First
