@@ -82,7 +82,7 @@ $ yarn add gun
 Then import Gun in your script:
 
 ```javascript
-import '/path/to/gun'
+import 'gun'
 ```
 
 And test it like this:
