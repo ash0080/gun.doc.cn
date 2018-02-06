@@ -29,7 +29,7 @@ To create a cryptographic identity backed by a public/private key-pair (see the 
 
 ```javascript
 // Browser Native Web Crypto API is used to PBKDF2 extend your password.
-user.create('alice', 'unsafepassword', function(ack){
+user.create('alice', 'unsafepassword').then(function(ack){
   // done creating user!
 });
 ```
@@ -38,7 +38,7 @@ Once you have created a user, you can log them in with:
 
 ```javascript
 // Browser Native Web Crypto API is used to PBKDF2 extend your password.
-user.auth('alice', 'unsafepassword', function(ack){
+user.auth('alice', 'unsafepassword').then(function(ack){
   // logged in!
 });
 ```
