@@ -14,7 +14,7 @@ Just pick your favorite way of including scripts...
 The easiest way is to just include Gun in the `<head>` tag of your `index.html` page:
 
 ```html
-<script src="https://cdn.rawgit.com/amark/gun/master/gun.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
 ```
 
 And you can then test it by adding this to your `index.html`:
