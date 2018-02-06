@@ -15,3 +15,5 @@ Servers act pretty much the same, but aren't as picky about what they cache.
 GUN is peer-to-peer (multi-master replicated), meaning updates don't need a centralized controller. You save data on one machine, and you can sync it with other peers without needing complex consensus systems. It just works.
 
 However, you don't need peers or servers to use GUN, they're completely additive.
+
+[Next Page: Installation.](./Installation)
