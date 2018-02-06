@@ -16,7 +16,7 @@ To get started building your app, just include SEA in your app:
 <script src="https://cdn.jsdelivr.net/npm/gun/sea.js"></script>
 ```
 
-> Note: If the CDN becomes compromised, your app could be hacked, consider Electron-ifying your app to remove any hosts. Also, `lib/cryptomodules` will not needed in the future, to avoid unnecessary module loading you'll need to keep your app up to date.
+> Note: If the CDN becomes compromised, your app could be hacked, consider Electron-ifying your app to remove any hosts. Also, `lib/cryptomodules` is not needed in the future, to avoid unnecessary module loading you'll need to keep your app up to date.
 
 Now in your javascript you can instantiate gun and and reference your user:
 
