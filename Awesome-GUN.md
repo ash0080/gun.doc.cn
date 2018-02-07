@@ -164,6 +164,9 @@ Spaghetti I/O Event Processing, Interpolation, Correlation with Gun persistence 
 #### [fastify-gun](https://github.com/lmangani/fastify-gun)
 Fastify is a Fast and low overhead modular web framework, supporting persistence layer using Gun ~ By [lmangani](https://github.com/lmangani)
 
+#### [PiTherm](https://github.com/paullj1/PiTherm)
+Raspberry Pi thermostat application using Gun to sync client UIs ~ By [paullj1](https://github.com/paullj1)
+
 ## Archive
 
 The old pages are: (these will be archived after migrated to this page)
