@@ -1,5 +1,3 @@
-`TODO: Page needs to be redone. Should be newbie simple, this is too elaborate.`
-
 Haven't read the [**crash course**](graphs) yet? Check it out first, then come back here.
 
 **Table of Contents**
@@ -376,3 +374,5 @@ Hopefully that gives you a good place to start, and an idea of how gun works. Ne
  - [Our API reference sheet](https://github.com/amark/gun/wiki/API-%28v0.3.x%29)
  - [Our Gitter channel (say hi!!)](https://gitter.im/amark/gun/)
  - [The gun starter app](https://github.com/gundb/gun-starter-app)
+
+`TODO: Page needs to be redone. Should be newbie simple, this is too elaborate.`
