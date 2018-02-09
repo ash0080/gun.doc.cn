@@ -4,6 +4,8 @@ To permanently store all GUN's data, your GUN server app must define which stora
 
 There are several storage engines that you can choose:
 
+# Included Storage Engines
+
 ## localStorage
 
 In browser, GUN app data is stored in the browser's localStorage, but is primarily treated as cache.
@@ -28,13 +30,35 @@ Works with the RSE.
 
 In the future We foresee GUN using RSE with IPFS/Filecoin bindings not S3, as RSE will allow for easy super-peer storage-sharding (although I do not recommend people do sharding by default).
 
+# Third Party Storage Solutions
+
 ## Level
 
 https://github.com/PsychoLlama/gun-level
 
-## sack
+## File System (Alt1)
 
-The currently community-agreed upon custom storage engine is @d3x0r 's. https://github.com/d3x0r/gun-file
+https://github.com/d3x0r/gun-file
+https://npmjs.org/packages/gun-file
+reqires: https://npmjs.org/packages/json-6  https://github.com/d3x0r/json6
+
+Streams graph to file; works with a single node at a time to prevent string overflows and memory bloat by assembling the whole graph as a single object.
+
+Delays output until the graph is write-idle, or a maximum number of updates has happened.  This makes it very performant by interfering very little with the working time of Gun.
+
+The currently community-agreed upon custom storage engine is @d3x0r 's. 
+
+## Sqlite/ODBC (SACK)
+
+https://github.com/d3x0r/gun-db
+https://npmjs.org/packages/gun-db
+reqires: https://npmjs.org/packages/sack.vfs  (https://github.com/d3x0r/sack.vfs)
+
+Defaults to a Sqlite db file.  Items are written as they are posted for change to the Gun database.  This means the Sqlite database is kept as up to date as possible.  Unknown values, when requested are requested one node at a time; as opposed to a file solution which requires loading the whole graph at startup.
+
+ODBC access is available for using PostgreSQL, MySQL, MSSQL, etc using an ODBC driver.
+
+Sqlite database may be stored in an encrypted VFS file.
 
 ## Flint
 
@@ -58,6 +82,3 @@ https://github.com/lmangani/gun-cassandra
 
 https://github.com/lmangani/gun-elastic
 
-## SQLite
-
-https://github.com/d3x0r/gun-db
