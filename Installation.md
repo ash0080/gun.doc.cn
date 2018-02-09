@@ -49,7 +49,7 @@ $ yarn add gun
 Then require Gun in your script:
 
 ```javascript
-var Gun = require('gun');
+var Gun = require('gun/gun');
 ```
 
 And test it like this:
@@ -82,7 +82,7 @@ $ yarn add gun
 Then import Gun in your script:
 
 ```javascript
-import 'gun'
+import Gun from 'gun/gun'
 ```
 
 And test it like this:
