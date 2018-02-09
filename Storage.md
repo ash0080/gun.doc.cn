@@ -1,4 +1,4 @@
-`TODO: This page will probably be dedicated to the API of how to build a storage adapter, not a list of storage adapters (except official RSE one, since it has its own API that needs explaining), a list of storage adapters should be included in the community/awesome/ecosystem page along with everything else so it is easy to find!` 
+`TODO: This page will probably be dedicated to the API of how to build a storage adapter, not a list of storage adapters (except official ones like RSE, since it has its own API that needs explaining), a list of storage adapters should be included in the community/awesome/ecosystem page along with everything else so it is easy to find!` 
 
 To permanently store all GUN's data, your GUN server app must define which storage engine to use. By default a GUN server will store the data in a file, but this is just meant to be used during development. It is not a sound solution for production.
 
@@ -19,6 +19,8 @@ The Radix Storage Engine (RSE) will soon become the default and then be a good c
 RSE will become the new default and will be production ready, however it is not the default yet (although you can make it the default by just turning off the current default with `Gun({localStorage: false})` in NodeJS.
 
 ## S3
+
+[Temporarily located here](Using-Amazon-S3-for-Storage) (do not link to this, we'll be making it redirect)
 
 Works with the RSE.
 
