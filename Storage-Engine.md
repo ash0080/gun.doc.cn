@@ -1,3 +1,5 @@
+[THIS PAGE HAS BEEN MOVED TO /STORAGE](Storage) (since this page is very new and thus not linked much, it will be deleted, DO NOT LINK TO IT)
+
 In browser (client) GUN apps data is stored in the browser's localStorage, but that is only for caching.
 
 To permanently store all GUN's data, your GUN server app must define which storage engine to use.
