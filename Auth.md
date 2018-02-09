@@ -12,11 +12,10 @@ To get started building your app, just include SEA in your app:
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gun/lib/cryptomodules.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gun/sea.js"></script>
 ```
 
-> Note: If the CDN becomes compromised, your app could be hacked, consider Electron-ifying your app to remove any hosts. Also, `lib/cryptomodules` is not needed in the future, to avoid unnecessary module loading you'll need to keep your app up to date.
+> Note: If the CDN becomes compromised, your app could be hacked, consider Electron-ifying your app to remove any hosts.
 
 Now in your javascript you can instantiate gun and and reference your user:
 
@@ -29,7 +28,7 @@ To create a cryptographic identity backed by a public/private key-pair (see the 
 
 ```javascript
 // Browser Native Web Crypto API is used to PBKDF2 extend your password.
-user.create('alice', 'unsafepassword').then(function(ack){
+user.create('alice', 'unsafepassword', function(ack){
   // done creating user!
 });
 ```
@@ -38,7 +37,7 @@ Once you have created a user, you can log them in with:
 
 ```javascript
 // Browser Native Web Crypto API is used to PBKDF2 extend your password.
-user.auth('alice', 'unsafepassword').then(function(ack){
+user.auth('alice', 'unsafepassword', function(ack){
   // logged in!
 });
 ```
