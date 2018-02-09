@@ -18,4 +18,6 @@ gun.get('mark').on(function(data, key){
 </script>
 ```
 
+`TODO: This page was originally https://github.com/amark/gun/wiki/Getting-Started-(v0.3.x) but it is outdated.`
+
 `TODO: Add more explanation. Is it possible to integrate gun.js.org Try It Now live demo?`
