@@ -32,7 +32,7 @@ https://github.com/PsychoLlama/gun-level
 
 ## sack
 
-The currently community-agreed upon custom storage engine is @d3x0r 's.
+The currently community-agreed upon custom storage engine is @d3x0r 's. https://github.com/d3x0r/gun-file
 
 ## Flint
 
@@ -55,3 +55,7 @@ https://github.com/lmangani/gun-cassandra
 ## Elasticsearch
 
 https://github.com/lmangani/gun-elastic
+
+## SQLite
+
+https://github.com/d3x0r/gun-db
