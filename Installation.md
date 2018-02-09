@@ -1,6 +1,6 @@
 Gun can be installed and used in both browser (client side) and server applications. We have made it very easy to be be used in different environments.
 
-## In the browser / client side
+## Browser
 
 Here a three different ways to include Gun in your browser application:
 - Include as script tag
@@ -100,7 +100,7 @@ After running you should see the message in the browser console.
 
 > Note that right now, even though you import, Gun is defined and used as a global variable.
 
-## On the server (Node.js)
+## Node
 
 First you need to install Gun with NPM or Yarn:
 
