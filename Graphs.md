@@ -1,3 +1,7 @@
+[THE CRASH COURSE PAGE HAS CHANGED LOCATIONS, CLICK HERE!](Crash-Course)
+
+(This page will be used for explaining data structures in the future).
+
 This article will go over how it is easy to create interconnected data with GUN's graph features, combining key/value, relational, and document based data together. It will also be a great introductory guide on how to use pretty much every one of GUN's API methods.
 
 > Note: This article requires gun v0.8.x or above.
