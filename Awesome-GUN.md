@@ -97,9 +97,12 @@ Add a GunDB controlled gauge to your webpage ~ By [Stefdv](https://github.com/St
 Visualization Plugin to display Gun graphs in Kibana ~ By [lmangani](https://github.com/lmangani)
 
 
-### SSL Helpers
+### Server Helpers
 [polyGun](https://github.com/lmangani/polyGun-letsencrypt)
 GunDB Polyglot Server [ https/wss + letsencrypt ]
+
+[gun-host](https://github.com/qxip/gun-host)
+GunDB HTTP/HTTPS Server and API  ~ By [Sergey Bondarenko](https://github.com/sergibondarenko)
 
 
 <br>
