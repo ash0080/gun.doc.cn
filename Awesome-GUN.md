@@ -49,11 +49,11 @@ A MongoDB Adapter that stores entire nodes in Mongo documents ~ By [sjones6](htt
  - [gun-mongo-key](https://github.com/sjones6/gun-mongo-key)
 A MongoDB Adapter that stores nodes as key:value pairs in Mongo documents ~ By [sjones6](https://github.com/sjones6)
 
- - [gun-db](https://npmjs.org/packages/gun-db) [on Git](https://github.com/d3x0r/gun-db)
+ - [gun-db](https://npmjs.org/packages/gun-db)[(on Github)](https://github.com/d3x0r/gun-db)
 Sqlite/ODBC storage adapter for Gun ~ By [d3x0r](https://github.com/d3x0r)
 Depends on [sack.vfs](https://npmjs.org/packages/sack.vfs#sqlite-interface).  Can provide encryption for storage.
 
- - [gun-file](https://npmjs.org/packages/gun-file) [on Git](https://github.com/d3x0r/gun-db)
+ - [gun-file](https://npmjs.org/packages/gun-file)[(on Github)](https://github.com/d3x0r/gun-db)
 Local Storage adapter for Gun ~ By [d3x0r](https://github.com/d3x0r)
 Depends on [JSON6](https://npmjs.org/packages/json-6)
 
