@@ -1,10 +1,9 @@
+# Documentation moved
 
+The GUN Documentation can be found here:
+[Latest GUN Documentation](http://gun.js.org/docs)
 
-<h2>Table of Contents
-<a href="https://travis-ci.org/amark/gun"><img align="right" alt="Build status" src="https://travis-ci.org/amark/gun.svg?branch=master" /></a>
-<a href="https://gitter.im/amark/gun?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"><img align="right" alt="Gitter channel" src="https://badges.gitter.im/Join%20Chat.svg" /></a>
-</h2>
-
+Below you can find the old documentation as a reference.
 
 ### **[API Reference](API)**
 
