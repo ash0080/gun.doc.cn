@@ -22,7 +22,3 @@ This makes the loss of important information nearly impossible, as all copies of
 GUN is peer-to-peer (multi-master decentralized replication), meaning updates do not need a centralized server. You save data on one machine, and you can sync it with other peers without needing a complex consensus systems. It just works.
 
 However, you do not need peers or servers to use GUN, they're completely additive!
-
-----
-
-Get started with the easy [installation](./Installation), no download required!
