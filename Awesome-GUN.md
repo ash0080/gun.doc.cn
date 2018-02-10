@@ -22,8 +22,9 @@ Namespace your data, preventing naming conflicts and adding clear separation bet
  - [synchronous](https://github.com/gundb/synchronous)
 One way deep (document oriented) object data binding, similar to [onward](https://github.com/gundb/onward) ~ By [amark](https://github.com/amark)
 
- - [gun-ws](https://github.com/d3x0r/gun-ws)
-Extended websocket provider for Gun ~ By [d3x0r](https://github.com/d3x0r)
+ - [gun-ws](https://npmjs.org/packages/gun-ws) [on Github](https://github.com/d3x0r/gun-ws)
+Extended websocket provider for Gun.  Initially meant to provide a way to connect multiple servers to a single Gun instance ~ By [d3x0r](https://github.com/d3x0r)
+Uses 'ws' npm package for websockets.  Should either migrate to [sack.vfs](https://www.npmjs.com/package/sack.vfs#websocket-module)
 
  - [load](https://github.com/IMGNRY/load)
 Load full document structures to Gun ~ By [IMGNRY](https://github.com/IMGNRY)
@@ -48,11 +49,13 @@ A MongoDB Adapter that stores entire nodes in Mongo documents ~ By [sjones6](htt
  - [gun-mongo-key](https://github.com/sjones6/gun-mongo-key)
 A MongoDB Adapter that stores nodes as key:value pairs in Mongo documents ~ By [sjones6](https://github.com/sjones6)
 
- - [gun-db](https://github.com/d3x0r/gun-db)
-sqlite storage adapter for Gun ~ By [d3x0r](https://github.com/d3x0r)
+ - [gun-db](https://npmjs.org/packages/gun-db) [on Git](https://github.com/d3x0r/gun-db)
+Sqlite/ODBC storage adapter for Gun ~ By [d3x0r](https://github.com/d3x0r)
+Depends on [sack.vfs](https://npmjs.org/packages/sack.vfs#sqlite-interface).  Can provide encryption for storage.
 
- - [gun-file](https://github.com/d3x0r/gun-file)
+ - [gun-file](https://npmjs.org/packages/gun-file) [on Git](https://github.com/d3x0r/gun-db)
 Local Storage adapter for Gun ~ By [d3x0r](https://github.com/d3x0r)
+Depends on [JSON6](https://npmjs.org/packages/json-6)
 
  - [gun-cassandra](https://github.com/lmangani/gun-cassandra)
 Experimental Cassandra / Elassandra persistence layer for Gun ~ By [lmangani](https://github.com/lmangani)
