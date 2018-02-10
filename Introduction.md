@@ -25,4 +25,4 @@ However, you do not need peers or servers to use GUN, they're completely additiv
 
 ----
 
-Get started with the easy [installation](Installation), no download required!
+Get started with the easy [installation](./Installation), no download required!
