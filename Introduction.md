@@ -1,4 +1,4 @@
-GUN is a small, distributed data sync and storage solution that runs everywhere JavaScript does. GUN lets you focus on the data you need to store, retrieve, and share without worrying about servers, network calls, databases, or handling offline edits and merge conflicts. This lets you build cool apps fast, like:
+GUN is a small, easy distributed data sync and storage solution that runs everywhere JavaScript does. GUN lets you focus on the data you need to store, retrieve, and share without worrying about servers, network calls, databases, or handling offline edits and merge conflicts. This lets you build cool apps fast, like:
 
 ![](http://gun.js.org/see/3dvr.gif "3D multiplayer VR games")
 [![](http://gun.js.org/see/aiml.gif "Distributed AI/ML")](https://github.com/cstefanache/cstefanache.github.io/blob/master/_posts/2016-08-02-gun-db-artificial-knowledge-sharing.md#gundb)
