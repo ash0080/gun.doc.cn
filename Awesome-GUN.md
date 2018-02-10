@@ -24,7 +24,7 @@ One way deep (document oriented) object data binding, similar to [onward](https:
 
  - [gun-ws](https://npmjs.org/packages/gun-ws) [on Github](https://github.com/d3x0r/gun-ws)
 Extended websocket provider for Gun.  Initially meant to provide a way to connect multiple servers to a single Gun instance ~ By [d3x0r](https://github.com/d3x0r)
-Uses 'ws' npm package for websockets.  Should either migrate to [sack.vfs](https://www.npmjs.com/package/sack.vfs#websocket-module)
+    - Uses 'ws' npm package for websockets.  Should either migrate to [sack.vfs](https://www.npmjs.com/package/sack.vfs#websocket-module)
 
  - [load](https://github.com/IMGNRY/load)
 Load full document structures to Gun ~ By [IMGNRY](https://github.com/IMGNRY)
@@ -51,11 +51,11 @@ A MongoDB Adapter that stores nodes as key:value pairs in Mongo documents ~ By [
 
  - [gun-db](https://npmjs.org/packages/gun-db)[(on Github)](https://github.com/d3x0r/gun-db)
 Sqlite/ODBC storage adapter for Gun ~ By [d3x0r](https://github.com/d3x0r)
-Depends on [sack.vfs](https://npmjs.org/packages/sack.vfs#sqlite-interface).  Can provide encryption for storage.
+    - Depends on [sack.vfs](https://npmjs.org/packages/sack.vfs#sqlite-interface).  Can provide encryption for storage.
 
  - [gun-file](https://npmjs.org/packages/gun-file)[(on Github)](https://github.com/d3x0r/gun-db)
 Local Storage adapter for Gun ~ By [d3x0r](https://github.com/d3x0r)
-Depends on [JSON6](https://npmjs.org/packages/json-6)
+    - Depends on [JSON6](https://npmjs.org/packages/json-6)
 
  - [gun-cassandra](https://github.com/lmangani/gun-cassandra)
 Experimental Cassandra / Elassandra persistence layer for Gun ~ By [lmangani](https://github.com/lmangani)
