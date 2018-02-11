@@ -56,7 +56,7 @@ And then when you use GUN to read the data, it automatically verifies and decryp
 
 ```javascript
 user.get('profile').get('boss').get('slave').get('name').val(function(data){
-  console.log("The boss's slave's name is:", data); // Fluffy
+  console.log("The boss's slave's name is:", data); // Alice
 });
 ```
 
