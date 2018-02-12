@@ -39,7 +39,8 @@ Next let's add GUN and make the form operational.
 
 Delete the `<!--111-->` line and replace it by:
 
-```html#showCodePen
+```html
+<!-- {codepen: 'link'} -->
 <!-- docDef
 startAddHtmlBefore
 <html>
