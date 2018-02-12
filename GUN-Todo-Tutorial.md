@@ -65,30 +65,30 @@ startAddHtmlAfter
 </html>
 endAddHtmlAfter
 docDef -->
-      <!-- Load GUN itself. -->
-      <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
+    <!-- Load GUN itself. -->
+    <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
 
-      <script>
-        // Initialize GUN and tell it we will be storing all data under the key 'todos'.
-        var todos = Gun().get('todos')
-        
-        // Get the form element.
-        var form = document.querySelector('form')
-        // Listen for submits of the form.
-        form.addEventListener('submit', function (event) {
-            // Get the input element.
-            var input = form.querySelector('input')
-            // Tell GUN to store an object,
-            // with as title the value of the input element and a done flag set to false.
-            todos.set({title: input.value, done: false})
-            // Clear the input element, so the user is free to enter more todos.
-            input.value = ''
-            // Prevent default form submit handling.
-            event.preventDefault()
-        })
+    <script>
+      // Initialize GUN and tell it we will be storing all data under the key 'todos'.
+      var todos = Gun().get('todos')
+      
+      // Get the form element.
+      var form = document.querySelector('form')
+      // Listen for submits of the form.
+      form.addEventListener('submit', function (event) {
+        // Get the input element.
+        var input = form.querySelector('input')
+        // Tell GUN to store an object,
+        // with as title the value of the input element and a done flag set to false.
+        todos.set({title: input.value, done: false})
+        // Clear the input element, so the user is free to enter more todos.
+        input.value = ''
+        // Prevent default form submit handling.
+        event.preventDefault()
+      })
 
-        //222
-      </script>
+      //222
+    </script>
 ```
 
 First we load GUN itself.
