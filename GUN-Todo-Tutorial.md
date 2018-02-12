@@ -6,7 +6,8 @@ You can follow along by creating your own version live on [CodePen](https://code
 
 First let's create the html:
 
-```html#showCodePen
+```html
+<!-- {codepen: 'link'} -->
 <html>
   <body>
     <h1>Todos</h1>
@@ -41,8 +42,7 @@ Delete the `<!--111-->` line and replace it by:
 
 ```html
 <!-- {codepen: 'link'} -->
-<!-- docDef
-startAddHtmlBefore
+<!-- {start hide code} -->
 <html>
   <body>
     <h1>Todos</h1>
@@ -50,22 +50,7 @@ startAddHtmlBefore
     <ul></ul>
     
     <form><input><button>Add</button></form>
-
-endAddHtmlBefore
-deleteLinesAtEnd 1
-startAddHtmlAfter
-    </script>
-    
-    <style>
-      ul { padding: 0; }
-      li { display: flex; }
-      img { height: 20px; margin-left: 8px; }
-      input { margin-right: 8px; }
-    <style>
-  </body>
-</html>
-endAddHtmlAfter
-docDef -->
+<!-- {end hide code} -->
     <!-- Load GUN itself. -->
     <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
 
@@ -90,6 +75,17 @@ docDef -->
 
       //222
     </script>
+<!-- {start hide code} -->
+    
+    <style>
+      ul { padding: 0; }
+      li { display: flex; }
+      img { height: 20px; margin-left: 8px; }
+      input { margin-right: 8px; }
+    <style>
+  </body>
+</html>
+<!-- {end hide code} -->
 ```
 
 First we load GUN itself.
