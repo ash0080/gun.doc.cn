@@ -51,7 +51,9 @@ startAddHtmlBefore
     <form><input><button>Add</button></form>
 
 endAddHtmlBefore
+deleteLinesAtEnd 1
 startAddHtmlAfter
+    </script>
     
     <style>
       ul { padding: 0; }
