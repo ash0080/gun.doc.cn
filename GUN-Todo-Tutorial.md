@@ -39,7 +39,7 @@ First let's create the html:
 
 The `<ul></ul>` will be used by the javascrypt code will will soon create.
 
-The `form` will be used to add new todos.
+The `<form>` will be used to add new todos.
 
-You can ignored the `styles`. This is just some simple styling of (future) things on the page.
+You can ignored the `<style>` tag. This just contains some simple styling of (future) things on the page.
 
