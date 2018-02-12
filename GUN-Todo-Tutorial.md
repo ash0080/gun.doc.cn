@@ -2,7 +2,7 @@ Let's create a simple todo application with GUN.
 
 You can follow along by creating your own version live on [CodePen](https://codepen.io/pen/). If you like, you can also click on the CodePen icons in the top right of each code block instead.
 
-## The basic html.
+## The basic html
 
 First let's create the html:
 
