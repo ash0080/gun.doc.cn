@@ -42,7 +42,7 @@ Delete the `<!--111-->` line and replace it by:
 
 ```html
 <!-- {codepen: 'link'} -->
-<!-- {start hide code} -->
+<!-- {hide: 'start'} -->
 <html>
   <body>
     <h1>Todos</h1>
@@ -51,7 +51,7 @@ Delete the `<!--111-->` line and replace it by:
     
     <form><input><button>Add</button></form>
 
-<!-- {end hide code} -->
+<!-- {hide: 'end'} -->
     <!-- Load GUN itself. -->
     <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
 
@@ -76,7 +76,7 @@ Delete the `<!--111-->` line and replace it by:
 
       //222
     </script>
-<!-- {start hide code} -->
+<!-- {hide: 'start'} -->
     
     <style>
       ul { padding: 0; }
@@ -86,7 +86,7 @@ Delete the `<!--111-->` line and replace it by:
     <style>
   </body>
 </html>
-<!-- {end hide code} -->
+<!-- {hide: 'end'} -->
 ```
 
 First we load GUN itself.
