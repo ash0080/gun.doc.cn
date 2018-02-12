@@ -57,7 +57,7 @@ Delete the `<!--111-->` line and replace it by:
 
     <script>
       // Initialize GUN and tell it we will be storing all data under the key 'todos'.
-      var gun = Gun().get('todos')
+      var todos = Gun().get('todos')
       
       // Get the form element.
       var form = document.querySelector('form')
@@ -65,8 +65,9 @@ Delete the `<!--111-->` line and replace it by:
       form.addEventListener('submit', function (event) {
         // Get the input element.
         var input = form.querySelector('input')
-        // Tell GUN to store an object, with as title the value of the input element and a done flag set to false.
-        gun.set({title: input.value, done: false})
+        // Tell GUN to store an object,
+        // with as title the value of the input element and a done flag set to false.
+        todos.set({title: input.value, done: false})
         // Clear the input element, so the user is free to enter more todos.
         input.value = ''
         // Prevent default form submit handling.
@@ -77,7 +78,9 @@ Delete the `<!--111-->` line and replace it by:
     </script>
 ```
 
-The first `<script>` tag will load GUN itself.
+First we load GUN itself.
 
-With `var gun = Gun().get('todos')` we initialize GUN and tell it we will place all data under the key `todos`.
+Then we initialize GUN and tell it we will place all data under the key `todos`.
+
+Finally we handle what happens when the user clicks the `Add` button. The key line is `todos.set({title: input.value, done: false})`. Here we tell GUN to store our object. In GUN we use `set()` to store values in a list (set, array). So this object is added by GUN to the list of todos.
 
