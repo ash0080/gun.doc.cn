@@ -6,7 +6,7 @@ You can follow along by creating your own version live on [CodePen](https://code
 
 First let's create the html:
 
-```html#showCodePen
+```html showCodePen
 <html>
   <body>
     <h1>Todos</h1>
@@ -39,7 +39,7 @@ Next let's add GUN and make the form operational.
 
 Delete the `<!--111-->` line and replace it by:
 
-```html #showCodePen
+```html showCodePen
 <!-- docDef
 startAddHtmlBefore
 <html>
