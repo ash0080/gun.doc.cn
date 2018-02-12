@@ -97,3 +97,16 @@ Then we initialize GUN and tell it we will place all data under the key `todos`.
 
 Finally we handle what happens when the user clicks the `Add` button. The key line is `todos.set({title: input.value, done: false})`. Here we tell GUN to store our object. In GUN we use `set()` to store values in a list (set, array). So this object is added by GUN to the list of todos.
 
+## Test
+
+```js
+<!-- {test} -->
+var a = 10
+```
+
+```css
+<!-- {test} -->
+.test {
+width: 10px;
+}
+```
