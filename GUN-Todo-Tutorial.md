@@ -7,6 +7,11 @@ You can follow along by creating your own version live on [CodePen](https://code
 First let's create the html:
 
 ```html
+<!-- docDef
+startAddHtmlBefore
+test
+endAddHtmlBefore
+docDef -->
 <html>
   <body>
     <h1>Todos</h1>
