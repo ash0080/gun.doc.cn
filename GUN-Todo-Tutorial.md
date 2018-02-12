@@ -13,27 +13,15 @@ First let's create the html:
 
     <ul></ul>
     
-    <form>
-      <input>
-      <button>Add</button>
-    </form>
+    <form><input><button>Add</button></form>
 
     <!--111-->
     
     <style>
-      ul {
-        padding: 0;
-      }
-      li {
-        display: flex;
-      }
-      img {
-        height: 20px;
-        margin-left: 8px;
-      }
-      input {
-        margin-right: 8px;
-      }
+      ul { padding: 0; }
+      li { display: flex; }
+      img { height: 20px; margin-left: 8px; }
+      input { margin-right: 8px; }
     <style>
   </body>
 </html>
@@ -52,6 +40,29 @@ Next let's add GUN and make the form operational.
 Delete the `<!--111-->` line and replace it by:
 
 ```html
+<!-- docDef
+startAddHtmlBefore
+<html>
+  <body>
+    <h1>Todos</h1>
+
+    <ul></ul>
+    
+    <form><input><button>Add</button></form>
+
+endAddHtmlBefore
+startAddHtmlAfter
+    
+    <style>
+      ul { padding: 0; }
+      li { display: flex; }
+      img { height: 20px; margin-left: 8px; }
+      input { margin-right: 8px; }
+    <style>
+  </body>
+</html>
+endAddHtmlAfter
+docDef -->
 <!-- Load GUN itself. -->
 <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
 
