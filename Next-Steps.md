@@ -30,5 +30,3 @@
 
  - **[Build Modules for Gun](https://github.com/amark/gun/wiki/Building-Modules-for-Gun)**<br>
  Although gun comes bundled with storage and transport plugins, you can swap them out for others. This page explains how to build your own.
-
-- **[Sync Time Across Nodes with NTS and Gun](https://github.com/amark/gun/wiki/Syncing-Time-Across-Nodes-with-NTS-and-Gun)**<br>While gun does not require time to be in sync across nodes, synced time is often beneficial in distributed systems. Gun provides built federated time synchronization via NTS.
