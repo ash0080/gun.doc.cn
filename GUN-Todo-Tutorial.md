@@ -50,6 +50,7 @@ Delete the `<!--111-->` line and replace it by:
     <ul></ul>
     
     <form><input><button>Add</button></form>
+
 <!-- {end hide code} -->
     <!-- Load GUN itself. -->
     <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
