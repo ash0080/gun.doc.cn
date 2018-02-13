@@ -97,14 +97,4 @@ Finally we handle what happens when the user clicks the `Add` button. The key li
 
 ## Test
 
-```js
-<!-- {test} -->
-var a = 10
-```
-
-```css
-<!-- {test} -->
-.test {
-width: 10px;
-}
-```
+THIS PAGE IN NOT DONE YET...
