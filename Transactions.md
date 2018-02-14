@@ -40,6 +40,16 @@ function handleSignupEvent( signup, field ) {
 when the signup is put, the server gets it, puts an ack(user_id), that then the client gets.
 viola - transaction.
 
+
+Previously completed transactions can be checked for completion and steps ignored....
+
+```
+if( !( "user_id" in signup ) ) {
+   // then do the work, otherwise the job was already done.
+}
+```
+
+
 ## Method 2)
 
 Mark shared an example a long time ago that was more nested... like
