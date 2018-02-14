@@ -65,6 +65,6 @@ That query maps to the JS gun query as:
 
 As of today `as` is very alpha and supports only primitive behavior ... and isn't nearly as powerful as React/Vue/Riot, etc. My hope is either:
 
-A) somebody builds gun bindings for react/vue/riot so that way people don't use as because those bindings are just as powerful. (personally, I prefer HTML based approach like with as and riot, not JS based approached as in react and vue.)
+A) somebody builds gun bindings for react/vue/riot so that way people don't use `as` because those bindings are just as powerful. (personally, I prefer HTML based approach like with `as` and riot, not JS based approached as in react and vue.)
 
-B) if no other UI Framework evolves the HTML framework, I'll probably continuing adding features to as to be more expressive/powerful, but not a priority for me.
+B) if no other UI Framework evolves the HTML framework, I'll probably continuing adding features to `as` to be more expressive/powerful, but not a priority for me.
