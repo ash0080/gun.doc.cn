@@ -19,7 +19,7 @@
  Since gun is offline-first in one of the harshest programming environments on earth (the browser), it's conflict resolution algorithm has to be rock-solid. This page gives a high-level overview.
 
 ## How To:
- - **[Start Your Own Gun Server](https://github.com/amark/gun/wiki/Running-a-GUN-Server-\(v0.9.x\))**<br>
+ - **[Start Your Own Gun Server](https://github.com/amark/gun/wiki/Running-a-GUN-Server-&#x0028;v0.9.x&#x0029;)**<br>
  In order to sync data between two peers, you'll need at least one gun server. This is how.
 
  - **[Delete Data](https://github.com/amark/gun/wiki/Delete)**<br>
