@@ -7,7 +7,7 @@ You can follow along by creating your own version live on [CodePen](https://code
 First let's create the html:
 
 ```html
-<!-- {codepen: 'link', codesandbox: 'tab'} -->
+<!-- {codepen: 'link', tab1: 'codemirror'} -->
 <html>
   <body>
     <h1>Todos</h1>
