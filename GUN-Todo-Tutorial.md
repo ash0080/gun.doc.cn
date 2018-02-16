@@ -23,7 +23,7 @@ First let's create the html:
       li { display: flex; }
       img { height: 20px; margin-left: 8px; }
       input { margin-right: 8px; }
-    <style>
+    </style>
   </body>
 </html>
 ```
@@ -34,14 +34,14 @@ The `<form>` will be used to add new todos.
 
 You can ignored the `<style>` tag. This just contains some simple styling of (future) things on the page.
 
-## Add gun
+## Add GUN
 
 Next let's add GUN and make the form operational.
 
 Delete the `<!--111-->` line and replace it by:
 
 ```html
-<!-- {codepen: 'link', codesandbox: 'show'} -->
+<!-- {codepen: 'link', codesandbox: 'tab'} -->
 <!-- {hide: 'start'} -->
 <html>
   <body>
@@ -83,22 +83,17 @@ Delete the `<!--111-->` line and replace it by:
       li { display: flex; }
       img { height: 20px; margin-left: 8px; }
       input { margin-right: 8px; }
-    <style>
+    </style>
   </body>
 </html>
 <!-- {hide: 'end'} -->
 ```
 
-First we load GUN itself.
+Here we first load GUN itself.
 
 Then we initialize GUN and tell it we will place all data under the key `todos`.
 
 Finally we handle what happens when the user clicks the `Add` button. The key line is `todos.set({title: input.value, done: false})`. Here we tell GUN to store our object. In GUN we use `set()` to store values in a list (set, array). So this object is added by GUN to the list of todos.
 
-## Test
+When you run the code, type something in the input and click the `Add` button, it is already stored by GUN. But we will not yet see it appear. We will do that in the next step.
 
-THIS PAGE IN NOT DONE YET...
-
-```html
-testhtml
-```
