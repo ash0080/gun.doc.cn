@@ -55,6 +55,9 @@ Delete the `<!--111-->` line and replace it by:
     <!-- Load GUN itself. -->
     <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
 
+    <!-- Load jQuery to help make things a bit easier. -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
     <script>
       // Initialize GUN and tell it we will be storing all data under the key 'todos'.
       var todos = Gun().get('todos')
@@ -116,6 +119,9 @@ Delete the `//222` line and replace it by:
 
     <!-- Load GUN itself. -->
     <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
+
+    <!-- Load jQuery to help make things a bit easier. -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
     <script>
       // Initialize GUN and tell it we will be storing all data under the key 'todos'.
