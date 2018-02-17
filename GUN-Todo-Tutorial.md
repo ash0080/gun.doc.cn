@@ -7,7 +7,7 @@ You can follow along by creating your own version live on [CodePen](https://code
 First let's create the html:
 
 ```html
-<!-- {codepen: 'link', tab1: 'codemirror'} -->
+<!-- {codepen: 'link', tab1: 'codemirror', tab2: 'code', tab3: 'codesandbox'} -->
 <html>
   <body>
     <h1>Todos</h1>
@@ -41,7 +41,7 @@ Next let's add GUN and make the form operational.
 Delete the `<!--111-->` line and replace it by:
 
 ```html
-<!-- {codepen: 'link', codesandbox: 'tab'} -->
+<!-- {codepen: 'link', tab1: 'codemirror'} -->
 <!-- {hide: 'start'} -->
 <html>
   <body>
@@ -107,7 +107,7 @@ Now we will show the list of all existing todos on the screen.
 Delete the `//222` line and replace it by:
 
 ```html
-<!-- {codepen: 'link', codesandbox: 'tab'} -->
+<!-- {codepen: 'link', tab1: 'code'} -->
 <!-- {hide: 'start'} -->
 <html>
   <body>
