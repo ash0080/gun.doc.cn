@@ -114,6 +114,3 @@ Now, you should see the `gun.js` file when going to `localhost:8080/gun.js` in a
 If we enter a message into the input, it will sync with the server and should continue running indefinitely (just what we want from a server). We can verify that data is being updated by checking the **data.json** file.
 
 > To end the server, you can hit <kbd>ctrl</kbd> + <kbd>c</kbd>.
-
-## Support
-If you have any issues or feature ideas, please let us know in our gitter channel!
