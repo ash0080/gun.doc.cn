@@ -197,7 +197,6 @@ This tutorial is not yet finished...
 
 ```html
 <!-- {codepen: 'link', tab1: 'codemirror'} -->
-<!-- {hide: 'start'} -->
 <html>
   <body>
     <h1>Todos</h1>
