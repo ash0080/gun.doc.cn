@@ -437,7 +437,7 @@ When the user clicks the checkbox, again we get the todo item (node) from GUN vi
 
 Notice that we did not provide the title in the object. But that does not mean GUN will remove the 'old' title. GUN does not replace objects set by `put`, but rather merges the new object into the old object.
 
-## Delete todo
+## Delete todos
 
 Finally let's add some functionality for delete todo's.
 
