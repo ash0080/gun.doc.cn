@@ -20,7 +20,7 @@ First let's create the html:
       ul { padding: 0; }
       li { display: flex; }
       li span { width: 100px; word-break: break-all; }
-      img { height: 20px; margin-left: 8px; }
+      img { height: 20px; margin-left: 8px; cursor: pointer; }
       input { margin-right: 8px; }
     </style>
   </body>
@@ -83,7 +83,7 @@ At line 8 (after the form) let's insert this code:
       ul { padding: 0; }
       li { display: flex; }
       li span { width: 100px; word-break: break-all; }
-      img { height: 20px; margin-left: 8px; }
+      img { height: 20px; margin-left: 8px; cursor: pointer; }
       input { margin-right: 8px; }
     </style>
   </body>
@@ -174,7 +174,7 @@ At line 33 (before `</script>`) insert this code:
       ul { padding: 0; }
       li { display: flex; }
       li span { width: 100px; word-break: break-all; }
-      img { height: 20px; margin-left: 8px; }
+      img { height: 20px; margin-left: 8px; cursor: pointer; }
       input { margin-right: 8px; }
     </style>
   </body>
@@ -259,7 +259,7 @@ This tutorial is not yet finished...
           // Add a checkbox in front and check it if the GUN item has a done state.
           html = '<input type="checkbox" onclick="clickCheck(this)" ' + (todo.done ? 'checked' : '') + '>' + html
           // Add a trashcan icon and make it clickable.
-          html += '<img onclick="clickDelete(this)" src="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/svgs/fi-trash.svg"/>'
+          html += '<img onclick="clickDelete(this)" src="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/svgs/fi-x.svg"/>'
           // Set it to the element.
           li.html(html)
         } else {
@@ -313,7 +313,7 @@ This tutorial is not yet finished...
       ul { padding: 0; }
       li { display: flex; }
       li span { width: 100px; word-break: break-all; }
-      img { height: 20px; margin-left: 8px; }
+      img { height: 20px; margin-left: 8px; cursor: pointer; }
       input { margin-right: 8px; }
     </style>
   </body>
