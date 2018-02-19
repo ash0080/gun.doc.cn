@@ -101,7 +101,7 @@ Finally we handle what happens when the user clicks the `Add` button. The key li
 
 Now we will show the list of all existing todos on the screen.
 
-At line 33 (before `</script>` insert this code:
+At line 33 (before `</script>`) insert this code:
 
 ```html
 <!-- {codepen: 'link', tab1: 'codemirror'} -->
@@ -163,10 +163,6 @@ At line 33 (before `</script>` insert this code:
           //444
           // Set it to the element.
           li.html(html)
-        } else {
-          // The item was removed from GUN, because we got null.
-          // Delete it from the screen.
-          li.remove()
         }
       })
 <!-- {hide: 'start'} -->
@@ -182,6 +178,16 @@ At line 33 (before `</script>` insert this code:
 </html>
 <!-- {hide: 'end'} -->
 ```
+
+By doing `todos.map().on(function (todo, id)` we tell GUN we want to listen to any and all changes at the todo list. GUN will call this function for each todo that is already in the list. And it will also call this function whenever a todo is added (by `set`).
+
+Please be aware that this function can (and often will) be called more than once for each item, even if the item was not changed. This is not a bug, but a consequence of how GUN works internally. This means inside the function you need to filter (based on `id`) whether you already have the item (so you can overwrite) or not (so you can add).
+
+So in the code here we add a `li` element for each todo, with the `id` attribute of the element set to the `id` of the todo that is provided (and was automatically generated) by GUN.
+
+Then each time a 'new' todo is received we can check if we already have a `li` element with the same `id`. If we do not, we can insert a new one. And next we set the content (html) of the element to the todo's title.
+
+We can now test our changes. Type something in the `input` and click `Add`. The new todo should then be shown on the screen.
 
 ## To be continued
 
