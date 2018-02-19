@@ -582,7 +582,7 @@ This will trigger the function in `todos.map().on(function (todo, id)`, but inst
 
 We now have a fully working todo application with create, update and delete (CRUD). All data is stored in GUN.
 
-NOW REFRESH THE BROWSER!
+NOW REFRESH THE BROWSER! Yes, really. No worries. Just do it.
 
 Notice how all todo data you entered still is there?
 
