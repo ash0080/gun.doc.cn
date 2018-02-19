@@ -578,11 +578,21 @@ So here with `todos.get(element.parentNode.id).put(null)`, whenever the user cli
 
 This will trigger the function in `todos.map().on(function (todo, id)`, but instead of a new or changed todo object, `todo` will now be `null`. So we know we must now delete the `li` instead of change it's content.
 
-## To be continued
+## Now refresh the browser
 
-This tutorial is not yet finished...
+We now have a fully working todo application with create, update and delete (CRUD). All data is stored in GUN.
+
+NOW REFRESH THE BROWSER!
+
+Notice how all todo data you entered still is there?
+
+That is because GUN stores (caches) all it's data in the browser's `localStorage`. Also, if you would connect the app to a GUN server and also open the app in different computers (connecting to that same server), all data would be continuously synced.
+
+So you have now created an offline-first real-time multi-user todo app with GUN. Congratulations! You rock!
 
 ## The full code
+
+As a final review, here is the full code of the GUN todo app we just created:
 
 ```html
 <!-- {codepen: 'link', tab1: 'codemirror'} -->
