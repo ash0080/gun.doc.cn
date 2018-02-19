@@ -279,8 +279,6 @@ Change line 53 (`var html = todo.title`) and add 2 new functions before line 59 
         if (event.keyCode === 13) {
           // Get the GUN item with the id that we store in the element.
           // And tell GUN to update the title of the todo item.
-          // Notice that we do not need to put the full object (including it's done state).
-          // GUN will only change the title of the item and leaves the other properties (like done) intact.
           todos.get(element.parentNode.parentNode.id).put({title: element.value})
         }
       }
@@ -298,6 +296,20 @@ Change line 53 (`var html = todo.title`) and add 2 new functions before line 59 
 </html>
 <!-- {hide: 'end'} -->
 ```
+
+When a todo item is clicked, we turn it into an `input` so the user can change the text.
+
+Then we wait for the user to press the `Enter` key. When he/she/it :-) does, we will tell GUN store the new text. THis happens here `todos.get(element.parentNode.parentNode.id).put({title: element.value})`.
+
+`element.parentNode.parentNode.id` simply gets the `id` that we stored in the `li` element.
+
+`todos.get(....id)` tells GUN we want to use the todo with that specific `id`.
+
+Finally `put({title: element.value})` will change the title of the todo.
+
+Notice that for inserting a todo in the todos list we used `set`, whereas now we use `put`. The difference is that `set` will add a todo to the todo list (similar to `push` for arrays, though not the same; see the documentation for `set`), but `put` is done for one specific item (node); not on a list.
+
+We can now try editing a todo by clicking it, changing the text and pressing the `Enter` key.
 
 ## To be continued
 
