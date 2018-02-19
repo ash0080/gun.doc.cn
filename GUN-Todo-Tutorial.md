@@ -99,7 +99,7 @@ Finally we handle what happens when the user clicks the `Add` button. The key li
 
 >When you run the code, type something in the input and click the `Add` button, it is already stored by GUN. But we will not yet see it appear. We will do that in the next step.
 
-## Showing the todos
+## Show the todos
 
 Now we will show the list of all existing todos on the screen.
 
@@ -191,7 +191,7 @@ Then each time a 'new' todo is received we can check if we already have a `li` e
 
 We can now test our changes. Type something in the `input` and click `Add`. The new todo should then be shown on the screen.
 
-## Editing todos
+## Edit todos
 
 Now we will make each todo editable.
 
