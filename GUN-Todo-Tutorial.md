@@ -16,6 +16,7 @@ First let's create the html:
     
     <form><input><button>Add</button></form>
 
+    <!-- Just some minimal styling. -->
     <style>
       ul { padding: 0; }
       li { display: flex; }
@@ -78,6 +79,7 @@ At line 8 (after the form) let's insert this code:
     </script>
 <!-- {hide: 'start'} -->
     
+    <!-- Just some minimal styling. -->
     <style>
       ul { padding: 0; }
       li { display: flex; }
@@ -168,6 +170,7 @@ At line 33 (before `</script>`) insert this code:
 <!-- {hide: 'start'} -->
     </script>
     
+    <!-- Just some minimal styling. -->
     <style>
       ul { padding: 0; }
       li { display: flex; }
