@@ -313,6 +313,130 @@ Notice that for inserting a todo in the todos list we used `set`, whereas now we
 
 We can now try editing a todo by clicking it, changing the text and pressing the `Enter` key.
 
+## Add a done state
+
+Now we will add a checkbox in front of each todo, so the user can indicate whether the todo is done or not.
+
+After line 53 (`var html = ....`) add a few lines for the checkbox.
+
+And add a new function before line 80 (`</script>`):
+
+```html
+<!-- {codepen: 'link', tab1: 'codemirror'} -->
+<!-- {hide: 'start'} -->
+<html>
+  <body>
+    <h1>Todos</h1>
+
+    <ul></ul>
+    
+    <form><input><button>Add</button></form>
+
+    <!-- Load GUN itself. -->
+    <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
+
+    <!-- Load jQuery to help make things a bit easier. -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <script>
+      // Initialize GUN and tell it we will be storing all data under the key 'todos'.
+      var todos = Gun().get('todos')
+      
+      // Get the form element.
+      var form = document.querySelector('form')
+      // Listen for submits of the form.
+      form.addEventListener('submit', function (event) {
+        // Get the input element.
+        var input = form.querySelector('input')
+        // Tell GUN to store an object,
+        // with as title the value of the input element and a done flag set to false.
+        todos.set({title: input.value, done: false})
+        // Clear the input element, so the user is free to enter more todos.
+        input.value = ''
+        // Prevent default form submit handling.
+        event.preventDefault()
+      })
+
+      // Listen to any changes made to the GUN todos list.
+      // This will be triggered each time the list changes.
+      // And because of how GUN works, sometimes even multiple times per change.
+      todos.map().on(function (todo, id) {
+        // Check if the todo element already exists.
+        // This can happen because GUN sometimes sends mulitple change events for the same item.
+        var li = $('#' + id)
+        // Does is not yet exist?
+        if (!li.get(0)) {
+          // Create it.
+          // Set the id to the GUN id of the item.
+          // GUN automatically creates id's for all items.
+          // Finally set the new todo element to the end of the list.
+          li = $('<li>').attr('id', id).appendTo('ul')
+        }
+        // Does the GUN item contain any data?
+        // (It sends null if it was removed from GUN.)
+        if (todo) {
+          // Create an element with the title of the GUN item in it.
+          var html = '<span onclick="clickTitle(this)">' + todo.title + '</span>'
+<!-- {hide: 'end'} -->
+          // Add a checkbox in front and check it if the GUN item has a done state.
+          html = '<input type="checkbox" onclick="clickCheck(this)" ' + (todo.done ? 'checked' : '') + '>' + html
+<!-- {hide: 'start'} -->
+          // Set it to the element.
+          li.html(html)
+        }
+      })
+
+      // What to do when a todo's text is clicked.
+      function clickTitle (element) {
+        // Get the (jQuery) element of the text.
+        element = $(element)
+        // Check if the element does not yet contain an input field.
+        // So we will only add one input field when clicked multiple times.
+        if (!element.find('input').get(0)) {
+          // Turn the elements text into an input.
+          element.html('<input value="' + element.html() + '" onkeyup="keypressTitle(this)">')
+        }
+      }
+      
+      // What to do when Enter is pressed while editing a todo.
+      function keypressTitle (element) {
+        // Is Enter pressed?
+        if (event.keyCode === 13) {
+          // Get the GUN item with the id that we store in the element.
+          // And tell GUN to update the title of the todo item.
+          todos.get(element.parentNode.parentNode.id).put({title: element.value})
+        }
+      }
+<!-- {hide: 'end'} -->
+      
+      // What to do when a checkbox is clicked.
+      function clickCheck (element) {
+        // Set the done state of the GUN todo item.
+        // Notice that we do not need to put the full object (including it's title state).
+        // GUN will only change the done property of the item and leaves the other properties (like title) intact.
+        todos.get(element.parentNode.id).put({done: element.checked})
+      }
+<!-- {hide: 'start'} -->
+    </script>
+    
+    <style>
+      ul { padding: 0; }
+      li { display: flex; }
+      li span { width: 100px; word-break: break-all; }
+      img { height: 20px; margin-left: 8px; cursor: pointer; }
+      input { margin-right: 8px; }
+    </style>
+  </body>
+</html>
+<!-- {hide: 'end'} -->
+```
+
+We add a `<input type="checkbox">` in front of the title and give it the done state of the todo item we got from GUN. Of course no existing todo had this todo property just yet, but that is fine.
+
+When the user clicks the checkbox, again we get the todo item (node) from GUN via it's `id` and tell GUN to store the new todo state. If the todo property what not yet stored in the todo item, it will be added. If it already existed, it will be overwritten.
+
+Notice that we did not provide the title in the object. But that does not mean GUN will remove the 'old' title. GUN does not replace objects set by `put`, but rather merges the new object into the old object.
+
 ## To be continued
 
 This tutorial is not yet finished...
