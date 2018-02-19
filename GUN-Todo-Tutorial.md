@@ -195,7 +195,9 @@ We can now test our changes. Type something in the `input` and click `Add`. The 
 
 Now we will make each todo editable.
 
-Change line 53 (`var html = todo.title`) and add 2 new functions before line 59 (`</script>`):
+Change line 53 (`var html = todo.title`).
+
+And add 2 new functions before line 59 (`</script>`):
 
 ```html
 <!-- {codepen: 'link', tab1: 'codemirror'} -->
@@ -299,7 +301,7 @@ Change line 53 (`var html = todo.title`) and add 2 new functions before line 59 
 
 When a todo item is clicked, we turn it into an `input` so the user can change the text.
 
-Then we wait for the user to press the `Enter` key. When he/she/it :-) does, we will tell GUN store the new text. THis happens here `todos.get(element.parentNode.parentNode.id).put({title: element.value})`.
+Then we wait for the user to press the `Enter` key. When he/she/it :-) does, we will tell GUN store the new text. This happens here: `todos.get(element.parentNode.parentNode.id).put({title: element.value})`.
 
 `element.parentNode.parentNode.id` simply gets the `id` that we stored in the `li` element.
 
