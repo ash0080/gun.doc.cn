@@ -95,16 +95,16 @@ Then we initialize GUN and tell it we will place all data under the key `todos`.
 
 Finally we handle what happens when the user clicks the `Add` button. The key line is `todos.set({title: input.value, done: false})`. Here we tell GUN to store our object. In GUN we use `set()` to store values in a list (set, array). So this object is added by GUN to the list of todos.
 
-When you run the code, type something in the input and click the `Add` button, it is already stored by GUN. But we will not yet see it appear. We will do that in the next step.
+>When you run the code, type something in the input and click the `Add` button, it is already stored by GUN. But we will not yet see it appear. We will do that in the next step.
 
 ## Showing the todos
 
 Now we will show the list of all existing todos on the screen.
 
-Delete the `//222` line and replace it by:
+At line 33 (before `</script>` insert this code:
 
 ```html
-<!-- {codepen: 'link', tab1: 'code'} -->
+<!-- {codepen: 'link', tab1: 'codemirror'} -->
 <!-- {hide: 'start'} -->
 <html>
   <body>
