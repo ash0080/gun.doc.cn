@@ -1,13 +1,13 @@
 Let's create a simple todo application with GUN.
 
-You can follow along by creating your own version live on [CodePen](https://codepen.io/pen/). If you like, you can also click on the CodePen icons in the top right of each code block instead.
+>This page contains live code editors with preview. You can change the code if you like and see the effect straight away.
 
 ## The basic html
 
 First let's create the html:
 
 ```html
-<!-- {codepen: 'link', tab1: 'codemirror', tab2: 'code', tab3: 'codesandbox'} -->
+<!-- {codepen: 'link', tab1: 'codemirror'} -->
 <html>
   <body>
     <h1>Todos</h1>
@@ -16,8 +16,6 @@ First let's create the html:
     
     <form><input><button>Add</button></form>
 
-    <!--111-->
-    
     <style>
       ul { padding: 0; }
       li { display: flex; }
@@ -28,7 +26,7 @@ First let's create the html:
 </html>
 ```
 
-The `<ul></ul>` will be used by the javascrypt code will will soon create.
+Here, the `<ul></ul>` will be used by the JavaScript code will will soon create.
 
 The `<form>` will be used to add new todos.
 
@@ -38,7 +36,7 @@ You can ignored the `<style>` tag. This just contains some simple styling of (fu
 
 Next let's add GUN and make the form operational.
 
-Delete the `<!--111-->` line and replace it by:
+At line 8 (after the form) let's insert this code:
 
 ```html
 <!-- {codepen: 'link', tab1: 'codemirror'} -->
@@ -77,7 +75,6 @@ Delete the `<!--111-->` line and replace it by:
         event.preventDefault()
       })
 
-      //222
     </script>
 <!-- {hide: 'start'} -->
     
@@ -92,7 +89,7 @@ Delete the `<!--111-->` line and replace it by:
 <!-- {hide: 'end'} -->
 ```
 
-Here we first load GUN itself.
+Here, we first load GUN itself.
 
 Then we initialize GUN and tell it we will place all data under the key `todos`.
 
