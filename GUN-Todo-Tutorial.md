@@ -198,7 +198,6 @@ This tutorial is not yet finished...
 ```html
 <!-- {codepen: 'link', tab1: 'codemirror'} -->
 <!-- {hide: 'start'} -->
-<meta name="description" content="GUN Todo Tutorial jQuery">
 <html>
   <body>
     <h1>Todos</h1>
