@@ -16,10 +16,10 @@ First let's create the html:
     
     <form><input><button>Add</button></form>
 
-    <!-- Just some minimal styling. -->
     <style>
       ul { padding: 0; }
       li { display: flex; }
+      li span { width: 100px; word-break: break-all; }
       img { height: 20px; margin-left: 8px; }
       input { margin-right: 8px; }
     </style>
@@ -79,10 +79,10 @@ At line 8 (after the form) let's insert this code:
     </script>
 <!-- {hide: 'start'} -->
     
-    <!-- Just some minimal styling. -->
     <style>
       ul { padding: 0; }
       li { display: flex; }
+      li span { width: 100px; word-break: break-all; }
       img { height: 20px; margin-left: 8px; }
       input { margin-right: 8px; }
     </style>
@@ -170,10 +170,10 @@ At line 33 (before `</script>`) insert this code:
 <!-- {hide: 'start'} -->
     </script>
     
-    <!-- Just some minimal styling. -->
     <style>
       ul { padding: 0; }
       li { display: flex; }
+      li span { width: 100px; word-break: break-all; }
       img { height: 20px; margin-left: 8px; }
       input { margin-right: 8px; }
     </style>
@@ -312,6 +312,7 @@ This tutorial is not yet finished...
     <style>
       ul { padding: 0; }
       li { display: flex; }
+      li span { width: 100px; word-break: break-all; }
       img { height: 20px; margin-left: 8px; }
       input { margin-right: 8px; }
     </style>
