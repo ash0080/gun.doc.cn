@@ -3,7 +3,7 @@ Before we can start building anything interesting, we should have a way to jot d
 So what are the requirements? The ability to add a note, read our notes, and to clear them off. We will also need a space to keep these notes in, and a web page to access them through. Let's start with the page! You can edit the code below, which will update the live preview.
 
 ```html
-<!-- {codepen: 'link', tab1: 'codemirror', tab2: 'codesandbox'} -->
+<!-- {codepen: 'link', tab1: 'codemirror'} -->
 <!-- {editor: 'main'} -->
 <html>
   <body>
@@ -33,7 +33,7 @@ Now, try changing the `h1` text in the editor from "Title" to the name of our ap
 <!-- {nextstepcondition: {"code.contains": "<h1>Thoughts</h1>"}} -->
 <!-- {step: 'two'} -->
 ```html
-<!-- {codepen: 'link', tab1: 'codemirror', tab2: 'codesandbox'} -->
+<!-- {codepen: 'link', tab1: 'codemirror'} -->
 <!-- {editor: 'main'} -->
 <html>
   <body>
