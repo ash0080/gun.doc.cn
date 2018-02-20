@@ -80,6 +80,7 @@ At line 8 (after the form) let's insert this code:
     </script>
 <!-- {hide: 'start'} -->
     
+    <!-- Just some minimal styling. -->
 <!-- {insertblock: '2'} -->
 <!-- {hide: 'end'} -->
 <!-- {endblock: '4'} -->
