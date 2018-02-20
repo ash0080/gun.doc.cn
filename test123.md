@@ -35,7 +35,17 @@ Now, try changing the `h1` text in the editor from "Title" to the name of our ap
 ```html
 <!-- {codepen: 'link', tab1: 'codemirror', tab2: 'codesandbox'} -->
 <!-- {editor: 'main'} -->
-twee
+<html>
+  <body>
+    <h1>Thoughts</h1>
+
+    <form>
+      <input><button>Add</button>
+    </form>
+
+    <ul></ul>
+  </body>
+</html>
 ```
 
 HTML controls the layout, but how do we control what happens when a user presses the 'add' button? This is done with javascript. But using raw javascript quickly becomes verbose, so to keep things concise we will use a popular tool called jQuery (there are other examples for tools, like React/Angular, as well). We also need a tool to store data, so we will include GUN as well.
