@@ -130,7 +130,7 @@ At line 33 (before `</script>`) insert this code:
           li.html(html)
         }
       })
-<!-- {startblock: '6'} -->
+<!-- {endblock: '6'} -->
 <!-- {hide: 'start'} -->
 <!-- {insertblock: '4'} -->
 <!-- {hide: 'end'} -->
