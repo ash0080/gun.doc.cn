@@ -59,6 +59,7 @@ Insert the following as new lines between `<ul></ul>` and `</body>`:
 </script></textarea>
 ```
 
+<!-- {nextstepcondition: {"code.contains": "<script src=\"https://code.jquery.com/jquery-1.11.3.min.js\"></script>"}} -->
 <!-- {step: 'three'} -->
 
 This is step 3.
