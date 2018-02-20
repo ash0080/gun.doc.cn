@@ -47,14 +47,6 @@ At line 8 (after the form) let's insert this code:
 <!-- {codepen: 'link', tab1: 'codemirror'} -->
 <!-- {hide: 'start'} -->
 <!-- {insertblock: '1'} -->
-<html>
-  <body>
-    <h1>Todos</h1>
-
-    <ul></ul>
-    
-    <form><input><button>Add</button></form>
-
 <!-- {hide: 'end'} -->
     <!-- Load GUN itself. -->
     <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
@@ -84,15 +76,7 @@ At line 8 (after the form) let's insert this code:
     </script>
 <!-- {hide: 'start'} -->
     
-    <style>
-      ul { padding: 0; }
-      li { display: flex; }
-      li span { width: 100px; word-break: break-all; }
-      img { height: 20px; margin-left: 8px; cursor: pointer; }
-      input { margin-right: 8px; }
-    </style>
-  </body>
-</html>
+<!-- {insertblock: '2'} -->
 <!-- {hide: 'end'} -->
 ```
 
