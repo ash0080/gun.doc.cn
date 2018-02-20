@@ -8,6 +8,7 @@ First let's create the html:
 
 ```html
 <!-- {codepen: 'link', tab1: 'codemirror'} -->
+<!-- {startblock: '1'} -->
 <html>
   <body>
     <h1>Todos</h1>
@@ -16,6 +17,8 @@ First let's create the html:
     
     <form><input><button>Add</button></form>
 
+<!-- {endblock: '1'} -->
+<!-- {startblock: '2'} -->
     <style>
       ul { padding: 0; }
       li { display: flex; }
@@ -25,6 +28,7 @@ First let's create the html:
     </style>
   </body>
 </html>
+<!-- {endblock: '2'} -->
 ```
 
 Here, the `<ul></ul>` will be used by the JavaScript code will will soon create.
@@ -42,6 +46,7 @@ At line 8 (after the form) let's insert this code:
 ```html
 <!-- {codepen: 'link', tab1: 'codemirror'} -->
 <!-- {hide: 'start'} -->
+<!-- {insertblock: '1'} -->
 <html>
   <body>
     <h1>Todos</h1>
