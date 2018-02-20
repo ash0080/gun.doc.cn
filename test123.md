@@ -1,7 +1,7 @@
 Hi there!
 
 ```html
-<!-- {codepen: 'link', tab1: 'codemirror'} -->
+<!-- {codepen: 'link', tab1: 'codemirror', tab2: 'codesandbox'} -->
 <body>
 step 1
 <script>
