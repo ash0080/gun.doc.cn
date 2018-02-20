@@ -267,6 +267,7 @@ And add a new function before line 90 (`</script>`):
 
 ```html
 <!-- {codepen: 'link', tab1: 'codemirror'} -->
+<!-- {startblock: '11'} -->
 <!-- {hide: 'start'} -->
 <!-- {insertblock: '9'} -->
 <!-- {hide: 'end'} -->
@@ -293,6 +294,7 @@ And add a new function before line 90 (`</script>`):
 <!-- {hide: 'start'} -->
 <!-- {insertblock: '4'} -->
 <!-- {hide: 'end'} -->
+<!-- {endblock: '11'} -->
 ```
 
 In a distributed graph database, like GUN, data can not literally be deleted. Hence GUN does not provide a `delete` function. What you need to do is overwrite the old value with `null`.
@@ -319,122 +321,5 @@ As a final review, here is the full code of the GUN todo app we just created:
 
 ```html
 <!-- {codepen: 'link', tab1: 'codemirror'} -->
-<html>
-  <body>
-    <h1>Todos</h1>
-
-    <ul></ul>
-    
-    <form>
-      <input>
-      <button>Add</button>
-    </form>
-
-    <!-- Load GUN itself. -->
-    <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
-
-    <!-- Load jQuery to help make things a bit easier. -->
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-
-    <script>
-      // Initialize GUN and tell it we will be storing all data under the key 'todos'.
-      var todos = Gun().get('todos')
-      
-      // Get the form element.
-      var form = $('form')
-      // Listen for submits of the form.
-      form.on('submit', function (event) {
-        // Get the input element.
-        var input = form.find('input')
-        // Tell GUN to store an object,
-        // with as title the value of the input element and a done flag set to false.
-        todos.set({title: input.val(), done: false})
-        // Clear the input element, so the user is free to enter more todos.
-        input.val('')
-        // Prevent default form submit handling.
-        event.preventDefault()
-      })
-      
-      // Listen to any changes made to the GUN todos list.
-      // This will be triggered each time the list changes.
-      // And because of how GUN works, sometimes even multiple times per change.
-      todos.map().on(function (todo, id) {
-        // Check if the todo element already exists.
-        // This can happen because GUN sometimes sends mulitple change events for the same item.
-        var li = $('#' + id)
-        // Does is not yet exist?
-        if (!li.get(0)) {
-          // Create it.
-          // Set the id to the GUN id of the item.
-          // GUN automatically creates id's for all items.
-          // Finally set the new todo element to the end of the list.
-          li = $('<li>').attr('id', id).appendTo('ul')
-        }
-        // Does the GUN item contain any data?
-        // (It sends null if it was removed from GUN.)
-        if (todo) {
-          // Create an element with the title of the GUN item in it.
-          var html = '<span onclick="clickTitle(this)">' + todo.title + '</span>'
-          // Add a checkbox in front and check it if the GUN item has a done state.
-          html = '<input type="checkbox" onclick="clickCheck(this)" ' + (todo.done ? 'checked' : '') + '>' + html
-          // Add a trashcan icon and make it clickable.
-          html += '<img onclick="clickDelete(this)" src="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/svgs/fi-x.svg"/>'
-          // Set it to the element.
-          li.html(html)
-        } else {
-          // The item was removed from GUN, because we got null.
-          // Delete it from the screen.
-          li.remove()
-        }
-      })
-
-      // What to do when a todo's text is clicked.
-      function clickTitle (element) {
-        // Get the (jQuery) element of the text.
-        element = $(element)
-        // Check if the element does not yet contain an input field.
-        // So we will only add one input field when clicked multiple times.
-        if (!element.find('input').get(0)) {
-          // Turn the elements text into an input.
-          element.html('<input value="' + element.html() + '" onkeyup="keypressTitle(this)">')
-        }
-      }
-      
-      // What to do when Enter is pressed while editing a todo.
-      function keypressTitle (element) {
-        // Is Enter pressed?
-        if (event.keyCode === 13) {
-          // Get the GUN item with the id that we store in the element.
-          // And tell GUN to update the title of the todo item.
-          // Notice that we do not need to put the full object (including it's done state).
-          // GUN will only change the title of the item and leaves the other properties (like done) intact.
-          todos.get(element.parentNode.parentNode.id).put({title: element.value})
-        }
-      }
-      
-      // What to do when a checkbox is clicked.
-      function clickCheck (element) {
-        // Set the done state of the GUN todo item.
-        // As explained above, GUN leaves the title unchanged.
-        todos.get(element.parentNode.id).put({done: element.checked})
-      }
-      
-      // What to do when a trashcan is clicked.
-      function clickDelete (element) {
-        // In GUN the way to delete an item, is to set it's value to null.
-        // This is because of how graph databases, like GUN, work internally.
-        todos.get(element.parentNode.id).put(null)
-      }
-    </script>
-    
-    <!-- Just some minimal styling. -->
-    <style>
-      ul { padding: 0; }
-      li { display: flex; }
-      li span { width: 100px; word-break: break-all; }
-      img { height: 20px; margin-left: 8px; cursor: pointer; }
-      input { margin-right: 8px; }
-    </style>
-  </body>
-</html>
+<!-- {insertblock: '11'} -->
 ```
