@@ -28,6 +28,7 @@ What does this do? HTML is how we code the layout of a web page.
 - `ul` is an unordered list which we will display our thoughts inside of.
 
 Now, try changing the `h1` text in the editor from "Title" to the name of our app, "Thoughts".
+
 <!-- {nextstepcondition: {"code.notcontains": "<h1>Title</h1>"}} -->
 <!-- {nextstepcondition: {"code.contains": "<h1>Thoughts</h1>"}} -->
 <!-- {step: 'two'} -->
@@ -37,6 +38,16 @@ Now, try changing the `h1` text in the editor from "Title" to the name of our ap
 twee
 ```
 
+HTML controls the layout, but how do we control what happens when a user presses the 'add' button? This is done with javascript. But using raw javascript quickly becomes verbose, so to keep things concise we will use a popular tool called jQuery (there are other examples for tools, like React/Angular, as well). We also need a tool to store data, so we will include GUN as well.
+
+Insert the following as new lines between `<ul></ul>` and `</body>`:
+```html
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
+<script>
+  alert("Good job! You'll replace this line in the next step!");
+</script></textarea>
+```
 
 <!-- {step: 'three'} -->
 
