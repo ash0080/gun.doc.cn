@@ -48,6 +48,7 @@ At line 8 (after the form) let's insert this code:
 <!-- {hide: 'start'} -->
 <!-- {insertblock: '1'} -->
 <!-- {hide: 'end'} -->
+<!-- {startblock: '3'} -->
     <!-- Load GUN itself. -->
     <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
 
@@ -73,7 +74,10 @@ At line 8 (after the form) let's insert this code:
         event.preventDefault()
       })
 
+<!-- {endblock: '3'} -->
+<!-- {startblock: '4'} -->
     </script>
+<!-- {endblock: '4'} -->
 <!-- {hide: 'start'} -->
     
 <!-- {insertblock: '2'} -->
@@ -97,39 +101,8 @@ At line 33 (before `</script>`) insert this code:
 ```html
 <!-- {codepen: 'link', tab1: 'codemirror'} -->
 <!-- {hide: 'start'} -->
-<html>
-  <body>
-    <h1>Todos</h1>
-
-    <ul></ul>
-    
-    <form><input><button>Add</button></form>
-
-    <!-- Load GUN itself. -->
-    <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
-
-    <!-- Load jQuery to help make things a bit easier. -->
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-
-    <script>
-      // Initialize GUN and tell it we will be storing all data under the key 'todos'.
-      var todos = Gun().get('todos')
-      
-      // Get the form element.
-      var form = document.querySelector('form')
-      // Listen for submits of the form.
-      form.addEventListener('submit', function (event) {
-        // Get the input element.
-        var input = form.querySelector('input')
-        // Tell GUN to store an object,
-        // with as title the value of the input element and a done flag set to false.
-        todos.set({title: input.value, done: false})
-        // Clear the input element, so the user is free to enter more todos.
-        input.value = ''
-        // Prevent default form submit handling.
-        event.preventDefault()
-      })
-
+<!-- {insertblock: '1'} -->
+<!-- {insertblock: '3'} -->
 <!-- {hide: 'end'} -->
       // Listen to any changes made to the GUN todos list.
       // This will be triggered each time the list changes.
@@ -156,17 +129,8 @@ At line 33 (before `</script>`) insert this code:
         }
       })
 <!-- {hide: 'start'} -->
-    </script>
-    
-    <style>
-      ul { padding: 0; }
-      li { display: flex; }
-      li span { width: 100px; word-break: break-all; }
-      img { height: 20px; margin-left: 8px; cursor: pointer; }
-      input { margin-right: 8px; }
-    </style>
-  </body>
-</html>
+<!-- {insertblock: '4'} -->
+<!-- {insertblock: '2'} -->
 <!-- {hide: 'end'} -->
 ```
 
