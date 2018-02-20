@@ -60,6 +60,8 @@ Insert the following as new lines between `<ul></ul>` and `</body>`:
 ```
 
 <!-- {nextstepcondition: {"code.contains": "<script src=\"https://code.jquery.com/jquery-1.11.3.min.js\"></script>"}} -->
+<!-- {nextstepcondition: {"code.contains": "<script src=\"https://cdn.jsdelivr.net/npm/gun/gun.js\"></script>"}} -->
+<!-- {nextstepcondition: {"code.contains": "alert(\"Good job! You'll replace this line in the next step!\")"}} -->
 <!-- {step: 'three'} -->
 
 This is step 3.
