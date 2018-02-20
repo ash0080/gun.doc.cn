@@ -45,10 +45,10 @@ At line 8 (after the form) let's insert this code:
 
 ```html
 <!-- {codepen: 'link', tab1: 'codemirror'} -->
+<!-- {startblock: '3'} -->
 <!-- {hide: 'start'} -->
 <!-- {insertblock: '1'} -->
 <!-- {hide: 'end'} -->
-<!-- {startblock: '3'} -->
     <!-- Load GUN itself. -->
     <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
 
@@ -77,11 +77,11 @@ At line 8 (after the form) let's insert this code:
 <!-- {endblock: '3'} -->
 <!-- {startblock: '4'} -->
     </script>
-<!-- {endblock: '4'} -->
 <!-- {hide: 'start'} -->
     
 <!-- {insertblock: '2'} -->
 <!-- {hide: 'end'} -->
+<!-- {endblock: '4'} -->
 ```
 
 Here, we first load GUN itself.
@@ -101,7 +101,6 @@ At line 33 (before `</script>`) insert this code:
 ```html
 <!-- {codepen: 'link', tab1: 'codemirror'} -->
 <!-- {hide: 'start'} -->
-<!-- {insertblock: '1'} -->
 <!-- {insertblock: '3'} -->
 <!-- {hide: 'end'} -->
       // Listen to any changes made to the GUN todos list.
@@ -130,7 +129,6 @@ At line 33 (before `</script>`) insert this code:
       })
 <!-- {hide: 'start'} -->
 <!-- {insertblock: '4'} -->
-<!-- {insertblock: '2'} -->
 <!-- {hide: 'end'} -->
 ```
 
