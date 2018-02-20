@@ -29,8 +29,8 @@ What does this do? HTML is how we code the layout of a web page.
 
 Now, try changing the `h1` text in the editor from "Title" to the name of our app, "Thoughts".
 
-<!-- {nextstepcondition: {'code.notcontains': '<h1>Title</h1>'}} -->
-<!-- {nextstepcondition: {'code.contains': '<h1>Thoughts</h1>'}} -->
+<!-- {nextstepcondition: {"code.notcontains": "<h1>Title</h1>"}} -->
+<!-- {nextstepcondition: {"code.contains": "<h1>Thoughts</h1>"}} -->
 <!-- {step: 'two'} -->
 
 This is step 2.
