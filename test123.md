@@ -52,12 +52,19 @@ HTML controls the layout, but how do we control what happens when a user presses
 
 Insert the following as new lines between `<ul></ul>` and `</body>`:
 ```html
-<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
-<script>
-  alert("Good job! You'll replace this line in the next step!");
-</script></textarea>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
+    <script>
+      alert("Good job! You'll replace this line in the next step!");
+    </script>
 ```
+
+- The `script` tag tells the browser to use some javascript code, and `src` is where to load it from.
+- We can then test to see if our code worked with an `alert` message, which pops up and forces you to press ok.
+- In javascript, we denote text by wrapping it inside quotation marks, double `""` or single `''`.
+- We instruct the computer to notify us with that text by calling the `alert` function using parenthesis `()`.
+- A function is just a fancy word for a reusable piece of code that does something when we call its name, such as `alert`.`
+- A semicolon `;` marks the end of a javascript sentence in the same way a period marks the end of a sentence.
 
 <!-- {nextstepcondition: {"code.contains": "<script src=\"https://code.jquery.com/jquery-1.11.3.min.js\"></script>"}} -->
 <!-- {nextstepcondition: {"code.contains": "<script src=\"https://cdn.jsdelivr.net/npm/gun/gun.js\"></script>"}} -->
