@@ -13,3 +13,7 @@ document.write('inserted')
 <!-- {step: 'two'} -->
 
 This is step 2.
+
+<!-- {step: 'three'} -->
+
+This is step 3.
