@@ -24,7 +24,8 @@ First let's create the html:
       li { display: flex; }
       li span { width: 100px; word-break: break-all; }
       img { height: 20px; margin-left: 8px; cursor: pointer; }
-      form > input { width: 100px; margin-right: 8px; }
+      input { margin-right: 8px; }
+      form > input { width: 100px; }
     </style>
   </body>
 </html>
