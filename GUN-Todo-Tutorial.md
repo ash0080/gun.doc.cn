@@ -22,9 +22,9 @@ First let's create the html:
     <style>
       ul { padding: 0; }
       li { display: flex; }
-      li span { width: 100px; word-break: break-all; }
+      li span { width: 200px; max-width: 70%; word-break: break-all; }
       img { height: 20px; margin-left: 8px; cursor: pointer; }
-      input { width: 100px; margin-right: 8px; }
+      input { width: 200px; max-width: 70%; margin-right: 8px; }
       input[type='checkbox'] { width: auto; }
     </style>
   </body>
