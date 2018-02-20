@@ -100,6 +100,7 @@ At line 33 (before `</script>`) insert this code:
 
 ```html
 <!-- {codepen: 'link', tab1: 'codemirror'} -->
+<!-- {startblock: '5'} -->
 <!-- {hide: 'start'} -->
 <!-- {insertblock: '3'} -->
 <!-- {hide: 'end'} -->
@@ -121,12 +122,15 @@ At line 33 (before `</script>`) insert this code:
         // Does the GUN item contain any data?
         // (It sends null if it was removed from GUN.)
         if (todo) {
+<!-- {endblock: '5'} -->
           // Create an element with the title of the GUN item in it.
           var html = todo.title
+<!-- {startblock: '6'} -->
           // Set it to the element.
           li.html(html)
         }
       })
+<!-- {startblock: '6'} -->
 <!-- {hide: 'start'} -->
 <!-- {insertblock: '4'} -->
 <!-- {hide: 'end'} -->
@@ -153,65 +157,12 @@ And add 2 new functions before line 59 (`</script>`):
 ```html
 <!-- {codepen: 'link', tab1: 'codemirror'} -->
 <!-- {hide: 'start'} -->
-<html>
-  <body>
-    <h1>Todos</h1>
-
-    <ul></ul>
-    
-    <form><input><button>Add</button></form>
-
-    <!-- Load GUN itself. -->
-    <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
-
-    <!-- Load jQuery to help make things a bit easier. -->
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-
-    <script>
-      // Initialize GUN and tell it we will be storing all data under the key 'todos'.
-      var todos = Gun().get('todos')
-      
-      // Get the form element.
-      var form = document.querySelector('form')
-      // Listen for submits of the form.
-      form.addEventListener('submit', function (event) {
-        // Get the input element.
-        var input = form.querySelector('input')
-        // Tell GUN to store an object,
-        // with as title the value of the input element and a done flag set to false.
-        todos.set({title: input.value, done: false})
-        // Clear the input element, so the user is free to enter more todos.
-        input.value = ''
-        // Prevent default form submit handling.
-        event.preventDefault()
-      })
-
-      // Listen to any changes made to the GUN todos list.
-      // This will be triggered each time the list changes.
-      // And because of how GUN works, sometimes even multiple times per change.
-      todos.map().on(function (todo, id) {
-        // Check if the todo element already exists.
-        // This can happen because GUN sometimes sends mulitple change events for the same item.
-        var li = $('#' + id)
-        // Does is not yet exist?
-        if (!li.get(0)) {
-          // Create it.
-          // Set the id to the GUN id of the item.
-          // GUN automatically creates id's for all items.
-          // Finally set the new todo element to the end of the list.
-          li = $('<li>').attr('id', id).appendTo('ul')
-        }
-        // Does the GUN item contain any data?
-        // (It sends null if it was removed from GUN.)
-        if (todo) {
+<!-- {insertblock: '5'} -->
 <!-- {hide: 'end'} -->
           // Create an element with the title of the GUN item in it.
           var html = '<span onclick="clickTitle(this)">' + todo.title + '</span>'
 <!-- {hide: 'start'} -->
-          // Set it to the element.
-          li.html(html)
-        }
-      })
+<!-- {insertblock: '6'} -->
 
 <!-- {hide: 'end'} -->
       // What to do when a todo's text is clicked.
@@ -236,17 +187,7 @@ And add 2 new functions before line 59 (`</script>`):
         }
       }
 <!-- {hide: 'start'} -->
-    </script>
-    
-    <style>
-      ul { padding: 0; }
-      li { display: flex; }
-      li span { width: 100px; word-break: break-all; }
-      img { height: 20px; margin-left: 8px; cursor: pointer; }
-      input { margin-right: 8px; }
-    </style>
-  </body>
-</html>
+<!-- {insertblock: '4'} -->
 <!-- {hide: 'end'} -->
 ```
 
