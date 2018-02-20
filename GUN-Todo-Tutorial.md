@@ -243,10 +243,10 @@ And add a new function before line 80 (`</script>`):
         // GUN will only change the done property of the item and leaves the other properties (like title) intact.
         todos.get(element.parentNode.id).put({done: element.checked})
       }
+<!-- {endblock: '10'} -->
 <!-- {hide: 'start'} -->
 <!-- {insertblock: '4'} -->
 <!-- {hide: 'end'} -->
-<!-- {endblock: '10'} -->
 ```
 
 We add a `<input type="checkbox">` in front of the title and give it the done state of the todo item we got from GUN. Of course no existing todo had this todo property just yet, but that is fine.
