@@ -31,6 +31,19 @@ Now, try changing the `h1` text in the editor from "Title" to the name of our ap
 
 <!-- {nextstepcondition: {"code.notcontains": "<h1>Title</h1>"}} -->
 <!-- {nextstepcondition: {"code.contains": "<h1>Thoughts</h1>"}} -->
+<!-- {nextstepcompare: 'start'} -->
+<html>
+  <body>
+    <h1>Thoughts</h1>
+
+    <form>
+      <input><button>Add</button>
+    </form>
+			
+    <ul></ul>
+  </body>
+</html>
+<!-- {nextstepcompare: 'end'} -->
 <!-- {step: 'two'} -->
 ```html
 <!-- {codepen: 'link', tab1: 'codemirror'} -->
