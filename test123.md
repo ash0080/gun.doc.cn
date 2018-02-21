@@ -5,9 +5,12 @@ So what are the requirements? The ability to add a note, read our notes, and to 
 ```html
 <!-- {codepen: 'link', tab1: 'codemirror'} -->
 <!-- {editor: 'main'} -->
+<!-- {startblock: '1'} -->
 <html>
   <body>
+<!-- {endblock: '1'} -->
     <h1>Title</h1>
+<!-- {startblock: '2'} -->
 
     <form>
       <input><button>Add</button>
@@ -16,6 +19,7 @@ So what are the requirements? The ability to add a note, read our notes, and to 
     <ul></ul>
   </body>
 </html>
+<!-- {endblock: '2'} -->
 ```
 What does this do? HTML is how we code the layout of a web page.
 
@@ -33,17 +37,9 @@ Now, try changing the `h1` text in the editor from "Title" to the name of our ap
 <!-- {nextstepcondition: {"code.contains": "<h1>Thoughts</h1>"}} -->
 <!-- {nextstepcompare: 'start'} -->
 ```
-<html>
-  <body>
+<!-- {insertblock: '1'} -->
     <h1>Thoughts</h1>
-
-    <form>
-      <input><button>Add</button>
-    </form>
-
-    <ul></ul>
-  </body>
-</html>
+<!-- {insertblock: '2'} -->
 ```
 <!-- {nextstepcompare: 'end'} -->
 <!-- {step: 'two'} -->
