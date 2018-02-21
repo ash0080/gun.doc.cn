@@ -37,9 +37,11 @@ Now, try changing the `h1` text in the editor from "Title" to the name of our ap
 
 <!-- {nextstepcompare: 'start'} -->
 ```
+<!-- {startblock: '4'} -->
 <!-- {insertblock: '1'} -->
     <h1>Thoughts</h1>
 <!-- {insertblock: '2'} -->
+<!-- {endblock: '4'} -->
 <!-- {insertblock: '3'} -->
 ```
 <!-- {nextstepcompare: 'end'} -->
@@ -49,9 +51,7 @@ Now, try changing the `h1` text in the editor from "Title" to the name of our ap
 ```html
 <!-- {codepen: 'link', tab1: 'codemirror'} -->
 <!-- {editor: 'main'} -->
-<!-- {insertblock: '1'} -->
-    <h1>Thoughts</h1>
-<!-- {insertblock: '2'} -->
+<!-- {insertblock: '4'} -->
 <!-- Replace this Comment Line with the Code in the Step below! -->
 <!-- {insertblock: '3'} -->
 ```
@@ -74,6 +74,26 @@ Insert the following as new lines between `<ul></ul>` and `</body>`, replacing t
 - A function is just a fancy word for a reusable piece of code that does something when we call its name, such as `alert`.`
 - A semicolon `;` marks the end of a javascript sentence in the same way a period marks the end of a sentence.
 
-<!-- {step: 'three'} -->
+<!-- {nextstepcompare: 'start'} -->
+```
+<!-- {startblock: '5'} -->
+<!-- {insertblock: '4'} -->
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
+    <script>
+      alert("Good job! You'll replace this line in the next step!");
+    </script>
+<!-- {insertblock: '3'} -->
+<!-- {startblock: '5'} -->
+```
+<!-- {nextstepcompare: 'end'} -->
+
+# _STEP_3
+
+```html
+<!-- {codepen: 'link', tab1: 'codemirror'} -->
+<!-- {editor: 'main'} -->
+<!-- {insertblock: '5'} -->
+```
 
 This is step 3.
