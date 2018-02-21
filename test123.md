@@ -81,10 +81,14 @@ Insert the following as new lines between `<ul></ul>` and `</body>`, replacing t
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
     <script>
+<!-- {endblock: '5'} -->
+<!-- {startblock: '6'} -->
       alert("Good job! You'll replace this line in the next step!");
+<!-- {endblock: '6'} -->
+<!-- {startblock: '7'} -->
     </script>
 <!-- {insertblock: '3'} -->
-<!-- {endblock: '5'} -->
+<!-- {endblock: '7'} -->
 ```
 <!-- {nextstepcompare: 'end'} -->
 
@@ -94,6 +98,49 @@ Insert the following as new lines between `<ul></ul>` and `</body>`, replacing t
 <!-- {codepen: 'link', tab1: 'codemirror'} -->
 <!-- {editor: 'main'} -->
 <!-- {insertblock: '5'} -->
+<!-- {insertblock: '6'} -->
+<!-- {insertblock: '7'} -->
 ```
 
-This is step 3.
+Wonderful! You should have gotten the alert message, this means writing code works! Let's replace the alert line entirely with code that responds to user input.
+
+```html
+      $('form').on('submit', function(event){
+        event.preventDefault();
+        alert("We got your thought! " + $('input').val());
+      });
+```
+
+What's going on here?
+
+- jQuery is a function like `alert`, its name is `$` which can be called with parenthesis `()`.
+- Calling `$` with `form` as the input gives us a reference to the corresponding HTML form tag.
+- We then call `on` with two inputs. First the text name of an `event` we want to react to, and then a `function` we create.
+-- Events are predefined ways we can interact with a user, such as `mousemove` or a `keypress`.
+-- We use `submit` because it responds to both a button `click` and hitting enter on a form.
+-- Our `function` will get called with the `event` every time the user does that action, allowing us to react to their input.
+- The default behavior of a form is to cause the browser to change pages which is annoying, we prevent that by calling `preventDefault` on the `event`.
+- Finally, calling `$` with `input` will reference the HTML input tag which we then call `val` on, giving us the text the user typed in.
+
+<!-- {nextstepcompare: 'start'} -->
+```
+<!-- {startblock: '8'} -->
+<!-- {insertblock: '5'} -->
+      $('form').on('submit', function(event){
+        event.preventDefault();
+        alert("We got your thought! " + $('input').val());
+      });
+<!-- {insertblock: '7'} -->
+<!-- {endblock: '8'} -->
+```
+<!-- {nextstepcompare: 'end'} -->
+
+# _STEP_4
+
+```html
+<!-- {codepen: 'link', tab1: 'codemirror'} -->
+<!-- {editor: 'main'} -->
+<!-- {insertblock: '8'} -->
+```
+
+...step 4...
