@@ -17,9 +17,11 @@ So what are the requirements? The ability to add a note, read our notes, and to 
     </form>
 			
     <ul></ul>
+<!-- {endblock: '2'} -->
+<!-- {startblock: '3'} -->
   </body>
 </html>
-<!-- {endblock: '2'} -->
+<!-- {endblock: '3'} -->
 ```
 What does this do? HTML is how we code the layout of a web page.
 
@@ -40,28 +42,23 @@ Now, try changing the `h1` text in the editor from "Title" to the name of our ap
 <!-- {insertblock: '1'} -->
     <h1>Thoughts</h1>
 <!-- {insertblock: '2'} -->
+<!-- {insertblock: '3'} -->
 ```
 <!-- {nextstepcompare: 'end'} -->
 <!-- {step: 'two'} -->
 ```html
 <!-- {codepen: 'link', tab1: 'codemirror'} -->
 <!-- {editor: 'main'} -->
-<html>
-  <body>
+<!-- {insertblock: '1'} -->
     <h1>Thoughts</h1>
-
-    <form>
-      <input><button>Add</button>
-    </form>
-
-    <ul></ul>
-  </body>
-</html>
+<!-- {insertblock: '2'} -->
+<!-- Replace this Comment Line with the Code in the Step below! -->
+<!-- {insertblock: '3'} -->
 ```
 
 HTML controls the layout, but how do we control what happens when a user presses the 'add' button? This is done with javascript. But using raw javascript quickly becomes verbose, so to keep things concise we will use a popular tool called jQuery (there are other examples for tools, like React/Angular, as well). We also need a tool to store data, so we will include GUN as well.
 
-Insert the following as new lines between `<ul></ul>` and `</body>`:
+Insert the following as new lines between `<ul></ul>` and `</body>`, replacing the comment line:
 ```html
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
