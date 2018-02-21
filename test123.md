@@ -84,7 +84,7 @@ Insert the following as new lines between `<ul></ul>` and `</body>`, replacing t
       alert("Good job! You'll replace this line in the next step!");
     </script>
 <!-- {insertblock: '3'} -->
-<!-- {startblock: '5'} -->
+<!-- {endblock: '5'} -->
 ```
 <!-- {nextstepcompare: 'end'} -->
 
