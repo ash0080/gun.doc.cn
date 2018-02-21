@@ -35,8 +35,6 @@ What does this do? HTML is how we code the layout of a web page.
 
 Now, try changing the `h1` text in the editor from "Title" to the name of our app, "Thoughts".
 
-<!-- {nextstepcondition: {"code.notcontains": "<h1>Title</h1>"}} -->
-<!-- {nextstepcondition: {"code.contains": "<h1>Thoughts</h1>"}} -->
 <!-- {nextstepcompare: 'start'} -->
 ```
 <!-- {insertblock: '1'} -->
@@ -45,7 +43,9 @@ Now, try changing the `h1` text in the editor from "Title" to the name of our ap
 <!-- {insertblock: '3'} -->
 ```
 <!-- {nextstepcompare: 'end'} -->
-<!-- {step: 'two'} -->
+
+# _STEP_2
+
 ```html
 <!-- {codepen: 'link', tab1: 'codemirror'} -->
 <!-- {editor: 'main'} -->
@@ -74,9 +74,6 @@ Insert the following as new lines between `<ul></ul>` and `</body>`, replacing t
 - A function is just a fancy word for a reusable piece of code that does something when we call its name, such as `alert`.`
 - A semicolon `;` marks the end of a javascript sentence in the same way a period marks the end of a sentence.
 
-<!-- {nextstepcondition: {"code.contains": "<script src=\"https://code.jquery.com/jquery-1.11.3.min.js\"></script>"}} -->
-<!-- {nextstepcondition: {"code.contains": "<script src=\"https://cdn.jsdelivr.net/npm/gun/gun.js\"></script>"}} -->
-<!-- {nextstepcondition: {"code.contains": "alert(\"Good job! You'll replace this line in the next step!\")"}} -->
 <!-- {step: 'three'} -->
 
 This is step 3.
