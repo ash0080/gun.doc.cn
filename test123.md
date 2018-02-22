@@ -46,7 +46,7 @@ Now, try changing the `h1` text in the editor from "Title" to the name of our ap
 ```
 ::: {nextstepcompare: 'end'} :::
 
-# _STEP_2
+::: {step: '2'} :::
 
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
@@ -92,7 +92,7 @@ Insert the following as new lines between `<ul></ul>` and `</body>`, replacing t
 ```
 ::: {nextstepcompare: 'end'} :::
 
-# _STEP_3
+::: {step: '3'} :::
 
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
@@ -135,7 +135,7 @@ What's going on here?
 ```
 ::: {nextstepcompare: 'end'} :::
 
-# _STEP_4
+::: {step: '4'} :::
 
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
