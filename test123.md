@@ -130,10 +130,14 @@ What's going on here?
 ::: {startblock: '8'} :::
       $('form').on('submit', function(event){
         event.preventDefault();
+::: {endblock: '8'} :::
+::: {startblock: '9'} :::
         $("h4").text("We got your thought! " + $('input').val());
+::: {endblock: '9'} :::
+::: {startblock: '10'} :::
       });
 ::: {insertblock: '7'} :::
-::: {endblock: '8'} :::
+::: {endblock: '10'} :::
 ```
 ::: {nextstepcompare: 'end'} :::
 
@@ -144,12 +148,16 @@ What's going on here?
 ::: {editor: 'main'} :::
 ::: {insertblock: '5'} :::
 ::: {insertblock: '8'} :::
+::: {insertblock: '9'} :::
+::: {insertblock: '10'} :::
 ```
 
 Now that users can jot down their thoughts, we need a place to save them. Let's start using GUN for just that.
 
+Insert the next line before the `$('form').on` line:
+
 ```javascript
-var gun = Gun().get('thoughts');
+var gun = Gun().get('thoughts').set();
 ```
 
 - The `var`iable keyword tells javascript that we want to create a reference named `gun` that we can reuse.
@@ -159,11 +167,13 @@ var gun = Gun().get('thoughts');
 
 ::: {nextstepcompare: 'start'} :::
 ```
-::: {startblock: '9'} :::
+::: {startblock: 11'} :::
 ::: {insertblock: '5'} :::
       var gun = Gun().get('thoughts').set();
 ::: {insertblock: '8'} :::
-::: {endblock: '9'} :::
+::: {endblock: '11'} :::
+::: {insertblock: '9'} :::
+::: {insertblock: '10'} :::
 ```
 ::: {nextstepcompare: 'end'} :::
 
@@ -172,7 +182,38 @@ var gun = Gun().get('thoughts');
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
 ::: {editor: 'main'} :::
+::: {insertblock: '11'} :::
 ::: {insertblock: '9'} :::
+::: {insertblock: '10'} :::
 ```
 
-555
+Replace the message line in the submit function with the following:
+
+```javascript
+        gun.set($('input').val());
+        $('input').val("");
+```
+
+- We're telling gun to add the value of the input as an item in a `set` of thoughts.
+- Then we also want the input's `val`ue to become empty text, so we can add new thoughts later.
+
+::: {nextstepcompare: 'start'} :::
+```
+::: {startblock: 12'} :::
+::: {insertblock: '11'} :::
+        gun.set($('input').val());
+        $('input').val("");
+::: {insertblock: '10'} :::
+::: {endblock: '12'} :::
+```
+::: {nextstepcompare: 'end'} :::
+
+::: {step: '6'} :::
+
+```html
+::: {codepen: 'link', tab1: 'codemirror'} :::
+::: {editor: 'main'} :::
+::: {insertblock: '12'} :::
+```
+
+666
