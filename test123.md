@@ -187,33 +187,3 @@ var gun = Gun().get('thoughts').set();
 ::: {insertblock: '10'} :::
 ```
 
-Replace the message line in the submit function with the following:
-
-```javascript
-        gun.set($('input').val());
-        $('input').val("");
-```
-
-- We're telling gun to add the value of the input as an item in a `set` of thoughts.
-- Then we also want the input's `val`ue to become empty text, so we can add new thoughts later.
-
-::: {nextstepcompare: 'start'} :::
-```
-::: {startblock: 12'} :::
-::: {insertblock: '11'} :::
-        gun.set($('input').val());
-        $('input').val("");
-::: {insertblock: '10'} :::
-::: {endblock: '12'} :::
-```
-::: {nextstepcompare: 'end'} :::
-
-::: {step: '6'} :::
-
-```html
-::: {codepen: 'link', tab1: 'codemirror'} :::
-::: {editor: 'main'} :::
-::: {insertblock: '12'} :::
-```
-
-666
