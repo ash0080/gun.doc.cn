@@ -29,6 +29,7 @@ What does this do? HTML is how we code the layout of a web page.
 - We first must wrap all our code in an open and closing `html` tag so our computer knows it is a web page.
 - The `body` tag tells it to display the contents enclosed within.
 - `h1` is one of many semantic tags for declaring a title, others include `h2`, `h3` and so on of different sizes.
+- The `h4` does not yet do anything, but will be used in the next step.
 - A `form` is a container for getting information from a user.
 - Forms have `input`s which let the user type data in, it is a self-closing tag.
 - The `button` can be pressed, causing an action that we code to happen.
@@ -69,10 +70,10 @@ Insert the following as new lines between `<ul></ul>` and `</body>`, replacing t
 ```
 
 - The `script` tag tells the browser to use some javascript code, and `src` is where to load it from.
-- We can then test to see if our code worked with an `alert` message, which pops up and forces you to press ok.
+- We can then test to see if our code worked with a message, which will show up below the headline.
 - In javascript, we denote text by wrapping it inside quotation marks, double `""` or single `''`.
-- We instruct the computer to notify us with that text by calling the `alert` function using parenthesis `()`.
-- A function is just a fancy word for a reusable piece of code that does something when we call its name, such as `alert`.`
+- We instruct the computer to notify us with that text, by selecting where to show it (the `<h4></h4>` element) and setting it's content with the `text` function.
+- A function is just a fancy word for a reusable piece of code that does something when we call its name, such as `text`.`
 - A semicolon `;` marks the end of a javascript sentence in the same way a period marks the end of a sentence.
 
 ::: {nextstepcompare: 'start'} :::
@@ -103,18 +104,18 @@ Insert the following as new lines between `<ul></ul>` and `</body>`, replacing t
 ::: {insertblock: '7'} :::
 ```
 
-Wonderful! You should have gotten the alert message, this means writing code works! Let's replace the alert line entirely with code that responds to user input.
+Wonderful! You should have gotten the message, this means writing code works! Let's replace the message line entirely with code that responds to user input.
 
 ```html
       $('form').on('submit', function(event){
         event.preventDefault();
-        alert("We got your thought! " + $('input').val());
+        $("h4").text("We got your thought! " + $('input').val());
       });
 ```
 
 What's going on here?
 
-- jQuery is a function like `alert`, its name is `$` which can be called with parenthesis `()`.
+- jQuery brings a function with the name `$`, that can be called with parenthesis `()`.
 - Calling `$` with `form` as the input gives us a reference to the corresponding HTML form tag.
 - We then call `on` with two inputs. First the text name of an `event` we want to react to, and then a `function` we create.
   - Events are predefined ways we can interact with a user, such as `mousemove` or a `keypress`.
@@ -129,7 +130,7 @@ What's going on here?
 ::: {insertblock: '5'} :::
       $('form').on('submit', function(event){
         event.preventDefault();
-        alert("We got your thought! " + $('input').val());
+        $("h4").text("We got your thought! " + $('input').val());
       });
 ::: {insertblock: '7'} :::
 ::: {endblock: '8'} :::
