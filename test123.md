@@ -126,8 +126,8 @@ What's going on here?
 
 ::: {nextstepcompare: 'start'} :::
 ```
-::: {startblock: '8'} :::
 ::: {insertblock: '5'} :::
+::: {startblock: '8'} :::
       $('form').on('submit', function(event){
         event.preventDefault();
         $("h4").text("We got your thought! " + $('input').val());
@@ -145,4 +145,34 @@ What's going on here?
 ::: {insertblock: '8'} :::
 ```
 
-...step 4...
+Now that users can jot down their thoughts, we need a place to save them. Let's start using GUN for just that.
+
+```javascript
+var gun = Gun().get('thoughts');
+```
+
+- The `var`iable keyword tells javascript that we want to create a reference named `gun` that we can reuse.
+- We call `Gun` to start the database, which only needs to be done once per page load.
+- Now we want to open up a reference to some data, so we call `get` with the name of the data we want.
+- However, no data has been saved to `thoughts` yet! Let's fix that in the next step by using `gun`.
+
+::: {nextstepcompare: 'start'} :::
+```
+::: {startblock: '9'} :::
+::: {insertblock: '5'} :::
+::: {insertblock: '8'} :::
+      var gun = Gun().get('thoughts').set();
+::: {insertblock: '7'} :::
+::: {endblock: '9'} :::
+```
+::: {nextstepcompare: 'end'} :::
+
+::: {step: '5'} :::
+
+```html
+::: {codepen: 'link', tab1: 'codemirror'} :::
+::: {editor: 'main'} :::
+::: {insertblock: '9'} :::
+```
+
+555
