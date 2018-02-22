@@ -142,6 +142,7 @@ What's going on here?
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
 ::: {editor: 'main'} :::
+::: {insertblock: '5'} :::
 ::: {insertblock: '8'} :::
 ```
 
