@@ -143,6 +143,7 @@ What's going on here?
 ::: {codepen: 'link', tab1: 'codemirror'} :::
 ::: {editor: 'main'} :::
 ::: {insertblock: '5'} :::
+::: {insertblock: '5'} :::
 ::: {insertblock: '8'} :::
 ```
 
