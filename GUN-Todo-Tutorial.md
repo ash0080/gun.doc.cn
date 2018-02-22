@@ -7,8 +7,8 @@ Let's create a simple todo application with GUN.
 First let's create the html:
 
 ```html
-<!-- {codepen: 'link', tab1: 'codemirror'} -->
-<!-- {startblock: '1'} -->
+::: {codepen: 'link', tab1: 'codemirror'} :::
+::: {startblock: '1'} :::
 <html>
   <body>
     <h1>Todos</h1>
@@ -17,8 +17,8 @@ First let's create the html:
     
     <form><input><button>Add</button></form>
 
-<!-- {endblock: '1'} -->
-<!-- {startblock: '2'} -->
+::: {endblock: '1'} :::
+::: {startblock: '2'} :::
     <style>
       ul { padding: 0; }
       li { display: flex; }
@@ -29,7 +29,7 @@ First let's create the html:
     </style>
   </body>
 </html>
-<!-- {endblock: '2'} -->
+::: {endblock: '2'} :::
 ```
 
 Here, the `<ul></ul>` will be used by the JavaScript code will will soon create.
@@ -45,11 +45,11 @@ Next let's add GUN and make the form operational.
 At line 8 (after the form) let's insert this code:
 
 ```html
-<!-- {codepen: 'link', tab1: 'codemirror'} -->
-<!-- {startblock: '3'} -->
-<!-- {hide: 'start'} -->
-<!-- {insertblock: '1'} -->
-<!-- {hide: 'end'} -->
+::: {codepen: 'link', tab1: 'codemirror'} :::
+::: {startblock: '3'} :::
+::: {hide: 'start'} :::
+::: {insertblock: '1'} :::
+::: {hide: 'end'} :::
     <!-- Load GUN itself. -->
     <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
 
@@ -75,15 +75,15 @@ At line 8 (after the form) let's insert this code:
         event.preventDefault()
       })
 
-<!-- {endblock: '3'} -->
-<!-- {startblock: '4'} -->
+::: {endblock: '3'} :::
+::: {startblock: '4'} :::
     </script>
-<!-- {hide: 'start'} -->
+::: {hide: 'start'} :::
     
     <!-- Just some minimal styling. -->
-<!-- {insertblock: '2'} -->
-<!-- {hide: 'end'} -->
-<!-- {endblock: '4'} -->
+::: {insertblock: '2'} :::
+::: {hide: 'end'} :::
+::: {endblock: '4'} :::
 ```
 
 Here, we first load GUN itself.
@@ -101,11 +101,11 @@ Now we will show the list of all existing todos on the screen.
 At line 33 (before `</script>`) insert this code:
 
 ```html
-<!-- {codepen: 'link', tab1: 'codemirror'} -->
-<!-- {startblock: '5'} -->
-<!-- {hide: 'start'} -->
-<!-- {insertblock: '3'} -->
-<!-- {hide: 'end'} -->
+::: {codepen: 'link', tab1: 'codemirror'} :::
+::: {startblock: '5'} :::
+::: {hide: 'start'} :::
+::: {insertblock: '3'} :::
+::: {hide: 'end'} :::
       // Listen to any changes made to the GUN todos list.
       // This will be triggered each time the list changes.
       // And because of how GUN works, sometimes even multiple times per change.
@@ -124,20 +124,20 @@ At line 33 (before `</script>`) insert this code:
         // Does the GUN item contain any data?
         // (It sends null if it was removed from GUN.)
         if (todo) {
-<!-- {endblock: '5'} -->
+::: {endblock: '5'} :::
           // Create an element with the title of the GUN item in it.
           var html = todo.title
-<!-- {startblock: '6'} -->
+::: {startblock: '6'} :::
           // Set it to the element.
           li.html(html)
-<!-- {endblock: '6'} -->
-<!-- {startblock: '6a'} -->
+::: {endblock: '6'} :::
+::: {startblock: '6a'} :::
         }
       })
-<!-- {endblock: '6a'} -->
-<!-- {hide: 'start'} -->
-<!-- {insertblock: '4'} -->
-<!-- {hide: 'end'} -->
+::: {endblock: '6a'} :::
+::: {hide: 'start'} :::
+::: {insertblock: '4'} :::
+::: {hide: 'end'} :::
 ```
 
 By doing `todos.map().on(function (todo, id)` we tell GUN we want to listen to any and all changes at the todo list. GUN will call this function for each todo that is already in the list. And it will also call this function whenever a todo is added (by `set`).
@@ -159,20 +159,20 @@ Change line 53 (`var html = todo.title`).
 And add 2 new functions before line 59 (`</script>`):
 
 ```html
-<!-- {codepen: 'link', tab1: 'codemirror'} -->
-<!-- {startblock: '7'} -->
-<!-- {hide: 'start'} -->
-<!-- {insertblock: '5'} -->
-<!-- {hide: 'end'} -->
+::: {codepen: 'link', tab1: 'codemirror'} :::
+::: {startblock: '7'} :::
+::: {hide: 'start'} :::
+::: {insertblock: '5'} :::
+::: {hide: 'end'} :::
           // Create an element with the title of the GUN item in it.
           var html = '<span onclick="clickTitle(this)">' + todo.title + '</span>'
-<!-- {endblock: '7'} -->
-<!-- {hide: 'start'} -->
-<!-- {insertblock: '6'} -->
-<!-- {insertblock: '6a'} -->
-<!-- {startblock: '8'} -->
+::: {endblock: '7'} :::
+::: {hide: 'start'} :::
+::: {insertblock: '6'} :::
+::: {insertblock: '6a'} :::
+::: {startblock: '8'} :::
 
-<!-- {hide: 'end'} -->
+::: {hide: 'end'} :::
       // What to do when a todo's text is clicked.
       function clickTitle (element) {
         // Get the (jQuery) element of the text.
@@ -194,10 +194,10 @@ And add 2 new functions before line 59 (`</script>`):
           todos.get(element.parentNode.parentNode.id).put({title: element.value})
         }
       }
-<!-- {endblock: '8'} -->
-<!-- {hide: 'start'} -->
-<!-- {insertblock: '4'} -->
-<!-- {hide: 'end'} -->
+::: {endblock: '8'} :::
+::: {hide: 'start'} :::
+::: {insertblock: '4'} :::
+::: {hide: 'end'} :::
 ```
 
 When a todo item is clicked, we turn it into an `input` so the user can change the text.
@@ -223,20 +223,20 @@ After line 53 (`var html = ....`) add a few lines for the checkbox.
 And add a new function before line 80 (`</script>`):
 
 ```html
-<!-- {codepen: 'link', tab1: 'codemirror'} -->
-<!-- {startblock: '9'} -->
-<!-- {hide: 'start'} -->
-<!-- {insertblock: '7'} -->
-<!-- {hide: 'end'} -->
+::: {codepen: 'link', tab1: 'codemirror'} :::
+::: {startblock: '9'} :::
+::: {hide: 'start'} :::
+::: {insertblock: '7'} :::
+::: {hide: 'end'} :::
           // Add a checkbox in front and check it if the GUN item has a done state.
           html = '<input type="checkbox" onclick="clickCheck(this)" ' + (todo.done ? 'checked' : '') + '>' + html
-<!-- {endblock: '9'} -->
-<!-- {hide: 'start'} -->
-<!-- {insertblock: '6'} -->
-<!-- {insertblock: '6a'} -->
-<!-- {startblock: '10'} -->
-<!-- {insertblock: '8'} -->
-<!-- {hide: 'end'} -->
+::: {endblock: '9'} :::
+::: {hide: 'start'} :::
+::: {insertblock: '6'} :::
+::: {insertblock: '6a'} :::
+::: {startblock: '10'} :::
+::: {insertblock: '8'} :::
+::: {hide: 'end'} :::
       
       // What to do when a checkbox is clicked.
       function clickCheck (element) {
@@ -245,10 +245,10 @@ And add a new function before line 80 (`</script>`):
         // GUN will only change the done property of the item and leaves the other properties (like title) intact.
         todos.get(element.parentNode.id).put({done: element.checked})
       }
-<!-- {endblock: '10'} -->
-<!-- {hide: 'start'} -->
-<!-- {insertblock: '4'} -->
-<!-- {hide: 'end'} -->
+::: {endblock: '10'} :::
+::: {hide: 'start'} :::
+::: {insertblock: '4'} :::
+::: {hide: 'end'} :::
 ```
 
 We add a `<input type="checkbox">` in front of the title and give it the done state of the todo item we got from GUN. Of course no existing todo had this todo property just yet, but that is fine.
@@ -268,24 +268,24 @@ Also after line 57 (`li.html(html)`) add a few lines for removing the todo's `li
 And add a new function before line 90 (`</script>`):
 
 ```html
-<!-- {codepen: 'link', tab1: 'codemirror'} -->
-<!-- {startblock: '11'} -->
-<!-- {hide: 'start'} -->
-<!-- {insertblock: '9'} -->
-<!-- {hide: 'end'} -->
+::: {codepen: 'link', tab1: 'codemirror'} :::
+::: {startblock: '11'} :::
+::: {hide: 'start'} :::
+::: {insertblock: '9'} :::
+::: {hide: 'end'} :::
           // Add a trashcan icon and make it clickable.
           html += '<img onclick="clickDelete(this)" src="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/svgs/fi-x.svg"/>'
-<!-- {hide: 'start'} -->
-<!-- {insertblock: '6'} -->
-<!-- {hide: 'end'} -->
+::: {hide: 'start'} :::
+::: {insertblock: '6'} :::
+::: {hide: 'end'} :::
         } else {
           // The item was removed from GUN, because we got null.
           // Delete it from the screen.
           li.remove()
-<!-- {hide: 'start'} -->
-<!-- {insertblock: '6a'} -->
-<!-- {insertblock: '10'} -->
-<!-- {hide: 'end'} -->
+::: {hide: 'start'} :::
+::: {insertblock: '6a'} :::
+::: {insertblock: '10'} :::
+::: {hide: 'end'} :::
 
       // What to do when a trashcan is clicked.
       function clickDelete (element) {
@@ -293,10 +293,10 @@ And add a new function before line 90 (`</script>`):
         // This is because of how graph databases, like GUN, work internally.
         todos.get(element.parentNode.id).put(null)
       }
-<!-- {hide: 'start'} -->
-<!-- {insertblock: '4'} -->
-<!-- {hide: 'end'} -->
-<!-- {endblock: '11'} -->
+::: {hide: 'start'} :::
+::: {insertblock: '4'} :::
+::: {hide: 'end'} :::
+::: {endblock: '11'} :::
 ```
 
 In a distributed graph database, like GUN, data can not literally be deleted. Hence GUN does not provide a `delete` function. What you need to do is overwrite the old value with `null`.
@@ -322,6 +322,6 @@ So you have now created an offline-first real-time multi-user todo app with GUN.
 As a final review, here is the full code of the GUN todo app we just created:
 
 ```html
-<!-- {codepen: 'link', tab1: 'codemirror'} -->
-<!-- {insertblock: '11'} -->
+::: {codepen: 'link', tab1: 'codemirror'} :::
+::: {insertblock: '11'} :::
 ```
