@@ -10,8 +10,8 @@ So what are the requirements? The ability to add a note, read our notes, and to 
   <body>
 ::: {endblock: '1'} :::
     <h1>Title</h1>
-    <h4></h4>
 ::: {startblock: '2'} :::
+    <h4></h4>
 
     <form>
       <input><button>Add</button>
