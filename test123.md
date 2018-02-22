@@ -199,7 +199,7 @@ Replace the message line in the submit function with the following:
 
 ::: {nextstepcompare: 'start'} :::
 ```
-::: {startblock: 12'} :::
+::: {startblock: '12'} :::
 ::: {insertblock: '11'} :::
         gun.set($('input').val());
         $('input').val("");
