@@ -10,6 +10,7 @@ So what are the requirements? The ability to add a note, read our notes, and to 
   <body>
 ::: {endblock: '1'} :::
     <h1>Title</h1>
+    <h4></h4>
 ::: {startblock: '2'} :::
 
     <form>
@@ -63,7 +64,7 @@ Insert the following as new lines between `<ul></ul>` and `</body>`, replacing t
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
     <script>
-      alert("Good job! You'll replace this line in the next step!");
+      $("h4").("Good job! You'll replace this line in the next step!");
     </script>
 ```
 
@@ -83,7 +84,7 @@ Insert the following as new lines between `<ul></ul>` and `</body>`, replacing t
     <script>
 ::: {endblock: '5'} :::
 ::: {startblock: '6'} :::
-      alert("Good job! You'll replace this line in the next step!");
+      $("h4").("Good job! You'll replace this line in the next step!");
 ::: {endblock: '6'} :::
 ::: {startblock: '7'} :::
     </script>
