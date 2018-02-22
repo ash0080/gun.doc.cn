@@ -64,7 +64,7 @@ Insert the following as new lines between `<ul></ul>` and `</body>`, replacing t
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
     <script>
-      $("h4").("Good job! You'll replace this line in the next step!");
+      $("h4").text("Good job! You'll replace this line in the next step!");
     </script>
 ```
 
@@ -84,7 +84,7 @@ Insert the following as new lines between `<ul></ul>` and `</body>`, replacing t
     <script>
 ::: {endblock: '5'} :::
 ::: {startblock: '6'} :::
-      $("h4").("Good job! You'll replace this line in the next step!");
+      $("h4").text("Good job! You'll replace this line in the next step!");
 ::: {endblock: '6'} :::
 ::: {startblock: '7'} :::
     </script>
