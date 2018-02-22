@@ -136,8 +136,8 @@ What's going on here?
 ::: {endblock: '9'} :::
 ::: {startblock: '10'} :::
       });
-::: {insertblock: '7'} :::
 ::: {endblock: '10'} :::
+::: {insertblock: '7'} :::
 ```
 ::: {nextstepcompare: 'end'} :::
 
@@ -150,6 +150,7 @@ What's going on here?
 ::: {insertblock: '8'} :::
 ::: {insertblock: '9'} :::
 ::: {insertblock: '10'} :::
+::: {insertblock: '7'} :::
 ```
 
 Now that users can jot down their thoughts, we need a place to save them. Let's start using GUN for just that.
@@ -174,6 +175,7 @@ var gun = Gun().get('thoughts').set();
 ::: {endblock: '11'} :::
 ::: {insertblock: '9'} :::
 ::: {insertblock: '10'} :::
+::: {insertblock: '7'} :::
 ```
 ::: {nextstepcompare: 'end'} :::
 
@@ -185,6 +187,7 @@ var gun = Gun().get('thoughts').set();
 ::: {insertblock: '11'} :::
 ::: {insertblock: '9'} :::
 ::: {insertblock: '10'} :::
+::: {insertblock: '7'} :::
 ```
 
 Replace the message line in the submit function with the following:
@@ -205,6 +208,7 @@ Replace the message line in the submit function with the following:
         $('input').val("");
 ::: {insertblock: '10'} :::
 ::: {endblock: '12'} :::
+::: {insertblock: '7'} :::
 ```
 ::: {nextstepcompare: 'end'} :::
 
@@ -214,6 +218,55 @@ Replace the message line in the submit function with the following:
 ::: {codepen: 'link', tab1: 'codemirror'} :::
 ::: {editor: 'main'} :::
 ::: {insertblock: '12'} :::
+::: {insertblock: '7'} :::
 ```
 
-666
+Fantastic! Now that we can successfully store data, we want show the data! Replace the comment line in the editor with the following:
+
+```javascript
+      gun.map().on(function(thought, id){
+        var li = $('#' + id).get(0) || $('<li>').attr('id', id).appendTo('ul');
+        if(thought){
+          $(li).text(thought);
+        } else {
+          $(li).hide();
+        }
+      });
+```
+
+- `map` tells gun to get each item in the set, one at a time, to do something with it.
+- What we do is the same as $'s `on`, which reacts to events. So does gun, it responds to any update on 'thoughts'.
+- We get the `thought` value itself and a unique `id`entifier for the item in the set.
+- This next line looks scary, but read it like this, "make `var`iable `li` equal to X or Y".
+  - The X part asks `$` to find the `id` in the HTML and `get` it.
+  - In javascript, `||` means 'or', such that javascript will use X if it exist or it will use Y.
+  - The Y part asks `$` to create a new `&lt;li&gt;` HTML tag, set its `id` `attr`ibute to our id and `append` it to the end of the HTML `ul` list.
+- Finally, the javascript `if` statement either asks `$` to make `thought` be the text of the `li` if thought exists, `else` hide the `li` from being displayed.
+- Altogether it says "Create or reuse the HTML list item and make sure it is in the HTML list, then update the text or hide the item if there is no text".
+
+::: {nextstepcompare: 'start'} :::
+```
+::: {startblock: '13'} :::
+::: {insertblock: '12'} :::
+      gun.map().on(function(thought, id){
+        var li = $('#' + id).get(0) || $('<li>').attr('id', id).appendTo('ul');
+        if(thought){
+          $(li).text(thought);
+        } else {
+          $(li).hide();
+        }
+      });
+::: {insertblock: '7'} :::
+::: {endblock: '13'} :::
+```
+::: {nextstepcompare: 'end'} :::
+
+::: {step: '7'} :::
+
+```html
+::: {codepen: 'link', tab1: 'codemirror'} :::
+::: {editor: 'main'} :::
+::: {insertblock: '13'} :::
+```
+
+777
