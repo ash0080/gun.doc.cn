@@ -116,9 +116,9 @@ What's going on here?
 - jQuery is a function like `alert`, its name is `$` which can be called with parenthesis `()`.
 - Calling `$` with `form` as the input gives us a reference to the corresponding HTML form tag.
 - We then call `on` with two inputs. First the text name of an `event` we want to react to, and then a `function` we create.
-..- Events are predefined ways we can interact with a user, such as `mousemove` or a `keypress`.
-..- We use `submit` because it responds to both a button `click` and hitting enter on a form.
-..- Our `function` will get called with the `event` every time the user does that action, allowing us to react to their input.
+  - Events are predefined ways we can interact with a user, such as `mousemove` or a `keypress`.
+  - We use `submit` because it responds to both a button `click` and hitting enter on a form.
+  - Our `function` will get called with the `event` every time the user does that action, allowing us to react to their input.
 - The default behavior of a form is to cause the browser to change pages which is annoying, we prevent that by calling `preventDefault` on the `event`.
 - Finally, calling `$` with `input` will reference the HTML input tag which we then call `val` on, giving us the text the user typed in.
 
