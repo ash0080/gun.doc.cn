@@ -157,7 +157,7 @@ What's going on here?
 Now that users can jot down their thoughts, we need a place to save them. Let's start using GUN for just that.
 
 ```javascript
-var gun = Gun().get('thoughts').set();
+var gun = Gun().get('thoughts');
 ```
 
 - The `var`iable keyword tells javascript that we want to create a reference named `gun` that we can reuse.
@@ -169,7 +169,7 @@ var gun = Gun().get('thoughts').set();
 ```
 ::: {startblock: '11'} :::
 ::: {insertblock: '5'} :::
-      var gun = Gun().get('thoughts').set();
+      var gun = Gun().get('thoughts');
 ::: {insertblock: '8'} :::
 ::: {endblock: '11'} :::
 ::: {insertblock: '9'} :::
