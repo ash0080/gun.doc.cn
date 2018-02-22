@@ -147,6 +147,7 @@ What's going on here?
 ::: {codepen: 'link', tab1: 'codemirror'} :::
 ::: {editor: 'main'} :::
 ::: {insertblock: '5'} :::
+/* Replace this Comment Line with the Code in the Step below! */
 ::: {insertblock: '8'} :::
 ::: {insertblock: '9'} :::
 ::: {insertblock: '10'} :::
@@ -154,8 +155,6 @@ What's going on here?
 ```
 
 Now that users can jot down their thoughts, we need a place to save them. Let's start using GUN for just that.
-
-Insert the next line before the `$('form').on` line:
 
 ```javascript
 var gun = Gun().get('thoughts').set();
@@ -218,6 +217,7 @@ Replace the message line in the submit function with the following:
 ::: {codepen: 'link', tab1: 'codemirror'} :::
 ::: {editor: 'main'} :::
 ::: {insertblock: '12'} :::
+/* Replace this Comment Line with the Code in the Step below! */
 ::: {insertblock: '7'} :::
 ```
 
@@ -256,8 +256,8 @@ Fantastic! Now that we can successfully store data, we want show the data! Repla
           $(li).hide();
         }
       });
-::: {insertblock: '7'} :::
 ::: {endblock: '13'} :::
+::: {insertblock: '7'} :::
 ```
 ::: {nextstepcompare: 'end'} :::
 
@@ -267,6 +267,46 @@ Fantastic! Now that we can successfully store data, we want show the data! Repla
 ::: {codepen: 'link', tab1: 'codemirror'} :::
 ::: {editor: 'main'} :::
 ::: {insertblock: '13'} :::
+/* Replace this Comment Line with the Code in the Step below! */
+::: {insertblock: '7'} :::
 ```
 
-777
+Finally we want to be able to clear off our thoughts when we are done with them. The interface for this could be done in many different ways, but for simplicity we will use a double tap as the gesture to clear it off. Replace the comment line in the editor with this code.
+
+```javascript
+      $('body').on('dblclick', 'li', function(event){
+        gun.get(this.id).put(null);
+      });
+```
+
+- In order to react to any `dblclick` event rather than a specific one, we call `on` on the page's `body` as a whole.
+- But we want to filter the events to ones that happened only on any `li` tag. Fortunately, we can call `on` with an optional second input of `li` which does just that.
+- Inside a `function` we get a special `this` keyword in javascript, which `$` uses as a reference to the original HTML tag that caused the event.
+- Calling `get` tells `gun` to filter its data to just the `id` of the thought we want to clear off.
+- Then calling `put` on that tells gun to update that thought to `null`, so we no longer have the thought.
+- And whenever an update happens, `gun`'s `on` function from the previous step gets called again, which then hides the corresponding HTML list item.
+
+::: {nextstepcompare: 'start'} :::
+```
+::: {startblock: '14'} :::
+::: {insertblock: '13'} :::
+      $('body').on('dblclick', 'li', function(event){
+        gun.get(this.id).put(null);
+      });
+::: {insertblock: '7'} :::
+::: {endblock: '14'} :::
+```
+::: {nextstepcompare: 'end'} :::
+
+::: {step: '8'} :::
+
+```html
+::: {codepen: 'link', tab1: 'codemirror'} :::
+::: {editor: 'main'} :::
+::: {insertblock: '14'} :::
+```
+
+Congratulations! You are all done, you have built your first GUN app!
+
+In the next tutorial we will use GUN to synchronize data in realtime across multiple devices. We'll start by copying the app we made here and modifying it to become a chat app.
+
