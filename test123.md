@@ -161,9 +161,8 @@ var gun = Gun().get('thoughts');
 ```
 ::: {startblock: '9'} :::
 ::: {insertblock: '5'} :::
-::: {insertblock: '8'} :::
       var gun = Gun().get('thoughts').set();
-::: {insertblock: '7'} :::
+::: {insertblock: '8'} :::
 ::: {endblock: '9'} :::
 ```
 ::: {nextstepcompare: 'end'} :::
