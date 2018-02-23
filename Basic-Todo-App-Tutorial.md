@@ -105,47 +105,49 @@ Finally we handle what happens when the user clicks the `Add` button. The key li
 
 Now we will show the list of all existing todos on the screen.
 
-At line 33 (before `</script>`) insert this code:
-
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
-::: {startblock: '5'} :::
-::: {hide: 'start'} :::
+::: {editor: 'main'} :::
+::: {codepen: 'link', tab1: 'codemirror'} :::
 ::: {insertblock: '3'} :::
-::: {hide: 'end'} :::
-      // Listen to any changes made to the GUN todos list.
-      // This will be triggered each time the list changes.
-      // And because of how GUN works, sometimes even multiple times per change.
+<!-- Insert here -->
+::: {insertblock: '4'} :::
+```
+
+Replace the `insert here` line with this code:
+
+```javascript
+::: {startblock: '5'} :::
+::: {insertblock: '3'} :::
       todos.map().on(function (todo, id) {
-        // Check if the todo element already exists.
-        // This can happen because GUN sometimes sends mulitple change events for the same item.
         var li = $('#' + id)
-        // Does is not yet exist?
         if (!li.get(0)) {
-          // Create it.
-          // Set the id to the GUN id of the item.
-          // GUN automatically creates id's for all items.
-          // Finally set the new todo element to the end of the list.
           li = $('<li>').attr('id', id).appendTo('ul')
         }
-        // Does the GUN item contain any data?
-        // (It sends null if it was removed from GUN.)
         if (todo) {
 ::: {endblock: '5'} :::
-          // Create an element with the title of the GUN item in it.
+::: {startblock: '5a'} :::
           var html = todo.title
+::: {endblock: '5a'} :::
 ::: {startblock: '6'} :::
-          // Set it to the element.
           li.html(html)
 ::: {endblock: '6'} :::
 ::: {startblock: '6a'} :::
         }
       })
 ::: {endblock: '6a'} :::
-::: {hide: 'start'} :::
 ::: {insertblock: '4'} :::
-::: {hide: 'end'} :::
 ```
+
+::: {nextstepcompare: 'start'} :::
+```
+::: {insertblock: '5'} :::
+::: {insertblock: '5a'} :::
+::: {insertblock: '6'} :::
+::: {insertblock: '6a'} :::
+::: {insertblock: '4'} :::
+```
+::: {nextstepcompare: 'end'} :::
 
 By doing `todos.map().on(function (todo, id)` we tell GUN we want to listen to any and all changes at the todo list. GUN will call this function for each todo that is already in the list. And it will also call this function whenever a todo is added (by `set`).
 
