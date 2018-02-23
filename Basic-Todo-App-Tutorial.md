@@ -87,7 +87,7 @@ Replace the `insert here` line with this code:
 ::: {insertblock: '2'} :::
 ::: {endblock: '4'} :::
 ```
-::: {nextstepcompare: 'start'} :::
+::: {nextstepcompare: 'end'} :::
 
 Here, we first load GUN itself.
 
