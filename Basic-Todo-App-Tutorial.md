@@ -68,7 +68,7 @@ Replace the `insert here` line with this code:
         var input = form.find('input')
         todos.set({title: input.val()})
         input.val('')
-        event.preventDefault()
+        return false
       })
 
 ::: {endblock: 'a'} :::
@@ -313,12 +313,6 @@ Finally let's add some functionality for delete todo's.
 // Insert here also
 ::: {insertblock: '4'} :::
 ```
-
-After line 55 (`html = ....`) add a few lines for the trashcan.
-
-Also after line 57 (`li.html(html)`) add a few lines for removing the todo's `li`.
-
-And add a new function before line 90 (`</script>`):
 
 Replace the `Insert here first` line with this line:
 
