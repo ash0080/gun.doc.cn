@@ -114,7 +114,7 @@ Now we will show the list of all existing todos on the screen.
 ::: {insertblock: '4'} :::
 ```
 
-Replace the `insert here` line with this code:
+Replace the `Insert here` line with this code:
 
 ```javascript
 ::: {startblock: 'c'} :::
@@ -166,50 +166,57 @@ We can now test our changes. Type something in the `input` and click `Add`. The 
 
 Now we will make each todo editable.
 
-Change line 53 (`var text = todo.title`).
-
-And add 2 new functions before line 59 (`</script>`):
-
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
-::: {startblock: '7'} :::
-::: {hide: 'start'} :::
+::: {editor: 'main'} :::
 ::: {insertblock: '5'} :::
-::: {hide: 'end'} :::
-          // Create an element with the title of the GUN item in it.
-          var html = '<span onclick="clickTitle(this)">' + todo.title + '</span>'
-::: {endblock: '7'} :::
-::: {hide: 'start'} :::
+::: {insertblock: 'd'} :::
 ::: {insertblock: '6'} :::
 ::: {insertblock: '6a'} :::
-::: {startblock: '8'} :::
+// Insert here
+::: {insertblock: '4'} :::
+```
 
-::: {hide: 'end'} :::
-      // What to do when a todo's text is clicked.
+Change line the line `var html = todo.title` to:
+
+```javascript
+::: {startblock: 'e'} :::
+          var html = '<span onclick="clickTitle(this)">' + todo.title + '</span>'
+::: {endblock: 'e'} :::
+```
+
+Replace the `Insert here` line with these two functions:
+
+```javascript
+::: {startblock: 'f'} :::
       function clickTitle (element) {
-        // Get the (jQuery) element of the text.
         element = $(element)
-        // Check if the element does not yet contain an input field.
-        // So we will only add one input field when clicked multiple times.
         if (!element.find('input').get(0)) {
-          // Turn the elements text into an input.
           element.html('<input value="' + element.html() + '" onkeyup="keypressTitle(this)">')
         }
       }
       
-      // What to do when Enter is pressed while editing a todo.
       function keypressTitle (element) {
-        // Is Enter pressed?
         if (event.keyCode === 13) {
-          // Get the GUN item with the id that we store in the element.
-          // And tell GUN to update the title of the todo item.
           todos.get($(element).parent().parent().attr('id')).put({title: $(element).val()})
         }
       }
+::: {endblock: 'f'} :::
+```
+
+```html
+::: {codepen: 'link', tab1: 'codemirror'} :::
+::: {startblock: '7'} :::
+::: {insertblock: '5'} :::
+::: {insertblock: 'e'} :::
+::: {endblock: '7'} :::
+::: {insertblock: '6'} :::
+::: {insertblock: '6a'} :::
+::: {startblock: '8'} :::
+::: {startblock: '7'} :::
+::: {insertblock: 'f'} :::
 ::: {endblock: '8'} :::
-::: {hide: 'start'} :::
 ::: {insertblock: '4'} :::
-::: {hide: 'end'} :::
 ```
 
 When a todo item is clicked, we turn it into an `input` so the user can change the text.
@@ -225,6 +232,8 @@ Finally `put({title: $(element).val()})` will change the title of the todo.
 Notice that for inserting a todo in the todos list we used `set`, whereas now we use `put`. The difference is that `set` will add a todo to the todo list (similar to `push` for arrays, though not the same; see the documentation for `set`), but `put` is done for one specific item (node); not on a list.
 
 We can now try editing a todo by clicking it, changing the text and pressing the `Enter` key.
+
+::: {step: 'Add a done state'} :::
 
 ## Add a done state
 
