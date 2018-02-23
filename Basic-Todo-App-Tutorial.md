@@ -207,7 +207,6 @@ And replace the `Insert here` line with these two functions:
 
 ::: {nextstepcompare: 'start'} :::
 ```html
-::: {codepen: 'link', tab1: 'codemirror'} :::
 ::: {startblock: '7'} :::
 ::: {insertblock: '5'} :::
 ::: {insertblock: 'e'} :::
