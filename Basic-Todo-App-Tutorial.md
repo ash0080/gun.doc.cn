@@ -159,6 +159,8 @@ Then each time a 'new' todo is received we can check if we already have a `li` e
 
 We can now test our changes. Type something in the `input` and click `Add`. The new todo should then be shown on the screen.
 
+::: {step: 'Edit todos'} :::
+
 ## Edit todos
 
 Now we will make each todo editable.
