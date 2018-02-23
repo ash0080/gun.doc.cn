@@ -65,10 +65,10 @@ Replace the `insert here` line with this code:
       var todos = Gun().get('todos')
       
       $('form').on('submit', function (event) {
-        var input = form.find('input')
+        var input = $('form').find('input')
         todos.set({title: input.val()})
         input.val('')
-        return false
+        event.preventDefault()
       })
 
 ::: {endblock: 'a'} :::
