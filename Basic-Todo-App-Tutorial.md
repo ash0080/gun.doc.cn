@@ -36,7 +36,7 @@ Here, the `<ul></ul>` will be used by the JavaScript code will will soon create.
 
 The `<form>` will be used to add new todos.
 
-You can ignored the `<style>` tag. This just contains some simple styling of (future) things on the page.
+You can ignore the `<style>` tag. This just contains some simple styling of (future) things on the page.
 
 ::: {nextstepcompare: 'none'} :::
 ::: {step: 'Add GUN'} :::
@@ -45,49 +45,49 @@ You can ignored the `<style>` tag. This just contains some simple styling of (fu
 
 Next let's add GUN and make the form operational.
 
-At line 8 (after the form) let's insert this code:
-
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
-::: {startblock: '3'} :::
-::: {hide: 'start'} :::
 ::: {insertblock: '1'} :::
-::: {hide: 'end'} :::
-    <!-- Load GUN itself. -->
+<!-- Insert here -->
+::: {insertblock: '2'} :::
+```
+
+Replace the `insert here` line with this code:
+
+```html
+::: {startblock: 'a'} :::
     <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
-
-    <!-- Load jQuery to help make things a bit easier. -->
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-
     <script>
-      // Initialize GUN and tell it we will be storing all data under the key 'todos'.
       var todos = Gun().get('todos')
       
-      // Get the form element.
-      var form = $('form')
-      // Listen for submits of the form.
-      form.on('submit', function (event) {
-        // Get the input element.
+      $('form').on('submit', function (event) {
         var input = form.find('input')
-        // Tell GUN to store an object,
-        // with as title the value of the input element.
         todos.set({title: input.val()})
-        // Clear the input element, so the user is free to enter more todos.
         input.val('')
-        // Prevent default form submit handling.
         event.preventDefault()
       })
 
+::: {endblock: 'a'} :::
+::: {startblock: 'b'} :::
+    </script>
+::: {endblock: 'a'} :::
+```
+
+::: {nextstepcompare: 'start'} :::
+```html
+::: {codepen: 'link', tab1: 'codemirror'} :::
+::: {startblock: '3'} :::
+::: {insertblock: '1'} :::
+::: {insertblock: 'a'} :::
 ::: {endblock: '3'} :::
 ::: {startblock: '4'} :::
-    </script>
-::: {hide: 'start'} :::
+::: {insertblock: 'b'} :::
     
-    <!-- Just some minimal styling. -->
 ::: {insertblock: '2'} :::
-::: {hide: 'end'} :::
 ::: {endblock: '4'} :::
 ```
+::: {nextstepcompare: 'start'} :::
 
 Here, we first load GUN itself.
 
@@ -96,6 +96,8 @@ Then we initialize GUN and tell it we will place all data under the key `todos`.
 Finally we handle what happens when the user clicks the `Add` button. The key line is `todos.set({title: input.val()})`. Here we tell GUN to store our object. In GUN we use `set()` to store values in a list (set, array). So this object is added by GUN to the list of todos.
 
 >When you run the code, type something in the input and click the `Add` button, it is already stored by GUN. But we will not yet see it appear. We will fix that in the next step.
+
+::: {step: 'Show the todos'} :::
 
 ## Show the todos
 
