@@ -68,7 +68,7 @@ At line 8 (after the form) let's insert this code:
         var input = form.querySelector('input')
         // Tell GUN to store an object,
         // with as title the value of the input element and a done flag set to false.
-        todos.set({title: input.value, done: false})
+        todos.set({title: input.value})
         // Clear the input element, so the user is free to enter more todos.
         input.value = ''
         // Prevent default form submit handling.
@@ -154,7 +154,7 @@ We can now test our changes. Type something in the `input` and click `Add`. The 
 
 Now we will make each todo editable.
 
-Change line 53 (`var html = todo.title`).
+Change line 53 (`var text = todo.title`).
 
 And add 2 new functions before line 59 (`</script>`):
 
@@ -191,7 +191,7 @@ And add 2 new functions before line 59 (`</script>`):
         if (event.keyCode === 13) {
           // Get the GUN item with the id that we store in the element.
           // And tell GUN to update the title of the todo item.
-          todos.get(element.parentNode.parentNode.id).put({title: element.value})
+          todos.get($(element).parent().parent().attr('id')).put({title: element.value})
         }
       }
 ::: {endblock: '8'} :::
@@ -202,9 +202,9 @@ And add 2 new functions before line 59 (`</script>`):
 
 When a todo item is clicked, we turn it into an `input` so the user can change the text.
 
-Then we wait for the user to press the `Enter` key. When he/she/it :-) does, we will tell GUN store the new text. This happens here: `todos.get(element.parentNode.parentNode.id).put({title: element.value})`.
+Then we wait for the user to press the `Enter` key. When he/she/it :-) does, we will tell GUN store the new text. This happens here: `todos.get($(element).parent().parent().attr('id')).put({title: element.value})`.
 
-`element.parentNode.parentNode.id` simply gets the `id` that we stored in the `li` element.
+`$(element).parent().parent().attr('id')` simply gets the `id` that we stored in the `li` element.
 
 `todos.get(....id)` tells GUN we want to use the todo with that specific `id`.
 
@@ -243,7 +243,7 @@ And add a new function before line 80 (`</script>`):
         // Set the done state of the GUN todo item.
         // Notice that we do not need to put the full object (including it's title state).
         // GUN will only change the done property of the item and leaves the other properties (like title) intact.
-        todos.get(element.parentNode.id).put({done: element.checked})
+        todos.get($(element).parent().attr('id')).put({done: $(element).prop('checked')})
       }
 ::: {endblock: '10'} :::
 ::: {hide: 'start'} :::
@@ -291,7 +291,7 @@ And add a new function before line 90 (`</script>`):
       function clickDelete (element) {
         // In GUN the way to delete an item, is to set it's value to null.
         // This is because of how graph databases, like GUN, work internally.
-        todos.get(element.parentNode.id).put(null)
+        todos.get($(element).parent().attr('id')).put(null)
       }
 ::: {hide: 'start'} :::
 ::: {insertblock: '4'} :::
@@ -301,7 +301,7 @@ And add a new function before line 90 (`</script>`):
 
 In a distributed graph database, like GUN, data can not literally be deleted. Hence GUN does not provide a `delete` function. What you need to do is overwrite the old value with `null`.
 
-So here with `todos.get(element.parentNode.id).put(null)`, whenever the user clicks the trashcan we overwrite the old todo item with `null`.
+So here with `todos.get($(element).parent().attr('id')).put(null)`, whenever the user clicks the trashcan we overwrite the old todo item with `null`.
 
 This will trigger the function in `todos.map().on(function (todo, id)`, but instead of a new or changed todo object, `todo` will now be `null`. So we know we must now delete the `li` instead of change it's content.
 
