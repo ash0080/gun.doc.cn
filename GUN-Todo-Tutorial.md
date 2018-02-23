@@ -61,16 +61,16 @@ At line 8 (after the form) let's insert this code:
       var todos = Gun().get('todos')
       
       // Get the form element.
-      var form = document.querySelector('form')
+      var form = $('form')
       // Listen for submits of the form.
-      form.addEventListener('submit', function (event) {
+      form.on('submit', function (event) {
         // Get the input element.
-        var input = form.querySelector('input')
+        var input = form.find('input')
         // Tell GUN to store an object,
-        // with as title the value of the input element and a done flag set to false.
-        todos.set({title: input.value})
+        // with as title the value of the input element.
+        todos.set({title: input.val()})
         // Clear the input element, so the user is free to enter more todos.
-        input.value = ''
+        input.val('')
         // Prevent default form submit handling.
         event.preventDefault()
       })
@@ -90,9 +90,9 @@ Here, we first load GUN itself.
 
 Then we initialize GUN and tell it we will place all data under the key `todos`.
 
-Finally we handle what happens when the user clicks the `Add` button. The key line is `todos.set({title: input.value, done: false})`. Here we tell GUN to store our object. In GUN we use `set()` to store values in a list (set, array). So this object is added by GUN to the list of todos.
+Finally we handle what happens when the user clicks the `Add` button. The key line is `todos.set({title: input.val()})`. Here we tell GUN to store our object. In GUN we use `set()` to store values in a list (set, array). So this object is added by GUN to the list of todos.
 
->When you run the code, type something in the input and click the `Add` button, it is already stored by GUN. But we will not yet see it appear. We will do that in the next step.
+>When you run the code, type something in the input and click the `Add` button, it is already stored by GUN. But we will not yet see it appear. We will fix that in the next step.
 
 ## Show the todos
 
@@ -191,7 +191,7 @@ And add 2 new functions before line 59 (`</script>`):
         if (event.keyCode === 13) {
           // Get the GUN item with the id that we store in the element.
           // And tell GUN to update the title of the todo item.
-          todos.get($(element).parent().parent().attr('id')).put({title: element.value})
+          todos.get($(element).parent().parent().attr('id')).put({title: $(element).val())})
         }
       }
 ::: {endblock: '8'} :::
@@ -202,13 +202,13 @@ And add 2 new functions before line 59 (`</script>`):
 
 When a todo item is clicked, we turn it into an `input` so the user can change the text.
 
-Then we wait for the user to press the `Enter` key. When he/she/it :-) does, we will tell GUN store the new text. This happens here: `todos.get($(element).parent().parent().attr('id')).put({title: element.value})`.
+Then we wait for the user to press the `Enter` key. When he/she/it :-) does, we will tell GUN store the new text. This happens here: `todos.get($(element).parent().parent().attr('id')).put({title: $(element).val()})`.
 
 `$(element).parent().parent().attr('id')` simply gets the `id` that we stored in the `li` element.
 
 `todos.get(....id)` tells GUN we want to use the todo with that specific `id`.
 
-Finally `put({title: element.value})` will change the title of the todo.
+Finally `put({title: $(element).val()})` will change the title of the todo.
 
 Notice that for inserting a todo in the todos list we used `set`, whereas now we use `put`. The difference is that `set` will add a todo to the todo list (similar to `push` for arrays, though not the same; see the documentation for `set`), but `put` is done for one specific item (node); not on a list.
 
