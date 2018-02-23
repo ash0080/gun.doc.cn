@@ -71,7 +71,7 @@ Replace the `insert here` line with this code:
 ::: {endblock: 'a'} :::
 ::: {startblock: 'b'} :::
     </script>
-::: {endblock: 'a'} :::
+::: {endblock: 'b'} :::
 ```
 
 ::: {nextstepcompare: 'start'} :::
