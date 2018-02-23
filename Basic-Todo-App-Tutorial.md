@@ -8,6 +8,7 @@ First let's create the html:
 
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
+::: {editor: 'main'} :::
 ::: {startblock: '1'} :::
 <html>
   <body>
@@ -47,6 +48,8 @@ Next let's add GUN and make the form operational.
 
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
+::: {editor: 'main'} :::
+::: {codepen: 'link', tab1: 'codemirror'} :::
 ::: {insertblock: '1'} :::
 <!-- Insert here -->
 ::: {insertblock: '2'} :::
@@ -75,8 +78,7 @@ Replace the `insert here` line with this code:
 ```
 
 ::: {nextstepcompare: 'start'} :::
-```html
-::: {codepen: 'link', tab1: 'codemirror'} :::
+```
 ::: {startblock: '3'} :::
 ::: {insertblock: '1'} :::
 ::: {insertblock: 'a'} :::
