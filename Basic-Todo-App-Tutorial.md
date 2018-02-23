@@ -173,6 +173,7 @@ Now we will make each todo editable.
 ::: {insertblock: 'd'} :::
 ::: {insertblock: '6'} :::
 ::: {insertblock: '6a'} :::
+
 // Insert here
 ::: {insertblock: '4'} :::
 ```
@@ -185,7 +186,7 @@ Change line the line `var html = todo.title` to:
 ::: {endblock: 'e'} :::
 ```
 
-Replace the `Insert here` line with these two functions:
+And replace the `Insert here` line with these two functions:
 
 ```javascript
 ::: {startblock: 'f'} :::
@@ -204,6 +205,7 @@ Replace the `Insert here` line with these two functions:
 ::: {endblock: 'f'} :::
 ```
 
+::: {nextstepcompare: 'start'} :::
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
 ::: {startblock: '7'} :::
@@ -218,6 +220,7 @@ Replace the `Insert here` line with these two functions:
 ::: {endblock: '8'} :::
 ::: {insertblock: '4'} :::
 ```
+::: {nextstepcompare: 'end'} :::
 
 When a todo item is clicked, we turn it into an `input` so the user can change the text.
 
