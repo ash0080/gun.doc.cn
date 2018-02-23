@@ -38,6 +38,7 @@ The `<form>` will be used to add new todos.
 
 You can ignored the `<style>` tag. This just contains some simple styling of (future) things on the page.
 
+::: {nextstepcompare: 'none'} :::
 ::: {step: 'Add GUN'} :::
 
 ## Add GUN
