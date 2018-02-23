@@ -214,7 +214,6 @@ And replace the `Insert here` line with these two functions:
 ::: {insertblock: '6'} :::
 ::: {insertblock: '6a'} :::
 ::: {startblock: '8'} :::
-::: {startblock: '7'} :::
 ::: {insertblock: 'f'} :::
 ::: {endblock: '8'} :::
 ::: {insertblock: '4'} :::
@@ -241,44 +240,61 @@ We can now try editing a todo by clicking it, changing the text and pressing the
 
 Now we will add a checkbox in front of each todo, so the user can indicate whether the todo is done or not.
 
-After line 53 (`var html = ....`) add a few lines for the checkbox.
-
-And add a new function before line 80 (`</script>`):
-
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
-::: {startblock: '9'} :::
-::: {hide: 'start'} :::
+::: {editor: 'main'} :::
 ::: {insertblock: '7'} :::
-::: {hide: 'end'} :::
-          // Add a checkbox in front and check it if the GUN item has a done state.
+// Insert here first
+::: {insertblock: '6'} :::
+::: {insertblock: '6a'} :::
+::: {insertblock: '8'} :::
+
+// Insert here also
+::: {insertblock: '4'} :::
+```
+
+Replace the `Insert here first` line with this line:
+
+```javascript
+::: {startblock: 'g'} :::
           html = '<input type="checkbox" onclick="clickCheck(this)" ' + (todo.done ? 'checked' : '') + '>' + html
+::: {endblock: 'g'} :::
+```
+
+And replace the `Insert here also` line with this functions:
+
+```javascript
+::: {startblock: 'h'} :::
+      function clickCheck (element) {
+        todos.get($(element).parent().attr('id')).put({done: $(element).prop('checked')})
+      }
+::: {endblock: 'h'} :::
+```
+
+::: {nextstepcompare: 'start'} :::
+```
+::: {startblock: '9'} :::
+::: {insertblock: '7'} :::
+::: {insertblock: 'g'} :::
 ::: {endblock: '9'} :::
-::: {hide: 'start'} :::
 ::: {insertblock: '6'} :::
 ::: {insertblock: '6a'} :::
 ::: {startblock: '10'} :::
 ::: {insertblock: '8'} :::
-::: {hide: 'end'} :::
       
-      // What to do when a checkbox is clicked.
-      function clickCheck (element) {
-        // Set the done state of the GUN todo item.
-        // Notice that we do not need to put the full object (including it's title state).
-        // GUN will only change the done property of the item and leaves the other properties (like title) intact.
-        todos.get($(element).parent().attr('id')).put({done: $(element).prop('checked')})
-      }
+::: {insertblock: 'h'} :::
 ::: {endblock: '10'} :::
-::: {hide: 'start'} :::
 ::: {insertblock: '4'} :::
-::: {hide: 'end'} :::
 ```
+::: {nextstepcompare: 'end'} :::
 
 We add a `<input type="checkbox">` in front of the title and give it the done state of the todo item we got from GUN. Of course no existing todo had this todo property just yet, but that is fine.
 
 When the user clicks the checkbox, again we get the todo item (node) from GUN via it's `id` and tell GUN to store the new todo state. If the todo property what not yet stored in the todo item, it will be added. If it already existed, it will be overwritten.
 
 Notice that we did not provide the title in the object. But that does not mean GUN will remove the 'old' title. GUN does not replace objects set by `put`, but rather merges the new object into the old object.
+
+::: {step: 'Delete todos'} :::
 
 ## Delete todos
 
@@ -328,19 +344,17 @@ So here with `todos.get($(element).parent().attr('id')).put(null)`, whenever the
 
 This will trigger the function in `todos.map().on(function (todo, id)`, but instead of a new or changed todo object, `todo` will now be `null`. So we know we must now delete the `li` instead of change it's content.
 
-## Now refresh the browser
+::: {step: 'Awesome'} :::
+
+## Awesome
 
 We now have a fully working todo application with create, update and delete (CRUD). All data is stored in GUN.
 
-NOW REFRESH THE BROWSER! Yes, really. No worries. Just do it.
-
-Notice how all todo data you entered still is there?
+If you would refresh the browser and come back to this step, all the data will still be there (your code changes will not be saved).
 
 That is because GUN stores (caches) all it's data in the browser's `localStorage`. Also, if you would connect the app to a GUN server and also open the app in different computers (connecting to that same server), all data would be continuously synced.
 
 So you have now created an offline-first real-time multi-user todo app with GUN. Congratulations! You rock!
-
-## The full code
 
 As a final review, here is the full code of the GUN todo app we just created:
 
