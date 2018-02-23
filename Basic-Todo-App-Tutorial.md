@@ -110,25 +110,24 @@ Now we will show the list of all existing todos on the screen.
 ::: {editor: 'main'} :::
 ::: {codepen: 'link', tab1: 'codemirror'} :::
 ::: {insertblock: '3'} :::
-<!-- Insert here -->
+// Insert here
 ::: {insertblock: '4'} :::
 ```
 
 Replace the `insert here` line with this code:
 
 ```javascript
-::: {startblock: '5'} :::
-::: {insertblock: '3'} :::
+::: {startblock: 'c'} :::
       todos.map().on(function (todo, id) {
         var li = $('#' + id)
         if (!li.get(0)) {
           li = $('<li>').attr('id', id).appendTo('ul')
         }
         if (todo) {
-::: {endblock: '5'} :::
-::: {startblock: '5a'} :::
+::: {endblock: 'c'} :::
+::: {startblock: 'd'} :::
           var html = todo.title
-::: {endblock: '5a'} :::
+::: {endblock: 'd'} :::
 ::: {startblock: '6'} :::
           li.html(html)
 ::: {endblock: '6'} :::
@@ -141,11 +140,13 @@ Replace the `insert here` line with this code:
 
 ::: {nextstepcompare: 'start'} :::
 ```
-::: {insertblock: '5'} :::
-::: {insertblock: '5a'} :::
+::: {startblock: '5'} :::
+::: {insertblock: '3'} :::
+::: {insertblock: 'c'} :::
+::: {endblock: '5'} :::
+::: {insertblock: 'd'} :::
 ::: {insertblock: '6'} :::
 ::: {insertblock: '6a'} :::
-::: {insertblock: '4'} :::
 ```
 ::: {nextstepcompare: 'end'} :::
 
