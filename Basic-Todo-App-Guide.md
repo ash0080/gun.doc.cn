@@ -36,7 +36,7 @@ Here, the `<ul></ul>` will be used by the JavaScript code will will soon create.
 
 The `<form>` will be used to add new todos.
 
-You can ignored the `<style>` tag. This just contains some simple styling of (future) things on the page.
+You can ignore the `<style>` tag. This just contains some simple styling of (future) things on the page.
 
 ## Add GUN
 
