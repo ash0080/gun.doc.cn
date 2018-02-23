@@ -2,8 +2,6 @@ Let's create a simple todo application with GUN.
 
 >This page contains live code editors with live preview. You can change the code if you like and see the effect straight away.
 
-## The basic html
-
 First let's create the html:
 
 ```html
@@ -41,8 +39,6 @@ You can ignore the `<style>` tag. This just contains some simple styling of (fut
 
 ::: {nextstepcompare: 'none'} :::
 ::: {step: 'Add GUN'} :::
-
-## Add GUN
 
 Next let's add GUN and make the form operational.
 
@@ -100,8 +96,6 @@ Finally we handle what happens when the user clicks the `Add` button. The key li
 >When you run the code, type something in the input and click the `Add` button, it is already stored by GUN. But we will not yet see it appear. We will fix that in the next step.
 
 ::: {step: 'Show the todos'} :::
-
-## Show the todos
 
 Now we will show the list of all existing todos on the screen.
 
@@ -161,8 +155,6 @@ Then each time a 'new' todo is received we can check if we already have a `li` e
 We can now test our changes. Type something in the `input` and click `Add`. The new todo should then be shown on the screen.
 
 ::: {step: 'Edit todos'} :::
-
-## Edit todos
 
 Now we will make each todo editable.
 
@@ -236,8 +228,6 @@ We can now try editing a todo by clicking it, changing the text and pressing the
 
 ::: {step: 'Add a done state'} :::
 
-## Add a done state
-
 Now we will add a checkbox in front of each todo, so the user can indicate whether the todo is done or not.
 
 ```html
@@ -295,8 +285,6 @@ When the user clicks the checkbox, again we get the todo item (node) from GUN vi
 Notice that we did not provide the title in the object. But that does not mean GUN will remove the 'old' title. GUN does not replace objects set by `put`, but rather merges the new object into the old object.
 
 ::: {step: 'Delete todos'} :::
-
-## Delete todos
 
 Finally let's add some functionality for delete todo's.
 
@@ -363,9 +351,7 @@ So here with `todos.get($(element).parent().attr('id')).put(null)`, whenever the
 
 This will trigger the function in `todos.map().on(function (todo, id)`, but instead of a new or changed todo object, `todo` will now be `null`. So we know we must now delete the `li` instead of change it's content.
 
-::: {step: 'Awesome'} :::
-
-## Awesome
+::: {step: 'Well done'} :::
 
 We now have a fully working todo application with create, update and delete (CRUD). All data is stored in GUN.
 
