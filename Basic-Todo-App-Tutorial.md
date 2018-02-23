@@ -300,43 +300,68 @@ Notice that we did not provide the title in the object. But that does not mean G
 
 Finally let's add some functionality for delete todo's.
 
+```html
+::: {codepen: 'link', tab1: 'codemirror'} :::
+::: {editor: 'main'} :::
+::: {insertblock: '9'} :::
+// Insert here first
+::: {insertblock: '6'} :::
+// Insert here next
+::: {insertblock: '6a'} :::
+::: {insertblock: '10'} :::
+
+// Insert here also
+::: {insertblock: '4'} :::
+```
+
 After line 55 (`html = ....`) add a few lines for the trashcan.
 
 Also after line 57 (`li.html(html)`) add a few lines for removing the todo's `li`.
 
 And add a new function before line 90 (`</script>`):
 
-```html
-::: {codepen: 'link', tab1: 'codemirror'} :::
-::: {startblock: '11'} :::
-::: {hide: 'start'} :::
-::: {insertblock: '9'} :::
-::: {hide: 'end'} :::
-          // Add a trashcan icon and make it clickable.
-          html += '<img onclick="clickDelete(this)" src="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/svgs/fi-x.svg"/>'
-::: {hide: 'start'} :::
-::: {insertblock: '6'} :::
-::: {hide: 'end'} :::
-        } else {
-          // The item was removed from GUN, because we got null.
-          // Delete it from the screen.
-          li.remove()
-::: {hide: 'start'} :::
-::: {insertblock: '6a'} :::
-::: {insertblock: '10'} :::
-::: {hide: 'end'} :::
+Replace the `Insert here first` line with this line:
 
-      // What to do when a trashcan is clicked.
+```javascript
+::: {startblock: 'i'} :::
+          html += '<img onclick="clickDelete(this)" src="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/svgs/fi-x.svg"/>'
+::: {endblock: 'i'} :::
+```
+
+Then replace the `Insert here next` line with this line:
+
+```javascript
+::: {startblock: 'j'} :::
+        } else {
+          li.remove()
+::: {endblock: 'j'} :::
+```
+
+And replace the `Insert here also` line with this functions:
+
+```javascript
+::: {startblock: 'k'} :::
       function clickDelete (element) {
-        // In GUN the way to delete an item, is to set it's value to null.
-        // This is because of how graph databases, like GUN, work internally.
         todos.get($(element).parent().attr('id')).put(null)
       }
-::: {hide: 'start'} :::
+::: {endblock: 'k'} :::
+```
+
+::: {nextstepcompare: 'start'} :::
+```
+::: {startblock: '11'} :::
+::: {insertblock: '9'} :::
+::: {insertblock: 'i'} :::
+::: {insertblock: '6'} :::
+::: {insertblock: 'j'} :::
+::: {insertblock: '6a'} :::
+::: {insertblock: '10'} :::
+
+::: {insertblock: 'k'} :::
 ::: {insertblock: '4'} :::
-::: {hide: 'end'} :::
 ::: {endblock: '11'} :::
 ```
+::: {nextstepcompare: 'end'} :::
 
 In a distributed graph database, like GUN, data can not literally be deleted. Hence GUN does not provide a `delete` function. What you need to do is overwrite the old value with `null`.
 
