@@ -191,7 +191,7 @@ And add 2 new functions before line 59 (`</script>`):
         if (event.keyCode === 13) {
           // Get the GUN item with the id that we store in the element.
           // And tell GUN to update the title of the todo item.
-          todos.get($(element).parent().parent().attr('id')).put({title: $(element).val())})
+          todos.get($(element).parent().parent().attr('id')).put({title: $(element).val()})
         }
       }
 ::: {endblock: '8'} :::
