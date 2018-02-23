@@ -135,7 +135,6 @@ Replace the `insert here` line with this code:
         }
       })
 ::: {endblock: '6a'} :::
-::: {insertblock: '4'} :::
 ```
 
 ::: {nextstepcompare: 'start'} :::
@@ -147,6 +146,7 @@ Replace the `insert here` line with this code:
 ::: {insertblock: 'd'} :::
 ::: {insertblock: '6'} :::
 ::: {insertblock: '6a'} :::
+::: {insertblock: '4'} :::
 ```
 ::: {nextstepcompare: 'end'} :::
 
