@@ -48,6 +48,7 @@ Next let's add GUN and make the form operational.
 ::: {codepen: 'link', tab1: 'codemirror'} :::
 ::: {insertblock: '1'} :::
 <!-- Insert here -->
+
 ::: {insertblock: '2'} :::
 ```
 
