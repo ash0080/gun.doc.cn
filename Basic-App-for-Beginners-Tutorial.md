@@ -51,7 +51,7 @@ Now, try changing the `h1` text in the editor from "Title" to the name of our ap
 ```
 ::: {nextstepcompare: 'end'} :::
 
-::: {step: 'Adding Dependencies'} :::
+::: {step: 'Step 1'} :::
 
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
@@ -108,7 +108,7 @@ This is why we call it code! We use a bunch of strange symbols to tell the compu
 ```
 ::: {nextstepcompare: 'end'} :::
 
-::: {step: 'Receiving User Input'} :::
+::: {step: 'Step 2'} :::
 
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
@@ -159,7 +159,7 @@ Try it out!
 ```
 ::: {nextstepcompare: 'end'} :::
 
-::: {step: '4'} :::
+::: {step: 'Step 3'} :::
 
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
@@ -196,7 +196,7 @@ var gun = Gun().get('thoughts');
 ```
 ::: {nextstepcompare: 'end'} :::
 
-::: {step: '5'} :::
+::: {step: 'Step 4'} :::
 
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
@@ -229,7 +229,7 @@ Replace the message line in the submit function with the following:
 ```
 ::: {nextstepcompare: 'end'} :::
 
-::: {step: '6'} :::
+::: {step: 'Step 5'} :::
 
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
@@ -279,7 +279,7 @@ Fantastic! Now that we can successfully store data, we want show the data! Repla
 ```
 ::: {nextstepcompare: 'end'} :::
 
-::: {step: '7'} :::
+::: {step: 'Step 6'} :::
 
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
@@ -316,7 +316,7 @@ Finally we want to be able to clear off our thoughts when we are done with them.
 ```
 ::: {nextstepcompare: 'end'} :::
 
-::: {step: '8'} :::
+::: {step: 'Step 7'} :::
 
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
