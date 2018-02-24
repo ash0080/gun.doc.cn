@@ -13,7 +13,7 @@ First let's create the html:
     <h1>Todos</h1>
 
     <ul></ul>
-    
+
     <form><input><button>Add</button></form>
 
 ::: {endblock: '1'} :::
@@ -59,7 +59,7 @@ Replace the `insert here` line with this code:
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script>
       var todos = Gun().get('todos')
-      
+
       $('form').on('submit', function (event) {
         var input = $('form').find('input')
         todos.set({title: input.val()})
@@ -188,7 +188,7 @@ And replace the `Insert here` line with these two functions:
           element.html('<input value="' + element.html() + '" onkeyup="keypressTitle(this)">')
         }
       }
-      
+
       function keypressTitle (element) {
         if (event.keyCode === 13) {
           todos.get($(element).parent().parent().attr('id')).put({title: $(element).val()})
