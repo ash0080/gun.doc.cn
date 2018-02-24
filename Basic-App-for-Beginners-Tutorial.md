@@ -1,6 +1,10 @@
-Before we can start building anything interesting, we should have a way to jot down our thoughts. Therefore the first thing we will build is a tool to keep track of what needs to be done. The infamous To-Do app, allowing us to keep temporary notes.
+This is a beginner's guide to building your first todo app! It should take someone with no prior HTML or JS experience over a half hour to complete, or take less than 5 minutes for an advanced developer to jump through.
 
-So what are the requirements? The ability to add a note, read our notes, and to clear them off. We will also need a space to keep these notes in, and a web page to access them through. Let's start with the page! You can edit the code below, which will update the live preview.
+Our goal is to make it so you can build the app of your dreams! All apps use the same core concepts, so by learning how to create a todo app you'll also learn how to build parts of your dream app.
+
+Plus, we'll need an app to keep track of our thoughts and plans along the way, so it is a double win! Our todo app should give us the ability to write down our thoughts in a note, view them, and clear them off.
+
+First, we need an interface for our app! Here is the code and a live preview: (note - the app doesn't work yet).
 
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
@@ -11,7 +15,6 @@ So what are the requirements? The ability to add a note, read our notes, and to 
 ::: {endblock: '1'} :::
     <h1>Title</h1>
 ::: {startblock: '2'} :::
-    <h4></h4>
 
     <form>
       <input><button>Add</button>
@@ -24,15 +27,15 @@ So what are the requirements? The ability to add a note, read our notes, and to 
 </html>
 ::: {endblock: '3'} :::
 ```
-What does this do? HTML is how we code the layout of a web page.
 
-- We first must wrap all our code in an open and closing `html` tag so our computer knows it is a web page.
-- The `body` tag tells it to display the contents enclosed within.
-- `h1` is one of many semantic tags for declaring a title, others include `h2`, `h3` and so on of different sizes.
-- The `h4` does not yet do anything, but will be used in the next step.
-- A `form` is a container for getting information from a user.
-- Forms have `input`s which let the user type data in, it is a self-closing tag.
-- The `button` can be pressed, causing an action that we code to happen.
+How does it work? Well,
+
+- First, we must wrap all of our code in open and closing `html` tags so that the computer knows it is a web page.
+- Stuff inside of the `body` tag are the main contents of the page.
+- `h1` is a tag for declaring a title, others include `h2`, `h3` and so on for different sizes.
+- A `form` is a way for us to get information from a user.
+- One way is through an `input`, which lets the user type data in - it doesn't need a closing tag.
+- The `button` can be pressed, causing some action (that we will code) to happen.
 - `ul` is an unordered list which we will display our thoughts inside of.
 
 Now, try changing the `h1` text in the editor from "Title" to the name of our app, "Thoughts".
@@ -48,7 +51,7 @@ Now, try changing the `h1` text in the editor from "Title" to the name of our ap
 ```
 ::: {nextstepcompare: 'end'} :::
 
-::: {step: 'Step 2'} :::
+::: {step: 'Adding Dependencies'} :::
 
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
@@ -58,23 +61,34 @@ Now, try changing the `h1` text in the editor from "Title" to the name of our ap
 ::: {insertblock: '3'} :::
 ```
 
-HTML controls the layout, but how do we control what happens when a user presses the 'add' button? This is done with javascript. But using raw javascript quickly becomes verbose, so to keep things concise we will use a popular tool called jQuery (there are other examples for tools, like React/Angular, as well). We also need a tool to store data, so we will include GUN as well.
+HTML controls the layout - so how do we then control what happens when a user presses the 'add' button? This is done with javascript! 
 
-Insert the following as new lines between `<ul></ul>` and `</body>`, replacing the comment line:
+Using javascript by itself can be verbose, so we will use a popular tool called jQuery to keep things simple. Other tools, like React or Vue, abstract things into a framework and should be learned after one understands the basics.
+
+We also need a tool to store our data, so we will include GUN as well!
+
+Insert the following as new lines between `<ul></ul>` and `</body>` in the editor, replacing the comment line:
+
 ```html
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
     <script>
-      $("h4").text("Good job! You'll replace this line in the next step!");
+      $("h1").text("Good job! You'll replace this line in the next step!");
     </script>
 ```
 
+Here is what it is doing:
+
 - The `script` tag tells the browser to use some javascript code, and `src` is where to load it from.
-- We can then test to see if our code worked with a message, which will show up below the headline.
-- In javascript, we denote text by wrapping it inside quotation marks, double `""` or single `''`.
-- We instruct the computer to notify us with that text, by selecting where to show it (the `<h4></h4>` element) and setting it's content with the `text` function.
-- A function is just a fancy word for a reusable piece of code that does something when we call its name, such as `text`.`
+- Putting something inside of double `""` or single `''` quotations treats it as normal text, not code.
+- jQuery is a function, its name is `$` which can be called with parenthesis `()`.
+- A function is just a fancy word for a reusable piece of code that does something when we call it.
+- Calling `$` with `"h1"` as its input gives us a reference to the corresponding HTML tag.
+- We can use the `.` separator on the reference to access more functions.
+- Calling the `text` function tells the computer to dynamically change the text of our reference, the title.
 - A semicolon `;` marks the end of a javascript sentence in the same way a period marks the end of a sentence.
+
+This is why we call it code! We use a bunch of strange symbols to tell the computer to do things. Even the most advanced developers get things wrong all the time, but that is okay, you just keep trying!
 
 ::: {nextstepcompare: 'start'} :::
 ```
@@ -85,7 +99,7 @@ Insert the following as new lines between `<ul></ul>` and `</body>`, replacing t
     <script>
 ::: {endblock: '5'} :::
 ::: {startblock: '6'} :::
-      $("h4").text("Good job! You'll replace this line in the next step!");
+      $("h1").text("Good job! You'll replace this line in the next step!");
 ::: {endblock: '6'} :::
 ::: {startblock: '7'} :::
     </script>
@@ -94,7 +108,7 @@ Insert the following as new lines between `<ul></ul>` and `</body>`, replacing t
 ```
 ::: {nextstepcompare: 'end'} :::
 
-::: {step: 'Step 3'} :::
+::: {step: 'Receiving User Input'} :::
 
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
@@ -104,25 +118,29 @@ Insert the following as new lines between `<ul></ul>` and `</body>`, replacing t
 ::: {insertblock: '7'} :::
 ```
 
-Wonderful! You should have gotten the message, this means writing code works! Let's replace the message line entirely with code that responds to user input.
+Now that we know something is working, we can actually start building our app. Let's replace the message line entirely with code that receives input from the user:
 
 ```html
-      $('form').on('submit', function(event){
+      $("form").on("submit", function(event){
         event.preventDefault();
-        $("h4").text("We got your thought! " + $('input').val());
+        $("h1").text("We got your thought! " + $("input").val());
       });
 ```
 
 What's going on here?
 
-- jQuery brings a function with the name `$`, that can be called with parenthesis `()`.
-- Calling `$` with `form` as the input gives us a reference to the corresponding HTML form tag.
-- We then call `on` with two inputs. First the text name of an `event` we want to react to, and then a `function` we create.
-  - Events are predefined ways we can interact with a user, such as `mousemove` or a `keypress`.
-  - We use `submit` because it responds to both a button `click` and hitting enter on a form.
-  - Our `function` will get called with the `event` every time the user does that action, allowing us to react to their input.
-- The default behavior of a form is to cause the browser to change pages which is annoying, we prevent that by calling `preventDefault` on the `event`.
-- Finally, calling `$` with `input` will reference the HTML input tag which we then call `val` on, giving us the text the user typed in.
+- Calling jQuery's `$` function with `"form"` instead of `"h1`" now gives us a reference to the HTML `form` tag.
+- Like the `text` function from the previous step, `on` is a function that can be accessed via the `.` separator. 
+- `on` takes two inputs. First the text name of an `event` we want to react to, and then a `function` we create.
+  - Events are predefined ways we can interact with a user, such as `"mousemove"` or a `"keypress"`.
+  - We use `"submit"` because it responds to both a button `"click"` and hitting your enter key on a `form`.
+  - Our `function` will get called with the `event` every time the user does that action, allowing us to react to their input!
+- The default behavior of a `form` is to cause the browser to change pages which is annoying, so we prevent that by calling the `preventDefault` function on the `event` separated by the `.`.
+- Next up, we want to test if this works. So like before, we change the title by passing text to the `$("h1").text()` function.
+- Unlike other functions, `$("input").val()` gives us the actual value of the user's text, not a reference.
+- We can add this text to other text by using the `+` operator, that way our title will show what the user said.
+
+Try it out!
 
 ::: {nextstepcompare: 'start'} :::
 ```
@@ -132,7 +150,7 @@ What's going on here?
         event.preventDefault();
 ::: {endblock: '8'} :::
 ::: {startblock: '9'} :::
-        $("h4").text("We got your thought! " + $('input').val());
+        $("h1").text("We got your thought! " + $("input").val());
 ::: {endblock: '9'} :::
 ::: {startblock: '10'} :::
       });
@@ -141,7 +159,7 @@ What's going on here?
 ```
 ::: {nextstepcompare: 'end'} :::
 
-::: {step: 'Step 4'} :::
+::: {step: '4'} :::
 
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
@@ -178,7 +196,7 @@ var gun = Gun().get('thoughts');
 ```
 ::: {nextstepcompare: 'end'} :::
 
-::: {step: 'Step 5'} :::
+::: {step: '5'} :::
 
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
@@ -211,7 +229,7 @@ Replace the message line in the submit function with the following:
 ```
 ::: {nextstepcompare: 'end'} :::
 
-::: {step: 'Step 6'} :::
+::: {step: '6'} :::
 
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
@@ -261,7 +279,7 @@ Fantastic! Now that we can successfully store data, we want show the data! Repla
 ```
 ::: {nextstepcompare: 'end'} :::
 
-::: {step: 'Step 7'} :::
+::: {step: '7'} :::
 
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
@@ -298,7 +316,7 @@ Finally we want to be able to clear off our thoughts when we are done with them.
 ```
 ::: {nextstepcompare: 'end'} :::
 
-::: {step: 'Step 8'} :::
+::: {step: '8'} :::
 
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
