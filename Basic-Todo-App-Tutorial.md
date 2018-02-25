@@ -1,6 +1,6 @@
 Let's create a simple todo application with GUN.
 
->This page contains live code editors with live preview. You can change the code if you like and see the effect straight away.
+>This page contains code editors with live preview. You can change the code and see the result straight away.
 
 First let's create the html:
 
