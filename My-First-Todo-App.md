@@ -258,7 +258,7 @@ Fantastic! Now that we can successfully store data, we want show the data! Repla
 - This next line looks scary, but read it like this, "make `var`iable `li` equal to X or Y".
   - The X part asks `$` to find the `id` in the HTML and `get` it.
   - In javascript, `||` means 'or', such that javascript will use X if it exist or it will use Y.
-  - The Y part asks `$` to create a new `&lt;li&gt;` HTML tag, set its `id` `attr`ibute to our id and `append` it to the end of the HTML `ul` list.
+  - The Y part asks `$` to create a new `<li>` HTML tag, set its `id` `attr`ibute to our id and `append` it to the end of the HTML `ul` list.
 - Finally, the javascript `if` statement either asks `$` to make `thought` be the text of the `li` if thought exists, `else` hide the `li` from being displayed.
 - Altogether it says "Create or reuse the HTML list item and make sure it is in the HTML list, then update the text or hide the item if there is no text".
 
