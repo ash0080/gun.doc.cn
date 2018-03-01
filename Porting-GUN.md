@@ -72,7 +72,7 @@ var mark = {
 }
 var cat = {
   name: "Fluffy",
-  species: "kitty", // for science!
+  species: "kitty" // for science!
 }
 cat.slave = mark;
 mark.boss = cat;
