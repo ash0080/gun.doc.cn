@@ -1,6 +1,6 @@
 The conflict resolution algorithm (also called HAM) is at the center of everything gun does. It's how peers eventually arrive at the same state, and how offline edits are merged. Every change in the system goes through HAM.
 
-Before reading this, we recommend you read through this tech talk, which [explains the high level concepts in easy to understand](http://gun.js.org/distributed/matters.html) terms. Also, check out the primer on our [CAP Theorem](CAP-Theorem) tradeoffs.
+Before reading this, we recommend you read through this tech talk, which [explains the high level concepts in easy to understand](https://gun.eco/distributed/matters.html) terms. Also, check out the primer on our [CAP Theorem](CAP-Theorem) tradeoffs.
 
 Finally, for those of you who know of Kyle Kingsbury (Aphyr), here are [some good tweets about us](https://twitter.com/aphyr/status/646302398575587332) from him. We are building out Jepsen tests with [PANIC](https://github.com/gundb/panic-server), our distributed testing framework.
 
@@ -166,4 +166,4 @@ If you want more information about how the conflict engine works, you can messag
  - [Concerns about timestamps](https://aphyr.com/posts/299-the-trouble-with-timestamps) (Aphyr).
  - [Eventual Consistency vs Strong Eventual Consistency vs Strong Consistency](http://stackoverflow.com/questions/29381442/eventual-consistency-vs-strong-eventual-consistency-vs-strong-consistency).
 
-Again, we strongly recommend you check out the [tech talk](http://gun.js.org/distributed/matters.html).
+Again, we strongly recommend you check out the [tech talk](https://gun.eco/distributed/matters.html).

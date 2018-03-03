@@ -2,7 +2,7 @@ So you want to build a decentralized Twitter with end-to-end encryption, that wo
 
 Then you've come to the right spot. First, watch these 1 minute explainer videos on how cryptography works:
 
-<a href="http://gun.js.org/explainers/data/security.html" title="2 min demo of auth"><img src="http://img.youtube.com/vi/ccKThyaDR30/0.jpg" width="425px"></a>
+<a href="https://gun.eco/explainers/data/security.html" title="2 min demo of auth"><img src="http://img.youtube.com/vi/ccKThyaDR30/0.jpg" width="425px"></a>
 
 Second, thanks to the work of [@mhelander](https://github.com/mhelander) on the SEA (Security, Encryption, Authorization) framework, your app will use the latest native Web Crypto API for all the functions explained in the video series, like ECDSA, PBKDF2, AES, and more. Here is a demo of it working in action:
 
@@ -62,7 +62,7 @@ user.get('profile').get('boss').get('slave').get('name').val(function(data){
 
 Try running it yourself at https://codepen.io/anon/pen/QajxOz?editors=1012 !
 
-Now that you have P2P identities, we will combine it with the logic from the [2min interactive ToDo app tutorial](http://gun.js.org/think.html), to create a list of tweets from the user:
+Now that you have P2P identities, we will combine it with the logic from the [2min interactive ToDo app tutorial](https://gun.eco/think.html), to create a list of tweets from the user:
 
 To do this, [follow along with the 4 minute interactive P2P Twitter tutorial](https://scrimba.com/c/c2gBgt4)!
 

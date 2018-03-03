@@ -1,4 +1,4 @@
-This is not a discussion on what the [CAP Theorem](https://en.wikipedia.org/wiki/CAP_theorem) is, but on the tradeoffs that GUN decides to default to. Mark gave a great talk on this in Berlin, which [explains everything in easy to understand](http://gun.js.org/distributed/matters.html) terms. Kyle Kingsbury (Aphyr) of the Jepsen tests (which inspired our [distributed testing](https://github.com/gundb/panic-server) framework) was there, and he [tweeted](https://twitter.com/aphyr/status/646302398575587332) about us. And don't forget to check out our security series on [P2P cryptography](http://gun.js.org/explainers/data/security.html).
+This is not a discussion on what the [CAP Theorem](https://en.wikipedia.org/wiki/CAP_theorem) is, but on the tradeoffs that GUN decides to default to. Mark gave a great talk on this in Berlin, which [explains everything in easy to understand](https://gun.eco/distributed/matters.html) terms. Kyle Kingsbury (Aphyr) of the Jepsen tests (which inspired our [distributed testing](https://github.com/gundb/panic-server) framework) was there, and he [tweeted](https://twitter.com/aphyr/status/646302398575587332) about us. And don't forget to check out our security series on [P2P cryptography](https://gun.eco/explainers/data/security.html).
 
 ### AP
 
@@ -23,4 +23,4 @@ While the last point is interesting, it is not recommended that one evolves GUN 
 
 GUN is AP with eventual consistency by default, but it is possible to upgrade into a CP system but it is not recommended. Instead, one should apply some form of "dependent causality" into the data itself at the application layer manually or as a module that wraps it for you.
 
-Again, we recommend you check out the [tech talk](http://gun.js.org/distributed/matters.html). After you have read it, check out the documentation on how it is implemented, [here](Conflict-Resolution-with-Guns).
+Again, we recommend you check out the [tech talk](https://gun.eco/distributed/matters.html). After you have read it, check out the documentation on how it is implemented, [here](Conflict-Resolution-with-Guns).

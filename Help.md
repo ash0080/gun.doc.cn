@@ -2,7 +2,7 @@ We need volunteers to: (please add your name)
 
 ## ToDo App Tutorial / Blog
 
-Base it off of http://gun.js.org/think.html .
+Base it off of https://gun.eco/think.html .
 
  - React
  - VueJS
