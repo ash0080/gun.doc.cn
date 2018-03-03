@@ -1,6 +1,6 @@
 #### [Home](https://github.com/amark/gun/wiki)
 
-#### **[Crash Course](https://github.com/amark/gun/wiki/graphs)**
+#### **[Crash Course](https://github.com/amark/gun/wiki/Crash-Course)**
 #### **[API Reference](https://github.com/amark/gun/wiki/API)**
 #### [Getting Started](https://github.com/amark/gun/wiki/Getting-Started-%28v0.3.x%29)
 #### [Modules / Projects](https://github.com/amark/gun/wiki/Awesome-GUN)
