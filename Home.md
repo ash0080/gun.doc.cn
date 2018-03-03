@@ -2,7 +2,7 @@
 
 The GUN Documentation can be found here:
 
-[Latest GUN Documentation](http://gun.js.org/docs)
+[Latest GUN Documentation](https://gun.eco/docs)
 
 Below you can find the old documentation as a reference.
 
