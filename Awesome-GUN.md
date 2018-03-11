@@ -37,7 +37,7 @@ Augmented graphql query interface for Gun
 
 ## Adapters
 
- - [gun-level](https://github.com/PsychoLlama/gun-level)
+ - [gun-level](https://github.com/gundb/gun-level)
 A LevelDB adapter that works with the levelDB module ecosystem ~ By [PsychoLlama](https://github.com/PsychoLlama)
 
  - [gun-level-browser-indexedDB](https://github.com/zrrrzzt/choo-gun-leveldb-test)
