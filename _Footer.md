@@ -1,1 +1,3 @@
-<a href="https://gitter.im/amark/gun?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"><img alt="Gitter channel" src="https://badges.gitter.im/Join%20Chat.svg" /></a>
+# All docs are moved to [gun.eco/docs](https://gun.eco/docs)
+
+For the latest docs please go there!
