@@ -1,23 +1,24 @@
-Gun can be installed and used in both browser (client side) and server applications. We have made it very easy to be be used in different environments.
+GUN can be used in both browsers and servers. We have made it easy to install in many different environments.
 
 ## Browser
 
-Here a three different ways to include Gun in your browser application:
-- Include as script tag
-- Require
-- Import (ES6)
+You may want to:
 
-Just pick your favorite way of including scripts...
+- Include it as a script tag,
+- Use a require syntax,
+- Or import it in ES6.
 
-### Include as script tag
+Just pick your favorite way:
 
-The easiest way is to just include Gun in the `<head>` tag of your `index.html` page:
+### Script Tag
+
+The easiest way is to just add:
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
 ```
 
-And you can then test it by adding this to your `index.html`:
+to your HTML. Then you can test it, like so:
 
 ```html
 <script>
@@ -34,9 +35,7 @@ Now you should see the message in the browser console.
 
 ### Require
 
-Another way to include Gun in your browser app is with `require`.
-
-First you need to install Gun with NPM or Yarn:
+Assuming you are using something like Webpack or Browserify, you need to first:
 
 ```sh
 $ npm install gun
@@ -46,7 +45,7 @@ or
 $ yarn add gun
 ```
 
-Then require Gun in your script:
+Then require GUN in your code:
 
 ```javascript
 var Gun = require('gun/gun');
@@ -63,13 +62,11 @@ And test it like this:
   })
 ```
 
-After running you should see the message in the browser console.
+After running you should see the message in the console.
 
 ### Import (ES6)
 
-Similar to `require` you can include Gun with `import`.
-
-First you need to install Gun with NPM or Yarn:
+Similar to `require` you can include GUN with `import`. Like before, make sure you have:
 
 ```sh
 $ npm install gun
@@ -79,7 +76,7 @@ or
 $ yarn add gun
 ```
 
-Then import Gun in your script:
+Then import GUN in your code:
 
 ```javascript
 import Gun from 'gun/gun'
@@ -96,13 +93,13 @@ And test it like this:
   })
 ```
 
-After running you should see the message in the browser console.
+After running that, you should see the message in the console.
 
-> Note that right now, even though you import, Gun is defined and used as a global variable.
+> Note that for now, even though you import, GUN is defined and used as a global variable.
 
 ## Node
 
-First you need to install Gun with NPM or Yarn:
+First you need to install GUN with NPM or yarn:
 
 ```sh
 $ npm install gun
@@ -114,13 +111,13 @@ $ yarn add gun
 
 > **Note:** If you don't have [node](http://nodejs.org/) or [npm](https://www.npmjs.com/) installed, [read this](https://docs.npmjs.com/getting-started/installing-node).
 
-Then require Gun in your script `hello.js`:
+Then require GUN in a `hello.js` file:
 
 ```javascript
 var Gun = require('gun');
 ```
 
-For testing add to `hello.js`:
+For testing add this to it:
 
 ```javascript
   var gun = Gun()
@@ -137,4 +134,4 @@ Then run the script:
 $ node ./hello.js
 ```
 
-After running you should see the message in the console output.
+After running you should see the message in the console output!
