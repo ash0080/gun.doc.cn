@@ -11,13 +11,13 @@ var gun = Gun();
 Then we'll add some people to our database using a simple key/value approach.
 
 ```javascript
-var alice = gun.get('person/alice').put({name: 'alice', age: 22});
-var bob = gun.get('person/bob').put({name: 'bob', age: 24});
-var carl = gun.get('person/carl').put({name: 'carl', age: 16});
-var dave = gun.get('person/dave').put({name: 'dave', age: 42});
+var alice = gun.get('alice').put({name: 'alice', age: 22});
+var bob = gun.get('bob').put({name: 'bob', age: 24});
+var carl = gun.get('carl').put({name: 'carl', age: 16});
+var dave = gun.get('dave').put({name: 'dave', age: 42});
 ```
 
-> Note: If no data is found on the key ('person/alice', etc.) when we [`.get`](API#get) it, gun will implicitly create and update it upon a [`.put`](API#put). This is useful and convenient, but can be problematic for some types of apps. If you want to check if the data does not exist, use [`.not`](API#not) first.
+> Note: If no data is found on the key ('alice', etc.) when we [`.get`](API#get) it, gun will implicitly create and update it upon a [`.put`](API#put). This is useful and convenient, but can be problematic for some types of apps. If you want to check if the data does not exist, use [`.not`](API#not) first.
 
 What if we want to get their data? We can either chain off of the reference directly or get it again:
 
@@ -26,7 +26,7 @@ alice.on(function(node){
   console.log('Subscribed to Alice!', node);
 });
 
-gun.get('person/bob').val(function(node){
+gun.get('bob').val(function(node){
   console.log('Bob!', node);
 });
 ```
@@ -58,7 +58,7 @@ people.map().val(function(person){
 Next we want to add a startup that some of these people work at. Document oriented data does a perfect job at capturing the hierarchy of a company. Let's do that with the following:
 
 ```javascript
-var company = gun.get('startup/hype').put({
+var company = gun.get('startup').put({
   name: "hype",
   profitable: false,
   address: {
@@ -91,7 +91,7 @@ company.get('address').get('city').val(function(value, key){
 Good news! We just found out the company got funding and moved to a new office! Let's go ahead and update it.
 
 ```javascript
-gun.get('startup/hype').put({ // or you could do `company.put({` instead.
+gun.get('startup').put({ // or you could do `company.put({` instead.
   funded: true,
   address: {
     street: "999 Expensive Boulevard"
@@ -127,7 +127,7 @@ carl.get('friends').set(bob);
 Finally, let's read some data out. Starting with getting a key/value, then navigating into a document, then mapping over a table, then traversing into one of the columns and printing out all the values!
 
 ```javascript
-gun.get('person/alice').get('spouse').get('employer').get('employees').map().get('name').val(function(data, key){
+gun.get('alice').get('spouse').get('employer').get('employees').map().get('name').val(function(data, key){
   console.log("The employee's", key, data);
 });
 ```
