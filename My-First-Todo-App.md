@@ -38,7 +38,9 @@ How does it work? Well,
 - The `button` can be pressed, causing some action (that we will code) to happen.
 - `ul` is an unordered list which we will display our thoughts inside of.
 
-Now, try changing the `h1` text in the editor from "Title" to the name of our app, "Thoughts".
+### Challenge
+
+Try changing the `h1` text in the editor from "Title" to the name of our app, "Thoughts".
 
 ::: {nextstepcompare: 'start'} :::
 ```
