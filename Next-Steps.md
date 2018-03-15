@@ -18,6 +18,6 @@ You may want to jump into GUN's engineering and decide whether it is a good fit 
 2. Review the [performance benchmarks](100000-ops-sec-in-IE6-on-2GB-Atom-CPU).
 3. See how the [graphs are structured](GUN%E2%80%99s-Data-Format-%28JSON%29).
 4. Understand how the [conflict resolution algorithm works](Conflict-Resolution-with-Guns).
-5. [Recreate GUN from scratch](https://gun.eco/docs/Porting-GUN).
+5. [Recreate GUN from scratch](Porting-GUN).
 
 Hopefully this helps!
