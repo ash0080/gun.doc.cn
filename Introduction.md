@@ -9,16 +9,14 @@ GUN is a small, easy, and fast data sync and storage system that runs everywhere
 
 ## Offline-First
 
-When a browser peer sends a request, it'll merge the response with its own data using our [graph-based CRDT conflict resolution algorithm](https://github.com/amark/gun/wiki/Conflict-Resolution-with-Guns), then cache the result. Since it's cached in the browser, there are a few interesting side effects:
+When a browser peer asks for data, it'll merge the reply with its own data using a [CRDT](https://github.com/amark/gun/wiki/Conflict-Resolution-with-Guns), then cache the result. This means that:
 
- - The next time the browser sends that request, the response is instantaneous, even when offline.
- - Data is replicated on each browser that requested it.
- - If your server catastrophically fails, you can still recover your data from the browsers.
+ - The next time the browser asks for that data, the reply is instant, even when offline.
+ - Data is replicated on each browser that asked for it.
+ - If your server fails, you can still recover your data from the browsers.
 
-This makes the loss of important information nearly impossible, as all copies of the data must be destroyed for it to be unrecoverable. A server is also just a peer, but isn't as picky about what they cache.
+This makes the loss of important information nearly impossible, as all copies of the data would need to be destroyed before it is lost.
 
 ## Distributed
 
-GUN is peer-to-peer (multi-master decentralized replication), meaning updates do not need a centralized server. You save data on one machine, and you can sync it with other peers without needing a complex consensus systems. It just works.
-
-However, you do not need peers or servers to use GUN, they're completely additive!
+GUN is fully decentralized (peer-to-peer or multi-master), meaning that changes are not controlled by a centralized server. A server can be just another peer in the network, one that may have more reliable resources than a browser. You save data on one machine, and it will sync it to other peers without needing a complex consensus protocol. It just works.
