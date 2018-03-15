@@ -2,136 +2,64 @@ GUN can be used in both browsers and servers. We have made it easy to install in
 
 ## Browser
 
-You may want to:
-
-- Include it as a script tag,
-- Use a require syntax,
-- Or import it in ES6.
-
-Just pick your favorite way:
+There are a couple choices:
 
 ### Script Tag
 
-The easiest way is to just add:
+The easiest is to just add GUN into your HTML:
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
-```
-
-to your HTML. Then you can test it, like so:
-
-```html
 <script>
-  var gun = Gun()
-  var greetings = gun.get('greetings')
-  greetings.put({hello: 'world'})
-  greetings.on(function (data) {
-    console.log('Update!', data)
-  })
+  // your code here
 </script>
 ```
 
-Now you should see the message in the browser console.
-
 ### Require
 
-Assuming you are using something like Webpack or Browserify, you need to first:
-
-```sh
-$ npm install gun
-```
-or
-```sh
-$ yarn add gun
-```
-
-Then require GUN in your code:
+Assuming you are using something like **Webpack** or **Browserify**, first follow the [npm](#node) install, then add this to your browser code:
 
 ```javascript
 var Gun = require('gun/gun');
 ```
 
-And test it like this:
+### Import
 
-```javascript
-  var gun = Gun()
-  var greetings = gun.get('greetings')
-  greetings.put({hello: 'world'})
-  greetings.on(function (data) {
-    console.log('Update!', data)
-  })
-```
-
-After running you should see the message in the console.
-
-### Import (ES6)
-
-Similar to `require` you can include GUN with `import`. Like before, make sure you have:
-
-```sh
-$ npm install gun
-```
-or
-```sh
-$ yarn add gun
-```
-
-Then import GUN in your code:
+Same as with `require`, but using the latest ES6 syntax:
 
 ```javascript
 import Gun from 'gun/gun'
 ```
 
-And test it like this:
-
-```javascript
-  var gun = Gun()
-  var greetings = gun.get('greetings')
-  greetings.put({hello: 'world'})
-  greetings.on(function (data) {
-    console.log('Update!', data)
-  })
-```
-
-After running that, you should see the message in the console.
-
-> Note that for now, even though you import, GUN is defined and used as a global variable.
+> Note: For now, even though you import it, GUN is still defined and used as a global variable.
 
 ## Node
 
-First you need to install GUN with NPM or yarn:
+First you need to install GUN with NPM or Yarn via the command line:
 
-```sh
-$ npm install gun
-```
+$`npm install gun`
+
 or
-```sh
-$ yarn add gun
-```
+
+$`yarn add gun`
 
 > **Note:** If you don't have [node](http://nodejs.org/) or [npm](https://www.npmjs.com/) installed, [read this](https://docs.npmjs.com/getting-started/installing-node).
 
-Then require GUN in a `hello.js` file:
+Then add this to your server code:
 
 ```javascript
 var Gun = require('gun');
 ```
 
-For testing add this to it:
+> Note: GUN comes with many default NodeJS adapters for storage and networking. If you do not want these, just do `require('gun/gun')` instead.
+
+### Server
+
+If you want to actually install GUN to a server, you need to pass it an HTTP instance:
 
 ```javascript
-  var gun = Gun()
-  var greetings = gun.get('greetings')
-  greetings.put({hello: 'world'})
-  greetings.on(function (data) {
-    console.log('Update!', data)
-  })
+var server = require('http').createServer().listen(8080);
+var gun = Gun({web: server});
 ```
 
-Then run the script:
-
-```sh
-$ node ./hello.js
-```
-
-After running you should see the message in the console output!
+For more examples on how to use it with something like **Express** or **Hapi**, check out these [samples](https://github.com/amark/gun/tree/master/examples).
