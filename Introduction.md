@@ -9,13 +9,13 @@ GUN is a small, easy distributed data sync and storage solution that runs everyw
 
 ## Offline-First
 
-When a browser peer sends a request, it'll merge the responses with its own model using our [graph-based CRDT conflict resolution algorithm](https://github.com/amark/gun/wiki/Conflict-Resolution-with-Guns), then cache the result. Since it's cached in the browser, there are a few interesting side effects:
+When a browser peer sends a request, it'll merge the response with its own data using our [graph-based CRDT conflict resolution algorithm](https://github.com/amark/gun/wiki/Conflict-Resolution-with-Guns), then cache the result. Since it's cached in the browser, there are a few interesting side effects:
 
- - The next time the client sends that request, the response is instantaneous, even when offline.
- - Data is replicated on each client that requests it.
- - If your server catastrophically fails, you can still recover your data from the clients.
+ - The next time the browser sends that request, the response is instantaneous, even when offline.
+ - Data is replicated on each browser that requested it.
+ - If your server catastrophically fails, you can still recover your data from the browsers.
 
-This makes the loss of important information nearly impossible, as all copies of the data must be destroyed for it to be unrecoverable. Servers are also just peers, but they aren't as picky about what they cache.
+This makes the loss of important information nearly impossible, as all copies of the data must be destroyed for it to be unrecoverable. A server is also just a peer, but isn't as picky about what they cache.
 
 ## Distributed
 
