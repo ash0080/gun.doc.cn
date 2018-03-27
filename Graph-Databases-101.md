@@ -130,4 +130,4 @@ Finally, let's read some data out. Starting with a key/value, pathing into field
 gun.get('person/alice').path('spouse.employer.employees').map().path('name').val("The employee's");
 ```
 
-Awesome, now all together - run it yourself: http://jsbin.com/sedudahayi/edit?js,console (Hit "Run", all logs except for the last one have been commented out).
+Awesome, now all together - run it yourself: http://jsbin.com/webikepoxa/edit?js,console (Hit "Run", all logs except for the last one have been commented out).
