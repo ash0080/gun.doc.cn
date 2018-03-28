@@ -1,4 +1,4 @@
- > **Note**: The bounty program is available for the 2018 calendar year. Other years are still to be determined.
+ > **Note** The bounty program is available for the 2018 calendar year. Other years are still to be determined.
 
 We are introducing a bounty program to incentivize the common tasks that nobody wants to do, especially ones in Open Source communities that people feel like are a time suck but everybody knows is important.
 
@@ -28,7 +28,7 @@ To date, we have had a 10% or less success rate in getting the person who asked 
 
 Open Source is great, and inevitably all software will become Open Source (that is, software wants to be free) at some point due to economic pressure over time. However, it is clear that because menial tasks do not require creativity and give contributors autonomy, it may be better to reward through monetary means.
 
- > **Note**: While this may be counterintuitive to "common sense", that we are offering monetary compensation for menial curation but not for feature improvements, scientific research backs this up. Check out the RSA animated explainer talk linked up top.
+ > **Note** While this may be counterintuitive to "common sense", that we are offering monetary compensation for menial curation but not for feature improvements, scientific research backs this up. Check out the RSA animated explainer talk linked up top.
 
 How it will work:
 
@@ -43,7 +43,7 @@ How it will work:
 
 Open Source contribution are welcome and appreciated, but if you are doing it for free, please tell us.
 
- > **Note**: Any edits to the terms on this page that are not from authorized representatives are not valid, it is your responsibility to check the [git history and verify it](https://github.com/amark/gun/wiki/Bounty/_history) and to contact us directly to confirm the rules match.
+ > **Note** Any edits to the terms on this page that are not from authorized representatives are not valid, it is your responsibility to check the [git history and verify it](https://github.com/amark/gun/wiki/Bounty/_history) and to contact us directly to confirm the rules match.
 
 ## Bug Fixes
 
