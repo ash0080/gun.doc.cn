@@ -22,11 +22,11 @@ var dave = gun.get('person/dave').put({name: 'dave', age: 42});
 What if we want to get their data? We can either chain off of the reference directly or get it again:
 
 ```javascript
-alice.val(function(node){
+alice.once(function(node){
   console.log('Alice!', node);
 });
 
-gun.get('person/bob').val(function(node){
+gun.get('person/bob').once(function(node){
   console.log('Bob!', node);
 });
 ```
@@ -71,7 +71,7 @@ var company = gun.get('startup/hype').put({
 Now let's read it out!
 
 ```javascript
-company.val(function(startup){
+company.once(function(startup){
   console.log("The startup:", startup);
 });
 ```
@@ -81,7 +81,7 @@ company.val(function(startup){
 So what if you want to access the city property on the company's address? You can traverse into your document using the standard dot syntax.
 
 ```javascript
-company.path('address.city').val(function(value, field){
+company.path('address.city').once(function(value, field){
   console.log("What is the city?", value);
 });
 ```
@@ -127,7 +127,7 @@ carl.path('friends').set(bob);
 Finally, let's read some data out. Starting with a key/value, pathing into fields on a document, then mapping over a table, then navigating into one of its columns and logging out its value with `.val`'s shortcut helper.
 
 ```javascript
-gun.get('person/alice').path('spouse.employer.employees').map().path('name').val("The employee's");
+gun.get('person/alice').path('spouse.employer.employees').map().path('name').once("The employee's");
 ```
 
 Awesome, now all together - run it yourself: http://jsbin.com/webikepoxa/edit?js,console (Hit "Run", all logs except for the last one have been commented out).
