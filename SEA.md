@@ -54,7 +54,7 @@ If `data` is `undefined` then something went wrong. No matter what.
 
 So then where is the error?
 
-You might not like this, but it makes sense - it is an always easily accessible location, without worry about scope or context, that makes debugging happen faster:
+You might not like this, but it makes sense - the last error will be in an always easily accessible location, without worry about scope or context, which makes debugging happen faster:
 
 ```javascript
 console.log(SEA.err)
