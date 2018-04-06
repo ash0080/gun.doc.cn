@@ -89,7 +89,7 @@ function forgot(username, A1, A2){
   // A1 and A2 are answers to security questions they made earlier.
   var scrambled = await gun.get(username).get('hint').then();
   var proof = await Gun.SEA.work(A1, A2);
-  var hint = await Gun.SEA.enc(scrambled, proof);
+  var hint = await Gun.SEA.dec(scrambled, proof);
   return hint; // your password hint!
 }
 ```
@@ -109,3 +109,26 @@ var pair = await SEA.pair()
 This generates a cryptographically secure public/private key pair - be careful not to leak the private keys!
 
 You will need this for most of SEA's API, see those method's examples.
+
+The default cryptographic primitives for the asymmetric keys are ECDSA for signing and ECDH for encryption.
+
+## sign
+
+```javascript
+signature = await SEA.sign(text, pair);
+```
+
+Get a signature for some data that will prevent attackers from faking it.
+
+ - `text` is the data that you want to prove is authorized by someone.
+ - `pair` is from [`.pair`](#pair).
+
+### Example
+
+The `user` system uses this to make it so that only you can write to your own data, and all other write attempts are rejected from being synchronized. For example:
+
+```javascript
+var sig = await SEA.sign("I wrote this message! You did not.", pair);
+```
+
+The default cryptographic primitive signs a SHA256 fingerprint of the data.
