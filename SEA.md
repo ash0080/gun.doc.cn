@@ -115,10 +115,10 @@ The default cryptographic primitives for the asymmetric keys are ECDSA for signi
 ## sign
 
 ```javascript
-signature = await SEA.sign(text, pair);
+signature = await SEA.sign(text, pair)
 ```
 
-Get a signature for some data that will prevent attackers from faking it.
+Get a signature for some data that will prevent attackers from faking changes to it.
 
  - `text` is the data that you want to prove is authorized by someone.
  - `pair` is from [`.pair`](#pair).
@@ -129,6 +129,31 @@ The `user` system uses this to make it so that only you can write to your own da
 
 ```javascript
 var sig = await SEA.sign("I wrote this message! You did not.", pair);
+console.log(await SEA.verify("This message got changed", pair, sig)); // false
 ```
 
 The default cryptographic primitive signs a SHA256 fingerprint of the data.
+
+## verify
+
+```javascript
+check = await SEA.verify(text, pair, signature)
+```
+
+Check if some person actually signed off on some data, true or false.
+
+ - `text` the same data as from [`.sign`](#sign).
+ - `pair` from [`.pair`](#pair) or its public key text (`pair.pub`).
+ - `signature` from [`.sign`](#sign).
+
+### Example
+
+The `user` system uses this to make it so that only you can write to your own data, and all other write attempts are rejected from being synchronized. For example:
+
+```javascript
+var msg = "I wrote this message! You did not.";
+var sig = await SEA.sign(msg, pair);
+console.log(await SEA.verify(msg, pair, sig)); // true
+```
+
+The default cryptographic primitive verifies a SHA256 fingerprint of the data.
