@@ -47,10 +47,12 @@ So we have opted for a cleaner approach:
 
 ```javascript
 data = await SEA.util(a, b)
-if(!data){ ... }
+if(!data){ ... } // undefined === data is safer
 ```
 
-If `data` is `undefined` then something went wrong. No matter what.
+If `data` exactly equal to `undefined` then something went wrong. No matter what.
+
+> Note: Careful not to confuse it with `0` or other falsy values
 
 So then where is the error?
 
@@ -64,7 +66,7 @@ This is a good thing. And it works the same with the official callback style:
 
 ```javascript
 SEA.util(a, b, function(data){
-  if(!data){ return console.log(SEA.err) }
+  if(!data){ return console.log(SEA.err) } // undefined === data is safer
 });
 ```
 
