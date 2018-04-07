@@ -166,6 +166,41 @@ console.log(await SEA.verify(msg, pair)); // true
 
 The default cryptographic primitive verifies a SHA256 fingerprint of the data.
 
+## encrypt
+
+```javascript
+message = await SEA.encrypt(data, pair)
+```
+
+Takes some data that you want to keep secret and encrypts it so nobody else can read it.
+
+ - `data` is the content that you want to encrypt.
+ - `pair` from [`.pair`](#pair) or a passphrase you want to use as a cypher to encrypt with.
+
+### Example
+
+```javascript
+var msg = await SEA.encrypt("Please do not tell this to anybody", pair);
+console.log(await SEA.decrypt(msg, pair)); // true
+```
+
+## decrypt
+
+```javascript
+data = await SEA.encrypt(message, pair)
+```
+
+Read the secret data, if and only if you are allowed to.
+
+ - `message` is what comes from [`.encrypt`](#encrypt).
+ - `pair` from [`.pair`](#pair) or the passphrase to decypher the message.
+
+### Example
+
+```javascript
+var msg = await SEA.encrypt("Please do not tell this to anybody", 'secret passphrase');
+console.log(await SEA.decrypt(msg, 'passphrase secret')); // false
+```
 
 ---
 
