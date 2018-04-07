@@ -52,6 +52,10 @@ var gun = Gun(options)
 
    - `options.peers` is an object, where the URLs are properties, and the value is an empty object.
 
+   - `options.radisk` (boolean) creates and persists local data to a JSON file.
+
+   - `options.localStorage` (boolean, default: `true`) persists local data to localStorage.
+
    - `options.uuid` allows you to override the default 24 random alphanumeric soul generator with
       your own function.
 
