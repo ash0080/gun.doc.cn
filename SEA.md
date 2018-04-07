@@ -4,11 +4,11 @@ SEA is an easy API for the cryptographic primitives explained in the [1min anima
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/gun/gun.js">
-<script src="https://cdn.jsdelivr.net/npm/gun/sea.js">
+<script src="https://rawgit.com/amark/gun/master/sea.js">
 <script>
-  // var Gun = require('gun'); // in NodeJS 
-  // require('gun/sea');
-  var SEA = Gun.SEA;
+// var Gun = require('gun'); // in NodeJS 
+// require('gun/sea');
+var SEA = Gun.SEA;
 </script>
 ```
 
@@ -206,7 +206,10 @@ console.log(await SEA.decrypt(msg, 'passphrase secret')); // false
 
 Let's try putting all of them together:
 
-```javascript
+```html
+<script src="https://cdn.jsdelivr.net/npm/gun/gun.js">
+<script src="https://rawgit.com/amark/gun/master/sea.js">
+<script>
 var SEA = Gun.SEA;
 var pair = await SEA.pair();
 var enc = await SEA.encrypt('hello self', pair);
@@ -218,4 +221,5 @@ var proof = await SEA.work(dec, pair);
 var check = await SEA.work('hello self', pair);
 console.log(dec);
 console.log(proof === check);
+</script>
 ```
