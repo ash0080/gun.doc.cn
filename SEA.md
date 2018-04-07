@@ -210,6 +210,7 @@ Let's try putting all of them together:
 <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
 <script src="https://rawgit.com/amark/gun/master/sea.js"></script>
 <script>
+;(async () => {
 var SEA = Gun.SEA;
 var pair = await SEA.pair();
 var enc = await SEA.encrypt('hello self', pair);
@@ -221,5 +222,6 @@ var proof = await SEA.work(dec, pair);
 var check = await SEA.work('hello self', pair);
 console.log(dec);
 console.log(proof === check);
+})();
 </script>
 ```
