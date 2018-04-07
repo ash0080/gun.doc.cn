@@ -3,8 +3,8 @@ SEA is split into two parts, the `gun.user()` chain and `Gun.SEA` utility. This 
 SEA is an easy API for the cryptographic primitives explained in the [1min animated explainer cartoon series](https://gun.eco/explainers/data/security.html), that wraps painful ones like the browser native WebCrypto API. We hope to have it swappable with WASM libsodium and/or local proxies to Electron/NodeJS or browser extensions.
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/gun/gun.js">
-<script src="https://rawgit.com/amark/gun/master/sea.js">
+<script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
+<script src="https://rawgit.com/amark/gun/master/sea.js"></script>
 <script>
 // var Gun = require('gun'); // in NodeJS 
 // require('gun/sea');
@@ -207,8 +207,8 @@ console.log(await SEA.decrypt(msg, 'passphrase secret')); // false
 Let's try putting all of them together:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/gun/gun.js">
-<script src="https://rawgit.com/amark/gun/master/sea.js">
+<script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
+<script src="https://rawgit.com/amark/gun/master/sea.js"></script>
 <script>
 var SEA = Gun.SEA;
 var pair = await SEA.pair();
