@@ -59,7 +59,7 @@ So then where is the error?
 You might not like this, but it makes sense - the last error will be in an always easily accessible location, without worry about scope or context, which makes debugging happen faster:
 
 ```javascript
-console.log(SEA.err)
+console.log(SEA.err) // last known error
 ```
 
 This is a good thing. And it works the same with the official callback style:
@@ -84,14 +84,14 @@ This gives you a Proof of Work (PoW)!
 
 ### Example
 
-The `user` system uses this to allow for username/password based login methods without risking an attacker being able to brute-force crack your password. You can use this to create a forgot password hint system:
+The `user` system uses PoW to allow for truly decentralized (and even offline-first) username/password based login without risking an attacker being able to brute-force crack your password. You can use this to create a forgot password hint system, or a variety of things:
 
 ```javascript
 function forgot(username, A1, A2){
   // A1 and A2 are answers to security questions they made earlier.
-  var scrambled = await gun.get(username).get('hint').then();
+  var scrambled = await gun.user().get('hint').then();
   var proof = await Gun.SEA.work(A1, A2);
-  var hint = await Gun.SEA.dec(scrambled, proof);
+  var hint = await Gun.SEA.decrypt(scrambled, proof);
   return hint; // your password hint!
 }
 ```
@@ -117,12 +117,12 @@ The default cryptographic primitives for the asymmetric keys are ECDSA for signi
 ## sign
 
 ```javascript
-signature = await SEA.sign(text, pair)
+message = await SEA.sign(data, pair)
 ```
 
-Get a signature for some data that will prevent attackers from faking changes to it.
+Adds a signature to a message, for data that you want to prevent attackers tampering with.
 
- - `text` is the data that you want to prove is authorized by someone.
+ - `data` is the content that you want to prove is authorized.
  - `pair` is from [`.pair`](#pair).
 
 ### Example
@@ -130,8 +130,9 @@ Get a signature for some data that will prevent attackers from faking changes to
 The `user` system uses this to make it so that only you can write to your own data, and all other write attempts are rejected from being synchronized. For example:
 
 ```javascript
-var sig = await SEA.sign("I wrote this message! You did not.", pair);
-console.log(await SEA.verify("This message got changed", pair, sig)); // false
+var other = await SEA.pair();
+var msg = await SEA.sign("I wrote this message! You did not.", pair);
+console.log(await SEA.verify(msg, other)); // false
 ```
 
 The default cryptographic primitive signs a SHA256 fingerprint of the data.
@@ -139,23 +140,43 @@ The default cryptographic primitive signs a SHA256 fingerprint of the data.
 ## verify
 
 ```javascript
-check = await SEA.verify(text, pair, signature)
+data = await SEA.verify(message, pair)
 ```
 
-Check if some person actually signed off on some data, true or false.
+Gets the data if and only if the message can be verified as coming from the person you expect.
 
- - `text` the same data as from [`.sign`](#sign).
+ - `message` is what comes from [`.sign`](#sign).
  - `pair` from [`.pair`](#pair) or its public key text (`pair.pub`).
- - `signature` from [`.sign`](#sign).
 
 ### Example
 
 The `user` system uses this to make it so that only you can write to your own data, and all other write attempts are rejected from being synchronized. For example:
 
 ```javascript
-var msg = "I wrote this message! You did not.";
-var sig = await SEA.sign(msg, pair);
-console.log(await SEA.verify(msg, pair, sig)); // true
+var data = "I wrote this message! You did not.";
+var msg = await SEA.sign(data, pair);
+console.log(await SEA.verify(msg, pair)); // true
 ```
 
+> Note: You must be careful to use a public key that you already trust, not one that just anybody could send to you (an attacker would try to send you a fake public key).
+
 The default cryptographic primitive verifies a SHA256 fingerprint of the data.
+
+
+---
+
+Let's try putting all of them together:
+
+```javascript
+var SEA = Gun.SEA;
+var pair = await SEA.pair();
+var enc = await SEA.encrypt('hello self', pair);
+var data = await SEA.sign(enc, pair);
+console.log(data);
+var msg = await SEA.verify(data, pair);
+var dec = await SEA.decrypt(msg, pair);
+var proof = await SEA.work(dec, pair);
+var check = await SEA.work('hello self', pair);
+console.log(dec);
+console.log(proof === check);
+```
