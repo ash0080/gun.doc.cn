@@ -82,6 +82,8 @@ This gives you a Proof of Work (PoW)!
  - `mix` **optional** salt (something that prevents attackers from pre-computing the work in advance).
  - - If it is not specified, it will be random, which ruins your chance of ever being able to deterministically re-derive the work (most apps will want to do this, see examples below).
 
+> Note: **API subject to change**, in the future we may change the output format.
+
 ### Example
 
 The `user` system uses PoW to allow for truly decentralized (and even offline-first) username/password based login without risking an attacker being able to brute-force crack your password. You can use this to create a forgot password hint system, or a variety of things:
@@ -109,6 +111,8 @@ var pair = await SEA.pair()
 ```
 
 This generates a cryptographically secure public/private key pair - be careful not to leak the private keys!
+
+> Note: **API subject to change** we may change the parameters to accept data and work, in addition to generation.
 
 You will need this for most of SEA's API, see those method's examples.
 
