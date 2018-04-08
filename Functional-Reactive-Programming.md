@@ -27,7 +27,7 @@ PDF.save = function(page, number){
 	saveToFolder('page' + number, page, PDF.done);
 }
 PDF.done = function(err, done){
-	console.log("Done! If no," err);
+	console.log("Done! If no", err);
 }
 PDFs.forEach(PDF.read);
 ```
