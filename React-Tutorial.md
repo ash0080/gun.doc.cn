@@ -81,7 +81,7 @@ class App extends Component {
 
   render() {
     return (
-      <Homegun={this.gun} />
+      <Home gun={this.gun} />
     );
   }
 }
