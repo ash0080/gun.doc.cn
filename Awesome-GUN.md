@@ -123,7 +123,7 @@ GunDB Cytoscape Graph Visualizer with [Live Editor](https://goo.gl/qDTBx7)
  - [Next.js](https://github.com/zrrrzzt/gun-next-example)
 Example of how to get started with Next.js and GUN!
 
-  -[GunStore.io](https://github.com/lmangani/gunstore.io) 
+ - [GunStore.io](https://github.com/lmangani/gunstore.io) 
 Storing data in Gun DB by sending simple HTTP requests & custom URLs
 
 ## Deployment
