@@ -30,7 +30,7 @@ var gun = Gun({
   }
 });
 ```
-Remember that your app needs to have these ENVIRONMENT VARIABLES available to them.
+NOTE: The `key`, `secret`, and `bucket` params will not accept just any string values. The Gun S3 adaptor expects those three explicit `process.env.*` ENVIRONMENT VARIABLES listed above, or S3 will fail silently.
 
 If you are using Heroku, this is pretty easy. In their dashboard go and edit your app's ENVIRONMENT VARIABLE CONFIGs to the actual key, token, and bucket.
 
