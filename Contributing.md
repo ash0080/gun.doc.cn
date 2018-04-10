@@ -1,5 +1,3 @@
-# Contributing
-
 Yes, please do contribute! We want you to feel as involved as you need or want to be. Here are some tips to get rolling.
 
 ## Be Social
