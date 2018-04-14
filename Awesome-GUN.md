@@ -3,7 +3,7 @@
 A curated list of [Gun](https://github.com/amark/gun) resources, modules and projects.  :gun: 
 
 ## Extensions
-
+ - [gun-synclist](https://www.npmjs.com/package/gun-synclist) Get an Array with full nodes on init, after that on every change only the changed - full - node, its soul and its index in the Array.
  - [gun-tag](https://www.npmjs.com/package/gun-tag)
 Tag, untag, filter and find intersects on nodes ~ By [Stefdv](https://github.com/stefdv)
 
