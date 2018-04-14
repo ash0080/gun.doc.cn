@@ -5,7 +5,7 @@ A curated list of [Gun](https://github.com/amark/gun) resources, modules and pro
 ## Extensions
  - [gun-synclist](https://www.npmjs.com/package/gun-synclist) Get an Array with full nodes on init, after that only the changed - full - node, its soul and its index. ~ By [Stefdv](https://github.com/stefdv)
  - [gun-tag](https://www.npmjs.com/package/gun-tag)
-Tag, untag, filter and find intersects on nodes ~ By [Stefdv](https://github.com/stefdv)
+Tag, untag, filter and find intersects on nodes ( updated 15-04-2018) ~ By [Stefdv](https://github.com/stefdv)
 
  - [gun-schema](https://github.com/gundb/gun-schema)
 Schema validation module for node and the browser ~ By [RangerMauve](https://github.com/RangerMauve)
