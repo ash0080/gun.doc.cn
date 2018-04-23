@@ -73,15 +73,15 @@ Especially during Stage 1 and Stage 2, where most of it is proxied via existing 
 
 Using cartoon analogies, this is how tokens can be converted on exchanges:
 
-1. Imagine creating a new physical vault, each one must have the same size of space inside.
+1) Imagine creating a new physical vault, each one must have the same size of space inside.
  > Analog: This makes a static block, like with Bitcoin, that can be ERC20/other compatible and traded on exchanges.
-2. Now, dump a ton of your coins into the vault, such that they fill it entirely.
+2) Now, dump a ton of your coins into the vault, such that they fill it entirely.
  > Each one of your coins might have a different value. (a USD dime, penny, quarter, nickel, etc.)
-3. You add those coins up and promise to sell the vault as a whole at a guaranteed price for the next hour.
+3) You add those coins up and promise to sell the vault as a whole at a guaranteed price for the next hour.
  > Analog: This would be through a smart contract, timing can be adjusted.
-4. Now other people can choose to buy your vault in a marketplace.
+4) Now other people can choose to buy your vault in a marketplace.
  > They can add the coins up themselves to verify the price.
  > The coins' worth might go up, down, or stay the same.
-5. If they buy, the vault unlocks and all the coins spill out into their ownership.
-6. If nobody buys, the time vault's smart contract expires, and the vault opens up and you get your coins back.
+5) If they buy, the vault unlocks and all the coins spill out into their ownership.
+6) If nobody buys, the time vault's smart contract expires, and the vault opens up and you get your coins back.
  > If you still want to sell, repeat this process (potentially adjusting the price where needed).
