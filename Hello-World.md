@@ -78,7 +78,9 @@ var gun = Gun({web: server})
 
 You can run it on Heroku by clicking this button:
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/robertheessels/gun-super-peer-example){:target="_blank"}
+<a href="https://heroku.com/deploy?template=https://github.com/robertheessels/gun-super-peer-example" target="_blank">
+  <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
+</a>
 
 Create a unique app name and deploy the app.
 
