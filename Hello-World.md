@@ -8,11 +8,11 @@ Let's create a html file that will contain both our markup and Javascript code:
 
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
-::: {editor: 'main'} :::
 <html>
   <body>
     <h1>Hello</h1>
-    <form>What is your name? <input><button>Submit</button></form>
+    What is your name?<br>
+    <form><input><button>Submit</button></form>
 
     <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -53,3 +53,47 @@ Then each time the user submits a new name (`$('form').on`) we create a new obje
 Finally by using `gun.get('hello').on` we get called each time the `hello` node changes, so we can update the h1.
 
 Notice that when we refresh the page or load it in a new window, the `gun.get('hello').on` is called automatically because GUN figures out there is already an existing `hello` node. All data is automatically cached by GUN in the browser's localStorage.
+
+## Synchronising multiple computers
+
+GUN is able to fully automatically synchronise all data between multiple computers. Theoretically this could be done without the need for any server, but unfortunately browsers are not yet able to 'discover' each other without a little help from a server.
+
+So we will now create a very simple server (which we prefer to call a super-peer) on Heroku. If you do not yet have a Heroku account please create one now. It's free.
+
+The super-peer code looks like this:
+
+```javascript
+var Gun = require('gun')
+var http = require('http')
+var fs = require('fs')
+
+var server = http.createServer((req,res) => {
+  if (Gun.serve(req, res)) { return } // filters gun requests!
+  res.writeHead(200)
+  res.end(fs.readFileSync(__dirname + '/index.html'))
+}).listen(process.env.PORT || process.argv[2] || 8080)
+
+var gun = Gun({web: server})
+```
+
+You can run it on Heroku by clicking this button:
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/robertheessels/gun-super-peer-example)
+Create a unique app name and delpoy the app.
+
+After it has started, in the code at the top of this page, change this line `var gun = Gun()` into: `var gun = Gun('https://unique-app-name.herokuapp.com/gun')` (Make sure you replace `unique-app-name` by the name you entered in Heroku).
+
+Now open this page in another computer, or open it in a different browser (Chrome, Firefox, etc) and make the same change as you just did (`var gun = Gun('https://unique-app-name.herokuapp.com/gun')`).
+
+If all went well, the two browser pages (which we call peers) have found each other via the super-peer and are now syncing. Whenever you change the name in one place, it will update in both.
+
+Attention! Make sure you destroy the Heroku app after you're done testing to avoid costs.
+
+The code for the super-peer (server) is just a very basic web server with just one line added for GUN: `var gun = Gun({web: server})`. Make sure to always include a reference to the web server when initialising GUN.
+
+## What's next?
+
+[Next steps](Next-Steps)
+
+[A Crash course explaining further how to use GUN](Crash-Course)
+
+[An interactive GUN todo app tutorial](Basic-Todo-App-Tutorial)
