@@ -1,4 +1,4 @@
-> This page needs contributions! These were notes taken during a webcast, and need to be expanded into documentation. Unfortunately, only the last 20 min of the webcast was recorded: https://drive.google.com/open?id=19ABZE6rKwIWJCNuGqKrO_pzsUxHGGQJ8 (4GB)
+> This page needs contributions! These were notes taken during a webcast, and need to be expanded into documentation. Only the last 20 min (of 2 hour 30min) of the webcast was recorded: https://drive.google.com/open?id=19ABZE6rKwIWJCNuGqKrO_pzsUxHGGQJ8 (4GB)
 
 To learn how to use GUN's security system, read the ["How To"](Auth) guide on authorization or the [SEA](SEA) documentation. This article is intended to explain the **architecture** for decentralized security.
 
