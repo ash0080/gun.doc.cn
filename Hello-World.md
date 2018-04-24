@@ -77,18 +77,20 @@ var gun = Gun({web: server})
 ```
 
 You can run it on Heroku by clicking this button:
+
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/robertheessels/gun-super-peer-example)
-Create a unique app name and delpoy the app.
+
+Create a unique app name and deploy the app.
 
 After it has started, in the code at the top of this page, change this line `var gun = Gun()` into: `var gun = Gun('https://unique-app-name.herokuapp.com/gun')` (Make sure you replace `unique-app-name` by the name you entered in Heroku).
 
-Now open this page in another computer, or open it in a different browser (Chrome, Firefox, etc) and make the same change as you just did (`var gun = Gun('https://unique-app-name.herokuapp.com/gun')`).
+Now open this very page in another computer, or open it in a different browser (Chrome, Firefox, etc) and make the same change as you just did (`var gun = Gun('https://unique-app-name.herokuapp.com/gun')`).
 
-If all went well, the two browser pages (which we call peers) have found each other via the super-peer and are now syncing. Whenever you change the name in one place, it will update in both.
+If all went well, the two browser pages (which we call peers) have found each other via the super-peer and are now syncing. Whenever you change the name in one place, it will update in both. Thanks to the power of GUN.
 
-Attention! Make sure you destroy the Heroku app after you're done testing to avoid costs.
+>Attention! Make sure you destroy the Heroku app after you're done testing to avoid costs.
 
-The code for the super-peer (server) is just a very basic web server with just one line added for GUN: `var gun = Gun({web: server})`. Make sure to always include a reference to the web server when initialising GUN.
+The code for the super-peer (server) is just a very basic web server with just one line added for GUN: `var gun = Gun({web: server})`. Make sure to always include a reference to the web server when initialising GUN in Node.js.
 
 ## What's next?
 
