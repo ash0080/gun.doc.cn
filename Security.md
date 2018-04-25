@@ -31,10 +31,13 @@ Specifics of implementation may depend on data model being used for application.
 
 Assuming group of good actors with shared key.
 When user leaves:
+
 1) (most secure) change decryption key and re-encrypt ALL data
+
 2) (centralized/federated/p2p) user still has access to any offline data from before leaving
--  a) Change decryption key and use for new data
--  b) Must manage multiple *dec* keys (old key and new key)
+ -  a) Change decryption key and use for new data
+ -  b) Must manage multiple *dec* keys (old key and new key)
+
 3) (small groups) hope people abandon old keys and don’t worry about it
 
 Aggregator model example:
