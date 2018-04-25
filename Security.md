@@ -2,48 +2,71 @@
 
 To learn how to use GUN's security system, read the ["How To"](Auth) guide on authorization or the [SEA](SEA) documentation. This article is intended to explain the **architecture** for decentralized security.
 
-Two core models:
-Private write - public read : “Admin” group writes new data for public consumption 
-Private write - private read : Read/write only for authorized group members
+### Let's think about the security models
 
-Public write - private read: not generally useful (inbox mode?)
-Public write - public read: doesn’t need encryption
+#### The two core models
+
+| WRITE   | READ    | Description
+|---------|---------|----------------
+| Private | Public  | Admin group writes new data for public consumption
+| Private | Private | Read/write only for authorized group members
+
+#### Other two models that not so important to security:
+
+| WRITE   | READ    | Description
+|---------|---------|----------------
+| Public  | Public  | Doesn’t need encryption
+| Public  | Private | Not generally useful (inbox mode?)
 
 Messaging models:
-Aggregator - determines read/write permissions for group members
-Writer - can write data to system
-Reader - can read data from system
+ - Aggregator: determines *read/write* permissions for group members
+ - Writer: can *write* data to system
+ - Reader: can *read* data from system
 
-Fine grained access possible with group level keys shared at different levels of the hierarchy
-Avoid models where keys are completely public as this is not secure
-Specifics of implementation may depend on data model being used for application
+Fine grained access possible with group level keys shared at different levels of the hierarchy.
 
-Assuming group of good actors with shared key
+Avoid models where keys are completely public as this is not secure.
+
+Specifics of implementation may depend on data model being used for application.
+
+Assuming group of good actors with shared key.
 When user leaves:
-(most secure) change decryption key and re-encrypt ALL data
-(centralized/federated/p2p) user still has access to any offline data from before leaving
-Change decryption key and use for new data
-Must manage multiple dec keys (old key and new key)
-(small groups) hope people abandon old keys and don’t worry about it
+1) (most secure) change decryption key and re-encrypt ALL data
+2) (centralized/federated/p2p) user still has access to any offline data from before leaving
+    - a) Change decryption key and use for new data
+    - b) Must manage multiple *dec* keys (old key and new key)
+3) (small groups) hope people abandon old keys and don’t worry about it
 
 Aggregator model example:
-(A) Aggregator: Alice, Bob
-(C) Customers: Carl, Dave, Ed
-(O) Others: Zach, Xavian
 
-Must create a gun user for each user
-Public keys are searchable by username
-Never use username as user id (non-secure). Usernames are not guaranteed to be unique, so doing this increases possibility of usin incorrect keys for encryption
+ - (A) Aggregator: Alice, Bob
+ - (C) Customers: Carl, Dave, Ed
+ - (O) Others: Zach, Xavian
 
-Logged in users have access to personal private key (gun.user())
-If you need access to a user who isn’t logged in, you can iterate through gun users in local storage
-Preferred for each user to have a list of trusted users with public keys (friends list). This can be combined with app level routing to find public keys and save to trust table as needed
-Users can be searched by public key with convenience method (gun.user(<pubkey>))
+Must create a gun user for each user.
+Example: 
+```javascript
+var user = gun.user();
+user.create('alice', 'password', function(ack) {
+  console.log('User created: ', ack.pub);
+});
+```
+
+Public keys are searchable by username.
+
+**Never** use username as user id (non-secure). 
+
+Usernames are not guaranteed to be unique, so doing this increases possibility of usin incorrect keys for encryption.
+
+Logged in users have access to personal private key (`gun.user()`).
+
+If you need access to a user who isn’t logged in, you can iterate through gun users in local storage.
+
+Preferred for each user to have a list of trusted users with public keys (friends list). This can be combined with app level routing to find public keys and save to trust table as needed.
+
+Users can be searched by public key with convenience method (`gun.user(<pubkey>)`).
 
 Alice and Bob need a reciprocal trust relationship
-
-
-
 
 
 Google “diffie hellman colors” -> Explains how both parties can get to the same shared secret.
