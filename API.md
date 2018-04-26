@@ -185,7 +185,8 @@ gun.get('key').put(data) /* same context as */ gun.get('key')
 
 You cannot save primitive values at the root level.
 ```javascript
-Gun().put("oops");
+Gun().put("oops"); // error
+Gun().get("odd").put("oops"); // error
 ```
 All data is normalized to a parent node.
 ```javascript
@@ -201,7 +202,7 @@ You can save a gun chain reference,
 var ref = Gun().put({text: 'Hello world!'})
 Gun().get('message').path('first').put(ref)
 ```
-But you cannot save it inline.
+But you cannot save it inline, yet.
 ```javascript
 var sender = Gun().put({name: 'Tom'})
 var msg = Gun().put({
@@ -209,7 +210,7 @@ var msg = Gun().put({
   sender: sender // this will fail
 })
 // however
-msg.path('sender').put(sender) // this will succeed
+msg.path('sender').put(sender) // this will work
 ``` 
 Be careful saving deeply nested objects,
 ```javascript
