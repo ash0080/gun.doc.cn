@@ -2,9 +2,31 @@
 
 To learn how to use GUN's security system, read the ["How To"](Auth) guide on authorization or the [SEA](SEA) documentation. This article is intended to explain the **architecture** for decentralized security.
 
-### Let's think about the security models
+ - Privacy: Cypher
+ - Authenticity: Signatures
 
-#### The two core models
+To load gun and sea.
+```javascript
+var Gun = require('gun');
+require('gun/sea');
+var gun = Gun();
+var user = gun.user()
+```
+
+## Individual 1-1 security model (Diffie-Hellman)
+Working [sample](https://gist.github.com/amark/7dceae874a20878fdb9e2a8eed109bb5).
+
+When creating and authenticating an user, will be created an user public key.
+
+```javascript
+user.create('me', 'secret')
+user.auth('me', 'secret')
+console.log(user.is.pub); /// here we see the user pubkey
+```
+
+## N-N Group security models
+
+### The two core models
 
 | WRITE   | READ    | Description
 |---------|---------|----------------
