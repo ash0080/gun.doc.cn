@@ -1,3 +1,5 @@
+> These docs are out of date! Please check https://gun.eco/docs/Installation#server instead.
+
 To sync with other peers on a browser, you'll need to connect to one or more servers. While learning gun or building small apps, you can simply use our community server:
 
  - `http://gungame.herokuapp.com/gun`
