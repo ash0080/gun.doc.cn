@@ -33,7 +33,7 @@ gun.get('person/bob').once(function(node){
 
 > Note: GUN is a functional reactive database for event driven data, so using `.val` is discouraged because it indicates that you are doing things procedurally. Calling `.val()` (no callback) automatically asynchronously logs out the data, which is useful for debugging purposes.
 
-Now lets add all the people into a [set](https://en.wikipedia.org/wiki/Set_(mathematics)), you can think of this as a table in relational databases or a collection in NoSQL databases.
+Now let's add all the people into a [set]( https://en.wikipedia.org/wiki/Set_(mathematics) ), you can think of this as a table in relational databases or a collection in NoSQL databases.
 
 ```javascript
 var people = gun.get('people');
