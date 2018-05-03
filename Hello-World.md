@@ -78,7 +78,7 @@ var gun = Gun({web: server})
 
 You can run it on Heroku by clicking this button:
 
-<a href="https://heroku.com/deploy?template=https://github.com/robertheessels/gun-super-peer-example" target="_blank">
+<a href="https://heroku.com/deploy?template=https://github.com/gundb/gun-super-peer-example" target="_blank">
   <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
 </a>
 
