@@ -1,5 +1,7 @@
 We need volunteers to: (please add your name)
 
+We also have a bounty/rewards program. Check [here](Bounty) for more info.
+
 ## ToDo App Tutorial / Blog
 
 Base it off of https://gun.eco/think.html .
