@@ -10,7 +10,7 @@ Think these docs could be improved? Contribute to the wiki! Or [[comment|https:/
 
 # Main API
  - [gun.on](#on)
- - [gun.val](#val)
+ - [gun.once](#once) ([gun.val](#val))
  - [gun.set](#set)
  - [gun.map](#map)
 
@@ -239,7 +239,7 @@ It takes two parameters:
 
 `gun.get('key').get('property', function(ack){})`
 
-You will usually be using [gun.on](#on) or [gun.val](#val) to actually retrieve your data, not this `callback` (it is intended for more low level control, for module and extensions).
+You will usually be using [gun.on](#on) or [gun.once](#once) to actually retrieve your data, not this `callback` (it is intended for more low level control, for module and extensions).
 
 ## Key
 The `key` is the ID or property name of the data that you saved from earlier (or that will be saved later).
@@ -259,7 +259,7 @@ gun.get('key').on(function(data, key){
  - `ack.put`, the raw data.
  - `ack.get`, the key, ID, or property name of the data.
 
-The callback is a listener for read errors, not found, and updates. It may be called multiple times for a single request, since gun uses a reactive streaming architecture. Generally, you'll find [`.not`](#not), [`.on`](#on), and [`.val`](#val) as more convenient for every day use. Skip to those!
+The callback is a listener for read errors, not found, and updates. It may be called multiple times for a single request, since gun uses a reactive streaming architecture. Generally, you'll find [`.not`](#not), [`.on`](#on), and [`.once`](#once) as more convenient for every day use. Skip to those!
 
 ```javascript
 gun.get(key, function(ack){
@@ -434,22 +434,22 @@ Data is only 1 layer deep, a full document is not returned (see the [gun.open](#
 It will be called many times.
 
 -------------------------------------
-# <a name="val"></a> gun.val(callback, option)
+# <a name="once"></a> gun.once(callback, option)
 
-<a href="https://youtu.be/k-CkP43-uJo" title="GUN val"><img src="http://img.youtube.com/vi/k-CkP43-uJo/0.jpg" width="425px"></a><br>
+<a href="https://youtu.be/k-CkP43-uJo" title="GUN once"><img src="http://img.youtube.com/vi/k-CkP43-uJo/0.jpg" width="425px"></a><br>
 
 Get the current data without subscribing to updates.
 
 ## Option
 
- - `wait` controls the asynchronous timing (see unexpected behavior, below). `gun.get('foo').val(cb, {wait: 0})`
+ - `wait` controls the asynchronous timing (see unexpected behavior, below). `gun.get('foo').once(cb, {wait: 0})`
 
 ## Callback(data, key)
 The data is the value for that chain at that given point in time. And they key is the last property name or ID of the node.
 
 ## Examples
 ```javascript
-gun.get('peer').path(userID).path('profile').val(function(profile){
+gun.get('peer').path(userID).path('profile').once(function(profile){
   // render it, but only once. No updates.
   view.show.user(profile)
 })
@@ -457,19 +457,19 @@ gun.get('peer').path(userID).path('profile').val(function(profile){
 
 Reading a property
 ```javascript
-gun.get('IoT').path('temperature').val(function(number){
+gun.get('IoT').path('temperature').once(function(number){
   view.show.temp(number)
 })
 ```
 
 ## Chain Context
-`gun.val` does not currently change the context of the chain, but it is being discussed for future versions that it will - so try to avoid chaining off of `.val` for now. This feature is now in experimental mode with `v0.6.x`, but only if `.val()` is not passed a callback. A useful example would be `gun.get('users').val().map().on(cb)` this will tell gun to get the current users in the list and subscribe to each of them, but not any new ones. Please test this behavior and recommend suggestions.
+`gun.once` does not currently change the context of the chain, but it is being discussed for future versions that it will - so try to avoid chaining off of `.once` for now. This feature is now in experimental mode with `v0.6.x`, but only if `.once()` is not passed a callback. A useful example would be `gun.get('users').once().map().on(cb)` this will tell gun to get the current users in the list and subscribe to each of them, but not any new ones. Please test this behavior and recommend suggestions.
 
 ## Unexpected behavior
 
-`.val` is synchronous and immediate (at extremely high performance) if the data has already been loaded.
+`.once` is synchronous and immediate (at extremely high performance) if the data has already been loaded.
 
-`.val` is asynchronous and on a **debounce timeout** while data is still being loaded - so it may be called completely out of order compared to other functions. This is intended because gun streams partials of data, so `val` avoids firing immediately because it may not represent the "complete" data set yet. You can control this timeout with the `wait` option.
+`.once` is asynchronous and on a **debounce timeout** while data is still being loaded - so it may be called completely out of order compared to other functions. This is intended because gun streams partials of data, so `once` avoids firing immediately because it may not represent the "complete" data set yet. You can control this timeout with the `wait` option.
 
 Data is only 1 layer deep, a full document is not returned (see the [gun.load](#open) extension for that), this helps keep things fast.
 
@@ -544,7 +544,7 @@ Or `forEach`ing through every user.
   user789: "Bob"
 }
 */
-gun.get('users').map().val(function(user, id){
+gun.get('users').map().once(function(user, id){
   ui.list.user(user);
 });
 ```
@@ -552,9 +552,9 @@ The above will be called 3 times.
 
 Here's a summary of .map() behavior depending on where it is on the chain:
 - users.map().on(cb) subscribes to changes on every user and to users as they are added.
-- users.map().val(cb) gets each user once, including ones that are added over time.
-- users.val().map().on(cb) gets the user list once, but subscribes to changes on each of those users (not added ones).
-- users.val().map().val(cb) gets the user list once, gets each of those users only once (not added ones).
+- users.map().once(cb) gets each user once, including ones that are added over time.
+- users.once().map().on(cb) gets the user list once, but subscribes to changes on each of those users (not added ones).
+- users.once().map().once(cb) gets the user list once, gets each of those users only once (not added ones).
 
 
 
@@ -743,19 +743,19 @@ gun.get('person/mark').put(human);
 `.open` does not change the context.
 
 ```javascript
-gun.get('company/acme').open(cb).get('employees').map().val(cb)
+gun.get('company/acme').open(cb).get('employees').map().once(cb)
 ```
 
 ## Unexpected behavior
 
-If you do not use a schema with `.open(cb)` it can only best guess and approximate whether the data is fully loaded or not. As a result, do not assume all the data will be available on the first callback - it may take several calls for things to fully load, so code defensively! By default, it waits 1ms after each piece of data it receives before triggering the callback. You can change the default by passing an option like `.open(cb, {wait: 99})` which forces it to wait 99ms before triggering (which is the default [gun.val](#val) has).
+If you do not use a schema with `.open(cb)` it can only best guess and approximate whether the data is fully loaded or not. As a result, do not assume all the data will be available on the first callback - it may take several calls for things to fully load, so code defensively! By default, it waits 1ms after each piece of data it receives before triggering the callback. You can change the default by passing an option like `.open(cb, {wait: 99})` which forces it to wait 99ms before triggering (which is the default [gun.once](#once) has).
 
 --------------------------------------
 # <a name="load"></a> gun.load(cb, opt)
 
 > Warning: Not included by default! You must include it yourself via `require('gun/lib/load.js')` or `<script src="/gun/lib/open.js"></script><script src="/gun/lib/load.js"></script>`!
 
-Loads the full object once. It is the same as `open` but with the behavior of [`val`](#val).
+Loads the full object once. It is the same as `open` but with the behavior of [`once`](#once).
 
 --------------------------------------
 # <a name="then"></a> gun.then(cb)
