@@ -26,12 +26,12 @@ alice.on(function(node){
   console.log('Subscribed to Alice!', node);
 });
 
-gun.get('bob').val(function(node){
+gun.get('bob').once(function(node){
   console.log('Bob!', node);
 });
 ```
 
-> Note: GUN is a functional reactive database for streaming event driven data, gotta hate buzzwords - right? This means that [`.on`](API#on) subscribes to realtime updates, and may get called many times. Meanwhile [`.val`](API#val) grabs the data once, which is useful for procedural operations. 
+> Note: GUN is a functional reactive database for streaming event driven data, gotta hate buzzwords - right? This means that [`.on`](API#on) subscribes to realtime updates, and may get called many times. Meanwhile [`.once`](API#once) grabs the data once, which is useful for procedural operations. 
 
 Now lets add all the people into a [set](https://en.wikipedia.org/wiki/Set_(mathematics)), you can think of this as a table in relational databases or a collection in NoSQL databases.
 
@@ -48,7 +48,7 @@ people.set(dave);
 It is now easy to iterate through our list of people.
 
 ```javascript
-people.map().val(function(person){
+people.map().once(function(person){
   console.log("The person is", person);
 });
 ```
@@ -73,7 +73,7 @@ var company = gun.get('startup').put({
 Now let's read it out!
 
 ```javascript
-company.val(function(startup){
+company.once(function(startup){
   console.log("The startup:", startup);
 });
 ```
@@ -83,7 +83,7 @@ company.val(function(startup){
 So what if you want to actually access the city property on the company's address then? [`.get`](API#path) also lets you traverse into the key/value pairs on sub-objects. Take this for example:
 
 ```javascript
-company.get('address').get('city').val(function(value, key){
+company.get('address').get('city').once(function(value, key){
   console.log("What is the city?", value);
 });
 ```
@@ -127,7 +127,7 @@ carl.get('friends').set(bob);
 Finally, let's read some data out. Starting with getting a key/value, then navigating into a document, then mapping over a table, then traversing into one of the columns and printing out all the values!
 
 ```javascript
-gun.get('alice').get('spouse').get('employer').get('employees').map().get('name').val(function(data, key){
+gun.get('alice').get('spouse').get('employer').get('employees').map().get('name').once(function(data, key){
   console.log("The employee's", key, data);
 });
 ```
