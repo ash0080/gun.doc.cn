@@ -1,3 +1,7 @@
+In addition to this article, there are a couple of React code examples in the main repo, and some other resources:
+
+ - [Simple React Example on Glitch by @Lightnet](https://glitch.com/edit/#!/project-react-gundb)
+
 ## Intro to Decentralized Databases with GUN
 
 _by Eddie Kollar of [AppendTo](https://appendto.com/courses/)_
