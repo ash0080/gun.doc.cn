@@ -379,19 +379,29 @@ Once initially and whenever the property or node you're focused on changes, this
 
 Since gun streams data, the callback will probably be called multiple times as new chunk comes in.
 
+To remove a listener call .off() on the same property or node.
+
 ## Option
 Currently, the only option is to filter out old data, and just be given the changes. If you're listening to a node with 100 fields, and just one changes, you'll instead be passed a node with a single property representing that change rather than the full node every time.
 
 **Longhand syntax**
 ```javascript
+// add listener to foo
 gun.get('foo').on(callback, {
   change: true
 })
+
+// remove listener to foo
+gun.get('foo').off()
 ```
 
 **Shorthand syntax**
 ```javascript
+// add listener to foo
 gun.get('foo').on(callback, true)
+
+// remove listener to foo
+gun.get('foo').off()
 ```
 
 ## Examples
