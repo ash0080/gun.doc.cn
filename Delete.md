@@ -23,9 +23,21 @@ Another way of thinking about deletion is that you're not removing the data, but
 
 If you have any more questions about removing data from gun, ping us on [Gitter](https://gitter.im/amark/gun) and we'll do our best to help out.
 
+## Options
+
+Check out `lib/memdisk`, `lib/erase`, `lib/forget` (**Call for Help**: We need documentation for these modules!) are all adapters for deleting/discarding old or unused data. Depending on what your application needs are, one of them should work.
+
 ## Why
 
-A great conversation on why this is the case, is talked about here:
+Deleting data in a distributed system is actually very hard. If there 9 peers, and 5 peers online send null to each other and each of those 5 peers then delete the information, when the remaining 4 peers come online, the 5 peers either must send null (which requires they keep the null to indicate the delete) or those 5 peers actually deleted the data (and therefore have no knowledge of it) and when the 4 peers come back online they'll re-sync the data, and the 5 peers will have the data again.
+
+The best solution is to either keep the null (which is what GUN does by default) or:
+
+Use a case-specific delete behavior, like the modules mentioned above.
+
+Or use another CRDT on top of GUN, that deletes all keys in a node below a certain vector. (**Call for Help**: We're looking for somebody to contribute this module!)
+
+For further explanation, a great conversation on why this is the case is talked about here:
 
 https://gitter.im/amark/gun?at=5ac4f513c574b1aa3e67f6ea
 
