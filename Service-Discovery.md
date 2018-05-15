@@ -26,3 +26,5 @@ Note: It is not recommended to have every peer directly connected to every other
 Note: WebRTC itself, not GUN, still requires bootstrapping signaling hub(s), and WebRTC ICE candidates are unfortunately inbound based (they do not persist past browser refresh).
 
 [AXE](./AXE) will provide a full suite of opinionated, radix shard based service discovery and routing.
+
+For information on how the daisy-chain ad-hoc mesh-network algorithm works, check out [DAM](./DAM).
