@@ -12,7 +12,7 @@ DAM's API allows for swapping in different transport layers (websocket, WebRTC, 
 
 ## Architecture
 
-An explanation of how DAM works was ripped out from a chatroom discussion, [bounty](/Bounty) for anyone who cleans it up and documents it into wiki format: 
+An explanation of how DAM works was ripped out from a chatroom discussion, [bounty](./Bounty) for anyone who cleans it up and documents it into wiki format: 
 
 **Mark Nadal**: DAM is best understood with visual illustrations, but since I haven't had a time to draw cartoons for it, here it goes.
 
@@ -85,3 +85,7 @@ Finally, outbound updates are trivial
 when Alice changes data on something, she sends OUT a PUT command that has the diff she made, to all of her peers, those peers who receive IN the PUT command deduplicate off the message ID, rebroadcast if needed, and process the message depending upon whether they are subscribed to that data or not. If they do save the update, they ACK back a success or failure using the same technique as the ACK to the GET, that way Alice can get notified about replication.
 
 and that is DAM! the now default messaging that happens across any transport wire that is implemented.
+
+----
+
+To learn more about how peers might more efficiently connect to each other, check out [Service Discovery](./Service-Discovery).
