@@ -27,7 +27,7 @@ You will need a reference to a node to store a timegraph in.
 ```
 var node = Gun.get("<Your Node Here>");
 ```
-> Warning: As of now a Timegraph can only be stored inside one of the top level nodes. Eg. You can do 'gun.get().get()'
+> Warning: As of now a Timegraph can only be stored inside one of the top level nodes. Eg. You can't do 'gun.get().get()'
 
 Once You have your node you can use any of the **.time()**  methods on it.
 
