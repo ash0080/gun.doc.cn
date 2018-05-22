@@ -11,7 +11,7 @@ var Gun = require('gun/gun');
 
 // `db` param passed in is the gun instance
 // that is being created.
-Gun.on('opt', function(db) {
+Gun.on('create', function(db) {
 
   // This line is critical to allow other
   // extensions to register as well.
