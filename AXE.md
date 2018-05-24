@@ -16,7 +16,7 @@ It focuses on providing a brief explanation of how the **Proof of Propagation** 
 
 It is highly recommended you watch it before reading the whitepaper. 
 
-https://www.facebook.com/BerkeleyBlockchain/videos/2006069823011271/ (starts at 12:26)
+https://www.facebook.com/BlockchainatBerkeley/videos/2006069823011271/ (starts at 12:26)
 
 ## Whitepaper
 
