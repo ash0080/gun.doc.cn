@@ -95,7 +95,9 @@ export default App;
 
 To test that this works we’ll run the application. In the package.json file there is section for scripts that can be run and the start command will run the development server:
 
-$yarn startOpen up a browser window and navigate to [http://localhost:8080](http://localhost:8080/) to see the home page. In that window open the developer tools. In the console we will run some commands to interact with the database to see that it works on the client and that it synchronizes with the server peer node.
+$`yarn start`
+
+Open up a browser window and navigate to [http://localhost:8080](http://localhost:8080/) to see the home page. In that window open the developer tools. In the console we will run some commands to interact with the database to see that it works on the client and that it synchronizes with the server peer node.
 
 &gt;`var note = {title: 'first item', text: 'from command line'};`
 
