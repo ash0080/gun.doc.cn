@@ -566,6 +566,21 @@ Here's a summary of .map() behavior depending on where it is on the chain:
 - users.once().map().on(cb) gets the user list once, but subscribes to changes on each of those users (not added ones).
 - users.once().map().once(cb) gets the user list once, gets each of those users only once (not added ones).
 
+Iterate over and only return matching property
+```javascript
+/*
+{
+  user123: "Mark",
+  user456: "Dex",
+  user789: "Bob"
+}
+*/
+gun.get('users').map(user => user.name === 'Mark'? user : undefined).once(function(user, id){
+  ui.list.user(user);
+});
+```
+
+Will only return user123: "Mark", as it was the only match.
 
 
 ## Chain context
