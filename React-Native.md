@@ -5,19 +5,15 @@ We will show you how to build a mobile app version of the Hello World [example](
 ![Hello World GUN React Native](https://raw.githubusercontent.com/bogdant/bogdant/master/HelloGunReactNative.jpg)
 
 # Prerequisites
-
-## GUN Server
-To support synchronization between peers, we will need to host a GUN server somewhere reachable from both your browser and your mobile device. If you don't have one already, follow the instructions [here](https://gun.eco/docs/Hello-World#synchronising-multiple-computers) to create a basic GUN server and host it on Heroku.
-
 ## Web Hello World
-Follow the Hello World steps [here](https://gun.eco/docs/Hello-World) and create a simple GUN app. Modify the app to connect to your GUN server:
+Follow the Hello World steps [here](https://gun.eco/docs/Hello-World) and create a simple GUN app. Modify the app to connect to a remote GUN server, if you don't have one you can use our demo server:
 
 ```javascript
-var gun = new Gun("http://Your-GUN-Server-URL/gun")
+var gun = new Gun('http://gunjs.herokuapp.com/gun')
 ```
 
 ## React Native Dev Environment
-We are assuming you are familiar with React Native and have the environment set up. If not, follow the instructions in the "Building Projects with Native Code" tab [here](https://facebook.github.io/react-native/docs/getting-started.html). Continue below you are able to launch and edit a React Native app on an emulator or real device. 
+We are assuming you are familiar with React Native and have the environment set up. If not, follow the instructions in the "Building Projects with Native Code" tab [here](https://facebook.github.io/react-native/docs/getting-started.html). Continue below when you were able to successfully launch and edit a React Native app on an emulator or real device. 
 
 # Hello World GUN in React Native
 Create a new React Native app:
@@ -34,7 +30,7 @@ npm install gun
 Now let's modify the App.js code file. First, import and define the GUN variable:
 ```javascript
 import Gun from 'gun/gun.js' // or use the minified version 'gun/gun.min.js'
-const gun = new Gun('<your Gun server URL')
+const gun = new Gun('http://gunjs.herokuapp.com/gun') // or use your own GUN server
 Component.prototype.$gun = gun
 ```
 We will need a couple of UI controls, so add them to the import statement:
@@ -62,7 +58,7 @@ export default class App extends Component<Props> {
     })
   }
 ```
-Finally, replace the content of the render function's  \<View\> component with the code below: 
+Finally, replace the content of the render function's  View component with the code below: 
 ```javascript
 <Text style={styles.welcome}>
   Hello {this.state.name}
@@ -101,7 +97,7 @@ If you choose not to use any long-term storage option, that's totally fine. Gun 
 Let's say you've got a Gun server running on a Node process on your machine; while you're developing your React Native application, you want to connect up to that server rather than some remote, production server over the internet. Instead of giving `localhost`, provide the Local-Area-Network (LAN) IP address for your machine:
 
 ```javascript
-const gun = new Gun("http://192.168.0.01:gun");
+const gun = new Gun("http://192.168.0.01/gun");
 ```
 
 # Example Application
