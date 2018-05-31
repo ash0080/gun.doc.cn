@@ -1,3 +1,8 @@
+
+![Hello World GUN React Native](https://raw.githubusercontent.com/bogdant/bogdant/master/HelloGunReactNative.jpg)
+
+# Prerequisites
+
 This is a beginner's guide to building your first todo app! It should take someone with no prior HTML or JS experience over a half hour to complete, or take less than 5 minutes for an advanced developer to jump through.
 
 Our goal is to make it so you can build the app of your dreams! All apps use the same core concepts, so by learning how to create a todo app you'll also learn how to build parts of your dream app.
