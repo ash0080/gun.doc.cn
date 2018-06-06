@@ -2,13 +2,27 @@ SEA is split into two parts, the `gun.user()` chain and `Gun.SEA` utility. This 
 
 SEA is an easy API for the cryptographic primitives explained in the [1min animated explainer cartoon series](https://gun.eco/explainers/data/security.html), that wraps painful ones like the browser native WebCrypto API. We hope to have it swappable with WASM libsodium and/or local proxies to Electron/NodeJS or browser extensions.
 
+## Quickstart
+
 ```html
 <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
-<script src="https://rawgit.com/amark/gun/master/sea.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gun/sea.js"></script>
 <script>
 // var Gun = require('gun'); // in NodeJS 
 // require('gun/sea');
 var SEA = Gun.SEA;
+;(async () => {
+var pair = await SEA.pair();
+var enc = await SEA.encrypt('hello self', pair);
+var data = await SEA.sign(enc, pair);
+console.log(data);
+var msg = await SEA.verify(data, pair);
+var dec = await SEA.decrypt(msg, pair);
+var proof = await SEA.work(dec, pair);
+var check = await SEA.work('hello self', pair);
+console.log(dec);
+console.log(proof === check);
+})();
 </script>
 ```
 
@@ -200,28 +214,4 @@ Read the secret data, if and only if you are allowed to.
 ```javascript
 var msg = await SEA.encrypt("Please do not tell this to anybody", 'secret passphrase');
 console.log(await SEA.decrypt(msg, 'passphrase secret')); // false
-```
-
----
-
-Let's try putting all of them together:
-
-```html
-<script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
-<script src="https://rawgit.com/amark/gun/master/sea.js"></script>
-<script>
-;(async () => {
-var SEA = Gun.SEA;
-var pair = await SEA.pair();
-var enc = await SEA.encrypt('hello self', pair);
-var data = await SEA.sign(enc, pair);
-console.log(data);
-var msg = await SEA.verify(data, pair);
-var dec = await SEA.decrypt(msg, pair);
-var proof = await SEA.work(dec, pair);
-var check = await SEA.work('hello self', pair);
-console.log(dec);
-console.log(proof === check);
-})();
-</script>
 ```
