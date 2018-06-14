@@ -30,8 +30,10 @@ var gun = Gun({
   }
 });
 ```
-NOTE: The `key`, `secret`, and `bucket` params will not accept just any string values. The Gun S3 adaptor expects those three explicit `process.env.*` ENVIRONMENT VARIABLES listed above, or S3 will fail silently.
+NOTE: The `key`, `secret`, and `bucket` params will not accept just any string values. The Gun S3 adaptor expects those three explicit `process.env.*` environment variables listed above, or S3 will fail silently.
 
-If you are using Heroku, this is pretty easy. In their dashboard go and edit your app's ENVIRONMENT VARIABLE CONFIGs to the actual key, token, and bucket.
+If you are using Heroku, this is pretty easy. In their dashboard go and edit your app in the Settings tab, and click to reveal and edit the Config Vars for environment variables, this will let you set something like `AWS_REGION` to `us-east-1`.
+
+> Note: `AWS-SDK` devDependencies gets removed by Heroku after build, which may cause your app to crash. You will also need to set `NPM_CONFIG_PRODUCTION` to `false` to to fix this.
 
 If you are running your own server, you probably have an upstart script or something similar that monitors your app and starts or restarts it if it crashes. You can set ENVIRONMENT VARIABLES there, exactly how depends upon your setup so please google around for that - when we have a good one, we'll update it here.
