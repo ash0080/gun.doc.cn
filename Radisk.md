@@ -1,7 +1,7 @@
 ## Radisk Storage Engine
 The **Radisk Storage Engine (RSE)** is an _in-memory_, as well as _on-disk_, radix trie that saves the GUN database graph for fast and performant look-ups.
 
-Radix tries have lookups at O(n) time, where n is the number of items retrieved from the trie.
+Radix tries have lookups have a constant time, where n is the number of items retrieved from the trie.
 
 ### Flow of Data
 
