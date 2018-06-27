@@ -23,19 +23,35 @@ var gun = GUN({
 ```
 gun/lib/store.js is linked to your GUN instance when using in nodejs.
 
+#### Gun Store Adapters need 3 API interfaces
+**PUT** - to write data to disk
+**GET** - to get data from disk
+**LIST** - to get a list of files written to disk (if your get writes to multiple files,
+ like radix does)
+
 ```javascript
 store.js
 
-// We can ignore most of the lines from 1 down to 56
-// They are important for setting up RSE in your GUN instance
 
 // Here is where we define the store interface for RSE
 
 function Store(opt){
-	opt = opt || {}; // opt is the option obj that was added into the GUN instance
-	opt.file = String(opt.file || 'radata'); // name of the folder in which to save 
-
+	opt = opt || {}; 
+	opt.file = String(opt.file || 'radata'); 
+```
+We populate opt from the GUN instance.
+Then we populate the folder name for our data from opt or if undefined default to
+'radata'. (radix data)
+```javascript
 	var store = function Store(){};
+```
+
+_store_ becomes an empty object, which we will populate with functions.
+We can call a sequence of functions, while allowing for readability
+and async nature of calls to be completed.
+This programming pattern is called[functional reactive programming](https://gun.eco/docs/Functional-Reactive-Programming).
+
+```javascript
 	store.put = function(file, data, cb){
 		var random = Math.random().toString(36).slice(-3)
 		fs.writeFile(opt.file+'-'+random+'.tmp', data, function(err, ok){
@@ -43,6 +59,15 @@ function Store(opt){
 			move(opt.file+'-'+random+'.tmp', opt.file+'/'+file, cb);
 		});
 	};
+```
+
+PUT
+We generate a random name for a temp file.
+fs.writeFile writes data to the temp file. Callback is called upon completion, at which time 
+we move the temp file and rename it to the actual filename at the right path.
+(Node fs.writeFile and fs.readFile clash when reading/writing concurrently, hence the temp file for writes)
+
+```javascript
 	store.get = function(file, cb){
 		fs.readFile(opt.file+'/'+file, function(err, data){
 			if(err){
@@ -55,11 +80,27 @@ function Store(opt){
 			cb(err, data);
 		});
 	};
+```
+
+GET
+read the specified File, if no errors and there is data, return data to the callback.
+
+```javascript
 	store.list = function(cb, match){
 		fs.readdir(opt.file, function(err, dir){
-			Gun.obj.map(dir, cb) || cb(); // Stream interface requires a final call to know when to be done.
+			Gun.obj.map(dir, cb) || cb(); // Stream interface requires a final call
+                                                      // to know when to be done.
 		});
 	};
+```
+
+LIST
+Call readDir, which returns an array of filenames in the directory.
+Gun.obj.map acts as a 'forEach' and iterates over the array.
+RSE needs an indication that the whole list has been returned, which we achieve by calling 'cb()'
+when map has completed, which will pass _undefined_ as the last data.
+
+```javascript
 	if(!fs.existsSync(opt.file)){ fs.mkdirSync(opt.file) }
 	//store.list(function(){ return true });
 	return store;
