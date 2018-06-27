@@ -209,13 +209,13 @@ _key_ stringify input
 
 _r.batch(key)_ reads back in-memory batch to check if key is waiting
 
-    to be written to disk
+ to be written to disk
 
 If found, return it to caller
 
 If not found, check the batch about to be written (staged for thrashing/flushing)
 
-     If found, return to caller
+ If found, return to caller
 
 If not found, read from disk
 
