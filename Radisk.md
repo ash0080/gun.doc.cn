@@ -131,12 +131,18 @@ function Radisk(opt){
 	opt.code.from = opt.code.from || '!';
 ```
 
-_opt_ comes from the GUN instance
-We make sure opt.file is a string or defaults to 'radata'
+_opt_ comes from the GUN instance.
+
+We make sure opt.file is a string or defaults to 'radata'.
+
 opt.until - the delay before writing to disk
+
 opt.batch - the limit of 'entries' per batch
+
 opt.chunk - file size limit before splitting to a new file
+
 opt.code - TODO
+
 opt.code.from - TODO
 
 ```javascript
