@@ -206,21 +206,33 @@ GET (key, cb) PUT (key, val, cb)
 GET Case
 
 _key_ stringify input
+
 _r.batch(key)_ reads back in-memory batch to check if key is waiting
+
     to be written to disk
+
 If found, return it to caller
+
 If not found, check the batch about to be written (staged for thrashing/flushing)
+
      If found, return to caller
-If not found, read from disk.
+
+If not found, read from disk
 
 PUT Case
 
 _key_ stringify input
+
 _r.batch(key,val)_ write key/val pair to batch
+
 If a callback was attached we attach it in turn to acks in the batch.
+
  (acks are acknowledgments, sent out after the batch is written to disk)
+
 Check if the batch count limit is reached and if so, flush to disk.
+
  Also increase the counter _r.batch.ed_
+
 _opt.until_ or as default 1ms is he idle time between put calls, before a flush occurs
 
 ```javascript
