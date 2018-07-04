@@ -14,7 +14,7 @@ Every stream of data is run through a [conflict resolution algorithm](Conflict-R
 
 ## Graphs
 
-Not all data can be expressed as a document or as a table. But graphs can, which is why GUN uses them. This is particularly important for handling conflicts on sub objects. Every object in GUN has its own universally unique identifier, requiring no dependency upon its parent object. These nodes can only have properties with simple values or a pointer to another node. So there is a utility library for handling values, states, nodes, and graphs.
+Not all data can be expressed as a document or as a table. But graphs can express all data, which is why GUN uses them. This is particularly important for handling conflicts on sub objects. Every object in GUN has its own universally unique identifier, requiring no dependency upon its parent object. These nodes can only have properties with simple values or a pointer to another node. So there is a utility library for handling values, states, nodes, and graphs.
 
 ## Deduplication
 
