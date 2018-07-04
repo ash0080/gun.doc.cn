@@ -919,7 +919,7 @@ gun.get('foo').put(data).later(function(data, key){
 --------------------------------------
 # <a name="unset"></a> gun.unset(node)
 
-> Warning: Not included by default! You must include it yourself via `require('gun/lib/unset.js')` or `<script src="/gun/lib/unset.js"></script><script src="/gun/lib/unset.js"></script>`!
+> Warning: Not included by default! You must include it yourself via `require('gun/lib/unset.js')` or `<script src="/gun/lib/unset.js"></script>`!
 
 After you save some data in an unordered list, you may need to remove it. 
 
