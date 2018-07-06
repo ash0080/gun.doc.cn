@@ -1,5 +1,5 @@
 ## Radisk Storage Engine
-The **Radisk Storage Engine (RSE)** is an _in-memory_, as well as _on-disk_, radix trie that saves the GUN database graph for fast and performant look-ups.
+The **Radisk Storage Engine (RAD)** is an _in-memory_, as well as _on-disk_, radix trie that saves the GUN database graph for fast and performant look-ups.
 
 Radix tries lookups have a constant time.
 
@@ -7,9 +7,9 @@ Radix tries lookups have a constant time.
 
 GUN is a modular system, which allows adapters to 'hook' into the GUN instance through subscriptions to general events (such as gun.on('in')) or data events specifically subscribed to via data.on(callback).
 
-When data is put via gun.get(key).put({object}), GUN adds the {object} into it's internal graph (in-memory) and then hands the data to the next subscribed adapter. (This may be RSE, localStorage or AWS S3 etc.)
+When data is put via gun.get(key).put({object}), GUN adds the {object} into it's internal graph (in-memory) and then hands the data to the next subscribed adapter. (This may be RAD, localStorage or AWS S3 etc.)
 
-RSE is called from gun/lib/store.js, which should be the template for anyone to start building their own storage adapter for GUN.
+RAD is called from gun/lib/store.js, which should be the template for anyone to start building their own storage adapter for GUN.
 
 ### Store.js
 
@@ -52,7 +52,7 @@ Then we populate the folder name for our data from opt or if undefined default t
 _store_ becomes an empty object, which we will populate with functions.
 We can call a sequence of functions, while allowing for readability
 and async nature of calls to be completed.
-This programming pattern is called [functional reactive programming](https://gun.eco/docs/Functional-Reactive-Programming).
+
 
 ```javascript
 	store.put = function(file, data, cb){
@@ -234,74 +234,3 @@ Check if the batch count limit is reached and if so, flush to disk.
  Also increase the counter _r.batch.ed_
 
 _opt.until_ or as default 1ms is he idle time between put calls, before a flush occurs
-
-```javascript
-	r.batch = Radix();
-	r.batch.acks = [];
-	r.batch.ed = 0;
-
-	r.thrash = function(){
-		var thrash = r.thrash;
-		if(thrash.ing){ return thrash.more = true }
-		thrash.more = false;
-		thrash.ing = true;
-		var batch = thrash.at = r.batch, i = 0;
-		clearTimeout(r.batch.to);
-		r.batch = null;
-		r.batch = Radix();
-		r.batch.acks = [];
-		r.batch.ed = 0;
-		r.save(batch, function(err, ok){
-			if(++i > 1){ return }
-			if(err){ Gun.log(err) }
-			Gun.obj.map(batch.acks, function(cb){ cb(err, ok) });
-			thrash.at = null;
-			thrash.ing = false;
-			if(thrash.more){ thrash() }
-		});
-	}
-
-	/*
-		1. Find the first radix item in memory.
-		2. Use that as the starting index in the directory of files.
-		3. Find the first file that is lexically larger than it,
-		4. Read the previous file to that into memory
-		5. Scan through the in memory radix for all values lexically less than the limit.
-		6. Merge and write all of those to the in-memory file and back to disk.
-		7. If file to large, split. More details needed here.
-	*/
-	r.save = function(rad, cb){
-		var s = function Span(){};
-		s.find = function(tree, key){
-			if(key < s.start){ return }
-			s.start = key;
-			opt.store.list(s.lex);
-			return true;
-		}
-		s.lex = function(file){
-			file = (u === file)? u : decodeURIComponent(file);
-			if(!file || file > s.start){
-				s.mix(s.file || opt.code.from, s.start, s.end = file);
-				return true;
-			}
-			s.file = file;
-		}
-		s.mix = function(file, start, end){
-			s.start = s.end = s.file = u;
-			r.parse(file, function(err, disk){
-				if(err){ return cb(err) }
-				Radix.map(rad, function(val, key){
-					if(key < start){ return }
-					if(end && end < key){ return s.start = key }
-					disk(key, val);
-				});
-				r.write(file, disk, s.next);
-			});
-		}
-		s.next = function(err, ok){
-			if(s.err = err){ return cb(err) }
-			if(s.start){ return Radix.map(rad, s.find) }
-			cb(err, ok);
-		}
-		Radix.map(rad, s.find);
-	}
