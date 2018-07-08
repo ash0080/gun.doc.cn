@@ -25,12 +25,16 @@ Think these docs could be improved? Contribute to the wiki! Or [[comment|https:/
  - [gun.unset](#unset)
 
 # Utils
-
  - [Gun.node](#utilities)
+
+
+----
+
 
 # Core
 
-# <a name="gun"></a>Gun(options)
+
+## <a name="gun"></a>Gun(options)
 
 <a href="https://youtu.be/zvo6jC1OA3Y" title="GUN constructor"><img src="http://img.youtube.com/vi/zvo6jC1OA3Y/0.jpg" width="425px"></a><br>
 Used to create a new gun database instance.
@@ -40,7 +44,7 @@ var gun = Gun(options)
 ```
 > **note:** `Gun` works with or without the `new` operator.
 
-## Options
+### Options
 
  - no parameters `undefined` creates a local datastore using the default persistence layer, either localStorage or a JSON file.
 
@@ -93,8 +97,10 @@ Gun({
   uuid: function () {...}
 })
 ```
----------------------------------------------------------
-<h1><a name="put"></a>gun.put(data, callback)</h1>
+
+
+
+## <a name="put"></a>gun.put(data, callback)
 
 <a href="https://youtu.be/QLg-Z-y5sVo" title="GUN put"><img src="http://img.youtube.com/vi/QLg-Z-y5sVo/0.jpg" width="425px"></a><br>
 
@@ -109,7 +115,7 @@ It has two parameters, and only the first is required:
 
 You do not need to re-save the entire object every time, gun will automatically merge your data into what already exists as a "partial" update.
 
-## Allowed types
+### Allowed types
 
 `.put` restricts the input to a specific subset:
 
@@ -132,7 +138,7 @@ gun.get('something').path('that.does.not.exist.yet').put("Hello World!");
 // so "Hello World!" has a place to be saved.
 ```
 
-## Callback(ack)
+### Callback(ack)
   
  - `ack.err`, if there was an error during save.
  - `ack.ok`, if there was a success message (none is required though).
@@ -141,7 +147,7 @@ The `callback` is fired for each peer that responds with an error or successful 
 
 If the error property is undefined, then the operation succeeded, although the exact values are left up to the module developer.
 
-## Examples
+### Examples
 
 Saving objects
 ```javascript
@@ -175,13 +181,13 @@ gun.get('survey').path('submission').put(submission, function(ack){
 })
 ```
 
-## Chain context
+### Chain context
 `gun.put` does not change the gun context.
 ```javascript
 gun.get('key').put(data) /* same context as */ gun.get('key')
 ```
 
-## Unexpected behavior
+### Unexpected behavior
 
 You cannot save primitive values at the root level.
 ```javascript
@@ -226,8 +232,10 @@ Gun().put({
 ```
 For the most part, gun will handle this perfectly fine. It will attempt to automatically merge every nested object as a partial. However, if it cannot find data (due to a network failure, or a peer it has never spoken with) to merge with it will generate new random UUIDs. You are unlikely to see this in practice, because your apps will probably save data based on user interaction (with previously loaded data). But if you do have this problem, consider giving each one of your sub-objects a deterministic ID.
 
-------------------------------------------------------------------------------------------
-# <a name="get"></a>gun.get(key)
+
+
+
+## <a name="get"></a>gun.get(key)
 Where to read data from.
 
 <a href="https://youtu.be/wNrIrrLffs4" title="GUN get"><img src="http://img.youtube.com/vi/wNrIrrLffs4/0.jpg" width="425px"></a><br>
@@ -241,7 +249,7 @@ It takes two parameters:
 
 You will usually be using [gun.on](#on) or [gun.once](#once) to actually retrieve your data, not this `callback` (it is intended for more low level control, for module and extensions).
 
-## Key
+### Key
 The `key` is the ID or property name of the data that you saved from earlier (or that will be saved later).
 
 > Note that if you use `.put` at any depth after a `get` it first reads the data and then writes, merging the data as a partial update.
@@ -254,7 +262,7 @@ gun.get('key').on(function(data, key){
 })
 ```
 
-## Callback(ack)
+### Callback(ack)
 
  - `ack.put`, the raw data.
  - `ack.get`, the key, ID, or property name of the data.
@@ -267,7 +275,7 @@ gun.get(key, function(ack){
 })
 ```
 
-## Examples
+### Examples
 
 Retrieving a key
 ```javascript
@@ -289,7 +297,7 @@ gun.get(key, function(ack){
 })
 ```
 
-## Chain context
+### Chain context
 Chaining multiple `get`s together changes the context of the chain, allowing you to access, traverse, and navigate a graph, node, table, or document.
 
 > Note: For users upgrading versions, prior to v0.5.x `get` used to always return a context from the absolute root of the database. If you want to go back to the root, either save a reference `var root = Gun();` or now use [`.back(-1)`](#back).
@@ -298,17 +306,19 @@ Chaining multiple `get`s together changes the context of the chain, allowing you
 gun.get('user').get('alice') /* same context as */ gun.get('users').path('alice')
 ```
 
-## Unexpected behavior
+### Unexpected behavior
 
 Most callbacks in gun will be called multiple times.
 
---------------------------------------
-# <a name="opt"></a> gun.opt(options)
+
+
+
+## <a name="opt"></a> gun.opt(options)
 Change the configuration of the gun database instance.
 
 The `options` argument is the same object you pass to the [constructor](#gun). The `options`'s properties replace those in the instance's configuration but `options.peers` are **added** to peers known to the gun instance.
 
-## Examples
+### Examples
 Create the gun instance.
 ```javascript
 gun = Gun('http://yourdomain.com/gun')
@@ -326,18 +336,20 @@ Add more peers:
 gun.opt({peers: ['http://anotherdomain.com/gun']})
 /* Now gun syncs with ['http://yourdomain.com/gun', 'http://anotherdomain.com/gun']. */
 ```
------------------------------
-# <a name="back"></a>gun.back(amount)
+
+
+
+## <a name="back"></a>gun.back(amount)
 
 Move up to the parent context on the chain.
 
 Every time a new chain is created, a reference to the old context is kept to go `back` to.
 
-## Amount
+### Amount
 
 The number of times you want to go back up the chain. `-1` or `Infinity` will take you to the root.
 
-## Examples
+### Examples
 Moving to a parent context
 ```javascript
 gun.get('users')
@@ -355,7 +367,7 @@ gun.get('player').path('game.score').back(1)
 gun.get('player').path('game')
 ```
 
-## Chain context
+### Chain context
 The context will always be different, returning you to the
 ```javascript
 gun.get('key').get('property')
@@ -363,25 +375,28 @@ gun.get('key').get('property')
 gun.get('key').get('property').back()
 ```
 
------------------------------
+
+
+
 
 # Main
 
------------------------------
-# <a name="on"></a> gun.on(callback, option)
+
+
+## <a name="on"></a> gun.on(callback, option)
 
 <a href="https://youtu.be/SEneRvDQysE" title="GUN on"><img src="http://img.youtube.com/vi/SEneRvDQysE/0.jpg" width="425px"></a><br>
 
 Subscribe to updates and changes on a node or property in realtime.
 
-## Callback(data, key)
+### Callback(data, key)
 Once initially and whenever the property or node you're focused on changes, this callback is immediately fired with the data as it is at that point in time.
 
 Since gun streams data, the callback will probably be called multiple times as new chunk comes in.
 
 To remove a listener call .off() on the same property or node.
 
-## Option
+### Option
 Currently, the only option is to filter out old data, and just be given the changes. If you're listening to a node with 100 fields, and just one changes, you'll instead be passed a node with a single property representing that change rather than the full node every time.
 
 **Longhand syntax**
@@ -404,7 +419,7 @@ gun.get('foo').on(callback, true)
 gun.get('foo').off()
 ```
 
-## Examples
+### Examples
 Listening for updates on a key
 ```javascript
 gun.get('users').path(username).on(function(user){
@@ -424,40 +439,41 @@ gun.get('lights').path('living room').on(function(state, room){
   view.lights[room].show(state)
 })
 ```
-## IMPORTANT
+### :exclamation: IMPORTANT
 There's a 'bug' when dealing with multiple levels.
 ```
 gun.get('home').get('lights').on(cb,true);
 gun.get('home').get('lights').put({state:'on'})       // BAD fires twice
 gun.get('home').get('lights').get('state').put('on')  // GOOD fires once
 ```
-## Chain Context
+### Chain Context
 `gun.on` does not change the chain context.
 ```javascript
 gun.get(key).on(handler) /* is the same as */ gun.get(key)
 ```
 
-## Unexpected behavior
+### Unexpected behavior
 
 Data is only 1 layer deep, a full document is not returned (see the [gun.open](#open) extension for that), this helps keep things fast.
 
 It will be called many times.
 
--------------------------------------
-# <a name="once"></a> gun.once(callback, option)
+
+
+## <a name="once"></a> gun.once(callback, option)
 
 <a href="https://youtu.be/k-CkP43-uJo" title="GUN once"><img src="http://img.youtube.com/vi/k-CkP43-uJo/0.jpg" width="425px"></a><br>
 
 Get the current data without subscribing to updates.
 
-## Option
+### Option
 
  - `wait` controls the asynchronous timing (see unexpected behavior, below). `gun.get('foo').once(cb, {wait: 0})`
 
-## Callback(data, key)
+### Callback(data, key)
 The data is the value for that chain at that given point in time. And they key is the last property name or ID of the node.
 
-## Examples
+### Examples
 ```javascript
 gun.get('peer').path(userID).path('profile').once(function(profile){
   // render it, but only once. No updates.
@@ -472,10 +488,10 @@ gun.get('IoT').path('temperature').once(function(number){
 })
 ```
 
-## Chain Context
+### Chain Context
 `gun.once` does not currently change the context of the chain, but it is being discussed for future versions that it will - so try to avoid chaining off of `.once` for now. This feature is now in experimental mode with `v0.6.x`, but only if `.once()` is not passed a callback. A useful example would be `gun.get('users').once().map().on(cb)` this will tell gun to get the current users in the list and subscribe to each of them, but not any new ones. Please test this behavior and recommend suggestions.
 
-## Unexpected behavior
+### Unexpected behavior
 
 `.once` is synchronous and immediate (at extremely high performance) if the data has already been loaded.
 
@@ -483,24 +499,25 @@ gun.get('IoT').path('temperature').once(function(number){
 
 Data is only 1 layer deep, a full document is not returned (see the [gun.load](#open) extension for that), this helps keep things fast.
 
----------------------------------------------------------
-# <a name="set"></a>gun.set(data, callback)
+
+
+## <a name="set"></a>gun.set(data, callback)
 
 Add a unique item to an unordered list.
 
 `gun.set` works like a mathematical set, where each item in the list is unique. If the item is added twice, it will be merged. This means only objects, for now, are supported.
 
-## Data
+### Data
 Data should be a gun reference or an object.
 ```javascript
 var user = gun.get('alice').put({name: "Alice"});
 gun.get('users').set(user);
 ```
 
-## Callback
+### Callback
 The callback is invoked exactly the same as `.put`, since `.set` is just a convenience wrapper around `.put`.
 
-## Examples
+### Examples
 
 ```javascript
 var gun = Gun();
@@ -512,14 +529,15 @@ bob.get('friends').set(dave);
 ```
 The "friends" example is perfect, since the set guarantees that you won't have duplicates in your list.
 
-## Chain Context
+### Chain Context
 `gun.set` changes the chain context, it returns the item reference.
 ```javascript
 gun.get('friends') /* is not the same as */ gun.get('friends').set(friend)
 ```
 
-------------------------------------
-# <a name="map"></a>gun.map(callback)
+
+
+## <a name="map"></a>gun.map(callback)
 
 <a href="https://youtu.be/F2FSMsxMSic" title="GUN map"><img src="http://img.youtube.com/vi/F2FSMsxMSic/0.jpg" width="425px"></a><br>
 
@@ -530,7 +548,7 @@ Map iterates over each property and item on a node, passing it down the chain, b
 
 > Note: As of `v0.6.x` the transform function is in experimental mode. Please play with it and report bugs or suggestions on how it could be improved to be more useful.
 
-## Examples
+### Examples
 Iterate over an object
 ```javascript
 /*
@@ -582,8 +600,7 @@ gun.get('users').map(user => user.name === 'Mark'? user : undefined).once(functi
 
 Will only return user123: "Mark", as it was the only match.
 
-
-## Chain context
+### Chain context
 `.map` changes the context of the chain to hold many chains simultaneously. Check out this example:
 ```javascript
 gun.get('users').map().path('name').on(cb);
@@ -598,12 +615,15 @@ This will give you each pet of every friend of every user!
 gun.get(key).map() /* is not the same as */ gun.get(key)
 ```
 
----------------------------------------
+
+
+
 
 # Extended
 
----------------------------------------
-# <a name="path"></a>gun.path(key)
+
+
+## <a name="path"></a>gun.path(key)
 
 <a href="https://youtu.be/UDZGVYLNLAU" title="GUN path"><img src="http://img.youtube.com/vi/UDZGVYLNLAU/0.jpg" width="425px"></a><br>
 
@@ -611,7 +631,7 @@ gun.get(key).map() /* is not the same as */ gun.get(key)
 
 Path does the same thing as `get` but has some conveniences built in.
 
-## Key
+### Key
 The key `property` is the name of the field to move to.
 
 ```javascript
@@ -654,7 +674,7 @@ This can be especially confusing as the chain might never resolve to a value.
 
 > Note: For users upgrading from versions prior to v0.5.x, `path` used to be necessary - now it is purely a convenience wrapper around `get`.
 
-## Examples
+### Examples
 Navigating to a property
 ```javascript
 /*
@@ -678,7 +698,7 @@ gun.get('user').path('name').path('first')
 gun.get('user').path('name.first')
 ```
 
-## Chain context
+### Chain context
 `gun.path` creates a new context each time it's called, and is always a result of the previous context.
 ```javascript
 gun.get('API').path('path').path('chain')
@@ -688,8 +708,9 @@ gun.get('API').path('path')
 gun.get('API')
 ```
 
---------------------------------------
-# <a name="not"></a> gun.not(callback)
+
+
+## <a name="not"></a> gun.not(callback)
 
 > Warning: Not included by default! You must include it yourself via `require('gun/lib/not.js')` or `<script src="/gun/lib/not.js"></script>`!
 Handle cases where data can't be found.
@@ -698,13 +719,13 @@ If you need to know whether a property or key exists, you can check with `.not`.
 
 > **Warning:** `.not` has no guarantees, since data could theoretically exist on an unrelated peer that we have no knowledge of. If you only have one server, and data is synced through it, then you have a pretty reasonable assurance that a `not` found means that the data doesn't exist yet. Just be mindful of how you use it.
 
-## Callback(key)
+### Callback(key)
 If there's reason to believe the data doesn't exist, the callback will be invoked. This can be used as a check to prevent implicitly writing data (as described in [`.put`](#put)).
 
 ### Key
 The name of the property or key that could not be found.
 
-## Examples
+### Examples
 Providing defaults if they aren't found
 ```javascript
 // if not found
@@ -724,14 +745,15 @@ gun.get('chat').path('enabled').not(function(path){
 })
 ```
 
-## Chain context
+### Chain context
 `.not` does not change the context of the chain.
 ```javascript
 gun.get(key).not(handler) /* is the same as */ gun.get(key)
 ```
 
---------------------------------------
-# <a name="open"></a> gun.open(callback)
+
+
+## <a name="open"></a> gun.open(callback)
 
 > Warning: Not included by default! You must include it yourself via `require('gun/lib/open.js')` or `<script src="/gun/lib/open.js"></script>`!
 
@@ -745,7 +767,7 @@ The callback has 1 parameter, and will get called every time an update happens a
 
  - `data`. Unlike most of the API, `open` does not give you a node. It gives you a copy of your data with all metadata removed. Updates to the callback will return the same data, with changes modified onto it.
 
-## Examples
+### Examples
 ```javascript
 // include .open
 gun.get('person/mark').open(function(mark){
@@ -764,26 +786,28 @@ human.pet.slave = human;
 gun.get('person/mark').put(human);
 ```
 
-## Chain context
+### Chain context
 `.open` does not change the context.
 
 ```javascript
 gun.get('company/acme').open(cb).get('employees').map().once(cb)
 ```
 
-## Unexpected behavior
+### Unexpected behavior
 
 If you do not use a schema with `.open(cb)` it can only best guess and approximate whether the data is fully loaded or not. As a result, do not assume all the data will be available on the first callback - it may take several calls for things to fully load, so code defensively! By default, it waits 1ms after each piece of data it receives before triggering the callback. You can change the default by passing an option like `.open(cb, {wait: 99})` which forces it to wait 99ms before triggering (which is the default [gun.once](#once) has).
 
---------------------------------------
-# <a name="load"></a> gun.load(cb, opt)
+
+
+## <a name="load"></a> gun.load(cb, opt)
 
 > Warning: Not included by default! You must include it yourself via `require('gun/lib/load.js')` or `<script src="/gun/lib/open.js"></script><script src="/gun/lib/load.js"></script>`!
 
 Loads the full object once. It is the same as `open` but with the behavior of [`once`](#once).
 
---------------------------------------
-# <a name="then"></a> gun.then(cb)
+
+
+## <a name="then"></a> gun.then(cb)
 
 > Warning: Not included by default! You must include it yourself via `require('gun/lib/then.js')` or `<script src="/gun/lib/then.js"></script>`!
 
@@ -797,7 +821,9 @@ Returns a promise for you to use.
 
 `resolved` is the data.
 
-## `.promise(cb)`
+
+
+## .promise(cb)
 
 `.then(cb)` has a cousin of `.promise(cb)` which behaves the same way except that `resolved` is an object with:
 
@@ -811,12 +837,11 @@ resolved = {
 
 In case you need more context or metadata.
 
-## Chain context
+### Chain context
 
 It is no longer a gun chain, but you can chain promises off of it!
 
-## Examples
-
+### Examples
 
 ```javascript
 Promise.race([
@@ -834,12 +859,13 @@ async function get(name) {
 };
 ```
 
-## Unexpected behavior
+### Unexpected behavior
 
 A gun chain is **not** already a promise, you must call `then()` to make it a promise.
 
---------------------------------------
-# <a name="bye"></a> gun.bye()
+
+
+## <a name="bye"></a> gun.bye()
 
 > Warning: Not included by default! You must include it yourself via `require('gun/lib/bye.js')` or `<script src="/gun/lib/bye.js"></script>`!
 
@@ -847,12 +873,11 @@ A gun chain is **not** already a promise, you must call `then()` to make it a pr
 
 > Note: This requires a server side component, and therefore must be included there as well in order for this to work. In the future it should be generalizable to P2P settings, however may not be as reliable. 
 
-## Chain context
+### Chain context
 
 It returns a **special chain context** with **only 1 method on it** of `put`. It currently **does not support chaining**, however in the future we hope to make it more chainable. Keep this in mind until then.
 
-## Examples
-
+### Examples
 
 ```javascript
 gun.get('marknadal').get('status').put("I'm online!");
@@ -874,13 +899,13 @@ gun.get('game').get('players').get('kittycommando1337').bye().put(null);
 
 This deletes the player from the game when they go offline or disconnect from the server. It does not delete the player, just whether they are a player of the game or not.
 
-
-## Unexpected behavior
+### Unexpected behavior
 
 `bye()` is in experimental alpha, please report any problems or bugs you have with it. Note again that it does not fire immediately, and it does not get run from the browser. It makes the data change on the server when that browser tab disconnects.
 
---------------------------------------
-# <a name="later"></a> gun.later(cb, seconds)
+
+
+## <a name="later"></a> gun.later(cb, seconds)
 
 > Warning: Not included by default! You must include it yourself via `require('gun/lib/later.js')` or `<script src="/gun/lib/open.js"></script><script src="/gun/lib/later.js"></script>`!
 
@@ -896,11 +921,11 @@ Say you save some data, but want to do something with it later, like expire it o
 
 Is the number of seconds you want to wait before firing the callback.
 
-## Chain context
+### Chain context
 
 It returns itself, as in `gun.later() === gun`.
 
-## Examples
+### Examples
 
 See a full working [example here, at jsbin](http://jsbin.com/veyezoxuhe/edit?html,js,console)!
 
@@ -910,14 +935,15 @@ gun.get('foo').put(data).later(function(data, key){
 }, 2); // 2 seconds!
 ```
 
-## Unexpected behavior
+### Unexpected behavior
 
 1. Exact timing is not guaranteed! Because it uses `setTimeout` underneath. Further, after the timeout, it must then open and load the snapshot, this will likely add at least `1`ms to the delay. **Experimental**: If this is problematic, please report it, as we can modify the implementation of `later` to be more precise.)
 
 2. If a process/browser has to restart, the timeout will not be called. **Experimental**: If this behavior is needed, please report it, as it could be added to the implementation.
 
---------------------------------------
-# <a name="unset"></a> gun.unset(node)
+
+
+## <a name="unset"></a> gun.unset(node)
 
 > Warning: Not included by default! You must include it yourself via `require('gun/lib/unset.js')` or `<script src="/gun/lib/unset.js"></script>`!
 
@@ -934,23 +960,32 @@ machines.set(machine);
 machines.unset(machine);
 ```
 
---------------------------------------
+
+
+
+
 # <a name="utilities"></a> Gun utils
 
 While running, Gun provides several high-level utility functions for querying and manipulating our components.
 
 Note the capital "G" in `Gun`, as opposed to an instance variable called `gun`.
 
-### Gun.node.is(data)
+
+
+## Gun.node.is(data)
 
 Returns true if `data` is a gun node, otherwise false.
 
-### Gun.node.soul(data)
+
+
+## Gun.node.soul(data)
 
 Returns `data`'s `gun` ID (instead of manually grabbing its metadata i.e. `data["_"]["#"]`, which is faster but could change in the future).
 
 Returns `undefined` if `data` is not correct gun data.
 
-### Gun.node.ify(json)
+
+
+## Gun.node.ify(json)
 
 Returns a "gun-ified" variant of the `json` input by injecting a new gun ID into the metadata field.
