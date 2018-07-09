@@ -2,7 +2,7 @@
 
 one way to accomplish transactions... or action-reaction using a graph database to track the transaction.
 
-### Method 1) 
+## Method 1) 
 
 This is a transaction to login an account.
 
