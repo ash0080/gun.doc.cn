@@ -36,7 +36,7 @@ and checks to see if the ID exists in a small fixed-size in-memory list.
 
 the ID does not exist.
 
-therefore the Server then broadcasts it out to all the peers it is connected to. (NOTE: Intentional! However for security purposes you might not want this, so that is why you'd add an authorization filter. But we're not talking about this. We're talking about the case case).
+therefore the Server then broadcasts it out to all the peers it is connected to. (NOTE: Intentional! However for security purposes you might not want this, so that is why you'd add an authorization filter. But we're not talking about this. We're talking about the base case).
 
 that means Server broadcasts BACK to Alice and to Bob.
 
