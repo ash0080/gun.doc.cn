@@ -9,7 +9,7 @@ Base it off of https://gun.eco/think.html .
  - React
  - VueJS
  - Electron
- - React Native
+ - React Native: [@bogdant](https://gun.eco/docs/React-Native)
  - NativeScript
  - Typescript
  - Angular(s)
@@ -40,7 +40,7 @@ Base it off of https://gun.eco/think.html .
 
 ## Adapter
 
- - GraphQL
+ - GraphQL: [@brysgo](https://github.com/brysgo/graphql-gun)
  - SQL
  - Mango
  - WebRTC
