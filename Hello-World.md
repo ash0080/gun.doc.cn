@@ -58,9 +58,9 @@ Notice that when we refresh the page or load it in a new window, the `gun.get('h
 
 GUN is able to fully automatically synchronise all data between multiple computers. Theoretically this could be done without the need for any server, but unfortunately browsers are not yet able to 'discover' each other without a little help from a server.
 
-So we will now create a very simple server (which we prefer to call a super-peer) on Heroku. If you do not yet have a Heroku account please create one now. It's free.
+So we will now create a very simple server (which we prefer to call a super-peer) on Heroku. If you do not yet have a Heroku account, we recommend creating one because it is easy and free.
 
-The super-peer code looks like this:
+Here is an example super-peer that also serves gun CDN files:
 
 ```javascript
 var Gun = require('gun')
@@ -68,29 +68,27 @@ var http = require('http')
 var fs = require('fs')
 
 var server = http.createServer((req,res) => {
-  if (Gun.serve(req, res)) { return } // filters gun requests!
+  if (Gun.serve(req, res)) { return } // optional, for CDN
   res.writeHead(200)
-  res.end(fs.readFileSync(__dirname + '/index.html'))
+  res.end(fs.readFileSync(__dirname + '/index.html')) // or replace this with your app
 }).listen(process.env.PORT || process.argv[2] || 8080)
 
 var gun = Gun({web: server})
 ```
 
-You can run it on Heroku by clicking this button:
+You can run GUN's default superpeer on Heroku by clicking this button:
 
-<a href="https://heroku.com/deploy?template=https://github.com/gundb/gun-super-peer-example" target="_blank">
-  <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
-</a>
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/amark/gun)
 
 Create a unique app name and deploy the app.
 
 After it has started, in the code at the top of this page, change this line `var gun = Gun()` into: `var gun = Gun('https://unique-app-name.herokuapp.com/gun')` (Make sure you replace `unique-app-name` by the name you entered in Heroku).
 
-Now open this very page in another computer, or open it in a different browser (Chrome, Firefox, etc) and make the same change as you just did (`var gun = Gun('https://unique-app-name.herokuapp.com/gun')`).
+Now open this same documentation page on another computer, or open it in a different browser (Chrome, Firefox, etc) and make the same change as you just did (`var gun = Gun('https://unique-app-name.herokuapp.com/gun')`).
 
 If all went well, the two browser pages (which we call peers) have found each other via the super-peer and are now syncing. Whenever you change the name in one place, it will update in both. Thanks to the power of GUN.
 
->Attention! Make sure you destroy the Heroku app after you're done testing to avoid costs.
+>Tip! Destroy the Heroku app after you're done testing to avoid wasting resources.
 
 The code for the super-peer (server) is just a very basic web server with just one line added for GUN: `var gun = Gun({web: server})`. Make sure to always include a reference to the web server when initialising GUN in Node.js.
 
