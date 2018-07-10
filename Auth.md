@@ -55,7 +55,7 @@ When it is stored on disk or sent over the wire, it uses cryptographic signature
 And then when you use GUN to read the data, it automatically verifies and decrypts the data for you:
 
 ```javascript
-user.get('profile').get('boss').get('slave').get('name').val(function(data){
+user.get('profile').get('boss').get('slave').get('name').once(function(data){
   console.log("The boss's slave's name is:", data); // Alice
 });
 ```
