@@ -133,7 +133,7 @@ Other values, like `undefined`, `NaN`, `Infinity`, `arrays`, will be rejected.
 
 > **Note:** when using `.put`, if any part of the chain does not exist yet, it will implicitly create it as an empty object.
 ```javascript
-gun.get('something').path('that.does.not.exist.yet').put("Hello World!");
+gun.get('something').get('not').get('exist').get('yet').put("Hello World!");
 // `.put` will if needed, backwards create a document
 // so "Hello World!" has a place to be saved.
 ```
@@ -162,18 +162,18 @@ gun.get('key').put({
 Saving primitives
 ```javascript
 // strings
-gun.get('person').path('name.first').put('Alice')
+gun.get('person').get('name').put('Alice')
 
 // numbers
-gun.get('IoT').path('temperature').put(58.6)
+gun.get('IoT').get('temperature').put(58.6)
 
 // booleans
-gun.get('player').path('alive').put(true)
+gun.get('player').get('alive').put(true)
 ```
 
 Using the callback
 ```javascript
-gun.get('survey').path('submission').put(submission, function(ack){
+gun.get('survey').get('submission').put(submission, function(ack){
   if(ack.err){
     return ui.show.error(ack.err)
   }
@@ -199,14 +199,14 @@ All data is normalized to a parent node.
 Gun().put({foo: 'bar'}); // internally becomes...
 Gun().get(randomUUID).put({foo: 'bar'});
 
-Gun().get('user').path('alice').put(data); // internally becomes...
+Gun().get('user').get('alice').put(data); // internally becomes...
 Gun().get('user').put({'alice': data});
 // An update to both user and alice happens, not just alice.
 ```
 You can save a gun chain reference,
 ```javascript
 var ref = Gun().put({text: 'Hello world!'})
-Gun().get('message').path('first').put(ref)
+Gun().get('message').get('first').put(ref)
 ```
 But you cannot save it inline, yet.
 ```javascript
@@ -216,7 +216,7 @@ var msg = Gun().put({
   sender: sender // this will fail
 })
 // however
-msg.path('sender').put(sender) // this will work
+msg.get('sender').put(sender) // this will work
 ``` 
 Be careful saving deeply nested objects,
 ```javascript
@@ -303,7 +303,7 @@ Chaining multiple `get`s together changes the context of the chain, allowing you
 > Note: For users upgrading versions, prior to v0.5.x `get` used to always return a context from the absolute root of the database. If you want to go back to the root, either save a reference `var root = Gun();` or now use [`.back(-1)`](#back).
 
 ```javascript
-gun.get('user').get('alice') /* same context as */ gun.get('users').path('alice')
+gun.get('user').get('alice') /* same context as */ gun.get('users').get('alice')
 ```
 
 ### Unexpected behavior
@@ -362,9 +362,9 @@ gun.get('users')
 
 Another example
 ```javascript
-gun.get('player').path('game.score').back(1)
+gun.get('player').get('game').get('score').back(1)
 // is the same as...
-gun.get('player').path('game')
+gun.get('player').get('game')
 ```
 
 ### Chain context
@@ -422,7 +422,7 @@ gun.get('foo').off()
 ### Examples
 Listening for updates on a key
 ```javascript
-gun.get('users').path(username).on(function(user){
+gun.get('users').get(username).on(function(user){
   // update in real-time
   if (user.online) {
     view.show.active(user.name)
@@ -434,7 +434,7 @@ gun.get('users').path(username).on(function(user){
 
 Listening to updates on a field
 ```javascript
-gun.get('lights').path('living room').on(function(state, room){
+gun.get('lights').get('living room').on(function(state, room){
   // update the UI when the living room lights change state
   view.lights[room].show(state)
 })
@@ -475,7 +475,7 @@ The data is the value for that chain at that given point in time. And they key i
 
 ### Examples
 ```javascript
-gun.get('peer').path(userID).path('profile').once(function(profile){
+gun.get('peer').get(userID).get('profile').once(function(profile){
   // render it, but only once. No updates.
   view.show.user(profile)
 })
@@ -483,7 +483,7 @@ gun.get('peer').path(userID).path('profile').once(function(profile){
 
 Reading a property
 ```javascript
-gun.get('IoT').path('temperature').once(function(number){
+gun.get('IoT').get('temperature').once(function(number){
   view.show.temp(number)
 })
 ```
@@ -603,11 +603,11 @@ Will only return user123: "Mark", as it was the only match.
 ### Chain context
 `.map` changes the context of the chain to hold many chains simultaneously. Check out this example:
 ```javascript
-gun.get('users').map().path('name').on(cb);
+gun.get('users').map().get('name').on(cb);
 ```
 Everything after the `map()` will be done for every item in the list, such that you'll get called with each name for every user in the list. This can be combined in really expressive and powerful ways.
 ```javascript
-gun.get('users').map().path('friends').map().path('pet').on(cb);
+gun.get('users').map().get('friends').map().get('pet').on(cb);
 ```
 This will give you each pet of every friend of every user!
 
@@ -626,6 +626,8 @@ gun.get(key).map() /* is not the same as */ gun.get(key)
 ## <a name="path"></a>gun.path(key)
 
 <a href="https://youtu.be/UDZGVYLNLAU" title="GUN path"><img src="http://img.youtube.com/vi/UDZGVYLNLAU/0.jpg" width="425px"></a><br>
+
+> Warning: This extension was removed from core, you probably shouldn't be using it!
 
 > Warning: Not included by default! You must include it yourself via `require('gun/lib/path.js')` or `<script src="/gun/lib/path.js"></script>`!
 
@@ -740,7 +742,7 @@ gun.get('players/3').not(function(key){
 
 Setting a property if it isn't found
 ```javascript
-gun.get('chat').path('enabled').not(function(path){
+gun.get('chat').get('enabled').not(function(key){
   this.put(false)
 })
 ```
