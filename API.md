@@ -396,6 +396,8 @@ Since gun streams data, the callback will probably be called multiple times as n
 
 To remove a listener call .off() on the same property or node.
 
+ > Note: If data is a node (object), it may have `_` meta property on it. If you [delete](https://gun.eco/docs/Delete) an item, you might get a `null` tombstone.
+
 ### Option
 Currently, the only option is to filter out old data, and just be given the changes. If you're listening to a node with 100 fields, and just one changes, you'll instead be passed a node with a single property representing that change rather than the full node every time.
 
@@ -464,7 +466,7 @@ It will be called many times.
 
 <a href="https://youtu.be/k-CkP43-uJo" title="GUN once"><img src="http://img.youtube.com/vi/k-CkP43-uJo/0.jpg" width="425px"></a><br>
 
-Get the current data without subscribing to updates.
+Get the current data without subscribing to updates. Or `undefined` if it cannot be found.
 
 ### Option
 
@@ -472,6 +474,8 @@ Get the current data without subscribing to updates.
 
 ### Callback(data, key)
 The data is the value for that chain at that given point in time. And they key is the last property name or ID of the node.
+
+ > Note: If data is a node (object), it may have `_` meta property on it. If you [delete](https://gun.eco/docs/Delete) an item, you might get a `null` tombstone. If the data cannot be found, `undefined` may be called back.
 
 ### Examples
 ```javascript
