@@ -50,26 +50,36 @@ And then somewhere down the road you attempt to `JSON.stringify(mark)` and you g
 
 Unfortunately, JSON was designed with a documented oriented structure in mind, otherwise known as a tree. This was also a fatal flaw of many NoSQL databases. Working with JSON is great for developers, since our minds easily grasp the behavior of documents. But storing data as a tree creates a nightmare of usability if and when the developer wants to do anything remotely more advanced.
 
-GUN makes this easy, all you have to do is use that `mark` object you created earlier:
+GUN makes this easy:
 
 ```javascript
-gun.put(mark).key('user/marknadal');
-```
+// create mark
+var mark = gun.get('user/marknadal')
+.put({
+  name: "Mark Nadal",
+  gender: "male"
+})
 
-This will save both `mark` and `amber`. However it does not create an index for Amber, so we should do that also:
+// create amber
+var amber = gun.get('user/ambernadal')
+.put({
+  name: "Amber Nadal",
+  gender: "female",
+})
 
-```javascript
-gun.get('user/marknadal').path('wife').key('user/ambernadal');
+// link mark to amber
+amber.get('husband').put( mark )
+
+// link amber to mark
+mark.get('wife').put( amber )
 ```
 
 This lets us do some crazy fun inception things like:
 
 ```javascript
-gun.get('user/ambernadal')
-  .path('husband.wife.husband.wife.name')
-  .val(function(name){
-    console.log(name); // "Amber Nadal"
-});
+gun.get('user/marknadal').get('wife').get('husband').get('name').once( 
+  (name) => console.log( 'Marks wife husbands name is '+name)
+)
 ```
 
 **In conclusion**, _graphs rock_. Enjoy the using both relational and documented structured data.
