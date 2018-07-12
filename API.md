@@ -633,7 +633,7 @@ gun.get(key).map() /* is not the same as */ gun.get(key)
 
 > Warning: This extension was removed from core, you probably shouldn't be using it!
 
-> Warning: Not included by default! You must include it yourself via `require('gun/lib/path.js')` or `<script src="/gun/lib/path.js"></script>`!
+> Warning: Not included by default! You must include it yourself via `require('gun/lib/path.js')` or `<script src="https://cdn.jsdelivr.net/npm/gun/lib/path.js"></script>`!
 
 Path does the same thing as `get` but has some conveniences built in.
 
@@ -718,7 +718,7 @@ gun.get('API')
 
 ## <a name="not"></a> gun.not(callback)
 
-> Warning: Not included by default! You must include it yourself via `require('gun/lib/not.js')` or `<script src="/gun/lib/not.js"></script>`!
+> Warning: Not included by default! You must include it yourself via `require('gun/lib/not.js')` or `<script src="https://cdn.jsdelivr.net/npm/gun/lib/not.js"></script>`!
 Handle cases where data can't be found.
 
 If you need to know whether a property or key exists, you can check with `.not`. It will consult the connected peers and invoke the callback if there's reasonable certainty that none of them have the data available.
@@ -761,7 +761,7 @@ gun.get(key).not(handler) /* is the same as */ gun.get(key)
 
 ## <a name="open"></a> gun.open(callback)
 
-> Warning: Not included by default! You must include it yourself via `require('gun/lib/open.js')` or `<script src="/gun/lib/open.js"></script>`!
+> Warning: Not included by default! You must include it yourself via `require('gun/lib/open.js')` or `<script src="https://cdn.jsdelivr.net/npm/gun/lib/open.js"></script>`!
 
 Open behaves very similarly to [gun.on](#on), except it gives you **the full depth of a document** on every update. It also works with graphs, tables, or other data structures. Think of it as opening up a live connection to a document.
 
@@ -807,7 +807,7 @@ If you do not use a schema with `.open(cb)` it can only best guess and approxima
 
 ## <a name="load"></a> gun.load(cb, opt)
 
-> Warning: Not included by default! You must include it yourself via `require('gun/lib/load.js')` or `<script src="/gun/lib/open.js"></script><script src="/gun/lib/load.js"></script>`!
+> Warning: Not included by default! You must include it yourself via `require('gun/lib/load.js')` or `<script src="https://cdn.jsdelivr.net/npm/gun/lib/open.js"></script><script src="https://cdn.jsdelivr.net/npm/gun/lib/load.js"></script>`!
 
 Loads the full object once. It is the same as `open` but with the behavior of [`once`](#once).
 
@@ -815,7 +815,7 @@ Loads the full object once. It is the same as `open` but with the behavior of [`
 
 ## <a name="then"></a> gun.then(cb)
 
-> Warning: Not included by default! You must include it yourself via `require('gun/lib/then.js')` or `<script src="/gun/lib/then.js"></script>`!
+> Warning: Not included by default! You must include it yourself via `require('gun/lib/then.js')` or `<script src="https://cdn.jsdelivr.net/npm/gun/lib/then.js"></script>`!
 
 Returns a promise for you to use.
 
@@ -873,7 +873,7 @@ A gun chain is **not** already a promise, you must call `then()` to make it a pr
 
 ## <a name="bye"></a> gun.bye()
 
-> Warning: Not included by default! You must include it yourself via `require('gun/lib/bye.js')` or `<script src="/gun/lib/bye.js"></script>`!
+> Warning: Not included by default! You must include it yourself via `require('gun/lib/bye.js')` or `<script src="https://cdn.jsdelivr.net/npm/gun/lib/bye.js"></script>`!
 
 `bye` lets you change data after that browser peer disconnects. This is useful for games and status messages, that if a player leaves you can remove them from the game or set a user's status to "away".
 
@@ -913,7 +913,7 @@ This deletes the player from the game when they go offline or disconnect from th
 
 ## <a name="later"></a> gun.later(cb, seconds)
 
-> Warning: Not included by default! You must include it yourself via `require('gun/lib/later.js')` or `<script src="/gun/lib/open.js"></script><script src="/gun/lib/later.js"></script>`!
+> Warning: Not included by default! You must include it yourself via `require('gun/lib/later.js')` or `<script src="/gun/lib/open.js"></script><script src="https://cdn.jsdelivr.net/npm/gun/lib/later.js"></script>`!
 
 Say you save some data, but want to do something with it later, like expire it or refresh it. Well, then `later` is for you! You could use this to easily implement a TTL or similar behavior.
 
@@ -951,7 +951,7 @@ gun.get('foo').put(data).later(function(data, key){
 
 ## <a name="unset"></a> gun.unset(node)
 
-> Warning: Not included by default! You must include it yourself via `require('gun/lib/unset.js')` or `<script src="/gun/lib/unset.js"></script>`!
+> Warning: Not included by default! You must include it yourself via `require('gun/lib/unset.js')` or `<script src="https://cdn.jsdelivr.net/npm/gun/lib/unset.js"></script>`!
 
 After you save some data in an unordered list, you may need to remove it. 
 
