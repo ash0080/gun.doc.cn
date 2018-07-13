@@ -473,7 +473,7 @@ Get the current data without subscribing to updates. Or `undefined` if it cannot
  - `wait` controls the asynchronous timing (see unexpected behavior, below). `gun.get('foo').once(cb, {wait: 0})`
 
 ### Callback(data, key)
-The data is the value for that chain at that given point in time. And they key is the last property name or ID of the node.
+The data is the value for that chain at that given point in time. And the key is the last property name or ID of the node.
 
  > Note: If data is a node (object), it may have `_` meta property on it. If you [delete](https://gun.eco/docs/Delete) an item, you might get a `null` tombstone. If the data cannot be found, `undefined` may be called back.
 
