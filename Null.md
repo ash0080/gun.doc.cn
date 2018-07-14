@@ -19,3 +19,5 @@ JSON.stringify('a') < JSON.stringify(null) :(
 means `null` has higher precedence. :(
 
 (for those who don't know... the reason why JSON does this is that strings are encoded with `"` which is ASCII code 34 [one up from RAD's starting key `!` bang! at 33, the lowest ASCII visible character. (whether " " is visible is debatable or not, either way, the reason why I didn't choose RAD to start at that is because filesystems don't like " ")] and JSON encodes `null` as the serialized text of `null` without the parse type indicator of `"` since it isn't a string [ASCII encodes `null` at 0 which makes sense, but most systems/parsers won't transmit (or improperly handle) ASCII 28 and below]. And in serialized format, `"`(a") < `n`(ull). :( :( :(. )
+
+> Note: This also applies to `false` < `null` < `true`!
