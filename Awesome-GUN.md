@@ -162,7 +162,7 @@ Clustering the Kibi/Kibana Alerting & Reporting Application _(watcher)_ ~ By [lm
  - [paStash](https://github.com/sipcapture/paStash)
 Spaghetti I/O Event Processing, Interpolation, Correlation with Gun persistence ~ By [lmangani](https://github.com/lmangani)
 
- - [fastify-gun](https://github.com/lmangani/fastify-gun)
+ - [fastify-gundb](https://github.com/lmangani/fastify-gundb)
 Fastify is a Fast and low overhead modular web framework, supporting persistence layer using Gun ~ By [lmangani](https://github.com/lmangani)
 
  - [PiTherm](https://github.com/paullj1/PiTherm)
