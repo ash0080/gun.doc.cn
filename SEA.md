@@ -16,8 +16,8 @@ var pair = await SEA.pair();
 var enc = await SEA.encrypt('hello self', pair);
 var data = await SEA.sign(enc, pair);
 console.log(data);
-var msg = await SEA.verify(data, pair);
-var dec = await SEA.decrypt(msg, pair);
+var msg = await SEA.verify(data, pair.pub);
+var dec = await SEA.decrypt(msg, pair); // or use diffie-hellman for shared data between users (not documented yet, ask in chat for example)
 var proof = await SEA.work(dec, pair);
 var check = await SEA.work('hello self', pair);
 console.log(dec);
@@ -150,7 +150,7 @@ The `user` system uses this to make it so that only you can write to your own da
 ```javascript
 var other = await SEA.pair();
 var msg = await SEA.sign("I wrote this message! You did not.", pair);
-console.log(await SEA.verify(msg, other)); // false
+console.log(await SEA.verify(msg, other.pub)); // false
 ```
 
 The default cryptographic primitive signs a SHA256 fingerprint of the data.
@@ -158,7 +158,7 @@ The default cryptographic primitive signs a SHA256 fingerprint of the data.
 ## verify
 
 ```javascript
-data = await SEA.verify(message, pair)
+data = await SEA.verify(message, pair.pub)
 ```
 
 Gets the data if and only if the message can be verified as coming from the person you expect.
@@ -173,7 +173,7 @@ The `user` system uses this to make it so that only you can write to your own da
 ```javascript
 var data = "I wrote this message! You did not.";
 var msg = await SEA.sign(data, pair);
-console.log(await SEA.verify(msg, pair)); // true
+console.log(await SEA.verify(msg, pair.pub)); // true
 ```
 
 > Note: You must be careful to use a public key that you already trust, not one that just anybody could send to you (an attacker would try to send you a fake public key).
