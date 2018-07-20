@@ -3,7 +3,7 @@ This page will explain [SEA](./SEA)'s `user` API as well as explain architectura
 Assume:
 
 ```javascript
-gun = Gun();`
+gun = Gun();
 user = gun.user(); 
 ```
 
