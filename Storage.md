@@ -12,13 +12,17 @@ In browser, GUN app data is stored in the browser's localStorage, but is primari
 
 ## File
 
-This is the current default, great for development, but not meant for production.
+Great for development, but not meant for production.
+
+Works in nodejs and can be activated as follows: 
+
+`var gun = Gun({ file: 'db/data.json', web: server, radisk: false, localStorage: true });`
 
 ## Radix
 
-The Radix Storage Engine (RSE) will soon become the default and then be a good choice for production.
+The Radix Storage Engine (RSE) is the default.
 
-RSE will become the new default and will be production ready, however it is not the default yet (although you can make it the default by just turning off the current default with `Gun({localStorage: false})` in NodeJS.
+~~RSE will become the new default and will be production ready, however it is not the default yet (although you can make it the default by just turning off the current default with `Gun({localStorage: false})` in NodeJS.~~
 
 ## S3
 
