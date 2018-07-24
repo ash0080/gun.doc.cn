@@ -46,7 +46,7 @@ var gun = Gun(options)
 
 ### Options
 
- - no parameters `undefined` creates a local datastore using the default persistence layer, either localStorage or a JSON file.
+ - no parameters `undefined` creates a local datastore using the default persistence layer, either localStorage or [Radisk](https://gun.eco/docs/Storage#radix).
 
  - passing a URL `string` creates the above local datastore that also tries to sync with the URL.
 
@@ -56,9 +56,9 @@ var gun = Gun(options)
 
    - `options.peers` is an object, where the URLs are properties, and the value is an empty object.
 
-   - `options.radisk` (boolean) creates and persists local data to a JSON file.
+   - `options.radisk` (boolean, default: `true`) creates and persists local (nodejs) data using [Radisk](https://gun.eco/docs/Storage#radix).
 
-   - `options.localStorage` (boolean, default: `true`) persists local data to localStorage.
+   - `options.localStorage` (boolean, default: `true`) persists local (browser) data to localStorage.
 
    - `options.uuid` allows you to override the default 24 random alphanumeric soul generator with
       your own function.
