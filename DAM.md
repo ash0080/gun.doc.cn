@@ -4,6 +4,8 @@ DAM is GUN's default transport layer abstraction and P2P networking algorithm. D
 
 This page focuses on both its architectural and API. DAM is the transport counterpart to RAD.
 
+**DAM has not yet been cartoonized**, we apologize, if you aren't deeply technical, please come back later (the below gif is NOT an illustration of DAM, but its less efficient predecessor).
+
 ## API
 
 > Needs to be Documented
@@ -11,6 +13,8 @@ This page focuses on both its architectural and API. DAM is the transport counte
 DAM's API allows for swapping in different transport layers (websocket, WebRTC, etc.) in the same way RAD lets you swap out storage layers (disk, S3, IPFS, etc.).
 
 ## Architecture
+
+Given some constraints, we are able to prove that optimal mesh topology can be `O(P)` (where P is peers in the network) which is surprising, since for the same constraints, star (centralized) topology is also `O(P)`. Ignoring those constraints, mesh topology is about `O(C*2)+1` (where C is connections between peers), which is not good, compared to optimized federated sharded routing can be `O(S)` (where S is the number of subscriptions to a data record, regardless of P). This is why [AXE](./AXE) is built on top of DAM, as it opt-in allows for highly scalable incentivized traffic, without violating (it is still compatible with) the underlying P2P mesh topology that DAM accounts for. More details, and proof, will be in a later cartoon.
 
 An explanation of how DAM works was ripped out from a chatroom discussion, [bounty](./Bounty) for anyone who cleans it up and documents it into wiki format: 
 
