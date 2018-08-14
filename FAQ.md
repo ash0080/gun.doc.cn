@@ -6,7 +6,7 @@ To give an example:
 
 **Is there a single graph across all users in the network?**
 
-The graph is shared across all peers in the network. Depending on data structure you may have multiple graphs available. All graphs can start with one root node or multiple root nodes to divide app logic.
+Each peer initiates an instance of gun. Depending on application logic, the peers will sync their data into their instance of the graph, with a goal to be consistent across the application that they are connected to. Depending on data structure you may have multiple roots available which can act as a division of data in the instance of the peer. That way, all graphs can start with one root node or multiple root nodes to divide app logic.
 
 **How are conflicts handled?**
 
