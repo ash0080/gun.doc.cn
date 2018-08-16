@@ -22,3 +22,19 @@ Whenever a client 'puts' something in a graph, a message is sent to the [network
 Gun saves data in two ways. Browser - localStorage, Node - RAD (Radix Storage Engine to files).
 Due to Browser Limitations, not all data is stored on all clients, persistence at this time is what is left in your localStorage (50 mb limit) and what the 'super peer' (node.js out of necessity right now) saves to files on hard disk. Clients subscribe to the data they need to stay informed on and the super peer will dispatch data. Once the data is on the client, the client may serve data to other clients as well.
 
+**What is a soul? What does a node look like?**
+
+When using gun to add data to a graph, or to retrieve data from a graph, gun creates metadata, such as a unique identifier for each node that is generated. This is called a soul in 'gun lingo'.
+The data structure of a node is as follows, assuming a node Alice with a relation of friend Bob.
+```javascript
+{
+'_':{
+    '#': 'eJgh6QkdhlFs8Ed', // <= Soul, UUID
+    '><': 12533221562251  // <= State Vector of this node, used for Conflict Resolution
+    },
+'friend': {
+          'Bob' : 'edDKJj4Fsliojfdf' // reference to the Soul, UUID of the connection
+          }
+}
+```
+(This may vary on your data)
