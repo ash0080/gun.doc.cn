@@ -15,6 +15,8 @@
 
 [How does GUN work underneath?](#how-does-gun-work-underneath)
 
+[How do subscriptions work?](#how-do-subscriptions-work)
+
 ***
 
 #### Is GUN a distributed database?
