@@ -39,6 +39,6 @@ The data structure of a node is as follows, assuming a node Alice with a relatio
 ```
 (This may vary on your data)
 
-** Can you use SQL like queries? What about pagination and aggregation?
+**Can you use SQL like queries? What about pagination and aggregation?
 
 Working with graphs data is quite different from relational databases. Things like pagination, aggregation etc work completely different and require a different data structure design. Often the best approach is to start studying graphs in depth instead of trying to use something like SQL queries in a try to keep using old data usage. [More explanation and references to more in depth info needed here]
