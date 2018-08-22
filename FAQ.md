@@ -102,3 +102,13 @@ Each component builds on top of the others and can be used based on the needs of
 
 ###### Back to [Top](#faq)
 ***
+
+#### How do subscriptions work?
+
+Subscriptions are like event hooks that each instance of GUN can add at specific points. 
+When data is subscribed to by using gun.get('myKey').on(callback, change-only-flag) [ON](https://gun.eco/docs/API#on), peers indicate to their Storage Adapter, that the data of 'myKey' should be stored when seen, and if seen, to then fire the callback provided. 
+
+To subscribe or not subscribe from data, does not mean, that the network will reject or stop propagating data requested by other peers via your peer instance. The network layer operates independent from the storage layer and all peers participate in data relay regardless of subscriptions.
+
+###### Back to [Top](#faq)
+***
