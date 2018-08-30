@@ -29,7 +29,7 @@ To give an example:
 - Alice and Charlie do not share a direct connection. 
 - When Charlie asks for a record that only Alice has, Alice will return the record to Charlie, because they are connected via Bob.
 
-##### Back to <a href='/docs/FAQ#top' style="color:#036">Top</a>
+#### Back to <a href='/docs/FAQ#top' style="color:#036">Top</a>
 ***
 
 #### Is there a single graph across all users in the network?<a name="is-there-a-single-graph-across-all-users-in-the-network"></a>
