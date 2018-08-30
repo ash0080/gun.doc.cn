@@ -17,6 +17,8 @@
 
 [How do subscriptions work?](#how-do-subscriptions-work)
 
+[How can I change a user password? (SEA)](#how-can-i-change-a-user-password-sea)
+
 ***
 
 #### Is GUN a distributed database?
@@ -111,6 +113,15 @@ Subscriptions are like event hooks that each instance of GUN can add at specific
 When data is subscribed to by using gun.get('myKey').on(callback, change-only-flag) [ON](https://gun.eco/docs/API#on), peers indicate to their Storage Adapter, that the data of 'myKey' should be stored when seen, and if seen, to then fire the callback provided. 
 
 To subscribe or not subscribe from data, does not mean, that the network will reject or stop propagating data requested by other peers via your peer instance. The network layer operates independent from the storage layer and all peers participate in data relay regardless of subscriptions.
+
+###### Back to [Top](#faq)
+***
+
+#### How can I change a user password? (SEA)
+
+```javascript
+user.auth(alias, passphrase, callback, { newpass: 'new-pass-value' })
+```
 
 ###### Back to [Top](#faq)
 ***
