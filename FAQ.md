@@ -120,7 +120,7 @@ To subscribe or not subscribe from data, does not mean, that the network will re
 #### How can I change a user password? (SEA)<a name="how-can-i-change-a-user-password"></a>
 
 ```javascript
-user.auth(alias, passphrase, callback, { newpass: 'new-pass-value' })
+user.auth(alias, passphrase, callback, { change: 'new-pass-value' })
 ```
 
 <a href='FAQ#top'>Back to Top</a>
