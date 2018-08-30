@@ -17,7 +17,7 @@
 
 [How do subscriptions work?](#how-do-subscriptions-work)
 
-[How can I change a user password? (SEA)](#how-can-i-change-a-user-password-sea)
+[How can I change a user password? (SEA)](#how-can-i-change-a-user-password)
 
 ***
 
@@ -117,7 +117,7 @@ To subscribe or not subscribe from data, does not mean, that the network will re
 ###### Back to [Top](#faq)
 ***
 
-#### How can I change a user password? (SEA)
+#### How can I change a user password? (SEA)<a name="how-can-i-change-a-user-password"></a>
 
 ```javascript
 user.auth(alias, passphrase, callback, { newpass: 'new-pass-value' })
