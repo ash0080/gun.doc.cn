@@ -21,7 +21,7 @@
 
 ***
 
-#### Is GUN a distributed database?
+#### Is GUN a distributed database?<a name="is-gun-a-distributed-database"></a>
 
 Yes. Data is kept and shared between peers, across the network. 
 To give an example: 
@@ -32,21 +32,21 @@ To give an example:
 ###### Back to [Top](#faq)
 ***
 
-#### Is there a single graph across all users in the network?
+#### Is there a single graph across all users in the network?<a name="is-there-a-single-graph-across-all-users-in-the-network"></a>
 
 Each peer initiates an instance of gun. Depending on application logic, the peers will sync their data into their instance of the graph, with a goal to be consistent across the application that they are connected to. Depending on data structure you may have multiple roots available which can act as a division of data in the instance of the peer. That way, all graphs can start with one root node or multiple root nodes to divide app logic.
 
 ###### Back to [Top](#faq)
 ***
 
-#### How are conflicts handled?
+#### How are conflicts handled?<a name="how-are-conflicts-handled"></a>
 
 Conflicts are handled by the conflict resolution algorithm. see [Hypothetical Amnesia Machine](https://gun.eco/docs/Hypothetical-Amnesia-Machine)
 
 ###### Back to [Top](#faq)
 ***
 
-#### How is GUN distributed / replicated across peers?
+#### How is GUN distributed / replicated across peers?<a name="how-is-gun-distributed--replicated-across-peers"></a>
 
 Gun uses 'websockets' underneath. In the future Gun will have a system called AXE that will do smart routing and encrypted transports. (Work is in progress)
 Whenever a client 'puts' something in a graph, a message is sent to the [network](https://gun.eco/docs/DAM) and other clients that have subscribed to that data, or super peers, will pick it up and update their internal state. The guarantee is, that it will be real-time for those who are online at the same time and that even those who are offline, will eventually receive those updates. (this is called eventual consistency [CAP](https://gun.eco/docs/CAP-Theorem))
@@ -54,7 +54,7 @@ Whenever a client 'puts' something in a graph, a message is sent to the [network
 ###### Back to [Top](#faq)
 ***
 
-#### What is the difference between Super Peer and other Peers?
+#### What is the difference between Super Peer and other Peers?<a name="what-is-the-difference-between-super-peer-and-other-peers"></a>
 
 Gun saves data in two ways. Browser - localStorage, Node - RAD (Radix Storage Engine to files).
 Due to Browser Limitations, not all data is stored on all clients, persistence at this time is what is left in your localStorage (50 mb limit) and what the 'super peer' (node.js out of necessity right now) saves to files on hard disk. Clients subscribe to the data they need to stay informed on and the super peer will dispatch data. Once the data is on the client, the client may serve data to other clients as well.
@@ -62,7 +62,7 @@ Due to Browser Limitations, not all data is stored on all clients, persistence a
 ###### Back to [Top](#faq)
 ***
 
-#### What is a soul? What does a node look like?
+#### What is a soul? What does a node look like?<a name="what-is-a-soul-what-does-a-node-look-like"></a>
 
 When using gun to add data to a graph, or to retrieve data from a graph, gun creates metadata, such as a unique identifier for each node that is generated. This is called a soul in 'gun lingo'.
 The data structure of a node is as follows, assuming a node Alice with a relation of friend Bob.
@@ -82,14 +82,14 @@ The data structure of a node is as follows, assuming a node Alice with a relatio
 ###### Back to [Top](#faq)
 ***
 
-#### Can you use SQL like queries? What about pagination and aggregation?
+#### Can you use SQL like queries? What about pagination and aggregation?<a name="can-you-use-sql-like-queries-what-about-pagination-and-aggregation"></a>
 
 Working with graphs data is quite different from relational databases. Things like pagination, aggregation etc work completely different and require a different data structure design. Often the best approach is to start studying graphs in depth instead of trying to use something like SQL queries in a try to keep using old data usage. [More explanation and references to more in depth info needed here]
 
 ###### Back to [Top](#faq)
 ***
 
-#### How does GUN work underneath?
+#### How does GUN work underneath?<a name="how-does-gun-work-underneath"></a>
 
 GUN is a modular library. [Internal Workings](https://gun.eco/docs/javascript)
 
@@ -107,7 +107,7 @@ Each component builds on top of the others and can be used based on the needs of
 ###### Back to [Top](#faq)
 ***
 
-#### How do subscriptions work?
+#### How do subscriptions work?<a name="how-do-subscriptions-work"></a>
 
 Subscriptions are like event hooks that each instance of GUN can add at specific points. 
 When data is subscribed to by using gun.get('myKey').on(callback, change-only-flag) [ON](https://gun.eco/docs/API#on), peers indicate to their Storage Adapter, that the data of 'myKey' should be stored when seen, and if seen, to then fire the callback provided. 
