@@ -1,4 +1,4 @@
-### FAQ 
+### FAQ <a name="faq"></a>
 [Is GUN a distributed database?](#is-gun-a-distributed-database)
 
 [Is there a single graph across all users in the network?](#is-there-a-single-graph-across-all-users-in-the-network)
