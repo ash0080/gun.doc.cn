@@ -4,6 +4,8 @@ Please see https://github.com/amark/gun/blob/master/examples/simple/space.html a
 
 > NOTE: Space only returns the next *latest* match in the tree, not all sub-items!
 
+> NOTE: `lib/space` is in ALPHA! API may change (please use it and provide feedback) and complain about bugs!
+
 Or copy & paste this into JSbin or a HTML file:
 
 ```
