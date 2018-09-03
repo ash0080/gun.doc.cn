@@ -1,5 +1,7 @@
 ## Radisk Storage Engine
-The **Radisk Storage Engine (RAD)** is an _in-memory_, as well as _on-disk_ storage engine providing data persistence for the GUN database graph, attempting to provide constant look-up times.
+The **Radisk Storage Engine (RAD)** is an _in-memory_, as well as _on-disk_ [radix tree](https://en.wikipedia.org/wiki/Radix_tree) that saves the GUN database graph for fast and performant look-ups.
+
+Radix trees have a constant lookup-time.
 
 ### Flow of Data
 
