@@ -1,19 +1,17 @@
 ## Radisk Storage Engine
-The **Radisk Storage Engine (RAD)** is an _in-memory_, as well as _on-disk_, radix trie that saves the GUN database graph for fast and performant look-ups.
-
-Radix tries lookups have a constant time.
+The **Radisk Storage Engine (RAD)** is an _in-memory_, as well as _on-disk_ storage engine providing data persistence for the GUN database graph, attempting to provide constant look-up times.
 
 ### Flow of Data
 
-GUN is a modular system, which allows adapters to 'hook' into the GUN instance through subscriptions to general events (such as gun.on('in')) or data events specifically subscribed to via data.on(callback).
+GUN is a modular system, which allows adapters to 'hook' into the GUN instance through subscriptions to general events (such as `gun.on('in')`) or data events specifically subscribed to via `data.on(callback)`.
 
-When data is put via gun.get(key).put({object}), GUN adds the {object} into it's internal graph (in-memory) and then hands the data to the next subscribed adapter. (This may be RAD, localStorage or AWS S3 etc.)
+When data is put via `gun.get(key).put({object})`, GUN adds the {object} into it's internal graph (in-memory) and then hands the data to the next subscribed adapter. (This may be RAD, localStorage or AWS S3 etc.)
 
 RAD is called from gun/lib/store.js, which should be the template for anyone to start building their own storage adapter for GUN.
 
 ### Store.js
 
-
+```javascript
 var storage = Object(null)
 gun._.opt.store = {};
 gun._.opt.store.put = function(file, data, cb){
@@ -43,7 +41,7 @@ gun._.opt.store.list = function(cb){
 	}
 	cb()
 }
-
+```
 
 ### Radisk.js
 
@@ -83,7 +81,7 @@ opt.code.from - TODO
 	function ename(t){ return encodeURIComponent(t).replace(/\*/g, '%2A') }
 ```
 
-ename makes sure files are not named with symbols that would create errors on OS's (such as / - etc)
+`ename()` makes sure files are not named with symbols that would create errors on OS's (such as / - etc)
 
 ```javascript
 
@@ -140,15 +138,13 @@ GET Case
 
 _key_ stringify input
 
-_r.batch(key)_ reads back in-memory batch to check if key is waiting
-
- to be written to disk
+_r.batch(key)_ reads back in-memory batch to check if key is waiting to be written to disk
 
 If found, return it to caller
 
 If not found, check the batch about to be written (staged for thrashing/flushing)
 
- If found, return to caller
+If found, return to caller
 
 If not found, read from disk
 
@@ -158,12 +154,10 @@ _key_ stringify input
 
 _r.batch(key,val)_ write key/val pair to batch
 
-If a callback was attached we attach it in turn to acks in the batch.
-
- (acks are acknowledgments, sent out after the batch is written to disk)
+If a callback was attached we attach it in turn to acks in the batch. (acks are acknowledgments, sent out after the batch is written to disk)
 
 Check if the batch count limit is reached and if so, flush to disk.
 
- Also increase the counter _r.batch.ed_
+Also increase the counter _r.batch.ed_
 
 _opt.until_ or as default 1ms is he idle time between put calls, before a flush occurs
