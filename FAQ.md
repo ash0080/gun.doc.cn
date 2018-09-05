@@ -19,6 +19,7 @@
 
 [How can I change a user password? (SEA)](#how-can-i-change-a-user-password)
 
+[Does GUN have some form of ACL (access rights)?](#acl)
 ***
 
 #### Is GUN a distributed database?<a name="is-gun-a-distributed-database"></a>
@@ -125,3 +126,15 @@ user.auth(alias, passphrase, callback, { change: 'new-pass-value' })
 
 <a href='FAQ#top'>Back to Top</a>
 ***
+
+#### Does GUN have some form of ACL (access rights)?<a name="acl"></a>
+
+Not yet. But you can add ALC yourself.
+If you want an example of how to implement ACL, check out this short demo video:
+[https://youtu.be/ZiELAFqNSLQ](https://youtu.be/ZiELAFqNSLQ)
+And peek at this ~150 lines of HTML/CSS/JS that implements it:
+[https://gist.github.com/amark/44b8110a3c848917d6c738f9c3a36e24](https://gist.github.com/amark/44b8110a3c848917d6c738f9c3a36e24)
+
+<a href='FAQ#top'>Back to Top</a>
+***
+
