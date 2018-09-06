@@ -1,4 +1,4 @@
-We're going to build a P2P dApp! This tutorial assumes you have moderate web development experience, and walk you through each step. Let's start with some basic HTML:
+We're going to build a P2P dApp! This tutorial assumes you have moderate web development experience, and will walk you through each step. Let's start with some basic HTML:
 
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
@@ -21,6 +21,7 @@ We're going to build a P2P dApp! This tutorial assumes you have moderate web dev
         <input id="say">
         <input id="speak" type="button" value="speak">
     </form>
+
 ::: {endblock: '1'} :::
 ::: {startblock: '2'} :::
   </body>
@@ -28,14 +29,18 @@ We're going to build a P2P dApp! This tutorial assumes you have moderate web dev
 ::: {endblock: '2'} :::
 ```
 
-First, we need to include GUN, SEA, and the WebRTC adapter! (Plus some jQuery, but you can use React/Angular/etc.)
+First, we need to include GUN, SEA, and the WebRTC adapter right above the closing `</body>` tag! (Plus some jQuery, but you can use React/Angular/etc.)
 
-```
+```html
     <script src="https://cdn.jsdelivr.net/npm/gun/examples/jquery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gun/sea.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gun/lib/webrtc.js"></script>
 ```
+
+### CDNs are dangerous! What about require, import, etc.?
+
+For security purposes, we recommend you keep local 
 
 ::: {nextstepcompare: 'start'} :::
 ```
