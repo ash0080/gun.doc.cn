@@ -46,10 +46,11 @@ First, we need to include GUN, SEA, and the WebRTC adapter! (Plus some jQuery, b
     <script src="https://cdn.jsdelivr.net/npm/gun/sea.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gun/lib/webrtc.js"></script>
 ::: {endblock: '3'} :::
+::: {insertblock: '2'} :::
 ```
 ::: {nextstepcompare: 'end'} :::
 
-::: {step: 'Adding Dependencies'} :::
+::: {step: 'Connecting to Peers'} :::
 
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
