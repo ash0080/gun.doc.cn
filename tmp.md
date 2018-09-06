@@ -81,8 +81,30 @@ GUN is a graph database. SEA is a [cryptographic](https://gun.eco/explainers/dat
 ::: {codepen: 'link', tab1: 'codemirror'} :::
 ::: {editor: 'main'} :::
 ::: {insertblock: '3'} :::
-// This tutorial is currently a work-in-progress.
+/* replace this line */
 ::: {insertblock: '4'} :::
 ```
 
-... To help improve this tutorial, try hitting "edit" link, and help combine features from examples/simple folder (user.html, etc.) with fully functional multi-peer data sync.
+The first thing we want to do is initialize GUN and connect to other peers in a network. To start, let's connect to 2 peers, one in your local network (which we will show you how to setup later), and one in a public network. Add this line to the app, replacing the comment:
+
+```javascript
+    var gun = Gun(['http://localhost:8765/gun', 'https://gunjs.herokuapp.com/gun']);
+```
+
+### Aren't those servers? I thought GUN was P2P!
+
+Browsers (and internet firewalls) and even WebRTC, for legacy security reasons, won't let you directly connect to other machines unless they have a publicly accessible IP address (your `localhost` might! If you have an IPv6 address and no firewall). To get around this, WebRTC uses "signaling servers" to coordinate P2P connections.
+
+So to answer the question, yes - GUN is P2P but the internet is not, it is broken and we're working on fixing that with [AXE](http://axe.eco/).
+
+GUN also makes things better via "relay peers". They automatically run a "signaling server" inside of them, but can be fully decentralized. They have no centralized logic, and even if peers fail to make a P2P WebRTC connection, they use the [DAM](./DAM) (Daisy-chain Ad-hoc Mesh-network) networking algorithm to relay messages between disconnected peers. They are easy to run, require no maintenance, and can be deployed in 1 click:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/amark/gun)
+
+See the [README](https://github.com/amark/gun) for other ways (Docker, Now, etc.) to deploy relay peers.
+
+### What about my peer? Can I run a peer locally?
+
+Yes.
+
+...next stage of the tutorial coming soon...
