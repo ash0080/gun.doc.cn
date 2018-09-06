@@ -36,6 +36,9 @@ First, we need to include [GUN](https://gun.eco/), [SEA](https://gun.eco/docs/SE
     <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gun/sea.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gun/lib/webrtc.js"></script>
+    <script>
+    // dApp code will go here!
+    </script>
 ```
 
 (Add this code to the above interactive editor!)
@@ -52,7 +55,7 @@ What about `require` and minified bundles? Yupe, you can do that too! Just follo
 
 ### What is RTC, SEA, etc. ?
 
-GUN is a graph database. SEA is a cryptographic security library for GUN, and WebRTC enables P2P connections to other browsers. GUN is designed to be modular and has many layers. For a high level view of the ecosystem, check out the main [readme](https://github.com/amark/gun).
+GUN is a graph database. SEA is a [cryptographic](https://gun.eco/explainers/data/security.html) security library for GUN, and WebRTC enables P2P connections to other browsers. GUN is designed to be modular and has many layers. For a high level view of the ecosystem, check out the main [readme](https://github.com/amark/gun).
 
 ::: {nextstepcompare: 'start'} :::
 ```
@@ -62,19 +65,24 @@ GUN is a graph database. SEA is a cryptographic security library for GUN, and We
     <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gun/sea.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gun/lib/webrtc.js"></script>
+    <script>
 ::: {endblock: '3'} :::
+    // dApp code will go here!
+::: {startblock: '4'} :::
+    </script>
 ::: {insertblock: '2'} :::
+::: {endblock: '4'} :::
 ```
 ::: {nextstepcompare: 'end'} :::
 
-::: {step: 'Connecting to Peers'} :::
+::: {step: 'Connecting'} :::
 
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
 ::: {editor: 'main'} :::
 ::: {insertblock: '3'} :::
 // This tutorial is currently a work-in-progress.
-::: {insertblock: '2'} :::
+::: {insertblock: '4'} :::
 ```
 
 ... To help improve this tutorial, try hitting "edit" link, and help combine features from examples/simple folder (user.html, etc.) with fully functional multi-peer data sync.
