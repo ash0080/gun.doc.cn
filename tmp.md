@@ -1,4 +1,4 @@
-We're going to build a P2P dApp! This tutorial assumes you have moderate web development experience, and will walk you through each step. Let's start with some basic HTML:
+We're going to build a P2P dApp! This tutorial assumes you have moderate web development experience (don't? Check out our [beginner's guide](./My-First-Todo-App)!), and will walk you through each step. Let's start with some basic HTML, to create a multi-user public todo app:
 
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
@@ -29,7 +29,7 @@ We're going to build a P2P dApp! This tutorial assumes you have moderate web dev
 ::: {endblock: '2'} :::
 ```
 
-First, we need to include GUN, SEA, and the WebRTC adapter right above the closing `</body>` tag! (Plus some jQuery, but you can use React/Angular/etc.)
+First, we need to include [GUN](https://gun.eco/), [SEA](https://gun.eco/docs/SEA), and the WebRTC adapter right above the closing `</body>` tag! (Plus some jQuery, but you can use React/Angular/etc.)
 
 ```html
     <script src="https://cdn.jsdelivr.net/npm/gun/examples/jquery.js"></script>
@@ -38,9 +38,15 @@ First, we need to include GUN, SEA, and the WebRTC adapter right above the closi
     <script src="https://cdn.jsdelivr.net/npm/gun/lib/webrtc.js"></script>
 ```
 
+(Add this code to the above interactive editor!)
+
 ### CDNs are dangerous! What about require, import, etc.?
 
-For security purposes, we recommend you keep local 
+For security purposes, we recommend you include these dependencies with your app, rather than trusting a public CDN. (Although we do love jsDelivr! It is free, open source, and give us download stats!)
+
+> Pro tip: If all your dependencies are local, your app can work offline-first! And then GUN will sync when it comes back online.
+
+What about `require` and minified bundles? Yupe, you can do that too! Just follow the [instructions](./Installation). For sake of simplicity and accessibility, this article uses the most-common-denominator of tools. Any developer with advanced experience should be able to easily follow along and independently switch from plain script tags into ES6 syntax. However, any developer that does not understand how script tags work, needs to re-learn the basics.
 
 ::: {nextstepcompare: 'start'} :::
 ```
