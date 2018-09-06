@@ -40,13 +40,19 @@ First, we need to include [GUN](https://gun.eco/), [SEA](https://gun.eco/docs/SE
 
 (Add this code to the above interactive editor!)
 
-### CDNs are dangerous! What about require, import, etc.?
+### But CDNs are dangerous!
 
 For security purposes, we recommend you include these dependencies with your app, rather than trusting a public CDN. (Although we do love jsDelivr! It is free, open source, and give us download stats!)
 
 > Pro tip: If all your dependencies are local, your app can work offline-first! And then GUN will sync when it comes back online.
 
+### What about require, import, etc.?
+
 What about `require` and minified bundles? Yupe, you can do that too! Just follow the [instructions](./Installation). For sake of simplicity and accessibility, this article uses the most-common-denominator of tools. Any developer with advanced experience should be able to easily follow along and independently switch from plain script tags into ES6 syntax. However, any developer that does not understand how script tags work, needs to re-learn the basics.
+
+### What is RTC, SEA, etc. ?
+
+GUN is a graph database. SEA is a cryptographic security library for GUN, and WebRTC enables P2P connections to other browsers. GUN is designed to be modular and has many layers. For a high level view of the ecosystem, check out the main [readme](https://github.com/amark/gun).
 
 ::: {nextstepcompare: 'start'} :::
 ```
