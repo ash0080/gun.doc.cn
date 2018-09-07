@@ -93,18 +93,25 @@ The first thing we want to do is initialize GUN and connect to other peers in a 
 
 ### Aren't those servers? I thought GUN was P2P!
 
-Browsers (and internet firewalls) and even WebRTC, for legacy security reasons, won't let you directly connect to other machines unless they have a publicly accessible IP address (your `localhost` might! If you have an IPv6 address and no firewall). To get around this, WebRTC uses "signaling servers" to coordinate P2P connections.
+Browsers (and internet firewalls) and even WebRTC, for legacy security reasons, won't let you directly connect to other machines unless they have a publicly accessible IP address (your `localhost` might! If you have an IPv6 address and no firewall). To get around this, WebRTC uses "signaling servers" to coordinate where non-IPv6 peers (like a browser) are, and **then** attempts to establish a P2P connection.
 
 So to answer the question, yes - GUN is P2P but the internet is not, it is broken and we're working on fixing that with [AXE](http://axe.eco/).
 
-GUN also makes things better via "relay peers". They automatically run a "signaling server" inside of them, but can be fully decentralized. They have no centralized logic, and even if peers fail to make a P2P WebRTC connection, they use the [DAM](./DAM) (Daisy-chain Ad-hoc Mesh-network) networking algorithm to relay messages between disconnected peers. They are easy to run, require no maintenance, and can be deployed in 1 click:
+### How do peers discover each other?
+
+GUN makes things better via "relay peers". They automatically run a "signaling server" inside of them, but can also be fully decentralized. They have no centralized logic, and even if peers fail to establish a WebRTC connection, they can then use a [DAM](./DAM) (Daisy-chain Ad-hoc Mesh-network) networking algorithm to relay messages between peers that are not directly connected. They are easy to run, require no maintenance, and can be deployed in 1 click:
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/amark/gun)
 
-See the [README](https://github.com/amark/gun) for other ways (Docker, Now, etc.) to deploy relay peers.
+See the [README](https://github.com/amark/gun) for other ways (Docker, Now, etc.) to deploy relay peers. 
+You can also run one on your local machine from the terminal: (check the [README](https://github.com/amark/gun) if you have any problems with the command)
 
-### What about my peer? Can I run a peer locally?
+$`npm install gun && cd node_modules/gun && npm start`
 
-Yes.
+### Where does data get stored?
 
-...next stage of the tutorial coming soon...
+Unlike Bitcoin which has to store all data on all peers, GUN can have any peer store any (or all) data. What they actually store is usually decided by what data the peer is subscribed to (we'll cover this in the next sections). Relay peers, however, will try to opt into "superpeer" mode and store everything (if they can).
+
+In browsers, data will get stored in `localStorage` by default, but an `indexedDB` adapter also exists.
+
+In node, data will be stored on disk by RAD (Radix storage engine), but plugins for S3 and other storage systems also exist.
