@@ -135,6 +135,23 @@ If you want an example of how to implement ACL, check out this short demo video:
 And peek at this ~150 lines of HTML/CSS/JS that implements it:
 [https://gist.github.com/amark/44b8110a3c848917d6c738f9c3a36e24](https://gist.github.com/amark/44b8110a3c848917d6c738f9c3a36e24)
 
+To restrict a group of data: (decentralized method)
+
+One thing you could do (to keep it decentralized / P2P) is to create a user (see tutorial above), make that user be an organization (that maybe only you have the login to), and then the organization can specify OTHER users (actual user profiles) to be admins.
+Now your app's users all "trust" the public key of the organization, and then run fully decentralized logic where they reject (which can happen automatically in SEA) data from anybody that isn't an admin, even as admins change/add/remove over time from the organization.
+
+
+To restrict a group of data: (centralized method)
+
+You are able to write middleware hooks to restrict data - although note, they're usually speaking "the wire spec" but it isn't that bad, for example, check this sample out:
+
+https://github.com/zrrrzzt/bullet-catcher
+
+https://github.com/zrrrzzt/gun-restrict-examples
+
+Again, this is more "centralized" logic which is perfectly possible in GUN, the community just mostly focuses around building tooling for P2P/decentralized logic.
+
+
 <a href='FAQ#top'>Back to Top</a>
 ***
 
