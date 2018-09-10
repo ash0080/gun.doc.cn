@@ -55,7 +55,7 @@ What about `require` and minified bundles? Yupe, you can do that too! Just follo
 
 ### What is RTC, SEA, etc. ?
 
-GUN is a graph database. SEA is a [cryptographic](https://gun.eco/explainers/data/security.html) security library for GUN, and WebRTC enables P2P connections to other browsers. GUN is designed to be modular and has many layers. For a high level view of the ecosystem, check out the main [readme](https://github.com/amark/gun).
+GUN is a graph database. SEA is a [cryptographic](https://gun.eco/explainers/data/security.html) security library for GUN, and WebRTC enables P2P connections to other browsers. GUN is designed to be modular and has many layers. For a high level view of the ecosystem, check out the main [readme](https://github.com/amark/gun). But we'll learn more about these things in the next steps.
 
 ::: {nextstepcompare: 'start'} :::
 ```
@@ -75,7 +75,7 @@ GUN is a graph database. SEA is a [cryptographic](https://gun.eco/explainers/dat
 ```
 ::: {nextstepcompare: 'end'} :::
 
-::: {step: 'Connecting'} :::
+::: {step: 'Peers'} :::
 
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
@@ -93,7 +93,7 @@ The first thing we want to do is initialize GUN and connect to other peers in a 
 
 ### Aren't those servers? I thought GUN was P2P!
 
-Browsers (and internet firewalls) and even WebRTC, for legacy security reasons, won't let you directly connect to other machines unless they have a publicly accessible IP address (your `localhost` might! If you have an IPv6 address and no firewall). To get around this, WebRTC uses "signaling servers" to coordinate where non-IPv6 peers (like a browser) are, and **then** attempts to establish a P2P connection.
+Browsers (and internet firewalls) and even WebRTC, for legacy security reasons, won't let you directly connect to other machines unless they have a publicly accessible IP address (your `localhost` might! If you have an IPv6 address and no firewall). To get around this, WebRTC uses public "signaling servers" to coordinate where non-IPv6 peers (like a browser) are, and **then** attempts to establish a P2P connection if possible.
 
 So to answer the question, yes - GUN is P2P but the internet is not, it is broken and we're working on fixing that with [AXE](http://axe.eco/).
 
@@ -103,8 +103,9 @@ GUN makes things better via "relay peers". They automatically run a "signaling s
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/amark/gun)
 
-See the [README](https://github.com/amark/gun) for other ways (Docker, Now, etc.) to deploy relay peers. 
-You can also run one on your local machine from the terminal: (check the [README](https://github.com/amark/gun) if you have any problems with the command)
+> Note: Soon, they'll form into an automatic DHT with AXE! If you do not want your peer to be listed, you'll need to disable the DHT feature.
+ 
+You can also run one on your local machine, which is great for dev purposes, right from the terminal: (check out the [README](https://github.com/amark/gun) if you have any problems with the command, or for other ways to deploy relay peers - like with Docker, Now, etc.)
 
 $`npm install gun && cd node_modules/gun && npm start`
 
@@ -112,6 +113,81 @@ $`npm install gun && cd node_modules/gun && npm start`
 
 Unlike Bitcoin which has to store all data on all peers, GUN can have any peer store any (or all) data. What they actually store is usually decided by what data the peer is subscribed to (we'll cover this in the next sections). Relay peers, however, will try to opt into "superpeer" mode and store everything (if they can).
 
-In browsers, data will get stored in `localStorage` by default, but an `indexedDB` adapter also exists.
+In browsers, data will get stored in `localStorage` by default, but an `indexedDB` adapter also exists using RAD (our Radix storage engine).
 
-In node, data will be stored on disk by RAD (Radix storage engine), but plugins for S3 and other storage systems also exist.
+In node, RAD will by default dump to disk with `fs`, but plugins for AWS S3 and other storage systems are also available.
+
+::: {nextstepcompare: 'start'} :::
+```
+::: {startblock: '5'} :::
+::: {insertblock: '3'} :::
+    var gun = Gun(['http://localhost:8765/gun', 'https://gunjs.herokuapp.com/gun']);
+::: {endblock: '5'} :::
+::: {insertblock: '4'} :::
+```
+::: {nextstepcompare: 'end'} :::
+
+::: {step: 'Users'} :::
+
+```html
+::: {codepen: 'link', tab1: 'codemirror'} :::
+::: {editor: 'main'} :::
+::: {insertblock: '5'} :::
+/* Add code here... */
+::: {insertblock: '4'} :::
+```
+
+It is important to note that *peer topology* (what machines you are connected to in a network) has nothing to do with *user or data security*. You might be connected to Alice and Bob, but be syncing data about Carl and Dave in a perfectly secure manner. As such, GUN has a [User](./User) system built on the cryptographic primitives of [SEA](./SEA).
+
+We now need to add some code to handle user registration and login:
+
+```javascript
+::: {startblock: '6'} :::
+    var user = gun.user();
+
+    $('#up').on('click', function(e){
+      user.create($('#alias').val(), $('#pass').val());
+    });
+
+    $('#sign').on('submit', function(e){
+      e.preventDefault();
+      user.auth($('#alias').val(), $('#pass').val());
+    });
+::: {endblock: '6'} :::
+```
+
+As appropriately named, we instantiate a `user` [chain](./Functional-Reactive-Programming) off of `gun`, and use that chain context to do further user related operations. Like registering a new user with `.create` or logging in with `.auth` by passing it the HTML form's input values via jQuery (or whatever UI framework you choose).
+
+### But usernames and passwords aren't unique or secure!
+
+Correct. So be warned, **usernames are not unique** in SEA (yet logins will still work), and SEA does **not** generate keys based on passwords. To learn more about how this works, check out the 1 minute animated [Cartoon Cryptography](https://gun.eco/explainers/data/security.html) explainers series.
+
+### What happens if a user forgets their password?
+
+Passwords [can be reset](./FAQ#how-can-i-change-a-user-password) (without a server), but need a UI/UX around it - before adding that, yes, if your user forgets their password, their account won't be able to be recovered. So **be warned**, and prepare for this early!
+
+### Isn't it dangerous for passwords and keys to be in JS?
+
+Yes, if you aren't careful, your user's password (or worse, their private keys) could be stolen by XSS or other attacks. So **be warned**, and encourage users to use [MetaMask](https://metamask.io/) with the SEA plugins! This will keep passwords and keys in the browser, not in the app.
+
+::: {nextstepcompare: 'start'} :::
+```
+::: {startblock: '7'} :::
+::: {insertblock: '5'} :::
+::: {insertblock: '6'} :::
+::: {endblock: '7'} :::
+::: {insertblock: '4'} :::
+```
+::: {nextstepcompare: 'end'} :::
+
+::: {step: 'App'} :::
+
+```html
+::: {codepen: 'link', tab1: 'codemirror'} :::
+::: {editor: 'main'} :::
+::: {insertblock: '7'} :::
+/* App code goes here... */
+::: {insertblock: '4'} :::
+```
+
+... work in progress ...
