@@ -29,7 +29,7 @@ We're going to build a P2P dApp! This tutorial assumes you have moderate web dev
 ::: {endblock: '2'} :::
 ```
 
-First, we need to include [GUN](https://gun.eco/), [SEA](https://gun.eco/docs/SEA), and the WebRTC adapter right above the closing `</body>` tag! (Plus some jQuery, but you can use React/Angular/etc.)
+First, we need to include [GUN](https://gun.eco/), [SEA](https://gun.eco/docs/SEA), and the WebRTC adapter right above the closing `</body>` tag! (Plus some jQuery, but you could use React/Vue/etc.)
 
 ```html
     <script src="https://cdn.jsdelivr.net/npm/gun/examples/jquery.js"></script>
@@ -109,6 +109,12 @@ You can also run one on your local machine, which is great for dev purposes, rig
 
 $`npm install gun && cd node_modules/gun && npm start`
 
+Or here is a **crazy 1-liner** for running a node peer: (We don't recommend you do this though, check the [HTTP example for a better documentation reference].)
+
+```javascript
+gun = (Gun = require('gun'))({web: require('http').createServer(Gun.serve(__dirname)).listen(8765) })
+```
+
 ### Where does data get stored?
 
 Unlike Bitcoin which has to store all data on all peers, GUN can have any peer store any (or all) data. What they actually store is usually decided by what data the peer is subscribed to (we'll cover this in the next sections). Relay peers, however, will try to opt into "superpeer" mode and store everything (if they can).
@@ -164,7 +170,7 @@ Correct. So be warned, **usernames are not unique** in SEA (yet logins will stil
 
 ### What happens if a user forgets their password?
 
-Passwords [can be reset](./FAQ#how-can-i-change-a-user-password) (without a server), but need a UI/UX around it - before adding that, yes, if your user forgets their password, their account won't be able to be recovered. So **be warned**, and prepare for this early!
+Passwords [can be reset](./FAQ#how-can-i-change-a-user-password) (without a server), but need a UI/UX around it - before adding that, yes, if your user forgets their password, their account won't be able to be recovered. So **be warned**, and prepare for this early! An optimal solution for social (not banking), would be to do a 3-factor "friend" recovery.
 
 ### Isn't it dangerous for passwords and keys to be in JS?
 
