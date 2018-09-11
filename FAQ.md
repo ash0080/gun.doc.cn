@@ -20,6 +20,9 @@
 [How can I change a user password? (SEA)](#how-can-i-change-a-user-password)
 
 [Does GUN have some form of ACL (access rights)?](#acl)
+
+[Can a lost password be recovered?](#lost_password)
+
 ***
 
 #### Is GUN a distributed database?<a name="is-gun-a-distributed-database"></a>
@@ -155,3 +158,15 @@ Again, this is more "centralized" logic which is perfectly possible in GUN, the 
 <a href='FAQ#top'>Back to Top</a>
 ***
 
+#### Can a lost password be recovered?<a name="lost_password"></a>
+
+Because of the p2p design of GUN, there is no server storing the password, so a lost password can not be recovered. That is indeed an issue, as users tend to lose passwords.
+
+One way to solve it is to have a separate server for password recovery (bad design in p2p).
+
+Or 3-way encode the password with the keys of 3 friends and have each friend store one third, so the passwords can be recovered if all 3 help out (vulnerability if those 3 turn against you).
+
+Or upon account creation show something like a QR code, containing the password, on the screen and have the user store it in a safe place (vulnerable because user might take a picture, etc).
+
+<a href='FAQ#top'>Back to Top</a>
+***
