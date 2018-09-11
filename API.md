@@ -14,6 +14,17 @@ Think these docs could be improved? Contribute to the wiki! Or [[comment|https:/
  - [gun.set](#set)
  - [gun.map](#map)
 
+**User API (authenticated)**
+ - [gun.user.create](https://gun.eco/docs/USER#create) TBD
+ - [gun.user.auth](https://gun.eco/docs/USER#auth) TBD
+ - [gun.user.leave](https://gun.eco/docs/USER#leave) TBD
+ - [gun.user.delete](https://gun.eco/docs/USER#delete) TBD
+ - [gun.user.recall](https://gun.eco/docs/USER#recall) TBD
+ - [gun.user.alive](https://gun.eco/docs/USER#alive) TBD
+ - [gun.user.trust](https://gun.eco/docs/USER#trust) TBD
+ - [gun.user.grant](https://gun.eco/docs/USER#grant) TBD
+ - [gun.user.secret](https://gun.eco/docs/USER#secret) TBD
+
 **Extended API**
  - [gun.path](#path)
  - [gun.not](#not)
