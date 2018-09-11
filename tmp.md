@@ -109,7 +109,7 @@ You can also run one on your local machine, which is great for dev purposes, rig
 
 $`npm install gun && cd node_modules/gun && npm start`
 
-Or here is a **crazy 1-liner** for running a node peer: (We don't recommend you do this though, check the [HTTP example for a better documentation reference].)
+Or here is a **crazy 1-liner** for running a node peer: (We don't recommend you do this though, check the [HTTP example for a better documentation reference](https://github.com/amark/gun/blob/master/examples/http.js).)
 
 ```javascript
 gun = (Gun = require('gun'))({web: require('http').createServer(Gun.serve(__dirname)).listen(8765) })
