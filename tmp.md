@@ -192,8 +192,63 @@ Yes, if you aren't careful, your user's password (or worse, their private keys) 
 ::: {codepen: 'link', tab1: 'codemirror'} :::
 ::: {editor: 'main'} :::
 ::: {insertblock: '7'} :::
-/* App code goes here... */
+/* 1 */
+
+/* 2 */
+
+/* 3 */
 ::: {insertblock: '4'} :::
 ```
 
-... work in progress ...
+Now we can finally build the todo logic! There are 3 things we want to achieve:
+
+1. When the user adds an item, save it to GUN.
+2. Update the UI.
+3. Change the UI upon logging out or into the app.
+
+So first up, we need to handle a form submission. Replace `/* 1 */` with this:
+
+```javascript
+::: {startblock: '8'} :::
+    $('#said').on('submit', function(e){
+      e.preventDefault();
+      if(!user.is){ return }
+      user.get('said').set($('#say').val());
+      $('#say').once("");
+    });
+::: {endblock: '8'} :::
+```
+
+`user.is` will be falsy if the user isn't logged in (we will handle the asynchronous login event in 3).
+
+... WIP ...
+
+Next up, paste this into `/* 2 */`:
+
+```javascript
+::: {startblock: '9'} :::
+    function UI(say, id){
+      var li = $('#' + id).get(0) || $('<li>').attr('id', id).appendTo('ul');
+      $(li).text(say);
+    };
+::: {endblock: '9'} :::
+```
+
+Finally, add this in place of `/* 3 */`:
+
+```javascript
+::: {startblock: '10'} :::
+    gun.on('auth', function(){
+      $('#sign').hide();
+      user.get('said').map().once(UI);
+    });
+::: {endblock: '10'} :::
+```
+
+[SEA](./SEA) calls the `'auth'` event when the user successfully logs in. This can be used to trigger a UI change, like hiding the login form.
+
+`user.get('said').map().once(UI)` is actually one of the more complex commands in GUN, even if it looks simple. It performs a graph traversal that does:
+
+ - On the `user` **document**, get the `'said'` property.
+ - This property happens to be a **table** in the graph
+... WIP ...
