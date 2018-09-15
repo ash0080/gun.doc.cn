@@ -88,7 +88,7 @@ GUN is a graph database. SEA is a [cryptographic](https://gun.eco/explainers/dat
 The first thing we want to do is initialize GUN and connect to other peers in a network. To start, let's connect to 2 peers, one in your local network (which we will show you how to setup later), and one in a public network. Add this line to the app, replacing the comment:
 
 ```javascript
-    var gun = Gun(['http://localhost:8765/gun', 'https://gunjs.herokuapp.com/gun']);
+    var gun = Gun(['https://gunjs.herokuapp.com/gun', 'http://localhost:8765/gun']);
 ```
 
 ### Aren't those servers? I thought GUN was P2P!
@@ -127,7 +127,7 @@ In node, RAD will by default dump to disk with `fs`, but plugins for AWS S3 and 
 ```
 ::: {startblock: '5'} :::
 ::: {insertblock: '3'} :::
-    var gun = Gun(['http://localhost:8765/gun', 'https://gunjs.herokuapp.com/gun']);
+    var gun = Gun(['https://gunjs.herokuapp.com/gun', 'http://localhost:8765/gun']);
 ::: {endblock: '5'} :::
 ::: {insertblock: '4'} :::
 ```
