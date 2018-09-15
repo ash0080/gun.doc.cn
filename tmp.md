@@ -19,7 +19,7 @@ We're going to build a P2P dApp! This tutorial assumes you have moderate web dev
 
     <form id="said">
         <input id="say">
-        <input id="speak" type="button" value="speak">
+        <input id="speak" type="submit" value="speak">
     </form>
 
 ::: {endblock: '1'} :::
@@ -162,6 +162,8 @@ We now need to add some code to handle user registration and login:
 ::: {endblock: '6'} :::
 ```
 
+> Note: You'll need to also click "sign in" after clicking "sign up" as it doesn't auto-login.
+
 As appropriately named, we instantiate a `user` [chain](./Functional-Reactive-Programming) off of `gun`, and use that chain context to do further user related operations. Like registering a new user with `.create` or logging in with `.auth` by passing it the HTML form's input values via jQuery (or whatever UI framework you choose).
 
 ### But usernames and passwords aren't unique or secure!
@@ -249,6 +251,8 @@ Finally, add this in place of `/* 3 */`, this will handle the login event:
 
 [SEA](./SEA) calls the `'auth'` event when the user successfully logs in. This can be used to trigger a UI change, like hiding the login form.
 
+> Note: Add a **remember me** feature, to stay automatically logged in, with `user.recall({sessionStorage: true})`!
+
 `user.get('said').map().once(UI)` is actually one of the more complex commands in GUN, even if it looks simple. It performs a graph search across peers in the network, as follows:
 
  - Traverse into the `'said'` property from the `user` node as the starting point in a graph.
@@ -287,7 +291,7 @@ All in about 50 lines of HTML and JS! In the next section, we'll deploy your dAp
 
 Actually, there is nothing to deploy! Your dApp should work the same if you use it here, save it as a local HTML file, host it on GitHub pages or a CDN, or deploy it with your relay peer to Heroku or another cloud!
 
-For sake of simplicity, let's "deploy" it by copying it to CodePen using the "Edit on Codepen" button on the top right of the editor.
+For sake of simplicity, let's "deploy" it by copying it to CodePen using the "Edit on Codepen" button on the top right of the editor. Once it loads on CodePen, click "save" (as anonymous) there, now you'll have a shareable URL with your dApp in it - send it to mom, Bob, or
 
 Then, try logging into both *this* preview and the CodePen preview with `test` as a username and `testing` as the password. **Leave a review of this tutorial as an item in the todo list**! And you should see both dApps load and sync people's comments!
 
