@@ -259,12 +259,17 @@ Finally, add this in place of `/* 3 */`, this will handle the login event:
 
 And that is it! The UI function will handle adding it into the HTML upon the form submission. But even cooler, it will also automatically sync it in realtime to other peers in the network using the dApp. Yet nobody can edit your items unless they login with the same username and password! Everything is cryptographically secure, and even works offline-first.
 
+All in about 50 lines of HTML and JS! In the next section, we'll deploy your dApp for testing.
+
 ::: {nextstepcompare: 'start'} :::
 ```
 ::: {startblock: '11'} :::
 ::: {insertblock: '7'} :::
+
 ::: {insertblock: '8'} :::
+
 ::: {insertblock: '9'} :::
+
 ::: {insertblock: '10'} :::
 ::: {endblock: '11'} :::
 ::: {insertblock: '4'} :::
@@ -279,3 +284,39 @@ And that is it! The UI function will handle adding it into the HTML upon the for
 ::: {insertblock: '11'} :::
 ::: {insertblock: '4'} :::
 ```
+
+Actually, there is nothing to deploy! Your dApp should work the same if you use it here, save it as a local HTML file, host it on GitHub pages or a CDN, or deploy it with your relay peer to Heroku or another cloud!
+
+For sake of simplicity, let's "deploy" it by copying it to CodePen using the "Edit on Codepen" button on the top right of the editor.
+
+Then, try logging into both *this* preview and the CodePen preview with `test` as a username and `testing` as the password. **Leave a review of this tutorial as an item in the todo list**! And you should see both dApps load and sync people's comments!
+
+If something is no longer working, it means somebody probably trashed the account (please do not do that) and it may be impossible to log into it (check for errors in the console). If you notice this happening, **please [tell us on the chatroom](https://gitter.im/amark/gun)** so we can fix it.
+
+Now **you** can use this as a template to build the dApp of your dreams! Or check out [D.Tube](http://D.Tube) and [notabug.io](http://notabug.io), P2P alternatives to YouTube and Reddit, both built with GUN. Definitely say hi on the chatroom and let us know about what you are building!
+
+ ~ The End!
+
+### But wait, what if I want items to be private?
+
+Yupe, that is possible too! We'll be adding a [`user`](./User) method for it, but for now you'll need to use [SEA](./SEA) directly. Here is a [video demo](https://youtu.be/ZiELAFqNSLQ) of it working in action, 1:1 or even in [groups](https://gun.eco/explainers/data/private.html)!
+
+### How can I search for other users or find things?
+
+It is unsafe to use usernames as links, instead you will want to use the user's public keys as their unique account name. Just like `gun.user()` gives you the context for your logged in user, doing `gun.user(pubKey)` will give you a chain context for that user.
+
+Better yet, our [Identifi](https://github.com/identifi/identifi-lib) system lets you search and verify usernames, or index just about anything - built by Bitcoin's second ever developer, Martti Malmi!
+
+### Does this work for collaborative apps?
+
+Yes! Even things like realtime [multiplayer P2P WebVR video games](https://twitter.com/marknadal/status/962013903004684288)!
+
+### How do I pay for things?
+
+You'll either need to use Bitcoin or wait for [AXE](http://axe.eco).
+
+### Other questions?
+
+ - Need help? Chat with us: https://gitter.im/amark/gun .
+ - API questions? http://stackoverflow.com/questions/tagged/gun ?
+ - Found a bug? Report at: https://github.com/amark/gun/issues ;
