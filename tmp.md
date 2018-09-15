@@ -88,7 +88,7 @@ GUN is a graph database. SEA is a [cryptographic](https://gun.eco/explainers/dat
 The first thing we want to do is initialize GUN and connect to other peers in a network. To start, let's connect to 2 peers, one in your local network (which we will show you how to setup later), and one in a public network. Add this line to the app, replacing the comment:
 
 ```javascript
-    var gun = Gun(['https://gunjs.herokuapp.com/gun', 'http://localhost:8765/gun']);
+    var gun = Gun(['http://localhost:8765/gun', 'https://gunjs.herokuapp.com/gun']);
 ```
 
 ### Aren't those servers? I thought GUN was P2P!
@@ -127,7 +127,7 @@ In node, RAD will by default dump to disk with `fs`, but plugins for AWS S3 and 
 ```
 ::: {startblock: '5'} :::
 ::: {insertblock: '3'} :::
-    var gun = Gun(['https://gunjs.herokuapp.com/gun', 'http://localhost:8765/gun']);
+    var gun = Gun(['http://localhost:8765/gun', 'https://gunjs.herokuapp.com/gun']);
 ::: {endblock: '5'} :::
 ::: {insertblock: '4'} :::
 ```
@@ -297,7 +297,7 @@ Now **you** can use this as a template to build the dApp of your dreams! Or chec
 
  ~ The End!
 
-### But wait, what if I want items to be private?
+### But wait, what if I want items private, have permissions, or have an ACL?
 
 Yupe, that is possible too! We'll be adding a [`user`](./User) method for it, but for now you'll need to use [SEA](./SEA) directly. Here is a [video demo](https://youtu.be/ZiELAFqNSLQ) of it working in action, 1:1 or even in [groups](https://gun.eco/explainers/data/private.html)!
 
@@ -307,11 +307,11 @@ It is unsafe to use usernames as links, instead you will want to use the user's 
 
 Better yet, our [Identifi](https://github.com/identifi/identifi-lib) system lets you search and verify usernames, or index just about anything - built by Bitcoin's second ever developer, Martti Malmi!
 
-### Does this work for collaborative apps?
+### Does this work for collaborative apps, where multiple users edit the same object?
 
 Yes! Even things like realtime [multiplayer P2P WebVR video games](https://twitter.com/marknadal/status/962013903004684288)!
 
-### How do I pay for things?
+### How do my users pay for things?
 
 You'll either need to use Bitcoin or wait for [AXE](http://axe.eco).
 
