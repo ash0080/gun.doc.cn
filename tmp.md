@@ -291,7 +291,7 @@ All in about 50 lines of HTML and JS! In the next section, we'll deploy your dAp
 
 Actually, there is nothing to deploy! Your dApp should work the same if you use it here, save it as a local HTML file, host it on GitHub pages or a CDN, or deploy it with your relay peer to Heroku or another cloud!
 
-For sake of simplicity, let's "deploy" it by copying it to CodePen using the "Edit on Codepen" button on the top right of the editor. Once it loads on CodePen, click "save" (as anonymous) there, now you'll have a shareable URL with your dApp in it - send it to mom, Bob, or
+For sake of simplicity, let's "deploy" it by copying it to CodePen using the "Edit on Codepen" button on the top right of the editor. Once it loads on CodePen, click "save" (as anonymous) there, now you'll have a shareable URL with your dApp in it - send it to mom, Bob, or me!
 
 Then, try logging into both *this* preview and the CodePen preview with `test` as a username and `testing` as the password. **Leave a review of this tutorial as an item in the todo list**! And you should see both dApps load and sync people's comments!
 
