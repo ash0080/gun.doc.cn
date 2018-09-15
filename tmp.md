@@ -202,11 +202,11 @@ Yes, if you aren't careful, your user's password (or worse, their private keys) 
 
 Now we can finally build the todo logic! There are 3 things we want to achieve:
 
-1. When the user adds an item, save it to GUN.
+1. When the user adds an item, save and sync it with GUN.
 2. Update the UI.
 3. Change the UI upon logging out or into the app.
 
-So first up, we need to handle a form submission. Replace `/* 1 */` with this:
+So first up, we need to handle the item form's submission. Replace `/* 1 */` with this:
 
 ```javascript
 ::: {startblock: '8'} :::
@@ -214,16 +214,16 @@ So first up, we need to handle a form submission. Replace `/* 1 */` with this:
       e.preventDefault();
       if(!user.is){ return }
       user.get('said').set($('#say').val());
-      $('#say').once("");
+      $('#say').val("");
     });
 ::: {endblock: '8'} :::
 ```
 
-`user.is` will be falsy if the user isn't logged in (we will handle the asynchronous login event in 3).
+`user.is` will be falsy if the user is not logged in. You could use this to then redirect users to a login screen.
 
-... WIP ...
+If we are logged in, then `user.get('said').set(data)` adds an item to a table inside the `'said'` document on the `user` graph. Yupe, GUN can easily handle multi-model, key/value, and all! See the [Crash Course](./Crash-Course) for more examples.
 
-Next up, paste this into `/* 2 */`:
+Now, we want these items to actually display in the UI. So paste this jQuery juice into `/* 2 */`:
 
 ```javascript
 ::: {startblock: '9'} :::
@@ -234,7 +234,9 @@ Next up, paste this into `/* 2 */`:
 ::: {endblock: '9'} :::
 ```
 
-Finally, add this in place of `/* 3 */`:
+If you want to know how it works, read our HTML/JS [beginner's guide](./My-First-Todo-App).
+
+Finally, add this in place of `/* 3 */`, this will handle the login event:
 
 ```javascript
 ::: {startblock: '10'} :::
@@ -247,8 +249,33 @@ Finally, add this in place of `/* 3 */`:
 
 [SEA](./SEA) calls the `'auth'` event when the user successfully logs in. This can be used to trigger a UI change, like hiding the login form.
 
-`user.get('said').map().once(UI)` is actually one of the more complex commands in GUN, even if it looks simple. It performs a graph traversal that does:
+`user.get('said').map().once(UI)` is actually one of the more complex commands in GUN, even if it looks simple. It performs a graph search across peers in the network, as follows:
 
- - On the `user` **document**, get the `'said'` property.
- - This property happens to be a **table** in the graph
-... WIP ...
+ - Traverse into the `'said'` property from the `user` node as the starting point in a graph.
+ - Since what the user said is actually a table of items, we will want to grab each item in it with [`.map`](./API#map).
+ - Map is a streaming method that can transform, filter, reduce, etc. data, or simply "get each item" if no function is provided.
+ - [`.once`](./API#once) gets called with each item *once*, in contrast to [`.on`](./API#on) which gets called many times with realtime updates.
+ - When items are added to the table in the future, `.map` will still fire a `.once` with the new item.
+
+And that is it! The UI function will handle adding it into the HTML upon the form submission. But even cooler, it will also automatically sync it in realtime to other peers in the network using the dApp. Yet nobody can edit your items unless they login with the same username and password! Everything is cryptographically secure, and even works offline-first.
+
+::: {nextstepcompare: 'start'} :::
+```
+::: {startblock: '11'} :::
+::: {insertblock: '7'} :::
+::: {insertblock: '8'} :::
+::: {insertblock: '9'} :::
+::: {insertblock: '10'} :::
+::: {endblock: '11'} :::
+::: {insertblock: '4'} :::
+```
+::: {nextstepcompare: 'end'} :::
+
+::: {step: 'Deploy'} :::
+
+```html
+::: {codepen: 'link', tab1: 'codemirror'} :::
+::: {editor: 'main'} :::
+::: {insertblock: '11'} :::
+::: {insertblock: '4'} :::
+```
