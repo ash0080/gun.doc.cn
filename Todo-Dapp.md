@@ -1,4 +1,4 @@
-We're going to build a P2P dApp! This tutorial assumes you have moderate web development experience (don't? Check out our [beginner's guide](./My-First-Todo-App)!), and will walk you through each step. Let's start with some basic HTML, to create a multi-user public todo app:
+We're going to build a P2P dApp! This tutorial assumes you have moderate web development experience (don't? Check out our [beginner's guide](./Learn-Code)!), and will walk you through each step. Let's start with some basic HTML, to create a multi-user public todo app:
 
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
@@ -236,7 +236,7 @@ Now, we want these items to actually display in the UI. So paste this jQuery jui
 ::: {endblock: '9'} :::
 ```
 
-If you want to know how it works, read our HTML/JS [beginner's guide](./My-First-Todo-App).
+If you want to know how it works, read our HTML/JS [beginner's guide](./Learn-Code).
 
 Finally, add this in place of `/* 3 */`, this will handle the login event:
 
