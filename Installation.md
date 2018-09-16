@@ -37,11 +37,7 @@ import Gun from 'gun/gun'
 
 First you need to install GUN with NPM or Yarn via the command line:
 
-$`npm install gun`
-
-or
-
-$`yarn add gun`
+$`npm install gun` or $`yarn add gun`
 
 > **Note:** If you don't have [node](http://nodejs.org/) or [npm](https://www.npmjs.com/) installed, [read this](https://docs.npmjs.com/getting-started/installing-node).
 
@@ -62,4 +58,10 @@ var server = require('http').createServer().listen(8080);
 var gun = Gun({web: server});
 ```
 
-For more examples on how to use it with something like **Express** or **Hapi**, check out these [samples](https://github.com/amark/gun/tree/master/examples).
+We recommend you check out the default [HTTP(S) example](https://github.com/amark/gun/blob/master/examples/http.js), or the **Express** and **Hapi** ones in the same folder.
+
+### Next up?
+
+ - Learn all the pieces by taking [THE DEFINITIVE GUIDE](./Guide).
+ - Try out the [Hello World](./Hello-World).
+ - Get up to speed on data models with the [Crash Course](./Crash-Course).
