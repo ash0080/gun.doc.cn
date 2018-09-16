@@ -47,6 +47,6 @@ Notice that when we refresh the page `gun.get('hello').on(...)` is called automa
 
 ### Next up?
 
- - Figure out how to best use these documentation pages in [the next step](Next-Steps).
- - Learn all the pieces by taking [THE DEFINITIVE GUIDE](Guide).
- - Get up to speed on data models with the [Crash Course](Crash-Course).
+ - Figure out how to best use this documentation system in [the next step](Next-Steps).
+ - Watch the 2 minute [Crash Course](Crash-Course)?.
+ - Hands-on learn answers to all your questions in [THE INTERACTIVE TUTORIAL](Todo-Dapp)!
