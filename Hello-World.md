@@ -1,10 +1,6 @@
-Let's create a simple Hello World app with GUN.
+Let's create a simple Hello World app in 1 small file that will contain both our HTML and JS code:
 
->This page contains code editors with live preview. You can change the code and see the result straight away.
-
-## Hello world
-
-Let's create a html file that will contain both our markup and Javascript code:
+> This editors has a live preview. You can change the code and see the result right away.
 
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
