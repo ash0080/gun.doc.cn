@@ -4,11 +4,10 @@ We have split the documentation into several pages based on your needs:
 
 For people wanting to just get stuff done, you will want to start with:
 
-1. Experiencing the [interactive tutorials](Todo-Dapp).
-2. Then working your way through the [guide](Graph-Guide).
-3. And then jumping into the [API documentation](API).
-
-And don't forget to [watch the 2 minute crash course](Crash-Course)!
+1. Watching the 2 minute [crash course](Crash-Course).
+2. Experiencing the [interactive tutorials](Todo-Dapp).
+3. Working your way through the [educational guides](Graph-Guide).
+4. Jumping into the [API documentation](API).
 
 ## Software Architects
 
