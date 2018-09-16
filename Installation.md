@@ -62,6 +62,6 @@ We recommend you check out the default [HTTP(S) example](https://github.com/amar
 
 ### Next up?
 
- - Learn all the pieces by taking [THE DEFINITIVE GUIDE](./Guide).
  - Try out the [Hello World](./Hello-World).
+ - Learn all the pieces by taking [THE DEFINITIVE GUIDE](./Guide).
  - Get up to speed on data models with the [Crash Course](./Crash-Course).
