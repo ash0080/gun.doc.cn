@@ -1,4 +1,4 @@
-**Get started with [THE DEFINITIVE GUIDE](./Guide)**. Or read along:
+ > **Learn answers to all your questions in [THE INTERACTIVE TUTORIAL](Todo-Dapp)**! Or read along:
 
 GUN is a small, easy, and fast data sync and storage system that runs everywhere JavaScript does. The aim of GUN is to let you focus on the data that needs to stored, loaded, and shared in your app without worrying about servers, network calls, databases, or tracking offline changes or concurrency conflicts. This lets you build cool apps fast, like:
 
@@ -23,4 +23,6 @@ This makes the loss of important information nearly impossible, as all copies of
 
 GUN is fully decentralized (peer-to-peer or multi-master), meaning that changes are not controlled by a centralized server. A server can be just another peer in the network, one that may have more reliable resources than a browser. You save data on one machine, and it will sync it to other peers without needing a complex consensus protocol. It just works.
 
-**Next Up?** Follow [THE DEFINITIVE GUIDE](./Guide).
+### Next Up?
+
+ - Follow [THE INTERACTIVE TUTORIAL](Todo-Dapp)!
