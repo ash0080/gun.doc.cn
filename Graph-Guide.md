@@ -119,8 +119,8 @@ carl.get('dad').put(dave);
 carl.get('friends').set(alice);
 carl.get('friends').set(bob);
 ```
-
-> Note: We can have 1-1, 1-N, N-N relationships. By default every relationship is a "directed" graph (it only goes in one direction), so if you want bi-directional relationships you must explicitly save the data as being so (like with Dave and his kid, Carl). If you want to have meta information about the relationship, simply create an "<a name="edge">edge</a>" node that both properties point to instead. Many graph databases do this by default, but because not all data structures require it, gun leaves it to you to specify.
+<a name="edges"></a>
+> Note: We can have 1-1, 1-N, N-N relationships. By default every relationship is a "directed" graph (it only goes in one direction), so if you want bi-directional relationships you must explicitly save the data as being so (like with Dave and his kid, Carl). If you want to have meta information about the relationship, simply create an "edge" node that both properties point to instead. Many graph databases do this by default, but because not all data structures require it, gun leaves it to you to specify.
 
 Finally, let's read some data out. Starting with getting a key/value, then navigating into a document, then mapping over a table, then traversing into one of the columns and printing out all the values!
 
