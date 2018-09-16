@@ -11,7 +11,7 @@ Let's create a html file that will contain both our markup and Javascript code:
 <html>
   <body>
     <h1>Hello</h1>
-    <p>What is your name?</p>>
+    <p>What is your name?</p>
     <form><input><button>Submit</button></form>
 
     <script src="https://cdn.jsdelivr.net/npm/gun/examples/jquery.js"></script>
