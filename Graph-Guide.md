@@ -1,8 +1,6 @@
-This article will go over how it is easy to create interconnected data with GUN's graph features, combining key/value, relational, and document based data together. It will also be a great introductory guide on how to use pretty much every one of GUN's API methods.
+This guide will go over how easy it is to create interconnected data with GUN's graph features by combining `key/value`, *relational*, and **document** based data together. It will also be a great introduction to using pretty much every one of GUN's API methods.
 
-> Note: This article requires gun v0.8.x or above.
-
-First let's instantiate the database.
+First let's instantiate the database:
 
 ```javascript
 var gun = Gun();
@@ -19,7 +17,7 @@ var dave = gun.get('dave').put({name: 'dave', age: 42});
 
 > Note: If no data is found on the key ('alice', etc.) when we [`.get`](API#get) it, gun will implicitly create and update it upon a [`.put`](API#put). This is useful and convenient, but can be problematic for some types of apps. If you want to check if the data does not exist, use [`.not`](API#not) first.
 
-What if we want to get their data? We can either chain off of the reference directly or get it again:
+What if we want to get their data? We can either [chain](Chain) off of the reference directly or get it again:
 
 ```javascript
 alice.on(function(node){
@@ -31,7 +29,7 @@ gun.get('bob').once(function(node){
 });
 ```
 
-> Note: GUN is a functional reactive database for streaming event driven data, gotta hate buzzwords - right? This means that [`.on`](API#on) subscribes to realtime updates, and may get called many times. Meanwhile [`.once`](API#once) grabs the data once, which is useful for procedural operations. 
+> Note: GUN is a [functional reactive](FRP) database for streaming event-driven data, gotta love/hate buzzwords - right? This means that [`.on`](API#on) subscribes to realtime updates, and may get called many times. Meanwhile [`.once`](API#once) grabs the data once, which is useful for procedural operations. 
 
 Now lets add all the people into a [set](https://en.wikipedia.org/wiki/Set_(mathematics)), you can think of this as a table in relational databases or a collection in NoSQL databases.
 
@@ -78,9 +76,9 @@ company.once(function(startup){
 });
 ```
 
-> Note: The data given in the callback is only 1 layer deep to keep things fast. What you'll see logged out on `startup.address` is not the address itself, but a pointer to the address. Because documents can be of any depth, GUN only streams out what you need by default, thus optimizing bandwidth.
+> Note: The data given in the callback is **only 1 layer deep** to keep things fast. What you'll see logged on `startup.address` is not the address itself, but a pointer to the address. Because documents can be of any depth, GUN only streams out what you need by default, thus optimizing bandwidth.
 
-So what if you want to actually access the city property on the company's address then? [`.get`](API#path) also lets you traverse into the key/value pairs on sub-objects. Take this for example:
+So what if you want to actually access the city property on the company's address then? [`.get`](API#get) also lets you traverse into the key/value pairs on sub-objects. Take this for example:
 
 ```javascript
 company.get('address').get('city').once(function(value, key){
@@ -99,9 +97,9 @@ gun.get('startup').put({ // or you could do `company.put({` instead.
 });
 ```
 
-> Note: GUN saves everything as a partial update, so you do not have to re-save the entire object every time (in fact, this should be avoided)! It automatically merges the updates for you by doing conflict resolution on the data. This lets us update only the pieces we want without worrying about overwriting the whole document.
+> Note: GUN saves everything as a partial update, so you do not have to re-save the entire object every time (in fact, this should be avoided)! It **automatically merges the updates** for you by doing [conflict resolution](Conflict-Resolution-with-Guns) on the data. This lets us update only the pieces we want without worrying about overwriting the whole document.
 
-However documents in isolation are not very useful. Let's connect things and turn everything into a graph!
+Documents in isolation are not very useful though. Let's connect things and turn everything into a graph!
 
 ```javascript
 var employees = company.get('employees');
@@ -122,7 +120,7 @@ carl.get('friends').set(alice);
 carl.get('friends').set(bob);
 ```
 
-> Note: We can have 1-1, 1-N, N-N relationships. By default every relationship is a "directed" graph (it only goes in one direction), so if you want bi-directional relationships you must explicitly save the data as being so (like with Dave and his kid, Carl). If you want to have meta information about the relationship, simply create an "edge" node that both properties point to instead. Many graph databases do this by default, but because not all data structures require it, gun leaves it to you to specify.
+> Note: We can have 1-1, 1-N, N-N relationships. By default every relationship is a "directed" graph (it only goes in one direction), so if you want bi-directional relationships you must explicitly save the data as being so (like with Dave and his kid, Carl). If you want to have meta information about the relationship, simply create an "<a name="edge">edge</a>" node that both properties point to instead. Many graph databases do this by default, but because not all data structures require it, gun leaves it to you to specify.
 
 Finally, let's read some data out. Starting with getting a key/value, then navigating into a document, then mapping over a table, then traversing into one of the columns and printing out all the values!
 
@@ -142,6 +140,6 @@ GUN is that easy! And it all syncs in realtime across devices! Imagine what you 
 
  - How about multiplayer VR experiences, or [React apps](https://github.com/PsychoLlama/connect-four) like [online games](https://github.com/PsychoLlama/Trace)? Or [realtime GPS tracking](https://youtu.be/7ALHtbC9aOM) for autonomous drones that deliver burritos or Uber/Lyft like apps. 
 
- - Maybe you just want to create a social networking app, [getting started with a basic server](https://github.com/gundb/gun-starter-app) and using Angular or Webcomponents/Polymer instead. Better learn about P2P logins, security, and authentication with our [1 minute video explainers crash course on encryption](https://gun.eco/explainers/data/security.html)!
+ - Maybe you just want to create a social networking app, using React/Vue or Webcomponents/Polymer instead. Better learn about P2P logins, security, and authentication with our [1 minute video explainers crash course on encryption](https://gun.eco/explainers/data/security.html)!
 
 Whatever it is ([except for banking](CAP-Theorem)), we hope you are **excited and tackle it with gun**! Make sure you join the [chat room](https://gitter.im/amark/gun) (everybody is nice and helpful there) and ask questions or complain about bugs/problems. Or if you think your company might be interested in using gun, we have some great [partnership plans](https://www.patreon.com/gunDB) (as well as some donation options, if you want to personally contribute some yummy meals to our tummy)!
