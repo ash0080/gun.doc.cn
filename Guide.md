@@ -53,7 +53,7 @@ For security purposes, we recommend you include these dependencies with your app
 
 What about `require` and minified bundles? Yupe, you can do that too! Just follow the [instructions](./Installation). For sake of simplicity and accessibility, this article uses the most-common-denominator of tools. Any developer with advanced experience should be able to easily follow along and independently switch from plain script tags into ES6 syntax. However, any developer that does not understand how script tags work, needs to re-learn the basics.
 
-### What is RTC, SEA, etc. ?
+### What is RTC, SEA, etc.?
 
 GUN is a graph database. SEA is a [cryptographic](https://gun.eco/explainers/data/security.html) security library for GUN, and WebRTC enables P2P connections to other browsers. GUN is designed to be modular and has many layers. For a high level view of the ecosystem, check out the main [readme](https://github.com/amark/gun). But we'll learn more about these things in the next steps.
 
