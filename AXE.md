@@ -1,3 +1,5 @@
+<div style="position: relative; padding-bottom: 56.25%;"><iframe src="https://www.youtube.com/embed/EHZyaupYjYo" frameborder="0" allowfullscreen style="border: 0px; position: absolute; width: 100%; height: 100%;"></iframe></div>
+
 This is the very first public document about AXE and is intended as a prototype draft for developers to provide feedback on the architecture. This page is not ready for general readership though, and will be entirely rewritten in the future.
 
 ## Cartoon Whitepaper
@@ -6,7 +8,7 @@ Yes, we're notorious for our comic strip explainers for everything - our [confli
 
 And yes, this is **mandatory reading** before you read the actual whitepaper. Check it out here:
 
-http://gunDB.io/trusting/strangers.html
+[Trusting Strangers with Axes](Trusting-Strangers).
 
 ## Lightning Talk
 
