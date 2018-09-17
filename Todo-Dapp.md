@@ -1,4 +1,6 @@
-We're going to build a P2P dApp! This tutorial assumes you have moderate web development experience (don't? Check out our [beginner's guide](./Learn-Code)!), and will walk you through each step. Here is a 4 minute preview of what we're going to build in this interactive tutorial:
+We're going to build a P2P dApp! This tutorial assumes you have moderate web development experience (don't? Check out our [beginner's guide](./Learn-Code)!), and will walk you through each step.
+
+Here is a *4 minute preview* of what we're going to build:
 
 <div style="position: relative; padding-bottom: 56.25%;"><iframe allowfullscreen="true" src="https://scrimba.com/c/c2gBgt4.embed" style="border: 0px; position: absolute; width: 100%; height: 100%;"></iframe></div>
 
@@ -34,6 +36,8 @@ Alright, now let's build it ourselves! Let's start with some basic HTML, to crea
 </html>
 ::: {endblock: '2'} :::
 ```
+
+ > This code editor is interactive! Change it, and it live updates the app.
 
 First, we need to include [GUN](https://gun.eco/), [SEA](https://gun.eco/docs/SEA), and the WebRTC adapter right above the closing `</body>` tag! (Plus some jQuery, but you could use React/Vue/etc.)
 
