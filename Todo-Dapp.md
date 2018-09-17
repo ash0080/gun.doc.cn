@@ -1,4 +1,10 @@
-We're going to build a P2P dApp! This tutorial assumes you have moderate web development experience (don't? Check out our [beginner's guide](./Learn-Code)!), and will walk you through each step. Let's start with some basic HTML, to create a multi-user public todo app:
+We're going to build a P2P dApp! This tutorial assumes you have moderate web development experience (don't? Check out our [beginner's guide](./Learn-Code)!), and will walk you through each step. Here is a 4 minute preview of what we're going to build in this interactive tutorial:
+
+<div style="position: relative; padding-bottom: 56.25%;"><iframe allowfullscreen="true" src="https://scrimba.com/c/c2gBgt4.embed" style="border: 0px; position: absolute; width: 100%; height: 100%;"></iframe></div>
+
+ > The above preview skips details, like connecting to peers, etc., that we'll cover here.
+
+Alright, now let's build it ourselves! Let's start with some basic HTML, to create a multi-user public todo app:
 
 ```html
 ::: {codepen: 'link', tab1: 'codemirror'} :::
