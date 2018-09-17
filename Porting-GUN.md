@@ -1,6 +1,6 @@
-<a href="https://youtu.be/5fCPRY-9hkc" title="2 min demo of auth"><img src="http://img.youtube.com/vi/5fCPRY-9hkc/0.jpg" width="425px"></a>
+<div style="position: relative; padding-bottom: 56.25%;"><iframe src="https://www.youtube.com/embed/ccKThyaDR30" frameborder="0" allowfullscreen style="border: 0px; position: absolute; width: 100%; height: 100%;"></iframe></div>
 
-(code from the above tech talk is available here: https://github.com/gundb/port)
+ > Code from the above tech talk is [available here](https://github.com/gundb/port).
 
 We'll walk you through creating a reduced GUN server in your language of choice. It will not be useful as a library to other developers, but it will help you understand what is going on and communicate with GUN peers. You should be able to then expand upon it, adding a nice language specific API so it is usable by other developers.
 
