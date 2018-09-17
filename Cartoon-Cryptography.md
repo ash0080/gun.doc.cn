@@ -1,6 +1,6 @@
 ## Security
 
-<iframe src="https://www.youtube.com/embed/ccKThyaDR30" frameborder="0" allowfullscreen style="border: 0px; position: absolute; width: 100%; height: 100%;"></iframe>
+<div style="position: relative; padding-bottom: 56.25%;"><iframe src="https://www.youtube.com/embed/ccKThyaDR30" frameborder="0" allowfullscreen style="border: 0px; position: absolute; width: 100%; height: 100%;"></iframe></div>
 
 When building an application, there is two ways to do security. The real way, and the fake way.
 
@@ -20,7 +20,7 @@ While GUN can certainly be used in the traditional setup, we're going to show yo
 
 ## Cryptography
 
-<iframe src="https://www.youtube.com/embed/Zl0nk_ZZV6Q" frameborder="0" allowfullscreen style="border: 0px; position: absolute; width: 100%; height: 100%;"></iframe>
+<div style="position: relative; padding-bottom: 56.25%;"><iframe src="https://www.youtube.com/embed/Zl0nk_ZZV6Q" frameborder="0" allowfullscreen style="border: 0px; position: absolute; width: 100%; height: 100%;"></iframe></div>
 
 To build a web application, we need to... create a user, sign into that user, save private data, publish content, send private messages, and have group conversations. Phew! That is a lot.
 
@@ -32,7 +32,7 @@ However, your users would probably get really confused with that. So how can we 
 
 ## Work
 
-<iframe src="https://www.youtube.com/embed/jXni0KDQNsc" frameborder="0" allowfullscreen style="border: 0px; position: absolute; width: 100%; height: 100%;"></iframe>
+<div style="position: relative; padding-bottom: 56.25%;"><iframe src="https://www.youtube.com/embed/jXni0KDQNsc" frameborder="0" allowfullscreen style="border: 0px; position: absolute; width: 100%; height: 100%;"></iframe></div>
 
 I have a secret recipe for a delicious pie. How hard would it be for you to make that pie without knowing the recipe?
 
@@ -50,7 +50,7 @@ We have one last step. With public/private key cryptography, the proof of work a
 
 ## Encryption
 
-<iframe src="https://www.youtube.com/embed/_RDC37hrTo8" frameborder="0" allowfullscreen style="border: 0px; position: absolute; width: 100%; height: 100%;"></iframe>
+<div style="position: relative; padding-bottom: 56.25%;"><iframe src="https://www.youtube.com/embed/_RDC37hrTo8" frameborder="0" allowfullscreen style="border: 0px; position: absolute; width: 100%; height: 100%;"></iframe></div>
 
 Let's summarize. So far, we created a user account with public/private key cryptography. This way, it is secure, unlike passwords. We then used PBKDF2 to extend the user's password into a "proof of work". That way, if a hacker tries to guess the password, they have to do hours of extra work for every guess.
 
@@ -64,7 +64,7 @@ But wait. If we use the private key to keep our things safe, how do we then prot
 
 ## Privacy
 
-<iframe src="https://www.youtube.com/embed/-SiLnaSDkh4" frameborder="0" allowfullscreen style="border: 0px; position: absolute; width: 100%; height: 100%;"></iframe>
+<div style="position: relative; padding-bottom: 56.25%;"><iframe src="https://www.youtube.com/embed/-SiLnaSDkh4" frameborder="0" allowfullscreen style="border: 0px; position: absolute; width: 100%; height: 100%;"></iframe></div>
 
 It is easy to confuse encryption keys and public/private keys. One is like a door knob, you need a key to both lock and unlock it. While public/private keys are like a padlock, the public key can close the lock but only the private key can open it.
 
@@ -76,7 +76,7 @@ Once everybody has the same shared key, they can now write and lock a message to
 
 ## Signatures
 
-<iframe src="https://www.youtube.com/embed/tg06mdcGs5k" frameborder="0" allowfullscreen style="border: 0px; position: absolute; width: 100%; height: 100%;"></iframe>
+<div style="position: relative; padding-bottom: 56.25%;"><iframe src="https://www.youtube.com/embed/tg06mdcGs5k" frameborder="0" allowfullscreen style="border: 0px; position: absolute; width: 100%; height: 100%;"></iframe></div>
 
 We have used public/private key cryptography for everything from creating user accounts to having private conversations. But there is one final use case we have yet to explore.
 
@@ -88,7 +88,7 @@ This is useful because the internet is full of fake users, who may try to steal 
 
 ## Summary
 
-<iframe src="https://www.youtube.com/embed/gBp_vA6D9PI" frameborder="0" allowfullscreen style="border: 0px; position: absolute; width: 100%; height: 100%;"></iframe>
+<div style="position: relative; padding-bottom: 56.25%;"><iframe src="https://www.youtube.com/embed/gBp_vA6D9PI" frameborder="0" allowfullscreen style="border: 0px; position: absolute; width: 100%; height: 100%;"></iframe></div>
 
 Let's take what we have learned and put it into technical terms:
 
@@ -102,5 +102,5 @@ This covers some of the most advanced security possible. And is why GUN pushes t
 
 ### Next up?
 
- - To build a secure dApps like this today, try [THE INTERACTIVE TUTORIAL](Todo-Dapp)!
+ - To build a crypto dApps like this today, try [THE INTERACTIVE TUTORIAL](Todo-Dapp)!
  - Or look at [SEA](SEA) which implements the algorithms discussed in this series.
