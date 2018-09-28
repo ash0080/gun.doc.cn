@@ -88,7 +88,19 @@ The data structure of a node is as follows, assuming a node Alice with a relatio
 
 #### Can you use SQL like queries? What about pagination and aggregation?<a name="can-you-use-sql-like-queries-what-about-pagination-and-aggregation"></a>
 
-Working with graphs data is quite different from relational databases. Things like pagination, aggregation etc work completely different and require a different data structure design. Often the best approach is to start studying graphs in depth instead of trying to use something like SQL queries in a try to keep using old data usage. [More explanation and references to more in depth info needed here]
+##### Pagination and Aggregation
+
+Working with graphs data is quite different from relational databases. Things like pagination, aggregation etc work completely different and require a different data structure design.
+
+##### Querying
+
+Querying is not provided out of the box, but path traversal and map functions can do a lot of the heavy lifting. gun.get(‘index’).map().on(callback) or .once(callback) will execute / traverse all children of that index and given a callback that can check properties against a query will return the data as a query result.
+
+To keep queries performant your data model should keep data accessible in small networks. This can be done in using specialized indices to keep the set of data small. For example, querying for a person with the name 'Alice' in a huge database by following the 'allNodesIndex' will perform poorly, as the gun.get('allNodes').map().once(callback) will execute the callback on each node in the graph, while a 'person' index only iterates over the person nodes in the graph. And if your data includes gender, you may have a 'female' index, reducing the search space further.
+
+If you have arbitrary values, such as ages or numbers or multi-node data points, you can build a binary tree structure for indexing.
+
+Modeling your data for your use case and for your most common queries can greatly increase the performance of your queries. Often the best approach is to start studying graphs and knowledge representation in depth instead of trying to use something like SQL queries in an attempt to keep using old data approaches.
 
 <a href='FAQ#top'>Back to Top</a>
 ***
