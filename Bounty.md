@@ -1,4 +1,37 @@
- > **Note** The bounty program is available for the 2018 calendar year. Other years are still to be determined.
+## $10K Reward for HTML
+
+Mark is writing a deterministic HTML normalizer/sanitizer and has issued a $10K bounty for it to be finished.
+
+The original source code is from [5 years ago](https://github.com/amark/normalize) and already has some modifications not yet published.
+
+The goal, and difference from other tools, is to have a strict limited subset of valid HTML tags that are allowed, and that the library always outputs identical HTML for any visually similar rendered code.
+
+### Example
+`<b><i>hello</i></b>` and `<i><b>hello</b></i>` are visually the same, but different in code. This should have a canonical form that can be deterministically transformed regardless of the input. See the above link for another example.
+
+### Why
+In P2P dApps there is no server to clean/sanitize user input, therefore all peers must enforce sanitization. To create a good experience for end users though, we want users to have a Medium-like editor (there are plenty of OSS options for this, but those are not the point or tool we're looking to have written), but we also want a good experience for developers (that they don't have to include 3 extra external frameworks), and the way that is done is by forcing protocol level (in this case, plain HTML!) correctness/transformation of HTML that *any* peer can run it. This is why it is separate from the editor itself, and may be fed into other tools like an editor.
+
+### Requirements
+
+ - OSS as MIT/Zlib/Apache2.
+ - ES5 or lower.
+ - Target size less than [2KB minified gzip](https://closure-compiler.appspot.com/home).
+ - jQuery 1.x dependency OK.
+ - Fast enough to run on every `keyup`.
+ - HTML text input, HTML text output. Bonus for optional DOM in or out.
+ - Must pass unit tests proving that it should work for any/all permutations/edge-cases.
+ - Insurance policy, some maintenance/fixes/adjustments may be required.
+
+Please contact us for more info.
+
+## History
+
+Old bounty hunting attempts that we have tested:
+
+> Update: The results of this study have been poor. No significant change in behavior was observed.
+
+> Old bounty program is currently not in place, but can be re-activated for individuals who want to help - contact us.
 
 We are introducing a bounty program to incentivize the common tasks that nobody wants to do, especially ones in Open Source communities that people feel like are a time suck but everybody knows is important.
 
@@ -12,7 +45,7 @@ So we are going to attempt an experimental bounty incentivization mechanism to s
 
  - Whether it will actually make the bottlenecking problem worse.
 
-## Documentation
+### Documentation
 
 Our first goal is to reward improvements to the documentation, so more people can know and understand how GUN works. This is our philosophy:
 
@@ -45,7 +78,7 @@ Open Source contribution are welcome and appreciated, but if you are doing it fo
 
  > **Note** Any edits to the terms on this page that are not from authorized representatives are not valid, it is your responsibility to check the [git history and verify it](https://github.com/amark/gun/wiki/Bounty/_history) and to contact us directly to confirm the rules match.
 
-## Bug Fixes
+### Bug Fixes
 
 We are considering opening up a $1000 USD bounty for killing off bugs. However, as it is not a menial task, and has very strict requirements, and requires extensive knowledge and programming skills, we are still determining rules around it. We may not offer it at all, as it may not be possible to do without ruining Open Source morale.
 
@@ -63,7 +96,7 @@ If they have vague responses, or indicate that there is a team or boss or client
 
 **For these reasons and concerns**, we would like to get further feedback on bug bounty (and other) rewards. For now, we may do limited tagging of GitHub issues as bounty-able to experiment, but we are highly open and encourage you to privately ask us about bounty opportunities. Bounty hunting comes with pretty strict requirements though.
 
-## Caution
+### Caution
 
 In conclusion, it is an important reminder that communities require proactive and positive behavior reinforcement, or else the complexity and exhaustion of managing numerous relationships can deplete you. If having a single roommate takes a lot of energy, be aware that although a community might be fun, thoughtful, and engaging, it does require conscious effort to prevent drama.
 
