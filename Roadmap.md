@@ -1,19 +1,15 @@
 Rough roadmap, subject to frequent change:
 
- - 0.6 was load testing
+ - 0.9 final touches to core.
 
- - 0.7 is SEA (security, encryption, authorization)
+ - 1.0 last breaking changes.
 
- - 0.8 will probably be LRU / TTL / GC with continuous load testing
+Beyond 1.0 towards a new ERA:
 
- - 0.9 will probably be fixing some embarrassing things I'm cheating on
+ - Normalize need to sanitize and deterministically canonize HTML end-to-end for user input. 
 
- - 1.0 celebration/documentation
+ - SEA integration and any API breaking changes need to be finalized for MetaMask.
 
- - 1.1 SQL for kicks
+ - AXE needs to be tested against software relay and point-to-point WiFi routers.
 
- - 1.2 Mango query
- 
- - 1.3 WebRTC
-
- - 1.4 radix storage engine
+ - Binary data for audio (music, podcasts, etc.), photos, videos, etc.
