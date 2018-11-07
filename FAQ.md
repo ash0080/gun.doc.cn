@@ -155,6 +155,10 @@ To restrict a group of data: (decentralized method)
 One thing you could do (to keep it decentralized / P2P) is to create a user (see tutorial above), make that user be an organization (that maybe only you have the login to), and then the organization can specify OTHER users (actual user profiles) to be admins.
 Now your app's users all "trust" the public key of the organization, and then run fully decentralized logic where they reject (which can happen automatically in SEA) data from anybody that isn't an admin, even as admins change/add/remove over time from the organization.
 
+To add a bit more detail:
+You would save an ACL table on the organization account. In that ACL table have the path (or soul) of the data that will have others write permission on it. Store on that path/soul in the ACL table, a table of pubkeys allowed to write to that data. Now write wrapper extension around a read function (or do this at a wire adapter level) that checks the ACL table for that record (actually, on 2nd thought, maybe easier to just have the organization reference the ACL table on the record itself, rather than as a separate record), then perform a read from those other pubkeys on the matching path (+org name, depending on your schema) and merge (ideally with HAM) the results before passing back the data.
+Achieve this in 2 ways either wire adapter that sniffs for ACL schema structures and lets matching writes pass through the firewall or chain extension that upon read of this item, just checks/does an extra lookup and merges results through Ham before returning.
+
 
 To restrict a group of data: (centralized method)
 
