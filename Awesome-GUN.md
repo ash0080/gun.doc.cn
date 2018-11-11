@@ -135,8 +135,8 @@ A Docker container for running GunJS
 
 Projects using or integrating with Gun
 
- - [GiveMeCredit](https://github.com/GiveMeCredit/extension)
-A cryptocurrency where you earn trust and contribute value
+ - [GiveMeCredit](https://github.com/glensimister/givemecredit)
+A Social media application designed to give communities political independence
 
  - [Trace](https://github.com/PsychoLlama/Trace) 
 ~ By [PsychoLlama](https://github.com/PsychoLlama) - **[live demo](http://trace.gundb.io)**
