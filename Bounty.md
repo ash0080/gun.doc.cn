@@ -16,12 +16,15 @@ In P2P dApps there is no server to clean/sanitize user input, therefore all peer
 
  - OSS as MIT/Zlib/Apache2.
  - ES5 or lower.
+ - Work out of the box in the browser, no build/transform tools necessary.
  - Target size less than [2KB minified gzip](https://closure-compiler.appspot.com/home).
  - jQuery 1.x dependency OK.
  - Fast enough to run on every `keyup`.
+ - Safe, not cause XSS or other security leaks.
  - HTML text input, HTML text output. Bonus for optional DOM in or out.
+ - Modular settings/configurations so it can be extended with other transforms/features.
  - Must pass unit tests proving that it should work for any/all permutations/edge-cases.
- - Insurance policy, some maintenance/fixes/adjustments may be required.
+ - Insurance policy, some maintenance/fixes/adjustments may be required after "completion".
 
 Please contact us for more info.
 
