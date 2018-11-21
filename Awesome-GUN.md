@@ -126,6 +126,9 @@ Example of how to get started with Next.js and GUN!
  - [GunStore.io](https://github.com/lmangani/gunstore.io) 
 Storing data in Gun DB by sending simple HTTP requests & custom URLs
 
+- [gundb-react-todolist](https://github.com/treinberger/gundb-react-todolist)
+Simple todo-list using gun and react-gun
+
 ## Deployment
 
  - [arsenal-dock](https://github.com/sjones6/arsenal-dock)
