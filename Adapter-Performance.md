@@ -1,8 +1,8 @@
-Not all adapters are created equal, and you will need to choose an adapter to best suite you're application's needs.
+Not all adapters are created equal, and you will need to choose an adapter to best suit your application's needs.
 
-By default, Gun dumps it's graph into localStorage on the browser and into a flat file in Node environments.
+By default, Gun dumps its graph into localStorage on the browser and into a flat file in Node environments.
 
-The flat file is _not_ meant for production, and the primary reason is performance at scale. Once you're graph becomes larger, it will not (and is not intended) to keep up with production IO requirements.
+The flat file is _not_ meant for production and the primary reason is performance at scale. Once your graph becomes larger, it will not (and is not intended) to keep up with production IO requirements.
 
 # Key Considerations
 
@@ -173,11 +173,11 @@ Currently, please reference this repo: [github](https://github.com/sjones6/gun-a
 
 In the near future, a CLI tool will be released and documented to make this easy.
 
-`gun-flint` is bundled with such a tool already, and so adapters build on flint can take advantage of this. See flint's [documentation](https://github.com/sjones6/gun-flint/blob/master/docs/PERFORMANCE_TESTING.MD).
+`gun-flint` is bundled with such a tool already and adapters built on flint can take advantage of this. See flint's [documentation](https://github.com/sjones6/gun-flint/blob/master/docs/PERFORMANCE_TESTING.MD).
 
 # Future work
 
-These benchmarks are by and large put together by the good folks creating the storage adapters, so their benchmarks reflect the system that they ran the tests on. In the future, we plan on being able to run these on a system with the same specs.
+These benchmarks are by and large put together by the good folks creating the storage adapters. Their benchmarks reflect the system that they ran the tests on. In the future, we plan on being able to run these on a system with the same specs.
 
 We need benchmarks for:
 
