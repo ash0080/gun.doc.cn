@@ -47,6 +47,13 @@ Your contributions will be recognized in the paper in an acknowledgements sectio
 
 In the future we will probably (if needed) migrate the paper PR/issues into its own repo.
 
+## Path moving forward
+
+AXE will be developed in three (3) stages<br>
+1. Assume main superpeer, optimize for best bandwidth based off of browser subscriptions and "cutting off" relaying unnecessary data.<br>
+2. Optimize for peer/super-peer failover or too many peers, form stable radix DHT across all peers.<br>
+3. Turn on end-to-end encryption and contracts on bandwidth/relay, tokenize bandwidth by metering throughput, etc.<br>
+
 ## Code
 
 [SEA](https://hackernoon.com/so-you-want-to-build-a-p2p-twitter-with-e2e-encryption-f90505b2ff8) is a necessary primitive to AXE, and it is already in alpha.
