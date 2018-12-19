@@ -36,7 +36,7 @@ Extends gunDB with the ability to chain into most.js observables ~ By [ctrlplusb
 Augmented graphql query interface for Gun
 
 - [bullet](https://github.com/bugs181/bullet)
-Alternative syntax to Gun,  promise support and utility modules.
+Alternative syntax to Gun, promise support, utility modules, and easy Gun adapter events.
 
 ## Adapters
 
