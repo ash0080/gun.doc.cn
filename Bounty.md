@@ -1,4 +1,23 @@
+## $5K Reward for Timegraph
+
+`lib/time` is currently in alpha, and Mark is seeking a maintainer for the [timegraph](Timegraph).
+
+1. Current features need to be stable and [bugs fixed](https://github.com/amark/gun/issues/638).
+2. Being able to "scroll" through the timegraph, with X number of items in "view" or buffer/sliding window.
+3. Load items from "last seen" date.
+4. Performance is key/critical, especially making sure no memory leaks and can handle large lists.
+5. A way to pause "subscribe" while "scrolling" or "from last seen", by queuing up & notifying "X more new items have arrived".
+6. Flexible enough for future extension/feature-improvement/hooks/addons/expansion, play well with SEA and other systems.
+
+Maintainer must have rock solid data structure and tree traversal skill set. Mark will decide how the API, naming, options, & parameters look/feel.
+
+Requirements: OSS as MIT/ZLIB/Apache2, ES5 or lower, no build tools needed working in browser out of the box, work well with any UI framework, must pass demo tests with mock data.
+
+Please contact Mark for more info. Be careful of conflicting claims.
+
 ## $10K Reward for HTML
+
+> Jussi is currently working on this and attempting to claim the bounty, either collaborate or be cautious of conflict.
 
 Mark is writing a deterministic HTML normalizer/sanitizer and has issued a $10K bounty for it to be finished.
 
