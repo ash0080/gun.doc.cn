@@ -17,7 +17,7 @@ Please contact Mark for more info. Be careful of conflicting claims.
 
 ## $10K Reward for HTML
 
-> Jussi is currently working on this and attempting to claim the bounty, either collaborate or be cautious of conflict.
+ > **Note** Jussi is currently working on this and attempting to claim the bounty, either collaborate or be cautious of conflict.
 
 Mark is writing a deterministic HTML normalizer/sanitizer and has issued a $10K bounty for it to be finished.
 
