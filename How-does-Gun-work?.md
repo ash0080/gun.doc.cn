@@ -20,6 +20,7 @@ Here is an overview of the layers and how they fit together.
 <details>
 <summary>Eventual consistency and conflict resolution</summary>
 <br>
+
 HAM is the crux of the operation. Eventual consistency and conflict resolution are provided by HAM. But what does that mean? Before Gun, regardless of what type of technology you might of used - there was an underlying problem. You had to choose between consistency, high availability, and partition tolerance. Woah! That's a lot of tech mumbo jumbo. Let's break this down or skip to these [slides for a cartoon representation](https://gun.eco/distributed/matters.html).
 
 ### Consistency:
