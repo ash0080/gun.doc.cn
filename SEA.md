@@ -84,19 +84,47 @@ SEA.util(a, b, function(data){
 });
 ```
 
-## work
+## Work
 
-```javascript
-proof = await SEA.work(text, mix)
+This gives you a Proof of Work (POW) / Hashing of Data
+
+```
+SEA.work(data, pair, callback, opt)
 ```
 
-This gives you a Proof of Work (PoW)!
+### Parameters
 
- - `text` is the data you want to hash (aka, do work based off of it).
- - `mix` **optional** salt (something that prevents attackers from pre-computing the work in advance).
- - - If it is not specified, it will be random, which ruins your chance of ever being able to deterministically re-derive the work (most apps will want to do this, see examples below).
+#### data
 
-> Note: **API subject to change**, in the future we may change the output format.
+The data to be hashed, work to be performed on.
+
+#### pair (salt) [optional]
+
+You can pass pair of keys to use as salt. Salt will prevent others to pre-compute the work, so using your public key is not a good idea.
+If it is not specified, it will be random, which ruins your chance of ever being able to re-derive the work deterministically (most apps will want to do this, see examples below).
+
+#### callback [optional]
+
+function to executed upon execution of proof
+
+##### - r
+
+returns a string - hash of data if successful /
+else returns undefined
+
+#### opt [optional]
+Object
+{
+name: 'SHA-256' || 'PBKDF2' (default);
+encode: 'base64' (default) || 'base32' || 'base16';
+iterations: (iterations to use on subtle.deriveBits); [optional]
+salt: (salt to use); [optional]
+hash: (hash to use); [optional]
+length: (length to use) / default setting from deriveBits; [optional]
+}
+
+### Return Value
+returns a promise with a string - hash of data if successful  / else returns undefined
 
 ### Example
 
@@ -118,11 +146,7 @@ Without the Proof of Work, an attacker could easily guess millions of answers a 
 
 The default cryptographic primitive that we chose for Proof of Work is PBKDF2, since our primary use case is for extending passwords.
 
-## pair
- 
-```javascript
-var pair = await SEA.pair()
-```
+## Pair
 
 This generates a cryptographically secure public/private key pair - be careful not to leak the private keys!
 
@@ -131,6 +155,35 @@ This generates a cryptographically secure public/private key pair - be careful n
 You will need this for most of SEA's API, see those method's examples.
 
 The default cryptographic primitives for the asymmetric keys are ECDSA for signing and ECDH for encryption.
+
+```
+SEA.pair(cb, opt)
+```
+
+### Parameters
+
+#### Callback
+
+##### - r
+
+returns Object
+{
+pub: (public key);
+priv: (private key);
+epub: (public key for encryption);
+epriv: (private key for encryption);
+}
+
+#### Return Value
+
+returns Object
+{
+pub: (public key);
+priv: (private key);
+epub: (public key for encryption);
+epriv: (private key for encryption);
+}
+
 
 ## sign
 
