@@ -1,5 +1,7 @@
 ## $5K Reward for Timegraph
 
+ > **Note** Levi (bugs181) is currently working on this and attempting to claim the bounty, either collaborate or be cautious of conflict.
+
 `lib/time` is currently in alpha, and Mark is seeking a maintainer for the [timegraph](Timegraph).
 
 1. Current features need to be stable and [bugs fixed](https://github.com/amark/gun/issues/638).
