@@ -512,6 +512,14 @@ gun.get('IoT').get('temperature').once(function(number){
 
 `.once` is asynchronous and on a **debounce timeout** while data is still being loaded - so it may be called completely out of order compared to other functions. This is intended because gun streams partials of data, so `once` avoids firing immediately because it may not represent the "complete" data set yet. You can control this timeout with the `wait` option.
 
+`once` fires again if you update that node from within it.
+
+Example for `once` firing again with an update from within:
+
+    node.once(function(data, key) {
+      node.get('something').put('something')
+    }
+
 Data is only 1 layer deep, a full document is not returned (see the [gun.load](#open) extension for that), this helps keep things fast.
 
 
