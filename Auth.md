@@ -73,7 +73,7 @@ Now you have built a fully decentralized app with GUN, congratulations! Check ou
 Feel free to hit us up with questions on the [gitter](https://gitter.im/amark/gun) in the meanwhile.
 
 You can also create shared, end-to-end encrypted private messages and profiles like LinkedIn and others:
-<iframe src="https://www.youtube.com/embed/ZiELAFqNSLQ" frameborder="0" allowfullscreen style="border: 0px; position: absolute; width: 100%;"></iframe>
+<iframe src="https://www.youtube.com/embed/ZiELAFqNSLQ" frameborder="0" allowfullscreen style="border: 0px; position: absolute; width: 100%; height: 100%;"></iframe>
 Cheers,
 
 The GUN Team
