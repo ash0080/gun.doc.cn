@@ -70,10 +70,10 @@ To do this, [follow along the 5 minute interactive P2P tutorial](https://gun.eco
 
 Now you have built a fully decentralized app with GUN, congratulations! Check out the rest of the docs to learn more, like how to synchronize your data with other peers or about the rest of the API.
 
-Feel free to hit us up with questions on the [gitter](https://gitter.im/amark/gun) in the meanwhile.
+For instance, you can also create shared, end-to-end encrypted private messages and profiles like LinkedIn and others:
 
-You can also create shared, end-to-end encrypted private messages and profiles like LinkedIn and others:
-<iframe src="https://www.youtube.com/embed/ZiELAFqNSLQ" frameborder="0" allowfullscreen style="border: 0px; position: absolute; width: 100%; height: 100%;"></iframe>
+<div style="position: relative; padding-bottom: 56.25%;"><iframe src="https://www.youtube.com/embed/ZiELAFqNSLQ" frameborder="0" allowfullscreen style="border: 0px; position: absolute; width: 100%; height: 100%;"></iframe></div>
+
 Cheers,
 
 The GUN Team
