@@ -42,7 +42,9 @@ user.auth('alice', 'unsafepassword', function(ack){
 });
 ```
 
-Finally, you can then save data to their account that nobody else can write to:
+Your account credentials are automatically encrypted end-to-end so nobody else except for you can access it.
+
+Finally, you can then save data to their account that nobody else can write to, but that we want to be publicly readable:
 
 ```javascript
 var alice = {name: "Alice"};
@@ -52,7 +54,7 @@ user.get('profile').put(alice);
 
 When it is stored on disk or sent over the wire, it uses cryptographic signatures (see the video explainer), to secure the account and data without relying upon any trusted servers!
 
-And then when you use GUN to read the data, it automatically verifies and decrypts the data for you:
+And then when you use GUN to read the data, it automatically verifies the data for you:
 
 ```javascript
 user.get('profile').get('boss').get('slave').get('name').once(function(data){
@@ -62,15 +64,17 @@ user.get('profile').get('boss').get('slave').get('name').once(function(data){
 
 Try running it yourself at https://codepen.io/anon/pen/QajxOz?editors=1012 !
 
-Now that you have P2P identities, we will combine it with the logic from the [2min interactive ToDo app tutorial](https://gun.eco/think.html), to create a list of tweets from the user:
+Now that you have P2P identities, we will combine it to create a list of tweets from the user:
 
-To do this, [follow along with the 4 minute interactive P2P Twitter tutorial](https://scrimba.com/c/c2gBgt4)!
+To do this, [follow along the 5 minute interactive P2P tutorial](https://gun.eco/docs/Todo-Dapp)!
 
-Now you have built a fully decentralized end-to-end encrypted app with GUN, congratulations! Check out the rest of the docs to learn more, like how to synchronize your data with other peers or about the rest of the API.
+Now you have built a fully decentralized app with GUN, congratulations! Check out the rest of the docs to learn more, like how to synchronize your data with other peers or about the rest of the API.
 
 Feel free to hit us up with questions on the [gitter](https://gitter.im/amark/gun) in the meanwhile.
 
-Shared objects and private data will be available next with SEA.
+You can also create shared, end-to-end encrypted private messages and profiles like LinkedIn and others:
+
+<iframe src="https://www.youtube.com/embed/ZiELAFqNSLQ" frameborder="0" allowfullscreen style="border: 0px; position: absolute; width: 100%; height: 100%;"></iframe>
 
 Cheers,
 
