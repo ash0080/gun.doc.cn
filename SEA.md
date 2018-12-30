@@ -17,11 +17,17 @@ var enc = await SEA.encrypt('hello self', pair);
 var data = await SEA.sign(enc, pair);
 console.log(data);
 var msg = await SEA.verify(data, pair.pub);
-var dec = await SEA.decrypt(msg, pair); // or use diffie-hellman for shared data between users (not documented yet, ask in chat for example)
+var dec = await SEA.decrypt(msg, pair);
 var proof = await SEA.work(dec, pair);
 var check = await SEA.work('hello self', pair);
 console.log(dec);
 console.log(proof === check);
+// now let's share private data with someone:
+var alice = await SEA.pair();
+var bob = await SEA.pair();
+var enc = await SEA.encrypt('shared data', await SEA.secret(bob.epub, alice));
+await SEA.decrypt(enc, await SEA.secret(alice.epub, bob));
+// `.secret` is Elliptic-curve Diffie–Hellman
 })();
 </script>
 ```
