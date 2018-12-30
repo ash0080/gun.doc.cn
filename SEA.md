@@ -41,25 +41,23 @@ However, for the WebCrypto shim, it also supports an optional async await API be
 As a result, and for sake of simplicity, documentation will use this for readability. Keep in mind that:
 
 ```javascript
-const data = await SEA.util(a, b)
+const data = await SEA.sign(a, b)
 ```
 
 Is swappable for the **official API**:
 
 ```javascript
-SEA.util(a, b, function(data){
+SEA.sign(a, b, function(data){
 
 });
 ```
-
- > Note: `util` doesn't actually exist, it is just a placeholder for the actual utility methods documented below.
 
 ## Errors
 
 Unfortunately, the beauty of `await` is often ruined with a try catch pyramid of doom in practice. To get around this, errors get passed forward. However, passing errors forward with standard NodeJS callback style is awkward:
 
 ```javascript
-const [err, data] = await SEA.util(a, b) // awkward
+const [err, data] = await SEA.sign(a, b) // awkward
 if(err){ ... }
 ```
 
@@ -67,8 +65,10 @@ So we have opted for a cleaner approach:
 
 ```javascript
 data = await SEA.util(a, b)
-if(!data){ ... } // undefined === data is safer
+if(!data){ ... } // undefined === data
 ```
+
+ > Note: Because SEA runs in production on dApps with millions of users, by default SEA will not throw errors (we have had developers complain it was crashing their networks). If you want SEA to throw while in development, turn `SEA.throw = true` on, but **please do not use this in production**.
 
 If `data` exactly equal to `undefined` then something went wrong. No matter what.
 
