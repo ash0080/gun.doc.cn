@@ -1,3 +1,33 @@
+## $2K Reward for QA Testing
+
+In 2018 GUN got deployed into production on some large sites. Using it by itself, with no extensions or adapters like SEA, RAD, etc., it has gotten "good enough" that Mark would be comfortable declaring a v1.0 release. However, important and commonly used components of the stack, like SEA and other features, don't have as reliable of performance or behavior or are as easy to "just work" out of the box. This is likely due to the fact that GUN is thoroughly unit tested, PTSD tested, and PANIC tested, but other components of the stack are lacking rigorous tests.
+
+To change this, in 2019 we are starting an open ended bounty for Quality Assurance to add PANIC tests that ruthlessly specific edge cases and real world use cases for SEA, DAM, AXE, RAD, and more.
+
+ - **~$250 per test**, with prior design of test approved by Mark.
+ - We're looking to start with about 8 diverse tests, for the first $2K batch.
+ - Possibly more to come later.
+
+The primary goal of these QA tests, other than increasing ecosystem reliability, is to shoot for creating a big GUN bundle that has all the bells and whistles as a complement to GUN's usual modular underpinnings. It should include everything needed to create Facebook/Reddit/Twitter and Google/Wikipedia clones:
+
+ - Automatic scalable no-DevOps decentralized DBaaS infrastructure (AXE, DHT, etc.)
+ - Full fledged user account management systems (SEA, ACL, etc.)
+ - Highly performant O(1) search and indexing features (Timegraph, Indexspace, etc.)
+ - Media storage and seeding (IndexedDB, WebRTC, etc.)
+ - Declarative UI binding and pluggable rendering and gaming logic (as, NTS, etc.)
+
+Core competency will be making sure our flagship community projects & organizations, like D.Tube, Internet Archive, notabug.io, have continued reliability assurance.
+
+Interested in the $2K? Please read these requirements:
+
+ - Thoroughly understand how to write & run PANIC tests, start with the [tutorial here](https://github.com/amark/gun/blob/master/test/panic/load.js).
+ - Be familiar with how to configure more sophisticated tests, [HTTPS](https://github.com/amark/gun/tree/master/test/https) in localhost, running across [many physical machines](https://youtu.be/C3akdQJs55E), and asymmetric [correctness](https://github.com/amark/gun/blob/master/test/panic/holy-grail.js) tests (inspired by Aphyr's [Jepsen](https://jepsen.io/talks)).
+ - Have good test ideas, ability to maintain tests, and modify tests for debugging purposes.
+ - Some tests should deterministically simulate user interactions with [basic versions of fully fledged apps](https://github.com/amark/gun/blob/master/examples/basic/user.html), including testing infinity scroll, memory leaks, etc.
+ - Bonus points if some tests are modeled after and could even be live tested in production (if and only with approval) against NAB.
+
+Contact Mark with your test proposal.
+
 ## $5K Reward for Timegraph
 
  > **Note** Levi (bugs181) is currently working on this and attempting to claim the bounty, either collaborate or be cautious of conflict.
