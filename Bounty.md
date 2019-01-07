@@ -1,6 +1,6 @@
 ## $2K Reward for QA Testing
 
-In 2018 GUN got deployed into production on some large sites. Using it by itself, with no extensions or adapters like SEA, RAD, etc., it has gotten "good enough" that Mark would be comfortable declaring a v1.0 release. However, important and commonly used components of the stack, like SEA and other features, don't have as reliable of performance or behavior or are as easy to "just work" out of the box. This is likely due to the fact that GUN is thoroughly unit tested, PTSD tested, and PANIC tested, but other components of the stack are lacking rigorous tests.
+In 2018 GUN got deployed into production on some large sites like Internet Archive (global top 300 site), D.Tube (1M monthly users), notabug.io (has hit 1TB/day P2P traffic with GUN), etc. Using it by itself, with no extensions or adapters like SEA, RAD, etc., it has gotten "good enough" that Mark would be comfortable declaring a v1.0 release. However, important and commonly used components of the stack, like SEA and other features, don't have as reliable of performance or behavior or are as easy to "just work" out of the box. This is likely due to the fact that GUN is thoroughly unit tested, PTSD tested, and PANIC tested, but other components of the stack are lacking rigorous tests.
 
 To change this, in 2019 we are starting an open ended bounty for Quality Assurance to add PANIC tests that ruthlessly specific edge cases and real world use cases for SEA, DAM, AXE, RAD, and more.
 
