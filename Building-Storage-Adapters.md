@@ -98,14 +98,14 @@ db.on('put', function(request) {
   
   // grab the node delta
   var delta = request.put;
-  var dedupId = delta['#'];
+  var dedupId = request['#'];
   
   // Remember the delta is an object with multiple keys/nodes
   Storage.write(delta).then(function(err) {
 
     // acknowledge the write to the gun db instance
     db.on('in', {
-      '#': dedupId,
+      '@': dedupId,
       ok: !err,       // boolean value, optional
       err: err        // the error, if any; or null
     });
