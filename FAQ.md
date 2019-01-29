@@ -3,6 +3,8 @@
 
 [Is there a single graph across all users in the network?](#is-there-a-single-graph-across-all-users-in-the-network)
 
+[How do I delete data?](#delete)
+
 [How are conflicts handled?](#how-are-conflicts-handled)
 
 [How is GUN distributed / replicated across peers?](#how-is-gun-distributed--replicated-across-peers)
@@ -39,6 +41,17 @@ To give an example:
 #### Is there a single graph across all users in the network?<a name="is-there-a-single-graph-across-all-users-in-the-network"></a>
 
 Each peer initiates an instance of gun. Depending on application logic, the peers will sync their data into their instance of the graph, with a goal to be consistent across the application that they are connected to. Depending on data structure you may have multiple roots available which can act as a division of data in the instance of the peer. That way, all graphs can start with one root node or multiple root nodes to divide app logic.
+
+<a href='FAQ#top'>Back to Top</a>
+***
+
+#### How do I delete data?<a name="delete"></a>
+
+Tombstoning problem in distributed system:
+To delete, you need to null data with gun.get('data').put(null), so anytime someone comes online, they know it's to be deleted. If you do not 'tombstone' a peer may overwrite your data, as it thinks your data doesn't exist.
+
+Many a solution has been proposed to deleting in distributed systems, including adding 'expiration dates' on data, but the base issue remains, that if you delete something, whilst not all peers are available at the same time to also do the delete. (e.g. a user is offline) When another peer comes, from his standpoint, his 'old' data is new data to be sent to other clients. And you would receive back the data you have deleted as new data.
+When you put null and a peer comes online, he in turn will receive an update to null his 'old' data, making it eventually consistent across the world (and the universe).
 
 <a href='FAQ#top'>Back to Top</a>
 ***
