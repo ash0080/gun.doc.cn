@@ -74,7 +74,7 @@ pass (string) - Passphrase for the user
 
 cb(userReference) (function) - Callback that is to be called upon authentication of the user.
 
-opt (object) - Option Object containing options for creation. (In gun options are added at end of syntax. opt is rarely used, hence is added at the end.)
+opt (object) - Option Object containing options for authentiaction. (In gun options are added at end of syntax. opt is rarely used, hence is added at the end.)
 
 ### Return via Callback
 
@@ -95,10 +95,31 @@ opt (object) - Option Object containing options for creation. (In gun options ar
     soul: "~publicKeyOfUser",
     tag: object //gun in and out reference (internal)
 }
+// on failure callback is called cb(ack) where ack is as below
+{
+    err: 'Wrong user or password.'
+}
+```
+
+### Unexpected Behavior
+
+Please comment on anything you may encounter.
 
 
-### API
- - coming soon
+## Getting a user via alias
+
+### Syntax
+
+```
+gun.get('~@alias').once((data, key)=>{});
+//data is a gun node object and key is a string with ~ before alias
+{
+    "_": aliasObject
+   "~pubKeyOfUser": pubKeyObject
+}
+```
+
+## SEA
 
 ### Security
 
