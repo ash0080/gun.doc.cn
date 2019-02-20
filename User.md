@@ -7,9 +7,53 @@ gun = Gun();
 user = gun.user(); 
 ```
 
-## create
+## User.create
 
-`user.create(alias, passphrase, cb)`
+Creates a new user and calls callback upon completion.
+
+### Syntax
+
+```
+user.create(alias, pass, cb, opt)
+```
+
+### Parameters
+
+alias (string) - Username or Alias which can be used to find a user. 
+
+pass (string) - Passphrase that will be extended with PBKDF2 to make it a secure way to login.
+
+cb (function) - Callback that is to be called upon creation of the user.
+
+opt (object) - Option Object containing options for creation.
+
+### Return
+
+On successful creation of the user the callback is called with an 'ack' object. (acknowledgment)
+```
+{
+    ok: 0,
+    pub: 'fe4...ee3' //public key of the user that was just created
+}
+```
+
+On failure you will receive an 'ack' object. (acknowledgment)
+```
+{
+    err: // with one of 2 possible errors described below
+}
+```
+
+If user is already being created:
+"User is already being created or authenticated!"
+If user already exists:
+"User already created!"
+
+### Unexpected Behavior
+
+There is no enforcement of uniqueness for the alias. If this is required for your application, you need to enforce it with a gun.get("~alias").once(callback) to check if user already exists.
+
+## User.auth
 
 ### API
  - coming soon
