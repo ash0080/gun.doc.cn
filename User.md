@@ -23,14 +23,15 @@ alias (string) - Username or Alias which can be used to find a user.
 
 pass (string) - Passphrase that will be extended with PBKDF2 to make it a secure way to login.
 
-cb (function) - Callback that is to be called upon creation of the user.
+cb(ack) (function) - Callback that is to be called upon creation of the user.
 
-opt (object) - Option Object containing options for creation.
+opt (object) - Option Object containing options for creation. (In gun options are added at end of syntax. opt is rarely used, hence is added at the end.)
 
-### Return
+### Return via Callback
 
 On successful creation of the user the callback is called with an 'ack' object. (acknowledgment)
 ```
+//calls cb(ack) where ack is an object as below
 {
     ok: 0,
     pub: 'fe4...ee3' //public key of the user that was just created
@@ -39,6 +40,7 @@ On successful creation of the user the callback is called with an 'ack' object. 
 
 On failure you will receive an 'ack' object. (acknowledgment)
 ```
+//calls cb(ack) where ack is an object as below
 {
     err: // with one of 2 possible errors described below
 }
@@ -46,14 +48,54 @@ On failure you will receive an 'ack' object. (acknowledgment)
 
 If user is already being created:
 "User is already being created or authenticated!"
+
 If user already exists:
 "User already created!"
 
 ### Unexpected Behavior
 
-There is no enforcement of uniqueness for the alias. If this is required for your application, you need to enforce it with a gun.get("~alias").once(callback) to check if user already exists.
+There is no enforcement of uniqueness for the alias. If this is required for your application, you need to enforce it with a gun.get("~@alias").once(callback) to check if user already exists.
 
 ## User.auth
+
+Authenticates a user, previously created via User.create.
+
+### Syntax
+
+```
+user.auth(alias, pass, cb, opt)
+```
+
+### Parameters
+
+alias (string) - Username or Alias which can be used to find a user.
+
+pass (string) - Passphrase for the user
+
+cb(userReference) (function) - Callback that is to be called upon authentication of the user.
+
+opt (object) - Option Object containing options for creation. (In gun options are added at end of syntax. opt is rarely used, hence is added at the end.)
+
+### Return via Callback
+
+```
+// on success calls callback with a reference to the gun user
+// cb(at) where at is an object as below
+{
+    ack: 2,
+    back: object, //reference to the root object (internal)
+    get: "~publicKeyOfUser",
+    gun: object, //gun root (internal)
+    id: 6, //id of the node in graph (internal)
+    on: function onto(),
+    opt: object, //uuid function object (internal)
+    put: object, //object containing pub, alias and epub of the user
+    root: object, //gun root reference (internal)
+    sea: object, //object containing keys of the user
+    soul: "~publicKeyOfUser",
+    tag: object //gun in and out reference (internal)
+}
+
 
 ### API
  - coming soon
