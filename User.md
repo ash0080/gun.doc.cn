@@ -105,7 +105,7 @@ opt (object) - Option Object containing options for authentiaction. (In gun opti
 
 Please comment on anything you may encounter.
 
-## user.pair()
+## User.pair
 
 Returns the key pair in the form of an object as below.
 
@@ -114,13 +114,14 @@ Returns the key pair in the form of an object as below.
 ```
 var pair = user.pair();
 ```
+
 ### Parameters
 
 None
 
 ### Return as object
 
-Returns the key pairs as an object as below
+Returns the key pairs of the current authenticated user as an object as below
 
 ```
 {
@@ -131,9 +132,9 @@ Returns the key pairs as an object as below
 }
 ```
 
-## user.leave
+## User.leave
 
-Log out user. Parameters are unused in the current implementation.
+Log out currently authenticated user. Parameters are unused in the current implementation.
 
 ### Syntax
 
@@ -155,6 +156,60 @@ Returns a reference to the gun root chain.
 
 There is no callback called at this time to confirm successful logging out. 
 Personal recommendation of the author (@dletta) of this part of the documentation is to check if user._.sea exists after leave is called. If it no longer contains a keypair, you are succesfully logged out. It should be 'undefined' and a truth check would come back false.
+
+## User.delete
+
+Deletes a user from the current gun instance and propagates the delete to other peers.
+
+### Syntax
+
+```
+user.delete(alias, pass, cb)
+```
+
+### Parameters
+
+alias (string) - Username or alias.
+
+pass (string) - Passphrase for the user.
+
+cb({ok: 0}) (function) - Callback that is called when the user was successfully deleted.
+
+### Return via Callback
+
+Callback is called with an object:
+```
+{
+    ok:0
+}
+```
+
+### Unexpected Behavior
+
+If an error occurs, the Error is not sent via the callback, but rather logged to the console. This is unusual.
+
+User data will be null'd out. It will most likely appear as if the user never existed.
+
+## User.recall
+
+Recall saves a users credentials in [sessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) of the browser. As long as the tab of your app is not closed the user stays logged in, even through page refreshes and reloads.
+
+### Syntax
+
+```
+user.recall(opt, cb)
+```
+
+### Parameters
+
+opt (object) - option object 
+If you want to use browser sessionStorage to allow users to stay logged in as long as the session is open, set opt.sessionStorage to true
+
+cb(userReference) (function) - internally the callback is passed on to the user.auth function to logged the user back in. Refer to user.auth for callback documentation.
+
+### Unexpected Behavior
+
+Please let us know if you find anything.
 
 
 ## Getting a user via alias
