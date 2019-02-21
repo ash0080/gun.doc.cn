@@ -105,6 +105,57 @@ opt (object) - Option Object containing options for authentiaction. (In gun opti
 
 Please comment on anything you may encounter.
 
+## user.pair()
+
+Returns the key pair in the form of an object as below.
+
+### Syntax
+
+```
+var pair = user.pair();
+```
+### Parameters
+
+None
+
+### Return as object
+
+Returns the key pairs as an object as below
+
+```
+{
+    epriv: EncryptionPrivateKey,
+    epub: EncryptionPublicKey,
+    priv: PrivateKey,
+    pub: PublicKey
+}
+```
+
+## user.leave
+
+Log out user. Parameters are unused in the current implementation.
+
+### Syntax
+
+```
+user.leave(opt, cb)
+```
+
+### Parameters
+
+opt (object) - unused in current implementation.
+
+cb (function) - unused in current implementation.
+
+### Returns
+
+Returns a reference to the gun root chain. 
+
+### Unexpected Behavior
+
+There is no callback called at this time to confirm successful logging out. 
+Personal recommendation of the author (@dletta) of this part of the documentation is to check if user._.sea exists after leave is called. If it no longer contains a keypair, you are succesfully logged out. It should be 'undefined' and a truth check would come back false.
+
 
 ## Getting a user via alias
 
