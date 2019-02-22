@@ -211,6 +211,46 @@ cb(userReference) (function) - internally the callback is passed on to the user.
 
 Please let us know if you find anything.
 
+## User.trust
+
+Still in development, might be deleted or changed.
+Intent of this function was to allow users to trust other users, which would allow them to read/write data from your user graph.
+
+### Syntax
+
+```
+user.get('name').trust(user) //trust him with my name
+```
+
+### Parameters
+
+user (user reference) - a user you trust.
+
+## User.grant
+
+Still in development, might be deleted or changed.
+Intent of this function is to grant the right to read your encrypted data. Imagine having some data you want to grant access to, then you can do gun.user().get('address').grant(acmeCorp).
+
+### Syntax
+
+```
+user.get('address').grant(Mark) // allow Mark to read my address
+```
+
+### Parameters
+
+user (user reference) - a user you grant access to.
+
+## User.secret
+
+Still in development, might be deleted or changed.
+Intent of this function is to save encrypted data to your user graph only trusted users can read.
+
+### Syntax
+
+```
+user.get('mysecrets').secret(string, callback)
+```
 
 ## Getting a user via alias
 
@@ -224,6 +264,17 @@ gun.get('~@alias').once((data, key)=>{});
    "~pubKeyOfUser": pubKeyObject
 }
 ```
+
+## Getting a user via gun.user
+
+If you know a users publicKey you can get his user graph and see any unencrypted data he may have stored there.
+
+### Syntax
+
+```
+gun.user(publicKey).once(console.log)
+```
+
 
 ## SEA
 
