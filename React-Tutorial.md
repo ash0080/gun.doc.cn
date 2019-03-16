@@ -64,10 +64,8 @@ app.use(Gun.serve);
 
 const server = app.listen(port);
 
-Gun({ file: 'db/data.json', web: server });
+Gun({ file: 'db/data', web: server });
 ```
-
-Please keep in mind that this setup is not meant for production, please refer to the [documentation for configuring Amazon S3](https://github.com/amark/gun/wiki/Using-Amazon-S3-for-Storage)  and a [module](https://github.com/PsychoLlama/gun-level) that utilizes LevelDB.
 
 Earlier I explained how GUN is a distributed database, where it can have many nodes connecting to each other, so we will add the library to the front-end. In the previous step we added the server node for all client nodes to connect to, we’ll pass the URL to it as a configuration for the client stores to synchronize with. For now, we’ll keep the database operations in src/components/App.js:
 
@@ -103,7 +101,7 @@ Open up a browser window and navigate to [http://localhost:8080](http://localhos
 
 &gt;`gun.put(note);`
 
-Inspecting db/data.json in our project we can see there is data similar to this:
+Inspecting db/data in our project we can see there is data files that start with key/ids opening them in a text editor will show something similar to this: (the exception being 1%c which is an index file and can be ignored)
 
 ```JSON
 {
@@ -123,7 +121,7 @@ Inspecting db/data.json in our project we can see there is data similar to this:
 }
 ```
 
-This can be verified in your localStorage of the browser as well by finding a similar key/value pair:
+This can be verified in the localStorage of the browser as well by finding a similar key/value pair:
 
 ```JSON
 {"_":
