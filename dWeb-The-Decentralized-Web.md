@@ -22,7 +22,7 @@ If you live at home, maybe you trust the apartment complex to keep things safe f
 
 It turns out, centralized websites like Facebook and others, use "fake security". And that is why you hear about your data getting hacked and your passwords getting leaked on the news a lot.
 
-<iframe src="https://www.youtube.com/embed/ccKThyaDR30" frameborder="0" allowfullscreen style="border: 0px; position: absolute; width: 100%; height: 100%;"></iframe>
+<div style="position: relative; padding-bottom: 56.25%;"><iframe src="https://www.youtube.com/embed/ccKThyaDR30" frameborder="0" allowfullscreen style="border: 0px; position: absolute; width: 100%; height: 100%;"></iframe></div>
 
 The [decentralized internet](https://axe.eco) has to use real security. Imagine you are James Bond, and you need to send a secret message - would you use Facebook Messenger or WeChat? No.
 
