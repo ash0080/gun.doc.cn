@@ -44,6 +44,6 @@ At the end of the day, the decentralized web won't look much different from what
 
 One is more free, and the other requires less control. Some people don't like having control, but we believe you should at least have an alternative option to living at home: to be on your own, if you so choose.
 
-***
 
-If you enjoyed this article, consider [following me](https://twitter.com/marknadal) and giving it a share.
+
+If you enjoyed this article, consider [following me](https://twitter.com/marknadal) and giving it a share!
