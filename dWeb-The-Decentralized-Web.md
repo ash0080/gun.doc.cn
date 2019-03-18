@@ -8,7 +8,7 @@ Using centralized websites, like [Google](http://google.com), [YouTube](http://y
 
 This comes with benefits though. If you forgot your keys or got locked out of the house, they can open the door for you. But as you might guess, if they are able to open the door, then they are also able to go into your room at anytime and snoop around. Worse, if you do not trust your roommates, they can steal your stuff and sell it to creepers.
 
-With decentralization, or [Pied Piper](https://www.hbo.com/silicon-valley)'s "[New Internet](https://era.eco)", you get the freedom of living on your own. What this means is that when you invite somebody back to your apartment, you have no roommates to deal with. And when you go into your room and lock the door, nobody can peep on you. (Well, unless you have an [Amazon](http://amazon.com) Echo [lying around](https://money.cnn.com/2018/05/24/technology/alexa-secret-recording/index.html).)
+With decentralization, or [Pied Piper](https://www.hbo.com/silicon-valley)'s "[New Internet](https://era.eco)", you get the freedom of living on your own. What this means is that when you invite somebody back to your apartment, you have no roommates to deal with. And when you go into your room and lock the door, nobody can peep on you.
 
 Having ownership of your own stuff is something a lot of people want. But it also comes with problems. If you forget your keys or get locked out of your car, you'll probably be spending the next several hours trying to get back in. That can be a hassle. Also, if you lose your wallet or phone, your security might be in danger.
 
