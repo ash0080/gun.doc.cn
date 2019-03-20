@@ -52,4 +52,4 @@ When you use addons, use it like `then!()`. Add a `!` after the method name to l
 
 ## Gun.SEA
 
-Not typed yet.
+Encourage you to use `async & await` so most of APIs does not include the signature for callback.
