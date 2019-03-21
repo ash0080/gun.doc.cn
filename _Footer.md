@@ -1,7 +1,7 @@
 # !!! Attention !!!
 
-# All docs were moved to [gun.eco/docs](https://gun.eco/docs)
+Please read docs at [gun.eco/docs](https://gun.eco/docs) !
 
-For the latest docs please go there!
+This wiki is only for editing to improve the docs.
 
 # !!! Attention !!!
