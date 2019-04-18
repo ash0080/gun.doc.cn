@@ -40,31 +40,48 @@ var Rad = window.Radisk; // in Browser, still needs the above script tags.
 var rad = Rad(opt);
 ```
 
-What is `opt`? Check the *API*:
+What is `opt`? Check the *API*!
 
  ## API
 
-RAD takes 1 parameter, an `option` object, with at least these 2 properties:
+RAD takes 1 parameter, an option object, with at least 1 property:
 
- - `put` **function** *key, data, cb* for saving chunks.
- - `get` **function** *key, cb* for reading chunks.
+ - `opt.store` object, with:
+ - - `put` **function** *key, data, cb* for saving chunks.
+ - - `get` **function** *key, cb* for reading chunks.
 
 It is easier to understand with some examples, here is a localStorage plugin for RAD:
 
-```
-var opt = {}, store = localStorage;
-opt.put = function(key, data, cb){
-  store[''+key] = data;
+```javascript
+var opt = {store: {}};
+opt.store.put = function(key, data, cb){
+  localStorage[''+key] = data;
   cb(null, 1);
 }
-opt.get = function(key, cb){
-  cb(null, store[''+key])
+opt.store.get = function(key, cb){
+  cb(null, localStorage[''+key])
 }
 ```
 
 That is all! It should be easy to implement or integrate any storage engine, or use any of the several already included.
 
  > Note: localStorage uses a synchronous API, most storage engines will have an asynchronous API which may make your code look ugly. But the actual integration with RAD is as simple as a file `put` and `get` command.
+
+There are several other options you can configure:
+
+ - `opt.file` **text** *name* of the folder data will be filed under. (Default: `'radata'`) 
+ - `opt.chunk` **number** *bytes* the size at which files will split into chunks, unless there is only 1 item in the chunk (like an image). (Default: **10MB** NodeJS, **1MB** IndexedDB) Adjusting this property significantly affects performance due to RAD or JSON parse time for each chunk on smaller machines.
+ - `opt.until` **number** *milliseconds* wait `until` this long before flushing a batch to disk. (Default: `250`)
+ - `opt.batch` maximum **number** of items saved before forcing a flush to disk, regardless of `until`. (Default: **10K**)
+ - `opt.pack` **number** *bytes* what the maximum string size can be to prevent running out of memory. (Default: `1399000000 * 0.3`)
+
+ # Write
+
+Now that we have our `rad = Rad(opt)`, we can save data to it! Again, this is assuming without using GUN:
+
+```
+rad('andrew', 27
+```
 
  ## WIP
 
