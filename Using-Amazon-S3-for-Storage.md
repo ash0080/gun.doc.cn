@@ -22,7 +22,6 @@ For your Amazon IAM User (in Security Credential's admin dashboard, create a cus
 
 ```javascript
 var gun = Gun({
-  file: 'data.json', // local testing and development
   s3: {
     key: process.env.AWS_ACCESS_KEY_ID, // AWS Access Key
     secret: process.env.AWS_SECRET_ACCESS_KEY, // AWS Secret Token
