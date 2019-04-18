@@ -74,7 +74,8 @@ There are several other options you can configure:
  - `opt.batch` maximum **number** of items saved before forcing a flush to disk, regardless of `until`. (Default: **10K**)
  - `opt.pack` **number** *bytes* what the maximum string size can be to prevent running out of memory. (Default: `1399000000 * 0.3`)
 
- # Write
+
+# Write
 
 Now that we have our `rad = Rad(opt)`, we can save data to it! Again, this is assuming non-GUN data:
 
@@ -92,7 +93,7 @@ rad('andrew', true, function(err, ok){})
 
  > Note: RAD only accepts `null`, `true`/`false`, *numbers*, and *text* **types**, plus a *soul* link.
 
- # Read
+# Read
 
 Using our `rad = Rad(opt)`, we can read non-GUN data:
 
