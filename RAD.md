@@ -116,6 +116,8 @@ rad('al', function(err, data){ console.log(data) }) // 'hi'
 rad('alex', function(err, data){ console.log(data) }) // 27
 ```
 
+ > Note: Radix trees do not include their parent prefix, only the sub keys.
+
 RAD also supports **range queries**! Just pass an options object: (Not available in `<= v0.2019.416`)
 
 ```javascript
@@ -135,4 +137,4 @@ rad('', function(err, tree){
 }, {start: 'ale', end: 'amy'}) 
 ```
 
- > Note: Radix trees do not include their parent prefix, only the sub keys.
+Have any questions? Ask on [StackOverflow](https://stackoverflow.com/questions/tagged/gun) tagged `gun`. Need help? Jump on the [chat](https://gitter.im/amark/gun)!
