@@ -104,6 +104,18 @@ rad(key, function(err, data, info){})
 
  > Note: [`Radix`](https://github.com/amark/gun/blob/master/lib/radix.js) is an in-memory Radix tree that RAD depends upon. In browser `window.Radix`, and `require('gun/lib/radix')` in NodeJS.
 
+
+```javascript
+rad('alex', function(err, data){ console.log(data) }) // 27
+rad('alexandria', function(err, data){ console.log(data) }) // 'library'
+rad('andrew', function(err, data){ console.log(data) }) // true
+
+rad('al', function(err, data){ console.log(data) }) // sub tree
+rad('al', 'hi');
+rad('al', function(err, data){ console.log(data) }) // 'hi'
+rad('alex', function(err, data){ console.log(data) }) // 27
+```
+
 RAD also supports **range queries**! Just pass an options object: (Not available in `<= v0.2019.416`)
 
 ```javascript
@@ -114,3 +126,13 @@ rad(prefix, function(err, data, info){}, opt)
  - `opt.end` the last key to include.
 
 You will get back a tree that you can "forEach" over with `Radix.map(tree, function(value, key){})`.
+
+```javascript
+rad('', function(err, tree){
+  Radix.map(tree, function(value, key){
+    console.log(key, value); // ('alex', 27), ('alexandria', 'library')
+  });
+}, {start: 'ale', end: 'amy'}) 
+```
+
+ > Note: Radix trees do not include their parent prefix, only the sub keys.
