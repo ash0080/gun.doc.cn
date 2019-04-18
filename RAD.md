@@ -92,7 +92,7 @@ rad('andrew', true, function(err, ok){})
 
  > Note: RAD only accepts `null`, `true`/`false`, *numbers*, and *text* **types**, plus a *soul* link.
 
- ## Read
+ # Read
 
 Using our `rad = Rad(opt)`, we can read non-GUN data:
 
