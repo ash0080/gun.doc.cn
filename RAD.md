@@ -44,11 +44,10 @@ What is `opt`? Check the *API*!
 
  ## API
 
-RAD takes 1 parameter, an option object, with at least 1 property:
+RAD takes 1 parameter, an option object, with at least 1 property of an `opt.store` object having:
 
- - `opt.store` object, with:
- - - `put` **function** *key, data, cb* for saving chunks.
- - - `get` **function** *key, cb* for reading chunks.
+ - `put` **function** *key, data, cb* for saving chunks.
+ - `get` **function** *key, cb* for reading chunks.
 
 It is easier to understand with some examples, here is a localStorage plugin for RAD:
 
@@ -77,12 +76,32 @@ There are several other options you can configure:
 
  # Write
 
-Now that we have our `rad = Rad(opt)`, we can save data to it! Again, this is assuming without using GUN:
+Now that we have our `rad = Rad(opt)`, we can save data to it! Again, this is assuming non-GUN data:
 
+```javascript
+rad('alex', 27, function(err, ok){})
 ```
-rad('andrew', 27
+
+```javascript
+rad('alexandria', 'library', function(err, ok){})
 ```
 
- ## WIP
+```javascript
+rad('andrew', true, function(err, ok){})
+```
 
-More docs coming soon!
+ > Note: RAD only accepts `null`, `true`/`false`, *numbers*, and *text* **types**, plus a *soul* link.
+
+ ## Read
+
+Using our `rad = Rad(opt)`, we can read non-GUN data:
+
+
+```javascript
+rad(key, function(err, data, info){})
+```
+
+ - `key` **text** like `'al'`, `'alex'`, `'alexandria'`, and so on.
+ - `err` **any** whatever the lower level storage engine emits.
+ - `data` **value, tree, none** if a value exists at that exact key, you will get the value. A radix **tree** will be passed back if sub keys exists beneath that key, this could be used to create new `Radix` instances.
+ - `info` **object** for building databases (like GUN!) on top, with how many bytes `parsed`, `chunks` processed, if `some` data has been found yet, what the `next` file will be, and the `limit` to bytes parsed.
