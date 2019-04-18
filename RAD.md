@@ -74,6 +74,8 @@ There are several other options you can configure:
  - `opt.batch` maximum **number** of items saved before forcing a flush to disk, regardless of `until`. (Default: **10K**)
  - `opt.pack` **number** *bytes* what the maximum string size can be to prevent running out of memory. (Default: `1399000000 * 0.3`)
 
+Now onto actually using RAD to save data!
+
  ## Write
 
 Now that we have our `rad = Rad(opt)`, we can save data to it! Again, this is assuming non-GUN data:
