@@ -10,31 +10,41 @@ However, RAD does not have an opinion on what storage engine should actually be 
 
  ## Install
 
-RAD is now the default with GUN in NodeJS. If you want to use RAD by itself, skip this section.
+RAD is now the default with GUN in NodeJS. **RAD is used automatically in NodeJS, just `require('gun')`!**. If you want to use by itself, without GUN, skip this section.
 
-To use RAD with GUN in the browser, include:
+To use RAD with GUN in the **browser**, include:
 
-```
+```html
 <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gun/lib/radix.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gun/lib/radisk.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gun/lib/store.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gun/lib/rindexed.js"></script>
+<script>
+var gun = Gun();
+// ...
+</script>
 ```
 
-To use it directly:
+This will automatically tell GUN to use RAD with IndexedDB.
 
-```
+ > Note: Pass `Gun({localStorage: false})` to disable localStorage.
+
+**NodeJS** by default uses disk (`fs`). If you have [AWS credentials](Using-Amazon-S3-for-Storage) set in your process environment variables, then S3 will be used instead of disk. (You may need to add `aws-sdk` to your `package.json` though.)
+
+If you want to use RAD without GUN? Just do:
+
+```javascript
 // var Rad = require('gun/lib/radisk'); // in NodeJS
-var Rad = window.Radisk;
+var Rad = window.Radisk; // in Browser, still needs the above script tags.
 var rad = Rad(opt);
 ```
 
-What is `opt`?
+What is `opt`? Check the *API*:
 
  ## API
 
-RAD takes 1 parameter, an  option object, with at least these 2 properties:
+RAD takes 1 parameter, an `option` object, with at least these 2 properties:
 
  - `put` **function** *key, data, cb* for saving chunks.
  - `get` **function** *key, cb* for reading chunks.
@@ -53,6 +63,8 @@ opt.get = function(key, cb){
 ```
 
 That is all! It should be easy to implement or integrate any storage engine, or use any of the several already included.
+
+ > Note: localStorage uses a synchronous API, most storage engines will have an asynchronous API which may make your code look ugly. But the actual integration with RAD is as simple as a file `put` and `get` command.
 
  ## WIP
 
