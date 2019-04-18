@@ -6,7 +6,7 @@ As you see, we are able to store 3 records (Alex, Alexandria, Andrew) in only 2 
 
 Because writing storage adapters for GUN has a bunch of nuances and performance tradeoffs, we've designed RAD to handle these nuances for you and chunk GUN's graph into traditional files that can be dumped to disk. It handles correctly merging updates into each batch, managing memory allocation on heavy load, reads across ranges of chunks, and more with generalizable performance strategy.
 
-However, RAD does not have an opinion on what storage engine should actually be used, and requires you pass it a storage interface - whether that be [`fs`](https://github.com/amark/gun/blob/master/lib/rfs.js), [S3](https://github.com/amark/gun/blob/master/lib/rs3.js), [indexedDB](https://github.com/amark/gun/blob/master/lib/rindexed.js), localStorage, IPFS, or others.
+However, RAD does not have an opinion on what storage engine should actually be used, and requires you pass it a storage interface - whether that be [`fs`](https://github.com/amark/gun/blob/master/lib/rfs.js), [S3](https://github.com/amark/gun/blob/master/lib/rs3.js), [indexedDB](https://github.com/amark/gun/blob/master/lib/rindexed.js), localStorage, BitTorrent, or others.
 
  ## Install
 
