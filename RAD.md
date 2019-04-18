@@ -46,8 +46,8 @@ What is `opt`? Check the *API*!
 
 RAD takes 1 parameter, an option object, with at least 1 property of an `opt.store` object having:
 
- - `put` **function** *key, data, cb* for saving chunks.
- - `get` **function** *key, cb* for reading chunks.
+ - `put` **function** (*key, data, cb*) for saving chunks.
+ - `get` **function** (*key, cb*) for reading chunks.
 
 It is easier to understand with some examples, here is a localStorage plugin for RAD:
 
@@ -69,10 +69,10 @@ That is all! It should be easy to implement or integrate any storage engine, or 
 There are several other options you can configure:
 
  - `opt.file` **text** *name* of the folder data will be filed under. (Default: `'radata'`) 
- - `opt.chunk` **number** *bytes* the size at which files will split into chunks, unless there is only 1 item in the chunk (like an image). (Default: **10MB** NodeJS, **1MB** IndexedDB) Adjusting this property significantly affects performance due to RAD or JSON parse time for each chunk on smaller machines.
- - `opt.until` **number** *milliseconds* wait `until` this long before flushing a batch to disk. (Default: `250`)
+ - `opt.chunk` **number** of *bytes*, the size at which a file will split into chunks, unless there is only 1 item in the chunk (like an image). (Default: **10MB** NodeJS, **1MB** IndexedDB) Adjusting this property significantly affects performance due to RAD or JSON parse time for each chunk on smaller machines.
+ - `opt.until` **number** of *milliseconds* to wait `until` flushing a batch to disk. (Default: `250`)
  - `opt.batch` maximum **number** of items saved before forcing a flush to disk, regardless of `until`. (Default: **10K**)
- - `opt.pack` **number** *bytes* what the maximum string size can be to prevent running out of memory. (Default: `1399000000 * 0.3`)
+ - `opt.pack` **number** of *bytes*, what the maximum string size can be, in order to prevent running out of memory. (Default: `1399000000 * 0.3`)
 
 Now onto actually using RAD to save data!
 
@@ -82,13 +82,7 @@ Now that we have our `rad = Rad(opt)`, we can save data to it! Again, this is as
 
 ```javascript
 rad('alex', 27, function(err, ok){})
-```
-
-```javascript
 rad('alexandria', 'library', function(err, ok){})
-```
-
-```javascript
 rad('andrew', true, function(err, ok){})
 ```
 
@@ -104,6 +98,19 @@ rad(key, function(err, data, info){})
 ```
 
  - `key` **text** like `'al'`, `'alex'`, `'alexandria'`, and so on.
- - `err` **any** whatever the lower level storage engine emits.
- - `data` **value, tree, none** if a value exists at that exact key, you will get the value. A radix **tree** will be passed back if sub keys exists beneath that key, this could be used to create new `Radix` instances.
+ - `err` **any**, whatever the lower level storage engine emits.
+ - `data` (**value, tree, none**) if a value exists at that exact key, you will get the value. A radix **tree** will be passed back if sub keys exists beneath that key, this could be used to create new in-memory `Radix` instance.
  - `info` **object** for building databases (like GUN!) on top, with how many bytes `parsed`, `chunks` processed, if `some` data has been found yet, what the `next` file will be, and the `limit` to bytes parsed.
+
+ > Note: [`Radix`](https://github.com/amark/gun/blob/master/lib/radix.js) is an in-memory Radix tree that RAD depends upon. In browser `window.Radix`, and `require('gun/lib/radix')` in NodeJS.
+
+RAD also supports **range queries**! Just pass an options object: (Not available in `<= v0.2019.416`)
+
+```javascript
+rad(prefix, function(err, data, info){}, opt)
+```
+
+ - `opt.start` the first key to start at.
+ - `opt.end` the last key to include.
+
+You will get back a tree that you can "forEach" over with `Radix.map(tree, function(value, key){})`.
