@@ -73,6 +73,8 @@ A `>` match will already include everything a `*` matches, this is true and obvi
 
  > Note: `>` will also match for an `=` exact match even if `=` is not listed (if it is, it will overrule `>`). So `{'>': 'alice'}` will match `'alice'` also, same for `<`. So think of it as a hierarchy `> || (> && <) || * || =` or `< || (< && >) || * || =`.
 
+There is no guarantee a peer will comply with lexical constraints. Just like in real life, if you ask somebody a question, they might answer with additional information. Every peer should enforce the constraint.
+
  ## Without
 
 If you want to use RAD without GUN? Just do:
