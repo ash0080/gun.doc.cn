@@ -69,7 +69,7 @@ Lexical gets are matched based in order of cascading specificness:
  3. `>` and `<` match or (3 <) match. If `{'>': 'start', '<': 'end'}` is specified, (3 >) not matched.
  4. `>` or `<` match or (4 <) match. As `{'>': 'start'}` or `{'<': 'end'}`.
 
-A `>` match will already include everything a `*` matches, this is true and obvious if you think about it for a second. What may not be obvious though is:
+A `>` match will already include everything a `*` matches, this is true and obvious if you think about it in detail. What may not be obvious though is:
 
  > Note: `>` will also match for an `=` exact match even if `=` is not specified. So `{'>': 'alice'}` will match `'alice'` also, same for `<`. So think of it as a hierarchy `> || (> && <) || * || =` or `< || (< && >) || * || =`.
 
