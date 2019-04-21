@@ -32,6 +32,49 @@ This will automatically tell GUN to use RAD with IndexedDB.
 
 **NodeJS** by default uses disk (`fs`). If you have [AWS credentials](Using-Amazon-S3-for-Storage) set in your process environment variables, then S3 will be used instead of disk. (You may need to add `aws-sdk` to your `package.json` though.)
 
+ ## Lex
+
+RAD supports GUN's lexical wire spec, which lets you do some cool things in GUN.
+
+For example, you might save a chat message to `gun.get('chat').get('2019/06/20:10:10:10.30').put(message)`, and then you `gun.get('chat').map().once(cb)` to get the full chat. But as the chat grows, you probably do not want to display old messages. Lexical lookups let you fix this!
+
+You have probably noticed GUN's soul `{'#': 'uuid'}`, this is how GUN does `get` commands between peers. Likewise, if you do `gun.get('chat').get('2019/06/20:10:10:10.30')` that gets expressed as `{'#': 'chat', '.': '2019/06/20:10:10:10.30'}`, this finds an exact lexical match. But you can also do:
+
+```javascript
+gun.get('chat').get({'.': {'*': '2019/06/'}}).map().once(cb)
+```
+
+This will grab keys with `'2019/06/'` matching prefix (grab all chats in July!) *up to a limited number of bytes*.
+
+ > Note: To prevent flooding the network, any response to a lexical lookup that does not have an exact match will be limited. You are responsible for asking for more data if you run over the byte limit.
+
+You can continue getting more data by using a lexical range, and passing the last key of each response you get as the starting property of the next lookup, until you reach an ending key or run out of data.
+
+For example, what if you want to paginate through your friend list?
+
+```javascript
+gun.get('friends').get({'.': {'>': 'alice', '<': 'fred'}, '%': 50000}).once().map().once(cb)
+```
+
+This says get keys starting with Alice and try to limit the range to less than 50KB. Say you got back Alice, Bob, Carl, and Dave, before hitting a byte limit. You might want to continue, on scroll or when your user clicks a "next" page button:
+
+```javascript
+gun.get('friends').get({'.': {'>': 'dave', '<': 'fred'}, '%': 50000}).once().map().once(cb)
+```
+
+Lexical gets are matched based in order of cascading specificness:
+
+ 1. `=` exact match. If `{'=': 'key'}` is specified, (1 >) will not match.
+ 2. `*` prefix match or (2 <) match. If `{'*': 'key'}` is specified, (2 >) will not match.
+ 3. `>` and `<` match or (3 <) match. If `{'>': 'start', '<': 'end'}` is specified, (3 >) not matched.
+ 4. `>` or `<` match or (4 <) match. As `{'>': 'start'}` or `{'<': 'end'}`.
+
+A `>` match will already include everything a `*` matches, this is true and obvious if you think about it for a second. What may not be obvious though is:
+
+ > Note: `>` will also match for an `=` exact match even if `=` is not specified. So `{'>': 'alice'}` will match `'alice'` also, same for `<`. So think of it as a hierarchy `> || (> && <) || * || =` or `< || (< && >) || * || =`.
+
+ ## Without
+
 If you want to use RAD without GUN? Just do:
 
 ```javascript
