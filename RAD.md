@@ -71,7 +71,7 @@ Lexical gets are matched based in order of cascading specificness:
 
 A `>` match will already include everything a `*` matches, this is true and obvious if you think about it in detail. What may not be obvious though is:
 
- > Note: `>` will also match for an `=` exact match even if `=` is not specified. So `{'>': 'alice'}` will match `'alice'` also, same for `<`. So think of it as a hierarchy `> || (> && <) || * || =` or `< || (< && >) || * || =`.
+ > Note: `>` will also match for an `=` exact match even if `=` is not listed (if it is, it will overrule `>`). So `{'>': 'alice'}` will match `'alice'` also, same for `<`. So think of it as a hierarchy `> || (> && <) || * || =` or `< || (< && >) || * || =`.
 
  ## Without
 
