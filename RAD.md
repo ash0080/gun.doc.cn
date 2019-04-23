@@ -62,6 +62,8 @@ This says get keys starting with Alice and try to limit the range to less than 5
 gun.get('friends').get({'.': {'>': 'dave', '<': 'fred'}, '%': 50000}).once().map().once(cb)
 ```
 
+You can pass `{'<': 'zach', '-': 1}` to have the byte limit go in reverse lexical direction.
+
 Lexical gets are matched based in order of cascading specificness:
 
  1. `=` exact match. If `{'=': 'key'}` is specified, (1 >) will not match.
@@ -163,7 +165,7 @@ rad('alex', function(err, data){ console.log(data) }) // 27
 
  > Note: Radix trees do not include their parent prefix, only the sub keys.
 
-RAD also supports **range queries**! Just pass an options object: (Not available in `<= v0.2019.416`)
+RAD also supports **range queries**! Just pass an options object: (Not available in `<= v0.2019.422`)
 
 ```javascript
 rad(prefix, function(err, data, info){}, opt)
@@ -171,15 +173,17 @@ rad(prefix, function(err, data, info){}, opt)
 
  - `opt.start` the first key to start at.
  - `opt.end` the last key to include.
+ - `opt.reverse` look through keys in reverse direction.
 
 You will get back a tree that you can "forEach" over with `Radix.map(tree, function(value, key){})`.
 
 ```javascript
+var opt = {start: 'ale', end: 'amy'};
 rad('', function(err, tree){
   Radix.map(tree, function(value, key){
     console.log(key, value); // ('alex', 27), ('alexandria', 'library')
-  });
-}, {start: 'ale', end: 'amy'}) 
+  }, opt);
+}, opt) 
 ```
 
 Have any questions? Ask on [StackOverflow](https://stackoverflow.com/questions/tagged/gun) tagged `gun`. Need help? Jump on the [chat](https://gitter.im/amark/gun)!
