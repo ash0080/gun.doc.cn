@@ -38,6 +38,9 @@ Augmented graphql query interface for Gun
 - [bullet](https://github.com/bugs181/bullet)
 Alternative syntax to Gun, promise support, utility modules, and easy Gun adapter events.
 
+- [gun-appendOnly](https://github.com/GoodDollar/gun-appendOnly)
+Support append only node keys on a first-come-first-served basis and allow modification to key content based on SEA users
+
 ## Adapters
 
  - [gun-level](https://github.com/gundb/gun-level)
