@@ -62,6 +62,8 @@ This says get keys starting with Alice and try to limit the range to less than 5
 gun.get('friends').get({'.': {'>': 'dave', '<': 'fred'}, '%': 50000}).once().map().once(cb)
 ```
 
+ > Note: `%` is the limit on how many bytes a peer might parse from disk, not necessarily how many bytes you'll get back. These constraints are to make the other peer's work easier, not requirements that they have to fulfill.
+
 You can pass `{'<': 'zach', '-': 1}` to have the byte limit go in reverse lexical direction.
 
 Lexical gets are matched based in order of cascading specificness:
