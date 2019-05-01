@@ -6,3 +6,5 @@ The following are confirmed to work on NativeScript iOS project:
 
 However it appears that only in memory storage is possible with this use case.
 Testing with NativeScript's WebView and on Android will be forthcoming.
+
+amark has reference a [NativeScriptVue example](https://github.com/gundb/feature-requests/issues/26).
