@@ -1,4 +1,4 @@
-Think these docs could be improved? Contribute to the wiki! Or [[comment|https://github.com/amark/gun/issues/70]].
+Think these docs could be improved? Contribute to the wiki! Or [comment](https://github.com/amark/gun/issues/70).
 
 **Core API**
  - [Gun constructor](#gun)
