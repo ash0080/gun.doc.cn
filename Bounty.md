@@ -1,3 +1,11 @@
+ ## Grants
+
+[ERA](http://era.eco) supports Open Source research into computer science and interactive art experiments that benefit humanity. For research that does not exclusively benefit ERA, such as publications that may be used by the public, other corporations or competing institutions, or governments, ERA offers Grant Fellowships. ERA is devoted to the advancements of applications that empower individual's data privacy and ownership, web-based creative editing and authoring tools that enhance artist's productivity, and improvement to underlying protocols and data structures in distributed systems.
+
+If you are an individual doing research in this area, please apply to our Grant Fellowship:
+
+ > **[APPLY](https://era.eco/2019/grant.pdf)**
+
 ## $2K Reward for QA Testing
 
  > **Note** `1 of 8` bounty tests completed, first by @rogowski!
@@ -30,9 +38,13 @@ Interested in the $2K? Please read these requirements:
 
 Contact Mark with your test proposal.
 
+ ## OLD
+
+Below is old/expired bounties no longer available.
+
 ## $5K Reward for Timegraph
 
- > **Note** Levi (bugs181) is currently working on this and attempting to claim the bounty, either collaborate or be cautious of conflict.
+ > **Note** THIS BOUNTY IS NO LONGER OPEN.
 
 `lib/time` is currently in alpha, and Mark is seeking a maintainer for the [timegraph](Timegraph).
 
@@ -51,7 +63,7 @@ Please contact Mark for more info. Be careful of conflicting claims.
 
 ## $10K Reward for HTML
 
- > **Note** Jussi is currently working on this and attempting to claim the bounty, either collaborate or be cautious of conflict.
+ > **Note** THIS BOUNTY HAS BEEN CLAIMED.
 
 Mark is writing a deterministic HTML normalizer/sanitizer and has issued a $10K bounty for it to be finished.
 
