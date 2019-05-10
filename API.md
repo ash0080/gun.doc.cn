@@ -130,9 +130,7 @@ You do not need to re-save the entire object every time, gun will automatically 
 
 `.put` restricts the input to a specific subset:
 
- - `objects`:
-   [partial](Partials-and-Circular-References-(v0.2.x)),
-   [circular](Partials-and-Circular-References-(v0.2.x)#circular-references), and nested
+ - `objects`: [partials](Partials-and-Circular-References-(v0.2.x)), [circular](Partials-and-Circular-References-(v0.2.x)#circular-references), and nested
  - `strings`
  - `numbers`
  - `booleans`
