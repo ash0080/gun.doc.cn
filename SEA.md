@@ -1,3 +1,5 @@
+Security, Encryption, & Authorization - SEA:
+
 SEA is split into two parts, the [`gun.user()`](./User) chain and `Gun.SEA` utility. This page focuses on documentation for the utility library.
 
 SEA is an easy API for the cryptographic primitives explained in the [1min animated explainer cartoon series](https://gun.eco/explainers/data/security.html), that wraps painful ones like the browser native WebCrypto API. We hope to have it swappable with WASM libsodium and/or local proxies to Electron/NodeJS or browser extensions.
