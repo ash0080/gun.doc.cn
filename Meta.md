@@ -1,6 +1,6 @@
 Here are some example commands I have written, maybe they'll be useful. Real documentation will come as more is demanded:
 
-```
+```javascript
 // on fires when shortcut keydowns or on touch after command selected and then touchdown
 meta.edit({name: "Add", combo: ['A']});
 meta.edit({name: "Row", combo: ['A', 'R'],
