@@ -2,9 +2,11 @@ Mesh vs Hierarchical network topologies:
 
  > Note: This article has been pulled from the [chatroom](https://gitter.im/amark/gun?at=5ce5b3fcad024978c60fc29b) and is formatted as such.
 
-it seems like we can boil the two categories down into 2 base use cases
-Self driving car broadcasting swarm mesh
-Radio tower mesh routing
+it seems like we can boil the two categories down into 2 base use cases:
+
+ - Self driving car broadcasting swarm mesh
+ - Radio tower mesh routing
+
 This model takes what you would want from a hierarchical topology (like Facebook or Google or Reddit) and puts it in the inevitable physics extremes.
 FB/G/R not a swarm, could run there, but more useful is for connecting people on opposite corners of the world.
 so you'd instead want optimized routing through cell tower / satellite meshes.
