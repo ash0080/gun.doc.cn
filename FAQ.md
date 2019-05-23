@@ -191,11 +191,14 @@ Again, this is more "centralized" logic which is perfectly possible in GUN, the 
 
 Because of the p2p design of GUN, there is no server storing the password, so a lost password can not be recovered. That is indeed an issue, as users tend to lose passwords.
 
-One way to solve it is to have a separate server for password recovery (bad design in p2p).
+**One** way to solve it is to have a separate server for password recovery (bad design in p2p).
 
-Or 3-way encode the password with the keys of 3 friends and have each friend store one third, so the passwords can be recovered if all 3 help out (vulnerability if those 3 turn against you).
+**Or** 3-Friend-Factor Authentication. The user may choose 3 friends. Given the public keys of the friends generate 3 different AES keys with SEA.secret. Encrypt a recovery key with PBKDF2 extended lexically concatenated 3 keys.
+Then using ECDH share each AES key with a friend. When you want to recover the account generate a throw-away ECDH key and ask 3 friends to visit a recovery page. (Out of Band, increase of security)
+They approve, ECDH encrypt their original AES piece, which gets sent back to the user. Using their information you decrypt your recovery key via PBKDF2 / lexical concatenate.
+There may be variations to this approach that are more secure.
 
-Or upon account creation show something like a QR code, containing the password, on the screen and have the user store it in a safe place (vulnerable because user might take a picture, etc).
+**Or** upon account creation show something like a QR code, containing the password, on the screen and have the user store it in a safe place (vulnerable because user might take a picture, etc).
 
 <a href='FAQ#top'>Back to Top</a>
 ***
