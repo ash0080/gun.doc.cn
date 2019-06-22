@@ -2,6 +2,8 @@
 
 GUN is a small, easy, and fast data sync and storage system that runs everywhere JavaScript does. The aim of GUN is to let you focus on the data that needs to stored, loaded, and shared in your app without worrying about servers, network calls, databases, or tracking offline changes or concurrency conflicts. This lets you build cool apps fast, like:
 
+<div style="position: relative; padding-bottom: 56.25%;"><iframe src="https://www.youtube.com/embed/1ASrmQ-CwX4" frameborder="0" allowfullscreen style="border: 0px; position: absolute; width: 100%; height: 100%;"></iframe></div>
+
 ![](https://gun.eco/see/3dvr.gif "3D multiplayer VR games")
 [![](https://gun.eco/see/aiml.gif "Distributed AI/ML")](https://github.com/cstefanache/cstefanache.github.io/blob/master/_posts/2016-08-02-gun-db-artificial-knowledge-sharing.md#gundb)
 [![](https://gun.eco/see/gps.gif "Realtime GPS tracking")](http://gps.gundb.io/)
