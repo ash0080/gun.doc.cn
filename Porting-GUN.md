@@ -6,6 +6,8 @@
  - @chernousov-m's C++
  - [@xmonader's Python](https://github.com/xmonader/pygundb)
  - @LaPingvino's Go
+ - [@go1dfish's JS](https://github.com/notabugio/gun-receiver)
+ - @masterex1000 's (?)
 
 We'll walk you through creating a reduced GUN server in your language of choice. It will not be useful as a library to other developers, but it will help you understand what is going on and communicate with GUN peers. You should be able to then expand upon it, adding a nice language specific API so it is usable by other developers.
 
