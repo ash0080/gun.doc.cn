@@ -2,6 +2,11 @@
 
  > Code from the above tech talk is [available here](https://github.com/gundb/port).
 
+ - @ChronosX88 
+ - @chernousov-m
+ - @xmonader
+ - @LaPingvino 
+
 We'll walk you through creating a reduced GUN server in your language of choice. It will not be useful as a library to other developers, but it will help you understand what is going on and communicate with GUN peers. You should be able to then expand upon it, adding a nice language specific API so it is usable by other developers.
 
 There are three main categories we'll need to implement for our minimal GUN server.
