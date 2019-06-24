@@ -2,10 +2,10 @@
 
  > Code from the above tech talk is [available here](https://github.com/gundb/port).
 
- - @ChronosX88 
- - @chernousov-m
- - @xmonader
- - @LaPingvino 
+ - @ChronosX88's Java 
+ - @chernousov-m's C++
+ - [@xmonader's Python](https://github.com/xmonader/pygundb)
+ - @LaPingvino's Go
 
 We'll walk you through creating a reduced GUN server in your language of choice. It will not be useful as a library to other developers, but it will help you understand what is going on and communicate with GUN peers. You should be able to then expand upon it, adding a nice language specific API so it is usable by other developers.
 
