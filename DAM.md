@@ -8,9 +8,9 @@ This page focuses on both its architectural and API. DAM is the transport counte
 
 ## API
 
-> Needs to be Documented
-
 DAM's API allows for swapping in different transport layers (websocket, WebRTC, etc.) in the same way RAD lets you swap out storage layers (disk, S3, IPFS, etc.).
+
+From chat: yeah, DAM has a feature for this... you'll find it on var dam = gun.back('opt.mesh'); then you can send messages via gun's internal event emitter if you know how, or mesh.say({dam: 'myModule', ...}) for all (directly) connected peers or optionally ...}, peer) to specific peer. NOW IT IS IMPORTANT, to make sure message stays within those neighbors (not rebroadcast) you add a dam.hear.myModule = function(msg, peer){} which will only get called for dammed 'myModule' messages (dam will restrict messages from escaping). I use this system to create a shared state machine between connected peers, so they can send short lived messages/protocol/handshakes that may change/influence how the rest of their communications is processed. For instance, if anybody watches the gun socket network tab, you'll see the ~first 2 messages are the peers using DAM to handshake a peer ID, this is because the GUN layer does not assume network, network topology, peer, or require peers to be identifiable (the sync algorithm could work with a bunch of blindfolded people in a room who stay anonymous), however IF we are willing to identify ourselves, DAM can create significant optimizations compared to the brute force approach.
 
 ## Architecture
 
