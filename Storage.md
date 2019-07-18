@@ -86,3 +86,7 @@ https://github.com/lmangani/gun-cassandra
 
 https://github.com/lmangani/gun-elastic
 
+## LMDB
+
+https://github.com/notabugio/gun-lmdb
+
