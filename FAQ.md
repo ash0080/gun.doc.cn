@@ -157,7 +157,7 @@ user.auth(alias, passphrase, callback, { change: 'new-pass-value' })
 
 #### Does GUN have some form of ACL (access rights)?<a name="acl"></a>
 
-Not yet. But you can add ALC yourself.
+Not yet. But you can add ACL yourself.
 If you want an example of how to implement ACL, check out this short demo video:
 [https://youtu.be/ZiELAFqNSLQ](https://youtu.be/ZiELAFqNSLQ)
 And peek at this ~150 lines of HTML/CSS/JS that implements it:
