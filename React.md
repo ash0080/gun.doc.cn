@@ -8,6 +8,7 @@ Fully abstract / automate the process of attaching & detaching GUN listeners to 
 
 ```javascript
 import { useBucket } from 'weir';
+import { thingsBucket } from './buckets';
 
 const Component = () => {
     const bucketState = useBucket(thingsBucket, 'prop1 prop2')
