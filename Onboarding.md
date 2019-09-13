@@ -48,7 +48,13 @@ Gun can replace the MongoDB portion of this stack in regards to user authenticat
 
 TODO: Give example code in a MEAN stack where you would handle login switching, etc and what parts of code you would replace with Gun API calls
 
-# React (+ Vue & Angular coming soon)
+# Component-based frameworks: React, Vue, Angular, etc
+
+Specifically in a flux-based architecture (e.g. React & Vue), you should consider replacing uses of `redux` and async handlers like thunks/epics/observables, since the functionality of Gun completely overlaps with these, and any integration efforts will lead to needless duplication. React-Redux examples here: https://stackoverflow.com/a/57541198
+
+Gun can be used for both your application state, as well as backend synchronization, but you have to keep in mind that Gun is inherently peer-2-peer from the ground up. When hosting your app, you have the choice of running your own Gun server or connecting to a shared network (lookup AXE for more on this).
+
+You can of course use multiple backends in your app, meaning that some components get data from Gun while others fetch from elsewhere like a GraphQL or REST backend, but just be aware you may introduce technical debt that comes back to bite you later on. You can also consider integrating Gun server-side, e.g. connecting to your existing database inside of a nodejs Gun server. This would treat Gun as more of an API frontend than a standalone database, and implicates other technical considerations.
 
 Framework actively under development: https://github.com/rm-rf-etc/weir
 
