@@ -56,7 +56,9 @@ Gun can be used for both your application state, as well as backend synchronizat
 
 You can of course use multiple backends in your app, meaning that some components get data from Gun while others fetch from elsewhere like a GraphQL or REST backend, but just be aware you may introduce technical debt that comes back to bite you later on. You can also consider integrating Gun server-side, e.g. connecting to your existing database inside of a nodejs Gun server. This would treat Gun as more of an API frontend than a standalone database, and implicates other technical considerations.
 
-Framework actively under development: https://github.com/rm-rf-etc/weir
+Framework actively under development:
+https://github.com/amark/gun/wiki/React#under-development
+https://github.com/rm-rf-etc/weir
 
 # From React + GraphQL
 
