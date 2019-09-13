@@ -48,6 +48,10 @@ Gun can replace the MongoDB portion of this stack in regards to user authenticat
 
 TODO: Give example code in a MEAN stack where you would handle login switching, etc and what parts of code you would replace with Gun API calls
 
+# React (+ Vue & Angular coming soon)
+
+Framework actively under development: github.com/rm-rf-etc/weir
+
 # From React + GraphQL
 
 ## Components
