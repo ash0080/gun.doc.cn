@@ -50,7 +50,7 @@ TODO: Give example code in a MEAN stack where you would handle login switching, 
 
 # React (+ Vue & Angular coming soon)
 
-Framework actively under development: github.com/rm-rf-etc/weir
+Framework actively under development: https://github.com/rm-rf-etc/weir
 
 # From React + GraphQL
 
