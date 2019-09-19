@@ -74,7 +74,7 @@ Whenever a client 'puts' something in a graph, a message is sent to the [network
 #### What is the difference between Super Peer and other Peers?<a name="what-is-the-difference-between-super-peer-and-other-peers"></a>
 
 Gun saves data in two ways. Browser - localStorage, Node - RAD (Radix Storage Engine to files).
-Due to Browser Limitations, not all data is stored on all clients, persistence at this time is what is left in your localStorage (50 mb limit) and what the 'super peer' (node.js out of necessity right now) saves to files on hard disk. Clients subscribe to the data they need to stay informed on and the super peer will dispatch data. Once the data is on the client, the client may serve data to other clients as well.
+Due to Browser Limitations, not all data is stored on all clients, persistence at this time is what is left in your localStorage (5mb limit) and what the 'super peer' (node.js out of necessity right now) saves to files on hard disk. Clients subscribe to the data they need to stay informed on and the super peer will dispatch data. Once the data is on the client, the client may serve data to other clients as well.
 
 <a href='FAQ#top'>Back to Top</a>
 ***
