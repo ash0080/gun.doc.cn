@@ -177,6 +177,9 @@ Fastify is a Fast and low overhead modular web framework, supporting persistence
  - [PiTherm](https://github.com/paullj1/PiTherm)
 Raspberry Pi thermostat application using Gun to sync client UIs ~ By [paullj1](https://github.com/paullj1)
 
+ - [GunStreamer](https://github.com/qvdev/GunStreamer)
+Live streaming via GUN. Demo included in the repository ~ By [QVDev](https://github.com/qvdev)
+
 ## GUN implementations
 * Java: [JGUN](https://github.com/ChronosX88/JGUN), [Gun.Java](https://github.com/anubiann00b/Gun.Java) (not implemented fully)  
 * Python: [PyGUNDB](https://github.com/xmonader/pygundb)  
