@@ -9,6 +9,13 @@ It has previously sustained ~3K writes/second acknowledged from disk across 1M+ 
 
 Our target is to be able to handle 1TB/day of continuous load on commodity hardware (near 0 cost).
 
+Read performance needs to be addressed first, with this priority in fixes:
+
+1. Prevent GUN from asking RAD to do reads if GUN has already gotten the node from RAD, but still ask again if any portion of the node has been garbage collected.
+2. Always read from and cache to local disk, even if using a remote storage adapter.
+3. Use [@rogowski](https://github.com/rogowski)'s improved RAD parser.
+4. Without breaking environment support, do not block hearing messages while handling parsing.
+
  # AXE
 
 AXE is a network of computers that provide optimized routing for bandwidth.
