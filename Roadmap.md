@@ -16,6 +16,8 @@ Read performance needs to be addressed first, with this priority in fixes:
 3. Use [@rogowski](https://github.com/rogowski)'s improved RAD parser.
 4. Without breaking environment support, do not block hearing messages while handling parsing.
 
+Reads may be impacting write performance, once fixed, retest write benchmarks.
+
  # AXE
 
 AXE is a network of computers that provide optimized routing for bandwidth.
