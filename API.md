@@ -528,6 +528,8 @@ Add a unique item to an unordered list.
 
 `gun.set` works like a mathematical set, where each item in the list is unique. If the item is added twice, it will be merged. This means only objects, for now, are supported.
 
+_To remove items from a set, see [gun.unset](#unset)._
+
 ### Data
 Data should be a gun reference or an object.
 ```javascript
