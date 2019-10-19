@@ -2,13 +2,32 @@
 
 DAM is GUN's default transport layer abstraction and P2P networking algorithm. Decentralized communications can be rather chatty, so it helps "hold back" an excess flood of messages by improving upon the base brute force method.
 
-This page focuses on both its architectural and API. DAM is the transport counterpart to RAD.
+This page focuses on both its architectural and API. DAM is the transport counterpart to RAD, the storage engine.
 
 **DAM has not yet been cartoonized**, we apologize, if you aren't deeply technical, please come back later (the below gif is NOT an illustration of DAM, but its less efficient predecessor).
 
 ## API
 
 DAM's API allows for swapping in different transport layers (websocket, WebRTC, etc.) in the same way RAD lets you swap out storage layers (disk, S3, IPFS, etc.).
+
+Most of the API deals with communicating one-off messages to only neighbor peers or even individual neighbor peers in order to coordinate their immediate efficiency. If direct peer connections are optimized you should get the emergent result of the greater mesh and daisy-chaining being more efficient.
+
+For example, peers Alice and Bob might both support a binary transport, even if other peers do not. So DAM can be used to create a shared state machine between the Alice-Bob neighbor connection that can dynamically upgrade or downgrade their transport system.
+
+ ### Adding Peers
+
+If you are connected to another GUN peer, you can ask them to connect to another peer, for example:
+
+```javascript
+var gun = Gun('http://localhost:8765/gun'); // Connect to a local peer
+var mesh = gun.back('opt.mesh'); // DAM;
+// Ask local peer to connect to another peer.
+mesh.say({dam: 'opt', opt: {peers: 'https://guntest.herokuapp.com/gun'}});
+```
+
+Note, just because you ask for the peer to connect, does not mean they have to. To prevent abuse, the asked peer may only connect up to 6 other peers on a first-come first-serve basis, and may quickly drop peers if they go offline for longer than a few minutes and stop retrying connections until asked again.
+
+ ### Neighbor Messages
 
 From chat: yeah, DAM has a feature for this... you'll find it on var dam = gun.back('opt.mesh'); then you can send messages via gun's internal event emitter if you know how, or mesh.say({dam: 'myModule', ...}) for all (directly) connected peers or optionally ...}, peer) to specific peer. NOW IT IS IMPORTANT, to make sure message stays within those neighbors (not rebroadcast) you add a dam.hear.myModule = function(msg, peer){} which will only get called for dammed 'myModule' messages (dam will restrict messages from escaping). I use this system to create a shared state machine between connected peers, so they can send short lived messages/protocol/handshakes that may change/influence how the rest of their communications is processed. For instance, if anybody watches the gun socket network tab, you'll see the ~first 2 messages are the peers using DAM to handshake a peer ID, this is because the GUN layer does not assume network, network topology, peer, or require peers to be identifiable (the sync algorithm could work with a bunch of blindfolded people in a room who stay anonymous), however IF we are willing to identify ourselves, DAM can create significant optimizations compared to the brute force approach.
 
