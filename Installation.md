@@ -65,3 +65,9 @@ We recommend you check out the default [HTTP(S) example](https://github.com/amar
  - Try out the [Hello World](Hello-World).
  - Watch the 2 minute [Crash Course](Crash-Course)?
  - Hands-on learn answers to all your questions in [THE INTERACTIVE TUTORIAL](Todo-Dapp)!
+
+#### Note for ECMA Modules
+
+In Node 12, if you use the --experimental-modules flag, you can use 
+Import Gun from './node_modules/gun/lib/server.js'
+and that will do the trick for those of us who want to use ESM modules
