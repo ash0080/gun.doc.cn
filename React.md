@@ -1,12 +1,13 @@
 ## gun-react
 
 This is a React library for Gun which was adapted from https://gun.eco/
-The source code live here; https://github.com/allindeveloper/gun-react
+
+The library source code lives here; https://github.com/allindeveloper/gun-react
 
 
 ## Intro
 
-This React library exposes the all Gun functionalities.
+This React library exposes all the Gun functionalities.
 
 ### Note
 For more Information, please check out the Github page here https://github.com/amark/gun 
@@ -71,26 +72,23 @@ const App = (props) => {
 
   return (
       <div>
-              <label>Firstname</label>
-                <input id="textinput" name="firstname" onChange={e => setFirstName(e.target.value)} 
-                type="text"></input><br/>
+          <label>Firstname</label>
+          <input id="textinput" name="firstname" onChange={e => setFirstName(e.target.value)} 
+          type="text"></input><br/>
           
-              <label>Lastname</label>
-                <input id="textinput" name="lastname" type="text" onChange={e => setLastName(e.target.value)} 
-               ></input><br/>
+          <label>Lastname</label>
+          <input id="textinput" name="lastname" type="text" onChange={e => setLastName(e.target.value)} 
+          ></input><br/>
            
-              <label >Age</label>
-                <input id="textinput" name="age" type="number" placeholder="Age" onChange={e => setAge(e.target.value)}
-                 ></input><br/>
+          <label >Age</label>
+          <input id="textinput" name="age" type="number" placeholder="Age" onChange={e => setAge(e.target.value)}
+          ></input><br/>
           
-                <button  onClick={submitValue} class="btn btn-success">Ok</button>
-            </div>
-   
+         <button  onClick={submitValue} class="btn btn-success">Ok</button>
+         </div>
   );
 }
 //GunReact accepts the normal Gun Configuration and a Component to Render and then returns GunService as a Property
-
-
 
 export default GunReact(App, config);
 
@@ -98,8 +96,7 @@ export default GunReact(App, config);
 ```
 
 
-
-## Contributing
+## Contributing to the Repo
 1. Create your feature branch: `git checkout -b feature-name`
 2. Commit your changes: `git commit -m 'Some commit message'`
 3. Push to the branch: `git push origin feature-name`
