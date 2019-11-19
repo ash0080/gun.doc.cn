@@ -1,20 +1,110 @@
-# Under Development
+## gun-react
 
-https://github.com/rm-rf-etc/weir
+This is a React library for Gun which was adapted from https://gun.eco/
+The source code live here; https://github.com/allindeveloper/gun-react
 
-## Motivation
 
-Fully abstract / automate the process of attaching & detaching GUN listeners to any React component using a higher order component. All the developer should need is to provide a root node (GUN object) to specify which part of the graph we are binding. Any attributes we want the component to receive from GUN, we auto-attach and inject via React hooks API:
+## Intro
 
-```javascript
-import { useBucket } from 'weir';
-import { thingsBucket } from './buckets';
+This React library exposes the all Gun functionalities.
 
-const Component = () => {
-    const bucketState = useBucket(thingsBucket, 'prop1 prop2')
+### Note
+For more Information, please check out the Github page here https://github.com/amark/gun 
 
-    return ( ... );
-};
+### Install
+```
+npm install --save gun-react
 ```
 
-Please visit the issues page of the repo to find latest updates and plans. Development has been moving pretty rapidly but effort is being made to keep documentation and plans current. The library isn't yet to the point of general readiness but should be within the next month or two (as of 2019-09-13).
+
+### Sample Usage
+
+```javascript
+
+import React, { useState } from "react";
+import { GunReact } from 'gun-react'
+
+let config = {
+  s3: {
+    key: '',
+    secret: '',
+    bucket: ''
+  },
+  // simple JSON persistence (bundled)
+  // meant for ease of getting started
+  // NOT meant for production
+  file: 'file/path.json',
+
+  // set your own UUID function
+  uuid: () => { }
+}
+const App = (props) => {
+
+  React.useEffect(()=>{
+    let { GunService } = props;
+    if(GunService){
+      GunService.get('user').on((data, key) => {
+      console.log("previously saved data", data)
+    });
+  }
+  })
+    const submitValue = (e) => {
+    e.preventDefault();
+    const formDetails = {
+      'FirstName': firstName,
+      'LastName': lastName,
+      'Age': age,
+    }
+    let { GunService } = props;
+    GunService.get('user').put({
+      ...formDetails
+    });
+
+    GunService.get('user').on((data, key) => {
+      console.log("saved data", data)
+      let result = data; // you can now get the saved data right here
+
+
+    });
+  }
+
+
+  return (
+      <div>
+              <label>Firstname</label>
+                <input id="textinput" name="firstname" onChange={e => setFirstName(e.target.value)} 
+                type="text"></input><br/>
+          
+              <label>Lastname</label>
+                <input id="textinput" name="lastname" type="text" onChange={e => setLastName(e.target.value)} 
+               ></input><br/>
+           
+              <label >Age</label>
+                <input id="textinput" name="age" type="number" placeholder="Age" onChange={e => setAge(e.target.value)}
+                 ></input><br/>
+          
+                <button  onClick={submitValue} class="btn btn-success">Ok</button>
+            </div>
+   
+  );
+}
+//GunReact accepts the normal Gun Configuration and a Component to Render and then returns GunService as a Property
+
+
+
+export default GunReact(App, config);
+
+
+```
+
+
+
+## Contributing
+1. Create your feature branch: `git checkout -b feature-name`
+2. Commit your changes: `git commit -m 'Some commit message'`
+3. Push to the branch: `git push origin feature-name`
+4. Submit a pull request 
+
+## How can I thank you?
+
+Why not star the github repo? Share to Others too.
