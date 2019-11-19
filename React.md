@@ -41,6 +41,9 @@ let config = {
 }
 const App = (props) => {
 
+  const[firstName, setFirstName] = useState('');
+  const[lastName, setLastName] = useState('');
+  const[age, setAge] = useState(''); 
   React.useEffect(()=>{
     let { GunService } = props;
     if(GunService){
