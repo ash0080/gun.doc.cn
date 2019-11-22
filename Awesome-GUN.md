@@ -56,6 +56,8 @@
   - Fastify is a Fast and low overhead modular web framework, supporting persistence layer using Gun ~ By [lmangani](https://github.com/lmangani)
 - [PiTherm](https://github.com/paullj1/PiTherm)
   - Raspberry Pi thermostat application using Gun to sync client UIs ~ By [paullj1](https://github.com/paullj1)
+- [Gewd Notes](https://gewd-notes.surge.sh/#/)
+  - Workflowy clone using gun ~ By [negue](https://github.com/negue)
 
 ## Plugins / Helpers
 
