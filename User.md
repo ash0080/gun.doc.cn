@@ -142,6 +142,7 @@ if (user.is) {
    console.log('You are not logged in');
 }
 ```
+If the user is not logged in it will return "undefined".
 
 ## User.leave
 
