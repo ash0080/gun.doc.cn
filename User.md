@@ -131,6 +131,17 @@ Returns the key pairs of the current authenticated user as an object as below
     pub: PublicKey
 }
 ```
+## User.is
+
+To check if you are currently logged in...
+
+```
+if (user.is) {
+   console.log('You are logged in');
+} else {
+   console.log('You are not logged in');
+}
+```
 
 ## User.leave
 
