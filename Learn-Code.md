@@ -123,7 +123,7 @@ This is why we call it code! We use a bunch of strange symbols to tell the compu
 Now that we know something is working, we can actually start building our app. Let's replace the message line entirely with code that receives input from the user:
 
 ```html
-      $("form").on("submit", function(event){
+      $('form').on('submit', function(event){
         event.preventDefault();
         $("h1").text("We got your thought! " + $("input").val());
       });
