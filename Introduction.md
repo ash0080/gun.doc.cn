@@ -25,6 +25,19 @@ This makes the loss of important information nearly impossible, as all copies of
 
 GUN is fully decentralized (peer-to-peer or multi-master), meaning that changes are not controlled by a centralized server. A server can be just another peer in the network, one that may have more reliable resources than a browser. You save data on one machine, and it will sync it to other peers without needing a complex consensus protocol. It just works.
 
+---
+
+### But how does it work?
+*If you are feeling lost in buzzwords, the following description might give you a general idea about what's going on.*
+
+The gun graph database is stored across all peers participating in the network. Most data distribution scenarios that one could think of are possible to occur: Every peer might possess the complete graph, or only a subset of the complete graph and may posses data that does not exist on any other node (yet). The whole database is considered to be the union of all peers' graphs.
+
+There is no theoretical limit for the total size of a gun graph. The amount of data that a peer has locally available is limited by the memory constraints of the host environment, like operating system, browser, etc. The amount of data that can be persisted beyond the running process depends on the storage engine. In a web browser it will usually be 5MB of localStorage. A superpeer with Radix file storage can persist much bigger amounts of data.
+
+Superpeers are dedicated gun peers running on NodeJS. They will receive all data that is broadcasted to the network and be able to serve it on request. Normal peers running in a web browser will not start downloading the whole database but only the parts they request. A well designed gun application will only download relevant data, instead of draining the users bandwidth and RAM. This and the general unreliability of browser peers make it essential to have one or more superpeers running 24/7 for the operation of most real world use cases.
+
+
+
 ### Next Up?
 
  - Follow [THE INTERACTIVE TUTORIAL](Todo-Dapp)!
