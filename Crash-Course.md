@@ -1,7 +1,7 @@
 The 2 minute Crash Course!
 
 <div style="position: relative; padding-bottom: 56.25%;">
-[![The 2 minute Crash Course!]](https://scrimba.com/cast/cW2Vsa.embed)</div>
+<script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script></div>
 
 ### Next up?
 
