@@ -1,7 +1,7 @@
 The 2 minute Crash Course!
 
 <div style="position: relative; padding-bottom: 56.25%;">
-<script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script></div>
+<a>https://scrimba.com/cast/cW2Vsa.embed</a></div>
 
 ### Next up?
 
