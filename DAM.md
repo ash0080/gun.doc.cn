@@ -33,6 +33,10 @@ From chat: yeah, DAM has a feature for this... you'll find it on var dam = gun.b
 
 See this [dWeb Podcast](https://anchor.fm/dweb/episodes/Data-Dimensions--DAM-Networking--Kanban--Single-Sessions--In-Memory-e592v6) episode for a code walkthrough of DAM's algorithm.
 
+ ### Self
+
+There is some special code in core that might look funny, this explains what it is: Why do we delete the ID from dedup list after a `dam: '?'` on `'hi'`? Because if we connect to ourselves, we want our message to go through (by default it gets deduped) so we can detect that we are connected to ourselves, and disconnect. This is a special hack to deal with this edge case. Keep that line of code as is!
+
 ## Architecture
 
 Given some constraints, we are able to prove that optimal mesh topology can be `O(P)` (where P is peers in the network) which is surprising, since for the same constraints, star (centralized) topology is also `O(P)`. Ignoring those constraints, mesh topology is about `O(C*2)+1` (where C is connections between peers), which is not good, compared to optimized federated sharded routing can be `O(S)` (where S is the number of subscriptions to a data record, regardless of P). This is why [AXE](./AXE) is built on top of DAM, as it opt-in allows for highly scalable incentivized traffic, without violating (it is still compatible with) the underlying P2P mesh topology that DAM accounts for. More details, and proof, will be in a later cartoon.
