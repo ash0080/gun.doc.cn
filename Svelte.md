@@ -168,13 +168,5 @@ const todosRef = gun.get("todos").map()
 export const todos = createMapStore(todosRef, {})
 ```
 
-```html
-// App.svelte
-<script>
-import { todos } from "./stores.js"
-
-$: todosList = Object.entries($todos)
-</script>
-
 ---
 Anything to add? [Add more to this article](https://github.com/amark/gun/wiki/Svelte/_edit)! 
