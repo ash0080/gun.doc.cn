@@ -124,6 +124,8 @@ While this approach increases the boilerplate of your application, you might fin
 ### Custom store (recommended)
 We recommend to write a store that mimics writable, and also attaches methods for working with GUN data
 
+Check it out in the [interactive demo](https://svelte.dev/repl/53ecf1dc52c245faba204f3ca94d5cde?version=3.16.5)
+
 ```javascript
 // stores.js
 import Gun from "gun/gun"
