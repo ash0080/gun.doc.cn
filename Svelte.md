@@ -120,7 +120,85 @@ const remove = key => gun.get(key).put(null)
 ## Using Svelte stores
 While this approach increases the boilerplate of your application, you might find it necessary to create global stores that can be reused in multiple components.
 
-### Simple example
+
+### Custom store (recommended)
+We recommend to write a store that mimics writable, and also attaches methods for working with GUN data
+
+```javascript
+// stores.js
+import Gun from "gun/gun"
+const gun = Gun()
+
+// createStore() is a simpliefied version of a readable from svelte/store.
+// It is suitable for stores that will be accessed from many components
+function customStore(ref, methods = {}) {
+  let store = {}
+  const subscribers = []
+
+  function publish(data, key) {
+      if (ref._.get === key) {
+        // for gun.get(key)
+        store = data
+      } else if (data) {
+        // for gun.get(key).map()
+        store[key] = data
+      } else {
+        delete store[key]
+      }
+      for (let i = 0; i < subscribers.length; i += 1) {
+        subscribers[i](store)
+      }
+  }
+
+  function subscribe(subscriber) {
+    subscribers.push(subscriber)
+    
+    // Publish initial value
+    subscriber(store)
+
+    // return cleanup function to be called on component dismount
+    return () => {
+      const index = subscribers.indexOf(subscriber)
+      if (index !== -1) {
+        subscribers.splice(index, 1)
+      }
+    }
+  }
+  
+  // Add listener to gun reference
+  ref.on(publish)
+  
+  return { ...methods, subscribe }
+}
+
+const ref = gun.get("messages")
+export const messages = customStore(ref.map(), {
+  add: text => ref.set({ text, sender: "moi", icon: "😺" }),
+  delete: key => ref.get(key).put(null)
+})
+```
+
+This pattern makes for very clean markup in the component itself
+
+```html
+<script>
+import { messages } from "./stores.js"
+</script>
+
+<input placeholder="write message" on:change={e => messages.add(e.target.value) && (e.target.value = "")} />
+
+{#each Object.entries($messages) as [key, {sender, text, icon}] (key)}
+<div style="padding: .4rem">
+  {icon} {sender}: {text}
+  <a href="#" on:click|preventDefault={() => messages.delete(key)}>delete</a>
+</div>
+{/each}
+```
+
+## Using Svelte's writable/readable stores
+You can also merge GUN with Svelte's own stores, but they are harder to work with compared to using the custom store in the (recommended) example above.
+
+### Simple example with writable
 
 ```javascript
 // stores.js
@@ -139,7 +217,7 @@ const todosRef = gun.get("todos")
 export const todos = createStore(todosRef, {})
 ```
 
-### Advanced example with methods
+### Merged with svelte's writable store
 ```javascript
 // stores.js
 import { gun } from "./initGun.js"
