@@ -129,7 +129,7 @@ We recommend to write a store that mimics writable, and also attaches methods fo
 import Gun from "gun/gun"
 const gun = Gun()
 
-// createStore() is a simpliefied version of a readable from svelte/store.
+// createStore() is a simplified version of a readable from svelte/store.
 // It is suitable for stores that will be accessed from many components
 function customStore(ref, methods = {}) {
   let store = {}
