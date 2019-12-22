@@ -208,14 +208,8 @@ const remove = key => gun.get(key).put(null)
 {/each}
 ```
 
-## Using Svelte stores
-While this approach increases the boilerplate of your application, you might find it necessary to create global stores that can be reused in multiple components.
-
-
-
-
 ## Using Svelte's writable/readable stores
-You can also merge GUN with Svelte's own stores, but they are harder to work with compared to using the custom store in the (recommended) example above.
+You can also merge GUN with Svelte's own stores, but they are harder to work with compared to using the custom store in the (recommended) example at the top of this page.
 
 ### Simple example with writable
 
