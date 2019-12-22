@@ -2,7 +2,7 @@
 
 Svelte has an [approach to reactivity](https://svelte.dev/blog/svelte-3-rethinking-reactivity) that couples very well with GUN, since you are able to use gun directly as a store within Svelte components. As a result, you can easily bind GUN data to Svelte in a way that feels like vanilla JavaScript, and is similar to the vanilla examples used in most of GUNs documentation.
 
-Check out the examples below or try your hand in at a simple |Todos example with the Svelte REPL]https://svelte.dev/repl/634ff063c3424bb9a203bd38cbaa2d73?version=3.16.4
+Check out the examples below or try your hand in at a simple [Todos example with the Svelte REPL](https://svelte.dev/repl/634ff063c3424bb9a203bd38cbaa2d73?version=3.16.4)
 
 We have two recommended approaches to bind data to GUN. One for use directly in Svelte components and one for writing stores that can be reused across components.
 
