@@ -118,9 +118,9 @@ import { messages } from "./stores.js"
 ```
 
 ## Tutorial
-Before we begin this tutorial you should be familiar with Svelte and its APIs, as we will only focus on the data binding to GUN.
-
 In this tutorial we will build a very basic todo application.
+
+Before we begin you should be familiar with Svelte and its APIs, as we will only focus on the data binding to GUN.
 
 ### Step 1 - Set up GUN
 
