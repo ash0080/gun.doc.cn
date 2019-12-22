@@ -1,10 +1,13 @@
 # Want to use GUN with Svelte?
 
-They're a match made in heaven!
+Svelte has an [approach to reactivity](https://svelte.dev/blog/svelte-3-rethinking-reactivity) that couples very well with GUN, since you are able to use gun directly as a store within Svelte components. As a result, you can easily bind GUN data to Svelte in a way that feels like vanilla JavaScript, and is similar to the vanilla examples used in most of GUNs documentation.
 
-Check out [this simple example](https://svelte.dev/repl/634ff063c3424bb9a203bd38cbaa2d73?version=3.16.4) to see how easy it is to get started or follow the tutorial below.
+Check out the examples below or try your hand in at a simple |Todos example with the Svelte REPL]https://svelte.dev/repl/634ff063c3424bb9a203bd38cbaa2d73?version=3.16.4
 
-The recommended approach to bind GUN data to Svelte is this:
+We have two recommended approaches to bind data to GUN. One for use directly in Svelte components and one for writing stores that can be reused across components.
+
+#### Using GUN in a single component
+The recommended approach to bind GUN data directly to a Svelte component is this:
 ```javascript
 <script>
 import { gun } from "./gunSetup.js" // Only initialize GUN once
@@ -33,107 +36,21 @@ $: cats = Object.entries(store)
 {/each}
 ```
 
-### About Svelte and GUN
-Svelte has an [approach to reactivity](https://svelte.dev/blog/svelte-3-rethinking-reactivity) that couples very well with GUN, since you are able to use gun directly as a store within Svelte components. As a result, you can easily bind GUN data to Svelte in a way that feels like vanilla JavaScript, and is similar to the vanilla examples used in most of GUNs documentation.
+Svelte will watch for updates to the `store` variable, and since we use the label `$` with the `cats` variable it will update the UI when both variables changes.
 
-Before we begin this tutorial you should be familiar with Svelte and its APIs, as we will only focus on the data binding to GUN.
+This approach only works in compiled `.svelte` files, since Svelte wraps the variables with the `invalidate()` function which will tell the components to update once the variables change.
 
-## Tutorial
-In this tutorial we will build a very basic todo application.
+#### Adding a Svelte store for GUN data
+Luckily, we can add our own subscriber system in regular `.js` files by writing our own custom store. This approach is easy to work with, since you can easily add your own custom methods to write GUN data or even adding more `gun.get()` calls for nested data.
 
-### Step 1 - Set up GUN
-
-Let's create a new file called `initGun.js`. You want to place this in a separate file since you only want to initialize gun once. We'll import the gun object into the Svelte components from this file.
-
-```javascript
-// initGun.js
-import Gun from "gun/gun"
-export const gun = Gun()
-```
-
-```html
-// App.svelte
-<script>
-import { gun } from "./initGun.js"
-</script>
-```
-
-### Step 2 - Create an input to add Todos
-```html
-// App.svelte
-<script>
-// ...
-
-let input = ""
-const create = () => gun.get("todos").key(input).put({ title: input, done: false })
-</script>
-
-<input bind:value={input} on:change={e => create() && (e.target.value = "")} />
-```
-
-### Step 3 - List Todos from GUN
-```html
-// App.svelte
-<script>
-// ...
-
-let store = {}
-gun.get("todos").map().on(function(data, key) {
-    if (data) {
-        store[key] = data
-    } else {
-        // gun.map() can return null (deleted) values for keys
-        // if so, this else clause will update your local variable
-        delete store[key]
-        store = store
-    }
-})
-
-// This syntax should familiar to you if you completed the official Svelte tutorial
-// We'll convert the store to a sorted list that can be iterated in the view
-$: todos = Object.entries(store).sort((a, b) => a[1].done ? -1 : 1))
-</script>
-
-{#each todos as [key, todo]}
-<div id={key}>
-    {todo.title} {todo.done ? "😺" : "😾"}
-</div>
-{/each}
-```
-
-### Step 4 - Add update and delete actions
-```html
-<script>
-// ...
-const update = (key, value) => gun.get(key).get("done").put(value)
-const remove = key => gun.get(key).put(null)
-</script>
-
-{#each todos as [key, todo]}
-<div id={key}>
-    <input type="checkbox" checked={todo.done} on:change={() => update(key, !todo.done)} />
-    {todo.title} <a href="/" on:click|preventDefault={() => remove(key)}>remove</a> {todo.done ? "😺" : "😾"}
-</div>
-{/each}
-```
-
-## Using Svelte stores
-While this approach increases the boilerplate of your application, you might find it necessary to create global stores that can be reused in multiple components.
-
-
-### Custom store (recommended)
-We recommend to write a store that mimics writable, and also attaches methods for working with GUN data
-
-Check it out in the [interactive demo](https://svelte.dev/repl/53ecf1dc52c245faba204f3ca94d5cde?version=3.16.5)
+The store below is a simplified version of the official Svelte `writable` store. You can also check it out in the [interactive demo](https://svelte.dev/repl/53ecf1dc52c245faba204f3ca94d5cde?version=3.16.5)
 
 ```javascript
 // stores.js
 import Gun from "gun/gun"
 const gun = Gun()
 
-// createStore() is a simplified version of a readable from svelte/store.
-// It is suitable for stores that will be accessed from many components
-function customStore(ref, methods = {}) {
+function gunStore(ref, methods = {}) {
   let store = {}
   const subscribers = []
 
@@ -163,6 +80,9 @@ function customStore(ref, methods = {}) {
       const index = subscribers.indexOf(subscriber)
       if (index !== -1) {
         subscribers.splice(index, 1)
+      }
+      if (!subscribers.length) {
+        ref.off()
       }
     }
   }
@@ -196,6 +116,94 @@ import { messages } from "./stores.js"
 </div>
 {/each}
 ```
+
+## Tutorial
+Before we begin this tutorial you should be familiar with Svelte and its APIs, as we will only focus on the data binding to GUN.
+
+In this tutorial we will build a very basic todo application.
+
+### Step 1 - Set up GUN
+
+Let's create a new file called `initGun.js`. It's better to do this in a separate file since you only want to initialize gun once. We'll import the gun object into the Svelte components from this file.
+
+```javascript
+// initGun.js
+import Gun from "gun/gun"
+export const gun = Gun()
+```
+
+```html
+// App.svelte
+<script>
+import { gun } from "./initGun.js"
+</script>
+```
+
+### Step 2 - Create an input to add Todos
+```html
+// App.svelte
+<script>
+// ...
+
+let input = ""
+const create = () => gun.get("todos").key(input).put({ title: input, done: false })
+</script>
+
+<input placeholder="Add todo" bind:value={input} />
+<button on:click={e => create() && (e.target.value = "")}>Add</button>
+```
+
+### Step 3 - List Todos from GUN
+```html
+// App.svelte
+<script>
+// ...
+
+let store = {}
+gun.get("todos").map().on(function(data, key) {
+    if (data) {
+        store[key] = data
+    } else {
+        // gun.map() can return null (deleted) values for keys
+        // if so, this else clause will update your local variable
+        delete store[key]
+        store = store
+    }
+})
+
+// This syntax should familiar to you if you completed the official Svelte tutorial
+// We'll convert the store to a sorted list that can be iterated in the view
+$: todos = Object.entries(store).sort((a, b) => a[1].done)
+</script>
+
+{#each todos as [key, todo]}
+<div id={key}>
+    {todo.title} {todo.done ? "😺" : "😾"}
+</div>
+{/each}
+```
+
+### Step 4 - Add update and delete actions
+```html
+<script>
+// ...
+const update = (key, value) => gun.get(key).get("done").put(value)
+const remove = key => gun.get(key).put(null)
+</script>
+
+{#each todos as [key, todo]}
+<div id={key}>
+    <input type="checkbox" checked={todo.done} on:change={() => update(key, !todo.done)} />
+    {todo.title} <a href="/" on:click|preventDefault={() => remove(key)}>remove</a> {todo.done ? "😺" : "😾"}
+</div>
+{/each}
+```
+
+## Using Svelte stores
+While this approach increases the boilerplate of your application, you might find it necessary to create global stores that can be reused in multiple components.
+
+
+
 
 ## Using Svelte's writable/readable stores
 You can also merge GUN with Svelte's own stores, but they are harder to work with compared to using the custom store in the (recommended) example above.
