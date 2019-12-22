@@ -51,10 +51,11 @@ import Gun from "gun/gun"
 const gun = Gun()
 
 function gunStore(ref, methods = {}) {
-  let store = {}
+  const store = {}
   const subscribers = []
 
-  function publish(data, key) {
+  // Add a listener to GUN data
+  ref.on((data, key) {
       /* If the ref._get matches the data key it means we are getting
        * data from a call to gun.get(), and so we don't need the store
        * to be an object with nested data. Otherwise we are getting data
@@ -72,13 +73,11 @@ function gunStore(ref, methods = {}) {
       } else {
          store[key] = data
       }
+      // Tell each subscriber that data has been updated
       for (let i = 0; i < subscribers.length; i += 1) {
         subscribers[i](store)
       }
-  }
-
-  // Add listener to gun reference
-  ref.on(publish)
+  })
   
 
   function subscribe(subscriber) {
