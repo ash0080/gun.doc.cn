@@ -55,7 +55,7 @@ function gunStore(ref, methods = {}) {
   const subscribers = []
 
   // Add a listener to GUN data
-  ref.on((data, key) {
+  ref.on(function(data, key) {
       /* If the ref._get matches the data key it means we are getting
        * data from a call to gun.get(), and so we don't need the store
        * to be an object with nested data. Otherwise we are getting data
