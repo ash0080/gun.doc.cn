@@ -208,6 +208,8 @@ const remove = key => gun.get(key).put(null)
 {/each}
 ```
 
+And now we're finished! [Check it out in the Svelte REPL](https://svelte.dev/repl/84cccb9fff64494bbec852922940ea23?version=3.16.5)
+
 ## Using Svelte's writable/readable stores
 You can also merge GUN with Svelte's own stores, but they are harder to work with compared to using the custom store in the (recommended) example at the top of this page.
 
