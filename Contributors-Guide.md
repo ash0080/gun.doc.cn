@@ -2,6 +2,28 @@
 
 Contributions are always welcome. Generally the core of the library is written for performance and smallness and hence readability is not a focus. There is many adapters that are written a bit more verbose by contributors and can serve as templates for other contributors.
 
+
+### Code Style / Module Definition
+
+#### Code Style
+
+GUN's code base is non-linear, functional, reactive, event-driven, and it only operates against abstract data types, so there is very little code that does "anything"  traditional (the code is extremely boring in what it does, and tedious the number of edge cases you have to predict), its pretty much just a state machine that recurses in on itself (think more like a compiler, or AST parser), which usually makes no sense at all unless you have concrete datasets to test it against.
+
+#### Module Definitions
+
+All modules are modeled as below:
+```
+USE( IIFE )(USE, './modulename')
+```
+
+The IIFE is usually structured in 5 sections:
+
+1 - Requirements 
+2 - Module variables
+3 - Function Flow (Usually data flows vertically from Top to Bottom)
+4 - Entry Code ( Data arrives here and starts flow) 
+5 - Export
+
 ### Structure of the library
 
 ***
@@ -112,15 +134,26 @@ Contributions are always welcome. Generally the core of the library is written f
 
 ***
 
-### Code Style / Module Definition
+### Common Variable Names and Meaning
 
-#### Code Style
-
-GUN's code base is non-linear, functional, reactive, event-driven, and it only operates against abstract data types, so there is very little code that does "anything"  traditional (the code is extremely boring in what it does, and tedious the number of edge cases you have to predict), its pretty much just a state machine that recurses in on itself (think more like a compiler, or AST parser), which usually makes no sense at all unless you have concrete datasets to test it against.
-
-#### Module Definitions
-
-All modules are modeled as below:
-```
-USE( IIFE )(USE, './modulename')
-```
+p = path
+fn = function
+n = number
+t = text or time
+s = string
+l = length (sometimes also ll / lle )
+c = character
+o = object or operator
+k = key
+v = value
+u = undefined
+tag = subscriber
+_ = metadata
+as = what to write the result to (@amark to clarify)
+at = location in the graph, usually reference to the node you are in
+# = soul == uuid in metadata
+cb = callback
+g = graph
+msg = message that is sent to other peers (or received)
+ctx = context (usually when passing this around)
+cat = (context at ...) metadata short cut
