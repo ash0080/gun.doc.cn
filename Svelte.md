@@ -69,6 +69,10 @@ function gunStore(ref, methods = {}) {
       }
   }
 
+  // Add listener to gun reference
+  ref.on(publish)
+  
+
   function subscribe(subscriber) {
     subscribers.push(subscriber)
     
@@ -86,10 +90,7 @@ function gunStore(ref, methods = {}) {
       }
     }
   }
-  
-  // Add listener to gun reference
-  ref.on(publish)
-  
+
   return { ...methods, subscribe }
 }
 
