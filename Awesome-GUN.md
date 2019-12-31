@@ -67,8 +67,8 @@
   - Gun Node visualizer and editor
 - [visualGraph](https://github.com/dletta/visualGraph)
   - Gun Utility to Traverse Graph and use d3.js to visualize
-- [gun-graphin](https://5hbrc.csb.app/)
-  - Gun Graph visualization and Navigation using [Graphin](https://github.com/lmangani/gun-graphin) library
+- [gun-graphin](https://github.com/lmangani/gun-graphin)
+  - Gun Graph visualization and Navigation using [Graphin](https://github.com/antvis/Graphin) library
 - [Gun-scape](https://github.com/lmangani/gun-scape)
   - GunDB Cytoscape Graph Visualizer + Live Editor
 - [CRDT Continuous Sequence](https://github.com/nmaro/crdt-continuous-sequence)
