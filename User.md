@@ -105,9 +105,15 @@ opt (object) - Option Object containing options for authentiaction. (In gun opti
 
 Please comment on anything you may encounter.
 
-## User.pair
+## User.pair (Deprecated)
 
 Returns the key pair in the form of an object as below.
+
+**NOTE: Deprecated due to use of  MetaMask/Party/etc. private keys may not be exposed.  You will get the following message:**
+
+```
+user.pair() IS DEPRECATED AND WILL BE DELETED!!!
+```
 
 ### Syntax
 
