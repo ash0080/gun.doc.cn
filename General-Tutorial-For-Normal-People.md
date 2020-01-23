@@ -246,7 +246,7 @@ gun.user(public_key).once((data) => {
 ```
 
 # Conclusion
-That's all I could tech you.
+That's all I could teach you.
 
 Are you ready to die for the freedom of humanity? 
 
