@@ -297,7 +297,7 @@ Actually, there is nothing to deploy! Your dApp should work the same if you use 
 
 For sake of simplicity, let's "deploy" it by copying it to CodePen using the "Edit on Codepen" button on the top right of the editor. Once it loads on CodePen, click "save" (as anonymous) there, now you'll have a shareable URL with your dApp in it - send it to mom, Bob, or me!
 
-Then, try logging into both *this* preview and the CodePen preview with `test` as a username and `testing` as the password. **Leave a review of this tutorial as an item in the todo list**! And you should see both dApps load and sync people's comments!
+Then, try logging into both *this* preview and the CodePen preview with `testing` as a username and `testing123` as the password. **Leave a review of this tutorial as an item in the todo list**! And you should see both dApps load and sync people's comments!
 
 If something is no longer working, it means somebody probably trashed the account (please do not do that) and it may be impossible to log into it (check for errors in the console). If you notice this happening, **please [tell us on the chatroom](https://gitter.im/amark/gun)** so we can fix it.
 
