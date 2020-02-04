@@ -1,6 +1,6 @@
  > **Learn answers to all your questions in [THE INTERACTIVE TUTORIAL](Todo-Dapp)**! Or read along:
 
-GUN is a small, easy, and fast data sync and storage system that runs everywhere JavaScript does. The aim of GUN is to let you focus on the data that needs to stored, loaded, and shared in your app without worrying about servers, network calls, databases, or tracking offline changes or concurrency conflicts. This lets you build cool apps fast, like:
+GUN is a small, easy, and fast data sync and storage system that runs everywhere JavaScript does. The aim of GUN is to let you focus on the data that needs to be stored, loaded, and shared in your app without worrying about servers, network calls, databases, or tracking offline changes or concurrency conflicts. This lets you build cool apps fast, like:
 
 <div style="position: relative; padding-bottom: 56.25%;"><iframe src="https://www.youtube.com/embed/1ASrmQ-CwX4" frameborder="0" allowfullscreen style="border: 0px; position: absolute; width: 100%; height: 100%;"></iframe></div>
 
