@@ -25,6 +25,8 @@
 
 [Can a lost password be recovered?](#lost_password)
 
+[Can I use GUN timestamps for ordering lists of nodes in UI?](#timestamps)
+
 ***
 
 #### Is GUN a distributed database?<a name="is-gun-a-distributed-database"></a>
@@ -202,3 +204,8 @@ There may be variations to this approach that are more secure.
 
 <a href='FAQ#top'>Back to Top</a>
 ***
+#### Can I use GUN timestamps for ordering lists of nodes in UI? <a name="timestamps"></a>
+
+GUN already stores vector/timestamp for every item, you can do Gun.state.is(node, 'key') to get it (node needs to be data node), if you want to generate a timestamp (using time sync, if gun/nts.js is enabled) do Gun.state().
+
+<a href='FAQ#top'>Back to Top</a>
