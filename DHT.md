@@ -1,4 +1,17 @@
-From the chatroom, here is a discussion how GUN's AXE's RAD's radix DHT could work:
+"DHT" stands for Distributed Hash Table which is also a not-very-helpful academic phrase. In short, imagine if there was a single contacts list for everybody in the world (a phone book), a DHT is how we split up that phone book amongst everybody so that way we do not have to rely upon a single person to hold it. The benefit of this is that things should be faster since we will not have to "wait in line" if everybody were to ask only 1 person.
+
+The DHT is inspired by [RAD](./RAD) and managed by [AXE](./AXE).
+
+Auto "sharding" DHT logic uses a state machine between 2 peers, not a state machine on a single machine! Such that
+(peer A <-> peer B) becomes a state machine between each neighbor peer connection (peer A <-state_machine-> peer B <-state_machine-> peer C).
+
+This produces an emergent property: As long as the state machines between individual neighbor peers works correctly the SUM TOTAL of the entire network of machines should come to an optimal configuration, without any 1 machine knowing the state of the whole network.
+
+The panic test we already have in place for the DHT so far is, if 1 peer gets too many connections it emits a "I'm mobbed with people" state back to new peers trying to connect to it. This state suggests the next states those peers can go into, as in, other peers they can connect to instead. Those peers can then choose to connect to some of the next peers, but if those next peers are also mobbed you'll move thru the network of peers until you find ones that are not mobbed.
+
+Thus producing an equilibrium of all peers being well-balanced, resulting in a happy stable network!
+
+Here are some more details from the chatroom, a discussion how it could work:
 
 https://gitter.im/amark/gun?at=5c1c26a700ab9f27111e3d27
 
