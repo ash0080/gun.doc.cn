@@ -26,6 +26,7 @@
 [Can a lost password be recovered?](#lost_password)
 
 [Can I use GUN timestamps for ordering lists of nodes in UI?](#timestamps)
+[Can i use .on with event.off as an alternative for .once?](#event.off)
 
 ***
 
@@ -208,4 +209,19 @@ There may be variations to this approach that are more secure.
 
 GUN already stores vector/timestamp for every item, you can do Gun.state.is(node, 'key') to get it (node needs to be data node), if you want to generate a timestamp (using time sync, if gun/nts.js is enabled) do Gun.state().
 
+<a href='FAQ#top'>Back to Top</a>
+***
+#### Can i use .on with event.off as an alternative for .once? <a name="event.off"></a>
+
+Yes! But .on() may give partials. So maybe consider adding a schema check on the object, that way you only event.off() after you know you have the full object. Here's a small extension for it:
+```
+Gun.chain.onceComment = function(cb){
+  return this.on(function(data, key, msg, event){
+    if(!isValidComment(data)){ return }
+    event.off();
+    cb(data, key);
+  });
+}
+```
+Now gun.get('comment').onceComment(cb) only fires once with valid comment 
 <a href='FAQ#top'>Back to Top</a>
