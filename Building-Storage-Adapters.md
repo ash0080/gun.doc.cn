@@ -2,7 +2,22 @@ Gun exposes a pluggable interface that enables you to write custom storage adapt
 
 This document walks through how to wire up a Gun adapter and handle `get` and `put` requests.
 
-# Hook Into Gun's IO Events
+# Use RAD Instead
+
+> Note: It is recommended you use [RAD's storage interface](./RAD#api) instead.
+
+For all `v0.2020.x` & `v0.2019.x` and above, please use RAD instead. It is much simpler.
+
+Below is for old and historic documentation purposes:
+
+***
+
+
+# Hook Into Gun `<= v0.2019.x` IO Events
+
+> Note: It is recommended you use [RAD's storage interface](./RAD#api) instead.
+
+Please see warning note above.
 
 Gun includes an event system that you can hook into in order to receive `get` and `put` request.
 
